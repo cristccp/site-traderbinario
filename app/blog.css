@@ -245,6 +245,7 @@
 .ficha__dado { background: var(--color-ink); border-radius: var(--radius-sm); padding: 12px; }
 .ficha__dado dt { color: var(--color-mist); }
 .ficha__dado dd { font-weight: 600; margin-top: 2px; }
+.ficha__dado:last-child:nth-child(odd) { grid-column: 1 / -1; }   /* número ímpar de dados: o último ocupa a linha toda */
 
 .pros-contras { padding-bottom: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
 .pros-contras__bloco { padding: 28px; }

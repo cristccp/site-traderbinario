@@ -72,30 +72,31 @@ O resto do texto do artigo fica para a reescrita do 1º lote.
 - **Home:** rótulo "OPÇÕES BINÁRIAS · FOREX · ROBÔS · METATRADER"; botões "Comece pelo guia de opções binárias" / "Ver os guias"; títulos dos 6 guias (= mapa aprovado) e as frases curtas de cada um (do protótipo); "Outras corretoras".
 - **Box da Deriv:** "Opções, CFDs, forex e sintéticos" · "Conta demo com US$ 10.000 virtuais" · "MetaTrader 5 e robôs na mesma conta" · "Depósito mínimo de US$ 5" (dados da cópia) · "Criar conta demo grátis" · avisos curtos.
 - **Lateral e home:** Trader Bots Club "Robôs e indicadores grátis para MetaTrader 5." · Ideal Trade "Plataforma grátis de operação com inteligência artificial." (texto do site principal) · e-book "Gestão de Risco — No site do Cristiano Pereira".
-- **Autor:** "No mercado desde 2017, criador do método Trader Consistente™ e das plataformas Trader Bots Club e Ideal Trade. Ensina operação com método e gestão de risco." (base: sobre-mim).
+- **Autor:** ~~texto provisório~~ — substituído pela bio aprovada em 20/10/2026 (ver [VERIFICAR] 6).
 - **FAQ da análise:** as 3 perguntas ("A Deriv é uma boa corretora?", "A Deriv é confiável?", "Preciso validar meu cadastro na Deriv?") — as respostas são da cópia, que não tinha as perguntas.
 - **Cards das sessões:** frases curtas tiradas da própria cópia.
 - **Alts** de todas as imagens (a cópia tinha alts vazios ou nomes de arquivo).
 - **EN/ES** (`lib/i18n/en.ts`, `es.ts`): só estrutura; rodapé e banner dos textos aprovados, o resto é rascunho para quando houver páginas.
 
 ## 3. [VERIFICAR] — antes de ir ao ar
-1. **Pix** na Deriv e **regulação pela CVM** (o protótipo mostrava; a cópia não tem) — fora da ficha até confirmar.
-2. Dados da análise ainda atuais? Binary Bot, SmartTrader, Deriv X, Deriv GO, "1 milhão de clientes / 43 milhões de transações", lista de reguladores, telefone +44 1942 316889, WhatsApp +356 9957 8341, mínimos de depósito/saque.
+1. ~~**Pix** na Deriv~~ — resolvido em 20/10/2026: "Pix: Sim (depósito e saque)" na ficha. **CVM** continua fora da ficha (decisão do Cristiano).
+2. ~~Dados da análise ainda atuais? (Binary Bot, SmartTrader, Deriv X, Deriv GO, "1 milhão de clientes / 43 milhões de transações", lista de reguladores, telefone +44 1942 316889, WhatsApp +356 9957 8341, mínimos de depósito/saque)~~ — **resolver na reescrita** (decisão do Cristiano, 20/10/2026): artigos e análises reescritos usam sempre as informações atuais da corretora, tiradas das fontes oficiais. O texto atual fica como está até lá.
 3. "Fundos reembolsados em caso de falência" (frase removida) — existe essa proteção?
 4. Nota "5 de 5 estrelas" — volta ou fica fora?
 5. Serviço de "compra e venda de saldo para corretoras" ainda existe?
-6. Texto da caixa do autor (acima).
+6. ~~Texto da caixa do autor~~ — resolvido em 20/10/2026: bio aprovada pelo Cristiano ("Cristiano Pereira opera no mercado desde 2017, de forma manual e com robôs. Criou o método Trader Consistente e as plataformas Trader Bots Club e Ideal Trade. Ensina quem costuma quebrar banca a operar com método, gestão de risco e disciplina, e a sacar e construir patrimônio. Não vende lucro diário.").
 7. Frases curtas dos guias e das plataformas da lateral.
-8. Capas dos 4 artigos recentes (não migrados) e capas dos próximos artigos.
-9. Dono do vídeo incorporado (youtube.com/embed/xYg_UOfGrwE) — é da Deriv? Continua no ar?
+8. ~~Capas dos 4 artigos recentes (não migrados) e dos próximos artigos~~ — **resolver na reescrita** (decisão do Cristiano, 20/10/2026): as capas são criadas no Magnific sobre o tema de cada artigo. Até lá fica o espaço "[capa do artigo]".
+9. ~~Dono do vídeo incorporado (youtube.com/embed/xYg_UOfGrwE)~~ — resolvido em 20/10/2026: é do canal do Cristiano; mantido.
 10. "Atualizado em 20/10/2026" no artigo e na análise (a cópia não tinha data).
 11. ~~"Investimento em opções binárias" (home)~~ — resolvido em 20/10/2026 (troca 35).
+12. Bio do autor em inglês e espanhol (`lib/i18n/en.ts`, `es.ts`) ainda é o texto provisório — **atualizar quando as páginas EN/ES forem escritas** (decisão do Cristiano, 20/10/2026), adaptando a bio aprovada em PT.
 
 ## 4. Encurtadores e links de afiliado (para conferir no painel de cada corretora)
 | Corretora | Link (como na cópia) | Encurtador? |
 |---|---|---|
-| IQ Option | `https://bit.ly/TraderBinarioIQ` | **sim (bit.ly)** |
-| Expert Option | `https://r.shortlify.com/?prefid=1001870` | **sim (shortlify)** |
+| IQ Option | ~~`https://bit.ly/TraderBinarioIQ`~~ → `https://affiliate.iqoption.net/redir/?aff=159333&aff_model=revenue&afftrack=traderbinario` | resolvido em 20/10/2026 (link direto, em `lib/corretoras.ts`) |
+| Expert Option | `https://r.shortlify.com/?prefid=1001870` | encurtador (shortlify) — resolvido em 20/10/2026: conferido pelo Cristiano e mantido (`lib/corretoras.ts`) |
 | Quotex | `https://broker-qx.pro/sign-up/?lid=172595` | não |
 | Binomo | `https://binomo.com/pt/promo/l28?a=fb91955b2ff5&ac=BRBinomo` | não |
 | Deriv (antigo) | `https://1sh.co/DerivPremium` | **sim (1sh.co)** → substituído pelo link novo |

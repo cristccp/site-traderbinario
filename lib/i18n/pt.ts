@@ -33,7 +33,7 @@ export const PT: Textos = {
     linha: "No mercado desde 2017",
     atualizado: "atualizado em",
     por: "Por",
-    bio: "No mercado desde 2017, criador do método Trader Consistente™ e das plataformas Trader Bots Club e Ideal Trade. Ensina operação com método e gestão de risco.",
+    bio: "Cristiano Pereira opera no mercado desde 2017, de forma manual e com robôs. Criou o método Trader Consistente e as plataformas Trader Bots Club e Ideal Trade. Ensina quem costuma quebrar banca a operar com método, gestão de risco e disciplina, e a sacar e construir patrimônio. Não vende lucro diário.",
     link: "cristianopereira.com.br →",
     fotoAlt: "Cristiano Pereira tomando café",
   },

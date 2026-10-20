@@ -1,6 +1,6 @@
 ---
 # Texto: cópia da Builderall (../_copia/analise-corretora-deriv, 20/10/2026), só com as trocas de docs/revisao-conteudo.md.
-# Ficha: SÓ dados que estão na página copiada (Pix e CVM ficam de fora até o Cristiano confirmar — [VERIFICAR]).
+# Ficha: dados da página copiada + Pix (confirmado pelo Cristiano em 20/10/2026). CVM fica fora da ficha.
 tipo: analise
 idioma: pt
 slug: analise-corretora-deriv
@@ -36,6 +36,8 @@ ficha:
     valor: 7 (DTrader, Deriv Bot, MT5…)
   - rotulo: Suporte
     valor: 24h, 7 dias
+  - rotulo: Pix
+    valor: Sim (depósito e saque)
 pros:
   - Atendimento ao cliente amigável
   - Regulamentada em várias jurisdições
