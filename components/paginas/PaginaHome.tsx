@@ -3,11 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatarData } from "@/components/Autor";
 import BoxDeriv from "@/components/BoxDeriv";
-import LinkCorretora from "@/components/LinkCorretora";
+import CardsCorretoras from "@/components/CardsCorretoras";
 import Titulo from "@/components/Titulo";
 import Topo from "@/components/Topo";
 import { buscar, caminho, idiomasDisponiveis, listar } from "@/lib/conteudo";
-import { CORRETORAS } from "@/lib/corretoras";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
 
@@ -74,22 +73,7 @@ export default function PaginaHome({ idioma }: { idioma: Idioma }) {
 
         <section className="wrap corretoras" aria-labelledby="titulo-corretoras">
           <h2 id="titulo-corretoras" className="titulo titulo--h3">{partes(h.corretoras.titulo, h.corretoras.destaque)}</h2>
-          <ul className="corretoras__lista">
-            {h.corretoras.itens.map((id) => {
-              const k = CORRETORAS[id];
-              return (
-                <li key={id} className="cartao corretora">
-                  <Image className="corretora__logo" src={k.logo} alt={t.analise.logoAlt + " " + k.nome} width={40} height={40} />
-                  <span className="corretora__nome">{k.nome}</span>
-                  <span className="corretora__acoes">
-                    <Link prefetch={false} href={k.analise}>{t.corretoras.analise}</Link>
-                    <LinkCorretora id={id} href={k.cadastro} className="corretora__cadastro" novaAba={t.novaAba}>{t.corretoras.cadastro}</LinkCorretora>
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
-          <p className="aviso-curto corretoras__aviso">{t.corretoras.aviso}</p>
+          <CardsCorretoras ids={h.corretoras.itens} idioma={idioma} pagina="home" />
           <Link prefetch={false} className="corretoras__todas" href={h.corretoras.verTodas.href}>{h.corretoras.verTodas.texto} →</Link>
         </section>
 

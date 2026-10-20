@@ -8,6 +8,8 @@ import { Marked, type Tokens } from "marked";
 //   :::selos          → imagens pequenas lado a lado (selos de regulação)
 //   :::deriv <local>  → botão da Deriv (local = texto | final), com o texto do botão dentro
 //   :::video <id>     → vídeo do YouTube que só carrega no clique (título dentro)
+//   :::corretora <id> → botão de cadastro de UMA corretora (lib/corretoras.ts), com o texto do botão dentro
+//   :::corretoras <ids> → cards das corretoras (logo, Análise, Cadastre-se e aviso de risco) — ids de lib/corretoras.ts ou "deriv"
 // Imagem: ![alt](/imagens/...webp "LARGURAxALTURA") — a medida evita a página "pular" enquanto carrega.
 
 export type Sessao = { nome: string; horario: string; texto: string; destaque: boolean };
@@ -18,7 +20,9 @@ export type Bloco =
   | { tipo: "aviso"; html: string }
   | { tipo: "selos"; html: string }
   | { tipo: "deriv"; local: "texto" | "final"; texto: string }
-  | { tipo: "video"; id: string; titulo: string };
+  | { tipo: "video"; id: string; titulo: string }
+  | { tipo: "corretoras"; ids: string[] }
+  | { tipo: "corretora"; id: string; texto: string };
 export type ItemIndice = { id: string; texto: string };
 
 export const slugify = (s: string) =>
@@ -83,6 +87,8 @@ export function blocos(corpo: string): { lista: Bloco[]; indice: ItemIndice[] } 
       case "selos": lista.push({ tipo: "selos", html: html(dentro) }); break;
       case "deriv": lista.push({ tipo: "deriv", local: arg === "final" ? "final" : "texto", texto: dentro }); break;
       case "video": lista.push({ tipo: "video", id: arg, titulo: dentro }); break;
+      case "corretora": lista.push({ tipo: "corretora", id: arg, texto: dentro }); break;
+      case "corretoras": lista.push({ tipo: "corretoras", ids: arg.split(/\s+/).filter(Boolean) }); break;
       default: throw new Error(`Bloco desconhecido: :::${nome}`);
     }
   }

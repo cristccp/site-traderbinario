@@ -10,10 +10,10 @@ import { blocos, type Bloco, type ItemIndice } from "@/lib/markdown";
 // Regra de ouro: o site só mostra status "publicado" (rascunho e aprovado ficam fora, como no Painel CPT).
 // Arquivo: content/<pasta>/<slug>.<idioma>.md   (pasta: artigos | analises | paginas)
 
-export type Tipo = "artigo" | "analise" | "pagina";
+export type Tipo = "artigo" | "analise" | "guia" | "pagina";   // guia = página da raiz com o modelo de artigo
 export type Status = "rascunho" | "aprovado" | "publicado" | "arquivado";
 
-const PASTA: Record<Tipo, string> = { artigo: "artigos", analise: "analises", pagina: "paginas" };
+const PASTA: Record<Tipo, string> = { artigo: "artigos", analise: "analises", guia: "guias", pagina: "paginas" };
 const RAIZ = path.join(process.cwd(), "content");
 const PALAVRAS_POR_MINUTO = 200;
 
@@ -38,7 +38,7 @@ export type Conteudo = {
   relacionados?: Link[];
   faq?: Pergunta[];
   // Só nas análises
-  corretora?: { nome: string; logo: string; linha: string; rotulo: string };
+  corretora?: { id?: string; nome: string; logo?: string; linha: string; rotulo?: string; cadastro?: string; nota?: string };
   ficha?: { rotulo: string; valor: string }[];
   pros?: string[];
   contras?: string[];
@@ -102,6 +102,6 @@ export function idiomasDisponiveis(tipo: Tipo, slug: string): Idioma[] {
 // Endereço de cada conteúdo, com o prefixo do idioma (PT na raiz, /en e /es).
 export const PREFIXO: Record<Idioma, string> = { pt: "", en: "/en", es: "/es" };
 export function caminho(tipo: Tipo, slug: string, idioma: Idioma): string {
-  const base = tipo === "artigo" ? `/blog/${slug}` : tipo === "analise" ? `/${slug}` : slug === "home" ? "" : `/${slug}`;
+  const base = tipo === "artigo" ? `/blog/${slug}` : tipo === "pagina" && slug === "home" ? "" : `/${slug}`;
   return `${PREFIXO[idioma]}${base}` || "/";
 }

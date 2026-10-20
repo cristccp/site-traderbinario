@@ -1,0 +1,11 @@
+// Trocas revisadas à mão — análise Vantage Markets (20/10/2026). [antes, depois, motivo]
+const TROCAS = [
+  ["- Recomendo colocar instrução para usuários brasileiros: “Certifique-se de usar método de pagamento disponível para Brasil e veja se há conversão de moeda ou taxa extra”.", "- Use um método de pagamento disponível para o Brasil e veja se há conversão de moeda ou taxa extra.", "anotação interna que ficou no texto da Builderall"],
+  ["**A Vantage é uma plataforma legítima e opera legalmente no mercado comercial há mais de duas décadas, constantemente se atualizando e melhorando.**\n\nO redesenho da plataforma trouxe mais opções e alternativas para os traders, permitindo uma experiência personalizada de negociação. Você pode investir em mais de 100 instrumentos, incluindo Forex, ações, commodities e índices. As plataformas são simples, fáceis de usar e robustas, oferecendo uma alavancagem significativa de até 1:1000. As ferramentas foram aprimoradas e o atendimento ao cliente é eficiente e cordial.\n\nRecomendamos a Deriv.com devido à sua longa experiência, estatísticas verificadas e compromisso em atender bem seus clientes através de seus produtos e serviços. **Portanto, avaliamos a plataforma com 5 de 5 estrelas.**",
+    "A Vantage Markets oferece MT4, MT5 e app próprio, conta demo e mais de 1.000 instrumentos. Antes de abrir conta, confira sob qual entidade a conta será registrada e entenda os riscos dos CFDs.", "erro da Builderall: conclusão copiada da análise da Deriv (\"duas décadas\", \"Recomendamos a Deriv\", 5 estrelas)"],
+  [" Em 2024, inclusive, foi premiada como “Corretora Mais Confiável” no Professional Traders Awards.", "", "superlativo sem como comprovar (decisão de 20/10/2026)"],
+  ["- Em 2024 recebeu prêmios por “Corretora Mais Confiável” e “Melhor Responsabilidade Social Corporativa”.\n", "", "superlativo sem como comprovar (decisão de 20/10/2026)"],
+  ["Sim — regulada por autoridades respeitadas e com boas avaliações, mas verifique exatamente qual entidade está disponível para clientes brasileiros.", "Sim — tem regulação em mais de uma jurisdição, mas verifique exatamente qual entidade está disponível para clientes brasileiros.", "garantia"],
+];
+
+export default TROCAS;

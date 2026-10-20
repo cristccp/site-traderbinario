@@ -1,4 +1,7 @@
+import CardsCorretoras from "@/components/CardsCorretoras";
+import LinkCorretora from "@/components/LinkCorretora";
 import LinkDeriv from "@/components/LinkDeriv";
+import { CORRETORAS } from "@/lib/corretoras";
 import VideoClique from "@/components/VideoClique";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
@@ -43,6 +46,19 @@ export default function Corpo({ blocos, idioma, pagina }: { blocos: Bloco[]; idi
                 <span className="aviso-curto">{t.deriv.lateralRisco}</span>
               </p>
             );
+          case "corretora": {
+            const k = CORRETORAS[b.id];
+            if (!k) throw new Error(`Corretora desconhecida: ${b.id}`);
+            if (!k.cadastro) return null;   // sem link de cadastro confirmado
+            return (
+              <p key={i} className="cta-texto">
+                <LinkCorretora id={k.id} href={k.cadastro} className="botao" novaAba={t.novaAba}>{b.texto}</LinkCorretora>
+                <span className="aviso-curto">{t.deriv.lateralRisco}</span>
+              </p>
+            );
+          }
+          case "corretoras":
+            return <CardsCorretoras key={i} ids={b.ids} idioma={idioma} pagina={pagina} />;
           case "video":
             return <VideoClique key={i} id={b.id} titulo={b.titulo} play={t.video.play} aria={t.video.aria} />;
         }

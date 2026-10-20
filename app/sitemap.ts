@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site";
 // /sitemap.xml gerado da camada de conteúdo: SÓ páginas publicadas, em cada idioma em que existem.
 // hreflang (alternates) só quando a página existe em mais de um idioma (padrao-idiomas.md, regra 3).
 const abs = (p: string) => (p === "/" ? SITE : SITE + p);
-const TIPOS: Tipo[] = ["pagina", "artigo", "analise"];
+const TIPOS: Tipo[] = ["pagina", "guia", "artigo", "analise"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return TIPOS.flatMap((tipo) =>

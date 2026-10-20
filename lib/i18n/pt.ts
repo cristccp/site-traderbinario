@@ -19,7 +19,7 @@ export const PT: Textos = {
       { label: "Forex", href: "/blog/forex-o-que-e-como-funciona-guia-completo-para-iniciantes" },
       { label: "Robôs traders", href: "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados" },
       { label: "MetaTrader", href: "/blog/metatrader-5-mt5-guia-completo" },
-      { label: "Gestão de risco", href: "/blog/gestao-de-risco-no-day-trade" },
+      { label: "Gestão de risco", href: "/c/gestao-de-risco" },   // até o guia /blog/gestao-de-risco-no-day-trade existir
       { label: "Corretoras", href: "/melhores-corretoras-opcoes-binarias" },
       { label: "Cristiano Pereira ↗", href: "https://cristianopereira.com.br", externo: true },
     ],

@@ -40,7 +40,7 @@ guias:
       href: /blog/metatrader-5-mt5-guia-completo
     - titulo: "Gestão de risco no day trade: o que separa quem fica de quem quebra"
       texto: Lote, stop e a hora de parar.
-      href: /blog/gestao-de-risco-no-day-trade
+      href: /c/gestao-de-risco   # até o guia /blog/gestao-de-risco-no-day-trade existir
       rotulo: GUIA · O MAIS IMPORTANTE
       principal: true
     - titulo: "Corretoras: análises de opções binárias e forex"

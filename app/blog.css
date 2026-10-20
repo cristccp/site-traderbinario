@@ -126,6 +126,12 @@
 .corretora__cadastro:hover { color: var(--color-cyan); }
 .corretoras__aviso { font-size: 0.8125rem; }
 .corretoras__todas { font-size: 0.875rem; font-weight: 600; }
+/* Cards de corretoras dentro do texto (bloco :::corretoras) e logo por letra quando a corretora não tem logo */
+.cards-corretoras { display: flex; flex-direction: column; gap: var(--space-sm); margin: var(--space-xs) 0 var(--space-std); }
+.colunas__texto .corretoras__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.corretora__logo--letra { display: inline-flex; align-items: center; justify-content: center; background: var(--color-line); color: var(--color-white); font-family: var(--type-display-serif-family); font-weight: 600; font-size: 1.25rem; }
+.corretora__nome { display: flex; flex-direction: column; }
+.corretora__selo { font-size: 0.6875rem; letter-spacing: 1.5px; color: var(--color-cyan); font-weight: 500; text-transform: uppercase; }
 
 .recentes { padding-block: var(--space-xl); display: flex; flex-wrap: wrap; gap: var(--space-lg); }
 .recentes__lista { flex: 999 1 35rem; min-width: 0; display: flex; flex-direction: column; gap: var(--space-md); }
@@ -239,6 +245,8 @@
 .ficha { flex: 1 1 21.25rem; border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column; gap: 14px; }
 .ficha__marca { display: flex; align-items: center; gap: 12px; }
 .ficha__logo { width: 56px; height: 56px; border-radius: 14px; }
+.ficha__logo--letra { display: inline-flex; align-items: center; justify-content: center; background: var(--color-line); color: var(--color-white); font-family: var(--type-display-serif-family); font-weight: 600; font-size: 1.625rem; flex: none; }
+.nota-corretora { border-left: 3px solid var(--color-cyan); background: var(--fx-tint-cyan); border-radius: 0 var(--fx-radius) var(--fx-radius) 0; padding: 12px var(--space-sm); font-size: 0.9375rem; font-weight: 500; color: var(--color-white); }
 .ficha__nome { font-family: var(--type-display-serif-family); font-size: 1.625rem; font-weight: 600; line-height: 1.2; }
 .ficha__linha { font-size: 0.8125rem; color: var(--color-mist); }
 .ficha__dados { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.8125rem; }
@@ -288,5 +296,5 @@
   .caixa-autor, .ficha, .box-deriv { padding: var(--space-md); }
 }
 @media (max-width: 29.99rem) {
-  .corretoras__lista { grid-template-columns: minmax(0, 1fr); }
+  .corretoras__lista, .colunas__texto .corretoras__lista { grid-template-columns: minmax(0, 1fr); }
 }

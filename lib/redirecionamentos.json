@@ -1,0 +1,57 @@
+[
+  {
+    "de": "/opcoes-binarias-legalizado-brasil",
+    "para": "/o-que-sao-opcoes-binarias",
+    "motivo": "não migra no lote 1: base legal desatualizada (Res. CMN 3.265/05) → reescrever no lote"
+  },
+  {
+    "de": "/opcoes-binarias-seguro",
+    "para": "/o-que-sao-opcoes-binarias",
+    "motivo": "fusão com \"é legalizado?\", que também não migra → reescrever no lote"
+  },
+  {
+    "de": "/blog/opcoes-binarias-e-seguro",
+    "para": "/o-que-sao-opcoes-binarias",
+    "motivo": "duplicado de \"é seguro?\" → reescrever no lote"
+  },
+  {
+    "de": "/como-funcionam-as-opcoes-binarias",
+    "para": "/o-que-sao-opcoes-binarias",
+    "motivo": "não migra no lote 1: \"aposta\" e promessa de lucro em todo o texto → reescrever no lote"
+  },
+  {
+    "de": "/ativos-financeiros-opcoes-binarias",
+    "para": "/o-que-sao-opcoes-binarias",
+    "motivo": "não migra no lote 1: tradução ruim com promessa de rentabilidade → reescrever no lote"
+  },
+  {
+    "de": "/tudo-sobre-opcoes-binarias-forex-trading-home",
+    "para": "/",
+    "motivo": "cópia antiga da home (banner \"renda no automático\")"
+  },
+  {
+    "de": "/blog/tudo-sobre-opcoes-binarias-forex-trading",
+    "para": "/",
+    "motivo": "cópia antiga da home"
+  },
+  {
+    "de": "/ebooks-gratis",
+    "para": "https://cristianopereira.com.br/materiais-gratuitos",
+    "motivo": "e-books moram no site do Cristiano"
+  },
+  {
+    "de": "/acessos-premiums-trader-binario",
+    "para": "https://cristianopereira.com.br/materiais-premium",
+    "motivo": "acessos premium moram no site do Cristiano"
+  },
+  {
+    "de": "/links-traderbinario",
+    "para": "https://cristianopereira.com.br",
+    "motivo": "página de links → site do Cristiano"
+  },
+  {
+    "de": "/a/cristiano-pereira",
+    "para": "/c/-dicas",
+    "motivo": "página do autor → categoria Dicas"
+  }
+]

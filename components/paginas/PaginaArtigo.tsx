@@ -17,12 +17,12 @@ import { jsonLdArtigo, jsonLdFaq, jsonLdTrilha } from "@/lib/seo";
 
 // MODELO DE ARTIGO (/blog/<slug>): trilha, título com destaque, autor, capa, índice, texto, FAQ (se houver),
 // aviso de risco, caixa do autor, lateral fixa e "Continue lendo".
-export default function PaginaArtigo({ idioma, slug }: { idioma: Idioma; slug: string }) {
-  const c = buscar("artigo", slug, idioma);
+export default function PaginaArtigo({ idioma, slug, tipo = "artigo" }: { idioma: Idioma; slug: string; tipo?: "artigo" | "guia" }) {
+  const c = buscar(tipo, slug, idioma);
   if (!c) notFound();
   const t = textos(idioma);
-  const idiomas = idiomasDisponiveis("artigo", slug);
-  const caminhos = Object.fromEntries(idiomas.map((i) => [i, caminho("artigo", slug, i)]));
+  const idiomas = idiomasDisponiveis(tipo, slug);
+  const caminhos = Object.fromEntries(idiomas.map((i) => [i, caminho(tipo, slug, i)]));
   const indice = c.faq?.length ? [...c.indice, { id: "perguntas-frequentes", texto: t.artigo.faq }] : c.indice;
 
   return (
