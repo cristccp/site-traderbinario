@@ -1,0 +1,120 @@
+/* ------------------------------------------------------------------
+   Tokens do DLS v1.2 (01-diretoria-marca/contexto/dls.md · aprovado 14/10/2026)
+   O código usa sempre o NOME do token (var(--color-cyan)), nunca o valor solto.
+   Mudou a marca? Muda primeiro no DLS, depois aqui. Nada de valor novo direto no código.
+   As fontes (--font-fraunces, --font-poppins) vêm do next/font em lib/fontes.ts.
+   Cópia do site principal (site-cristianopereira/app/tokens.css) + o bloco "Blog" no fim.
+   ------------------------------------------------------------------ */
+:root {
+  /* Tipografia — famílias e pesos */
+  --type-display-serif-family: var(--font-fraunces), serif;   /* títulos do site (Fraunces 600) */
+  --type-display-serif-weight: 600;
+  --type-display-md-family: var(--font-poppins), sans-serif;
+  --type-display-md-weight: 600;
+  --type-body-lg-family: var(--font-poppins), sans-serif;
+  --type-body-lg-weight: 500;
+  --type-body-md-family: var(--font-poppins), sans-serif;
+  --type-body-md-weight: 400;
+  --type-body-sm-family: var(--font-poppins), sans-serif;
+  --type-body-sm-weight: 400;
+  --type-ui-label-family: var(--font-poppins), sans-serif;
+  --type-ui-label-weight: 500;
+  --type-ui-value-family: var(--font-poppins), sans-serif;
+  --type-ui-value-weight: 600;
+
+  /* Tipografia — tamanhos do site */
+  --type-size-hero: clamp(2.5rem, 1.15rem + 4.4vw, 5.25rem);
+  --type-size-h2: clamp(2rem, 1.35rem + 2.2vw, 3.5rem);
+  --type-size-h3: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
+  --type-size-card: clamp(1.3125rem, 1.2rem + 0.4vw, 1.5rem);
+  --type-size-manifesto: clamp(2.75rem, 1.3rem + 5vw, 6rem);
+  --type-size-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --type-size-body: 1rem;
+  --type-size-ui: 0.875rem;
+  --type-size-label: 0.8125rem;
+
+  /* Cor — base (escuros) */
+  --color-ink: #07090C;
+  --color-ink-soft: #0B0F14;
+  --color-surface: #11161D;
+  --color-line: #1E2631;
+  /* Cor — claros */
+  --color-white: #FFFFFF;
+  --color-mist: #9AA6B2;
+  --color-paper: #F4F6F8;
+  /* Cor — destaque */
+  --color-blue: #0077FF;
+  --color-cyan: #00E5FF;
+  --color-blue-on-light: #0066DD;
+  --gradient-brand: linear-gradient(90deg, var(--color-blue), var(--color-cyan));
+  /* Cor — semânticas */
+  --color-danger: #FF3B4E;
+  --color-growth: #00D27A;
+  --color-gold: #F5B700;
+
+  /* Espaçamento (grid base-8) */
+  --space-micro: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-std: 32px;
+  --space-lg: 48px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+
+  /* Cantos */
+  --fx-radius: 16px;     /* botões e cards de material */
+  --radius-lg: 24px;     /* card da foto */
+
+  /* Efeitos de luz */
+  --fx-glow-cyan: color-mix(in srgb, var(--color-cyan) 18%, transparent);
+  --fx-glow-cyan-soft: color-mix(in srgb, var(--color-cyan) 10%, transparent);
+  --fx-neon-line: color-mix(in srgb, var(--color-cyan) 55%, transparent);
+  --fx-neon-line-dim: color-mix(in srgb, var(--color-cyan) 28%, transparent);
+  --fx-pointer-glow: color-mix(in srgb, var(--color-cyan) 9%, transparent);   /* luz que segue o mouse (pedido 15/10/2026 — levar ao DLS) */
+  --fx-pointer-glow-size: 220px;
+
+  /* Movimento */
+  --motion-hover: 360ms;
+  --motion-ease: cubic-bezier(.22, .61, .36, 1);
+  --motion-word-step: 150ms;   /* headline palavra a palavra */
+  --motion-word-in: 450ms;
+  --motion-scan: 600ms;        /* filete "scanner" dos pilares (pedido 15/10/2026 — levar ao DLS) */
+  --motion-hover-scale: 1.04;  /* capa "cresce levemente" no hover (pedido 15/10/2026 — levar ao DLS) */
+
+  /* Layout do site (medidas de página, não são tokens de marca) */
+  --layout-measure: 34rem;
+  --layout-max: 82rem;
+  --layout-gutter: var(--space-sm);
+  /* Altura do menu fixo: no topo da página / depois de rolar (celular: botão de 48 px; computador: logo de 3,5rem) */
+  --header-h: calc(var(--space-lg) + 2 * var(--space-md));
+  --header-h-scrolled: calc(var(--space-lg) + 2 * var(--space-xs));
+}
+@media (min-width: 48rem) {
+  :root {
+    --layout-gutter: var(--space-lg);
+    --header-h: calc(3.5rem + 2 * var(--space-md));
+    --header-h-scrolled: calc(2.75rem + 2 * var(--space-sm));
+  }
+}
+@media (min-width: 75rem) { :root { --layout-gutter: var(--space-xl); } }
+
+/* ------------------------------------------------------------------
+   Blog traderbinario — medidas do design aprovado (../design/, 20/10/2026) que ainda não existem no DLS.
+   Todas marcadas "levar ao DLS" (avisar o Cristiano). Aliases para os componentes copiados do forexbots (cookies).
+   ------------------------------------------------------------------ */
+:root {
+  --color-prose: #D5DCE3;          /* texto corrido do artigo (um tom abaixo do branco, leitura longa) — levar ao DLS */
+  --radius-sm: 12px;               /* blocos internos da ficha da corretora — levar ao DLS */
+  --radius-pill: 999px;            /* botões e ícones redondos do design — levar ao DLS */
+  --blog-max: 77.5rem;             /* 1240 px: largura do conteúdo no design do blog — levar ao DLS */
+  --blog-gutter: var(--space-md);  /* 24 px nas laterais, como no design */
+  --blog-texto-max: 47.5rem;       /* 760 px: largura máxima do texto do artigo */
+  --fx-glow-card: color-mix(in srgb, var(--color-cyan) 10%, transparent);   /* brilho do box da Deriv (design) */
+  --fx-tint-cyan: color-mix(in srgb, var(--color-cyan) 6%, transparent);    /* fundo da caixa "Na prática" (design) */
+
+  /* Aliases usados pelo banner de cookies (cópia do forexbots) */
+  --color-accent: var(--color-cyan);
+  --fx-glow: var(--fx-glow-cyan);
+  --fx-glow-soft: var(--fx-glow-cyan-soft);
+}

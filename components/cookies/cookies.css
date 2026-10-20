@@ -1,0 +1,42 @@
+/* ------------------------------------------------------------------
+   Banner de cookies (BannerCookies), em todas as páginas. Celular: barra compacta no rodapé da tela.
+   Computador: cartão no canto inferior direito (do lado da capa; o formulário das capturas fica à esquerda).
+   Tokens em app/tokens.css. "Aceitar" e "Recusar" com o mesmo estilo (mesmo peso visual).
+   --cookies-h (espaço do banner aberto até o fim da tela) é posta pelo componente: a página ganha esse espaço embaixo
+   e o botão do Tutor IA sobe junto (components/tutor/tutor.css).
+   ------------------------------------------------------------------ */
+body { padding-bottom: var(--cookies-h, 0px); }
+
+.cookies {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  background: color-mix(in srgb, var(--color-ink-soft) 94%, transparent);
+  -webkit-backdrop-filter: blur(var(--space-sm)); backdrop-filter: blur(var(--space-sm));
+  box-shadow: 0 -1px 0 var(--fx-neon-line-dim);
+}
+.cookies:focus { outline: none; }
+.cookies:focus-visible { box-shadow: 0 -1px 0 var(--color-accent), inset 0 0 0 1px var(--color-accent); }
+.cookies__wrap { display: flex; flex-direction: column; gap: var(--space-sm); padding: var(--space-sm) var(--layout-gutter); }
+.cookies__texto { color: var(--color-mist); font-size: var(--type-size-label); line-height: 1.5; }
+.cookies__texto a { color: var(--color-white); text-underline-offset: 3px; transition: color var(--motion-hover) var(--motion-ease); }
+.cookies__texto a:hover, .cookies__texto a:focus-visible { color: var(--color-accent); }
+.cookies__acoes { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xs); }
+.cookies__btn {
+  min-height: 2.75rem; padding: 0 var(--space-md); border: 0; border-radius: var(--fx-radius); cursor: pointer;
+  background: transparent; color: var(--color-white); box-shadow: inset 0 0 0 1px var(--fx-neon-line);
+  font-family: var(--type-display-md-family); font-weight: var(--type-body-lg-weight); font-size: var(--type-size-ui);
+  transition: box-shadow var(--motion-hover) var(--motion-ease), color var(--motion-hover) var(--motion-ease);
+}
+.cookies__btn:hover, .cookies__btn:focus-visible { outline: none; color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent), 0 0 var(--space-md) var(--fx-glow-soft); }
+
+@media (min-width: 48rem) {
+  .cookies {
+    left: auto; right: var(--space-md); bottom: var(--space-md); width: min(26rem, calc(100vw - 2 * var(--space-md)));
+    border-radius: var(--fx-radius); box-shadow: 0 0 0 1px var(--fx-neon-line), 0 0 var(--space-lg) var(--fx-glow-soft);
+  }
+  .cookies:focus-visible { box-shadow: 0 0 0 1px var(--color-accent), 0 0 var(--space-lg) var(--fx-glow); }
+  .cookies__wrap { padding: var(--space-md); }
+}
+@media (prefers-reduced-motion: reduce) { .cookies__btn, .cookies__texto a { transition: none; } }
+
+/* Link "Preferências de cookies" do rodapé: botão com cara de link (igual a "Política de privacidade") */
+.footer__cookies { padding: 0; border: 0; background: none; cursor: pointer; font: inherit; text-decoration: underline; }
