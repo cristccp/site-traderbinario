@@ -23,12 +23,19 @@ const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 const COPIA = path.join(RAIZ, "..", "_copia");
 const PASTA = { artigo: "artigos", analise: "analises", guia: "guias" };
 
-const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}\u{20E3}\u{1F1E6}-\u{1F1FF}]/gu;
+const EMOJI = /[\u{1F000}-\u{1FAFF}\u{2300}-\u{23FF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}\u{20E3}\u{1F1E6}-\u{1F1FF}]/gu;
 const REDES = [
   [/instagram\.com/, "Instagram"], [/youtube\.com|youtu\.be/, "YouTube"], [/whatsapp\.com|wa\.me/, "WhatsApp"],
   [/facebook\.com/, "Facebook"], [/t\.me|telegram/, "Telegram"], [/twitter\.com|x\.com/, "X (Twitter)"], [/linkedin\.com/, "LinkedIn"],
 ];
 
+// 1º parágrafo de texto (meta description quando a cópia não tem uma) — só se couber em 155 caracteres
+const primeiroParagrafo = (corpo) => {
+  const p = corpo.split(/\n\s*\n/).map((x) => x.trim()).find((x) => x && !/^(#|-|!|:::|\[|\d+\.)/.test(x));
+  const t = (p ?? "").replace(/\*\*/g, "").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").trim();
+  if (!t || t.length > 155) throw new Error(`description: o 1º parágrafo tem ${t.length} caracteres — escreva uma em paginas.mjs: «${t}»`);
+  return t;
+};
 const normaliza = (x) => x.replace(/\*\*\*([^*]+?)\*\*\*/g, "**$1**").replace(EMOJI, "").trim();
 const limpaTitulo = (s) => s.replace(EMOJI, "").replace(/\*+/g, "").replace(/\s+/g, " ").trim().replace(/:$/, "");
 const fraseNormal = (s) => {          // "CADASTRE-SE GRATUITAMENTE NA BINOMO!" → "Cadastre-se gratuitamente na Binomo"
@@ -56,7 +63,8 @@ async function migrar(cfg) {
   let tituloAtual = cfg.titulo;
   let nImg = 0;
   let viuTitulo = false;   // nas análises, imagem antes do 1º título = logo repetido (já está na ficha)
-  let viuTexto = false;    // nas páginas fixas, imagens antes do 1º parágrafo = carrossel da Builderall (prints com % de retorno)
+  let capa = null;
+  let viuTexto = false;   // nas páginas fixas, imagens antes do 1º parágrafo = carrossel da Builderall (prints com % de retorno)
   const saida = [];
   const descartar = new Set((cfg.descartarImagens ?? []).map(String));
 
@@ -83,6 +91,12 @@ async function migrar(cfg) {
       if (descartar.has(arquivo) || /avalia[cç][aã]o/i.test(alt)) continue;          // estrelas
       if (cfg.tipo === "analise" && (!viuTitulo || alt.trim().toLowerCase() === nomeCurto.toLowerCase())) continue;   // logo repetido (já está na ficha)
       if (cfg.tipo === "guia" && !viuTexto) continue;                                    // carrossel do topo
+      if (cfg.tipo === "artigo" && !capa) {                                               // 1ª imagem do artigo = capa
+        const destinoCapa = `imagens/${cfg.slug}/capa.webp`;
+        const med = await converterImagem(path.join(fonte, "imagens", arquivo), destinoCapa);
+        capa = { src: "/" + destinoCapa, alt: cfg.capaAlt ?? `Capa do artigo “${cfg.titulo}”`, largura: med.w, altura: med.h };
+        continue;
+      }
       nImg++;
       const destino = `imagens/${cfg.slug}/${String(nImg).padStart(2, "0")}.webp`;
       const { w, h } = await converterImagem(path.join(fonte, "imagens", arquivo), destino);
@@ -112,6 +126,8 @@ async function migrar(cfg) {
       let txt = m[2].trim();
       if (/^-\s/.test(limpaTitulo(txt))) { saida.push(limpaTitulo(txt).replace(/^-\s*/, "- ")); continue; }   // "# - item"
       if (/^\S+@\S+\.\w+$/.test(limpaTitulo(txt))) { saida.push("", `E-mail: ${limpaTitulo(txt)}`, ""); continue; }
+      const marcador = txt.match(/^(?:\p{Extended_Pictographic}|[✔✓✗✘•→➡▪✅❌])️?\s*(.+)$/u);
+      if (nivel === 3 && marcador) { saida.push("- " + normaliza(marcador[1])); continue; }          // "### ✔ item" = item de lista
       if (nivel === 3 && !/^\*{2,3}[^*]+\*{2,3}$/.test(txt) && limpaTitulo(txt).length > 70) {           // ### usado como corpo
         saida.push("", normaliza(txt), ""); continue;
       }
@@ -157,7 +173,7 @@ async function migrar(cfg) {
   }
 
   // Páginas fixas: o 1º "## …" repetia o título (o H1 já mostra)
-  if (cfg.tipo === "guia") corpo = corpo.replace(/^## [^\n]*\n+/, "");
+  if (cfg.tipo === "guia" || cfg.tipo === "artigo") corpo = corpo.replace(/^## [^\n]*\n+/, "");
 
   // Análises: separa prós, contras, características e o 1º parágrafo
   const extra = {};
@@ -194,7 +210,8 @@ async function migrar(cfg) {
     tipo: cfg.tipo, idioma: "pt", slug: cfg.slug, status: "publicado",
     titulo: cfg.titulo, ...(cfg.tituloDestaque ? { tituloDestaque: cfg.tituloDestaque } : {}),
     ...(cfg.resumo ?? extra.resumo ? { resumo: cfg.resumo ?? extra.resumo } : {}),
-    seo: cfg.seo,
+    seo: { title: cfg.seo.title, description: cfg.seo.description || primeiroParagrafo(corpo) },
+    ...(capa ? { capa } : {}),
     categoria: { nome: cat.nome, href: cat.href },
     trilha: cfg.trilha ?? cfg.titulo,
     autor: "Cristiano Pereira", publicadoEm: null, atualizadoEm: "2026-10-20",

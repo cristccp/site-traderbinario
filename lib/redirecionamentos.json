@@ -53,5 +53,20 @@
     "de": "/a/cristiano-pereira",
     "para": "/c/-dicas",
     "motivo": "página do autor → categoria Dicas"
+  },
+  {
+    "de": "/blog/analise-plataforma-negociacao-quotex",
+    "para": "/analise-corretora-quotex",
+    "motivo": "não migra no lote 2: descreve recursos que a Quotex não tem (ações, títulos, trailing stop)"
+  },
+  {
+    "de": "/blog/introducao-iq-option",
+    "para": "/analise-corretora-iq-option",
+    "motivo": "não migra no lote 2: contradiz a análise (CySEC × São Vicente); duplicado da análise"
+  },
+  {
+    "de": "/blog/o-guia-completo-da-exnova-uma-visao-geral-da-plataforma-de-negociacao",
+    "para": "/analise-corretora-exnova",
+    "motivo": "não migra no lote 2: descreve a Exnova como corretora de valores com títulos e fundos e \"devidamente regulamentada\""
   }
 ]

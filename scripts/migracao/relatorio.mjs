@@ -29,6 +29,7 @@ md += `\n**Total do lote ${lote}: ${total} trocas em ${slugs.length} páginas.**
 
 let doc = readFileSync(DOC, "utf8");
 const re = new RegExp(`<!-- lote-${lote}:inicio[\\s\\S]*?<!-- lote-${lote}:fim -->`);
-doc = re.test(doc) ? doc.replace(re, md) : doc.replace("<!-- trocas-por-lote -->", `<!-- trocas-por-lote -->\n\n${md}`);
+const marca = doc.includes(`<!-- trocas-lote-${lote} -->`) ? `<!-- trocas-lote-${lote} -->` : "<!-- trocas-por-lote -->";
+doc = re.test(doc) ? doc.replace(re, md) : doc.replace(marca, `${marca}\n\n${md}`);
 writeFileSync(DOC, doc);
 console.log(`ok — ${total} trocas em ${slugs.length} páginas (lote ${lote})`);

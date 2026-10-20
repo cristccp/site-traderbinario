@@ -190,8 +190,55 @@ export const PAGINAS = {
   }),
 };
 
+// Artigo do blog (/blog/<slug>): H1 da cópia (sem emoji) e SEO title ≤ 60 caracteres. Description: a da configuração
+// ou o 1º parágrafo da cópia (se couber em 155 caracteres). "Continue lendo": 3 páginas do mesmo tema (montado abaixo).
+// Descriptions do lote 2: a cópia não tinha e o 1º parágrafo passava de 155 → textos novos (descricoes-lote2.json, aprovar)
+import DESCRICOES from "./descricoes-lote2.json" with { type: "json" };
+const artigo = (titulo, tituloDestaque, categoria, seoTitle = titulo, extra = {}) => ({
+  tipo: "artigo", titulo, tituloDestaque, categoria, seo: { title: seoTitle, description: extra.description ?? "" }, ...extra,
+});
+
+Object.assign(PAGINAS, {
+  // ---------- LOTE 2: opções binárias ----------
+  "como-declarar-imposto-de-renda-sobre-opcoes-binarias-no-brasil-guia-completo": artigo("Como declarar imposto de renda sobre opções binárias no Brasil", "imposto de renda", "opcoes-binarias", "Imposto de renda em opções binárias: como declarar", { trilha: "Imposto de renda" }),
+  "5-estrategias-simples-de-opcoes-binarias-para-iniciantes-que-funcionam": artigo("5 estratégias simples de opções binárias para iniciantes", "estratégias simples", "opcoes-binarias", undefined, { trilha: "5 estratégias para iniciantes" }),
+  "qual-a-diferenca-entre-opcoes-binarias-e-digitais": artigo("Qual a diferença entre opções binárias e digitais?", "digitais", "opcoes-binarias", undefined, { trilha: "Binárias × digitais" }),
+  "opcoes-binarias-de-60-segundos-funcionam-ou-so-trazem-risco": artigo("Opções binárias de 60 segundos: funcionam ou só trazem risco?", "60 segundos", "opcoes-binarias", "Opções binárias de 60 segundos: funcionam ou só risco?", { trilha: "60 segundos" }),
+  "riscos-das-opcoes-binarias-o-que-poucos-falam-e-como-reduzir": artigo("Riscos das opções binárias: o que poucos falam (e como reduzir)", "Riscos", "opcoes-binarias", "Riscos das opções binárias e como reduzir", { trilha: "Riscos" }),
+  "qual-e-o-melhor-gerenciamento-para-opcoes-binarias": artigo("Qual é o melhor gerenciamento para opções binárias?", "gerenciamento", "gestao-de-risco", undefined, { trilha: "Gerenciamento" }),
+  "o-que-significa-otc-em-opcoes-binarias": artigo("O que significa OTC em opções binárias?", "OTC", "opcoes-binarias", undefined, { trilha: "OTC" }),
+  "glossario-de-termos-importantes-nas-opcoes-binarias": artigo("Glossário de termos importantes nas opções binárias", "Glossário", "opcoes-binarias", undefined, { trilha: "Glossário" }),
+  // ---------- LOTE 2: robôs traders ----------
+  "robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados": artigo("Robô de opções binárias funciona? Verdades, mitos e cuidados", "funciona", "robos-traders", undefined, { trilha: "Robô funciona?" }),
+  "o-que-e-um-robo-trader-e-como-funciona": artigo("O que é um robô trader e como funciona? Guia para iniciantes", "robô trader", "robos-traders", "O que é um robô trader e como funciona", { trilha: "O que é um robô trader" }),
+  "introducao-robos-traders-deriv-investimento-automatizado": artigo("Introdução aos robôs traders da Deriv", "robôs traders", "robos-traders", undefined, { trilha: "Robôs na Deriv" }),
+  "indicadores-mais-usados-por-robos-traders": artigo("Os indicadores mais usados por robôs traders (e como eles funcionam)", "indicadores", "robos-traders", "Os indicadores mais usados por robôs traders", { trilha: "Indicadores dos robôs" }),
+  "o-que-e-backtest-e-como-testar-um-robo": artigo("O que é backtest e como testar um robô trader antes de usar", "backtest", "robos-traders", undefined, { trilha: "Backtest" }),
+  "diferenca-entre-robo-manual-semi-automatico-e-automatico": artigo("Diferença entre robô manual, semi-automático e 100% automático", "semi-automático", "robos-traders", "Robô manual, semi-automático ou automático: diferenças", { trilha: "Manual × semi × automático" }),
+  "riscos-dos-robos-traders-e-como-evitar-quebrar-a-banca": artigo("Riscos dos robôs traders (e como evitar quebrar a banca)", "Riscos", "robos-traders", undefined, { trilha: "Riscos dos robôs" }),
+  "robo-trader-bom-nao-e-o-que-acerta-sempre-e-o-que-sabe-parar": artigo("Robô trader bom não é o que acerta sempre — é o que sabe parar", "sabe parar", "robos-traders", "Robô trader bom é o que sabe parar", { trilha: "Robô que sabe parar" }),
+  // ---------- LOTE 2: artigos de corretoras ----------
+  "negociacao-de-opcoes-binarias-na-deriv-guia-passo-a-passo-para-iniciantes": artigo("Negociação de opções binárias na Deriv: guia passo a passo para iniciantes", "passo a passo", "corretoras", "Opções binárias na Deriv: guia passo a passo", { trilha: "Passo a passo na Deriv" }),
+  "guia-completo-deriv": artigo("O guia completo da Deriv: visão geral da plataforma de negociação", "Deriv", "corretoras", "Guia completo da Deriv: visão geral da plataforma", { trilha: "Guia da Deriv" }),
+  "analise-ativos-deriv-como-negociar-forex-indices-commodities": artigo("Ativos na Deriv: como negociar forex, índices e commodities", "Ativos", "corretoras", "Ativos na Deriv: forex, índices e commodities", { trilha: "Ativos na Deriv" }),
+});
+
+for (const [slug, d] of Object.entries(DESCRICOES)) if (PAGINAS[slug] && !PAGINAS[slug].seo.description) PAGINAS[slug].seo.description = d;
+
+// NÃO migram no lote 2 (descrevem recursos que a corretora não tem → 308 para a análise da corretora; reescrever se valer):
+// /blog/analise-plataforma-negociacao-quotex, /blog/introducao-iq-option, /blog/o-guia-completo-da-exnova-uma-visao-geral-da-plataforma-de-negociacao
+
+// "Continue lendo" automático: até 3 páginas do mesmo tema (artigos e guias já configurados)
+for (const [slug, cfg] of Object.entries(PAGINAS)) {
+  if (cfg.tipo !== "artigo" || cfg.relacionados) continue;
+  cfg.relacionados = Object.entries(PAGINAS)
+    .filter(([s, c]) => s !== slug && c.categoria === cfg.categoria && c.tipo !== "analise")
+    .slice(0, 3).map(([s, c]) => ({ titulo: c.titulo, href: c.tipo === "artigo" ? `/blog/${s}` : `/${s}` }));
+}
+
 // NÃO migram no lote 1 (texto sem conserto sem reescrever → "reescrever no lote" + 308 para o guia do tema):
 // /como-funcionam-as-opcoes-binarias, /ativos-financeiros-opcoes-binarias, /opcoes-binarias-legalizado-brasil (+ /opcoes-binarias-seguro)
 export const LOTES = {
   1: Object.keys(PAGINAS).filter((s) => s.startsWith("analise-corretora-") || PAGINAS[s].tipo === "guia"),
+  2: Object.keys(PAGINAS).filter((s) => PAGINAS[s].tipo === "artigo"),
 };

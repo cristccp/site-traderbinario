@@ -174,6 +174,8 @@ const PASTA = path.join(path.dirname(fileURLToPath(import.meta.url)), "trocas");
 const extras = [];
 for (const f of readdirSync(PASTA).filter((x) => x.endsWith(".mjs")).sort()) {
   const lista = (await import(pathToFileURL(path.join(PASTA, f)).href)).default;
-  extras.push(...T(f.replace(/\.mjs$/, ""), lista));
+  // arquivo de uma página (nome = slug, lista) ou de um lote inteiro (objeto { slug: lista })
+  if (Array.isArray(lista)) extras.push(...T(f.replace(/\.mjs$/, ""), lista));
+  else for (const [pagina, l] of Object.entries(lista)) extras.push(...T(pagina, l));
 }
 export const TROCAS = [...BASE, ...extras];
