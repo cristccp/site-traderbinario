@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { IconeFechar, IconeInstagram, IconeMenu, IconeTelegram, IconeYoutube } from "@/components/Icones";
+import { IconeBusca, IconeFechar, IconeInstagram, IconeMenu, IconeTelegram, IconeYoutube } from "@/components/Icones";
 import LinkTelegram from "@/components/LinkTelegram";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
@@ -40,6 +40,10 @@ export default function MenuCelular({ idioma, atual }: { idioma: Idioma; atual?:
         {aberto ? <IconeFechar /> : <IconeMenu />}
       </button>
       <div ref={painel} id="menu-celular" className="menu-celular" hidden={!aberto}>
+        <form className="menu-celular__busca" action="/busca" role="search">
+          <input type="search" name="q" placeholder={t.busca.campo} aria-label={t.busca.campo} maxLength={80} enterKeyHint="search" />
+          <button type="submit" aria-label={t.busca.botao}><IconeBusca /></button>
+        </form>
         <nav aria-label={t.menu.aria}>
           <ul className="menu-celular__lista">
             {t.menu.itens.map((it) => (

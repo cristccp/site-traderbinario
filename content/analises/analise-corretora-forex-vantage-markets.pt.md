@@ -11,6 +11,11 @@ resumo: A Vantage Markets é uma corretora de Forex e CFDs com presença interna
 seo:
   title: "Análise da corretora Vantage Markets: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias e Forex. Análise Corretora Vantage Markets.
+capa:
+  src: /imagens/analise-corretora-forex-vantage-markets/capa.webp
+  alt: Lupa em neon ciano sobre um globo com setas de câmbio, com o título Análise da corretora Vantage Markets
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

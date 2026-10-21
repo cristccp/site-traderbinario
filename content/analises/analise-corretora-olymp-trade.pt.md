@@ -11,6 +11,11 @@ resumo: Olymp Trade é uma corretora online fundada em 2014, especializada em ne
 seo:
   title: "Análise da corretora Olymp Trade: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias. Análise Corretora Olymp Trade.
+capa:
+  src: /imagens/analise-corretora-olymp-trade/capa.webp
+  alt: Lupa em neon ciano sobre um gráfico de velas com setas de alta e baixa, com o título Análise da corretora Olymp Trade
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

@@ -11,6 +11,11 @@ resumo: Binomo é uma corretora online fundada em 2014, especializada em opçõe
 seo:
   title: "Análise da corretora Binomo: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias. Análise Corretora Binomo.
+capa:
+  src: /imagens/analise-corretora-binomo/capa.webp
+  alt: Lupa em neon ciano sobre um gráfico de velas com setas de alta e baixa, com o título Análise da corretora Binomo
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

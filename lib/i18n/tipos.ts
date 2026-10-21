@@ -34,7 +34,9 @@ export type Textos = {
   };
   lateral: { aria: string; cards: CardLateral[] };
   home: { asideAria: string; corretoraAria: string; capaFalta: string };
-  categoria: { rotulo: string; guia: string; textos: string; corretoras: string; quantos: string };
+  categoria: { rotulo: string; guia: string; textos: string; corretoras: string; quantos: string; verMais: string };
+  temas: { titulo: string; destaque: string; aria: string };
+  busca: { rotulo: string; campo: string; botao: string; titulo: string; destaque: string; resultados: string; um: string; nenhum: string; sugestao: string; vazio: string; carregando: string; meta: string };
   corretoras: { analise: string; cadastro: string; aviso: string };
   analise: { rotulo: string; fortes: string; atencao: string; outras: string; verTodas: string; verTodasHref: string; logoAlt: string };
   video: { play: string; aria: string };

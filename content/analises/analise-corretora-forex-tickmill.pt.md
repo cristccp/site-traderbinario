@@ -11,6 +11,11 @@ resumo: A Tickmill é uma corretora de Forex e CFDs fundada em 2014, reconhecida
 seo:
   title: "Análise da corretora Tickmill: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias e Forex. Análise Corretora Tickmill.
+capa:
+  src: /imagens/analise-corretora-forex-tickmill/capa.webp
+  alt: Lupa em neon ciano sobre um globo com setas de câmbio, com o título Análise da corretora Tickmill
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

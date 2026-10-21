@@ -11,6 +11,11 @@ resumo: Expert Option é uma corretora online fundada em 2014, especializada em 
 seo:
   title: "Análise da corretora Expert Option: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias. Análise Corretora Expert Option.
+capa:
+  src: /imagens/analise-corretora-expert-option/capa.webp
+  alt: Lupa em neon ciano sobre um gráfico de velas com setas de alta e baixa, com o título Análise da corretora Expert Option
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

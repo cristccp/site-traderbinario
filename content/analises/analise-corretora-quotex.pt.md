@@ -11,6 +11,11 @@ resumo: Quotex é uma corretora online especializada em opções binárias, ofer
 seo:
   title: "Análise da corretora Quotex: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias. Análise Corretora Quotex.
+capa:
+  src: /imagens/analise-corretora-quotex/capa.webp
+  alt: Lupa em neon ciano sobre um gráfico de velas com setas de alta e baixa, com o título Análise da corretora Quotex
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

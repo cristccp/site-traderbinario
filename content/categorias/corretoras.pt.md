@@ -7,6 +7,7 @@ status: publicado
 titulo: "Corretoras: análises e guias"
 tituloDestaque: "Corretoras"
 nome: "Corretoras"
+chamada: "Análises com prós, contras e dados de cada uma."   # frase curta do box de temas da home (lote de 20/10/2026, revisão do Cowork)
 resumo: "As análises das corretoras de opções binárias e forex, com prós e contras de cada uma, e os guias da Deriv, a corretora que eu uso. Confira se a corretora atende o seu país."
 seo:
   title: "Corretoras de opções binárias e forex: análises"

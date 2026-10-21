@@ -11,6 +11,11 @@ resumo: A Moneta Markets é uma corretora de Forex e CFDs moderna, focada em ofe
 seo:
   title: "Análise da corretora Moneta Markets: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias e Forex. Análise Corretora Moneta Markets.
+capa:
+  src: /imagens/analise-corretora-forex-moneta-markets/capa.webp
+  alt: Lupa em neon ciano sobre um globo com setas de câmbio, com o título Análise da corretora Moneta Markets
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

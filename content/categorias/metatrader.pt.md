@@ -7,6 +7,7 @@ status: publicado
 titulo: "MetaTrader: guias e tutoriais"
 tituloDestaque: "MetaTrader"
 nome: "MetaTrader"
+chamada: "MT4 e MT5: instalar, usar e configurar."   # frase curta do box de temas da home (lote de 20/10/2026, revisão do Cowork)
 resumo: "Tutoriais do MT4 e do MT5: instalar no PC e no celular, usar pela primeira vez, colocar indicadores e robôs (EAs) e escolher entre as duas plataformas."
 seo:
   title: "MetaTrader (MT4 e MT5): guias e tutoriais"

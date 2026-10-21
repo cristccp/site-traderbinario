@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { IconeInstagram, IconeTelegram, IconeYoutube } from "@/components/Icones";
+import { IconeBusca, IconeInstagram, IconeTelegram, IconeYoutube } from "@/components/Icones";
 import LinkTelegram from "@/components/LinkTelegram";
 import MenuCelular from "@/components/MenuCelular";
 import SeletorIdioma from "@/components/SeletorIdioma";
@@ -40,6 +40,12 @@ export default function Topo({ idioma, atual, idiomas = [idioma], caminhos = {} 
         </nav>
 
         <div className="topo__acoes">
+          {/* Busca: campo no computador (formulário GET, funciona sem JavaScript) e lupa no celular → /busca */}
+          <form className="topo__busca" action="/busca" role="search">
+            <input type="search" name="q" placeholder={t.busca.campo} aria-label={t.busca.campo} maxLength={80} enterKeyHint="search" />
+            <button type="submit" aria-label={t.busca.botao}><IconeBusca /></button>
+          </form>
+          <Link prefetch={false} className="redondo topo__lupa" href="/busca" aria-label={t.busca.rotulo}><IconeBusca /></Link>
           <SeletorIdioma idioma={idioma} idiomas={idiomas} caminhos={caminhos} />
           <a className="redondo topo__rede" href={REDES.youtube} target="_blank" rel="noopener noreferrer" aria-label={`${t.redes.youtube} ${t.novaAba}`}><IconeYoutube /></a>
           <a className="redondo topo__rede" href={REDES.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${t.redes.instagram} ${t.novaAba}`}><IconeInstagram /></a>

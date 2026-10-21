@@ -11,6 +11,11 @@ resumo: A EBC Financial Group é uma corretora de Forex e CFDs com presença int
 seo:
   title: "Análise da corretora EBC Financial Group: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias e Forex. Análise Corretora EBC Financial Group.
+capa:
+  src: /imagens/analise-corretora-forex-ebc-financial-group/capa.webp
+  alt: Lupa em neon ciano sobre um globo com setas de câmbio, com o título Análise da corretora EBC Financial
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

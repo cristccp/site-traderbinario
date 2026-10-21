@@ -11,6 +11,11 @@ resumo: A Pocket Option é uma corretora de opções binárias que oferece aos t
 seo:
   title: "Análise da corretora Pocket Option: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias. Análise Corretora Pocket Option.
+capa:
+  src: /imagens/analise-corretora-pocket-option/capa.webp
+  alt: Lupa em neon ciano sobre um gráfico de velas com setas de alta e baixa, com o título Análise da corretora Pocket Option
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

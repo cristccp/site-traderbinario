@@ -70,7 +70,9 @@ export const EN: Textos = {
     ],
   },
   home: { asideAria: "Free platforms", corretoraAria: "Featured broker", capaFalta: "[article cover]" },
-  categoria: { rotulo: "CATEGORY", guia: "START WITH THE GUIDE", textos: "All articles", corretoras: "Reviewed brokers", quantos: "articles" },
+  categoria: { rotulo: "CATEGORY", guia: "START WITH THE GUIDE", textos: "All articles", corretoras: "Reviewed brokers", quantos: "articles", verMais: "See more" },
+  temas: { titulo: "Blog topics", destaque: "topics", aria: "Blog topics" },
+  busca: { rotulo: "Search", campo: "Search the blog", botao: "Search", titulo: "Search the blog", destaque: "blog", resultados: "results for", um: "result for", nenhum: "No results for", sugestao: "Start with one of these guides:", vazio: "Type a word to search articles, guides and reviews.", carregando: "Searching…", meta: "Search results on the Trader Binário blog." },
   corretoras: {
     analise: "Review",
     cadastro: "Sign up",

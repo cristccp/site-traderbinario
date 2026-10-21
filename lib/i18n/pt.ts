@@ -70,7 +70,9 @@ export const PT: Textos = {
     ],
   },
   home: { asideAria: "Plataformas grátis", corretoraAria: "Corretora em destaque", capaFalta: "[capa do artigo]" },
-  categoria: { rotulo: "CATEGORIA", guia: "COMECE PELO GUIA", textos: "Todos os textos", corretoras: "Corretoras analisadas", quantos: "textos" },
+  categoria: { rotulo: "CATEGORIA", guia: "COMECE PELO GUIA", textos: "Todos os textos", corretoras: "Corretoras analisadas", quantos: "textos", verMais: "Ver mais" },
+  temas: { titulo: "Os temas do blog", destaque: "temas", aria: "Temas do blog" },
+  busca: { rotulo: "Buscar", campo: "Buscar no blog", botao: "Buscar", titulo: "Buscar no blog", destaque: "blog", resultados: "resultados para", um: "resultado para", nenhum: "Nenhum resultado para", sugestao: "Comece por um destes guias:", vazio: "Digite uma palavra para buscar nos artigos, guias e análises.", carregando: "Buscando…", meta: "Resultados da busca no blog Trader Binário." },
   corretoras: {
     analise: "Análise",
     cadastro: "Cadastre-se",

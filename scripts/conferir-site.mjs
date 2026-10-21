@@ -70,7 +70,9 @@ const frase = (texto, re) => { const m = texto.match(re); if (!m) return ""; con
 
 const sitemap = await (await fetch(`${BASE}/sitemap.xml`)).text();
 const paginas = [...sitemap.matchAll(/<loc>https:\/\/traderbinario\.com\.br([^<]*)<\/loc>/g)].map((m) => m[1] || "/");
-const existentes = new Set(paginas);
+// Páginas que existem mas ficam FORA do sitemap de propósito (noindex): /busca
+const FORA_DO_SITEMAP = ["/busca"];
+const existentes = new Set([...paginas, ...FORA_DO_SITEMAP]);
 let nErros = 0, nAvisos = 0;
 const pendentes = new Map(), quebrados = new Map(), imagensRuins = new Set();
 const imagensVistas = new Set();
@@ -111,7 +113,8 @@ if (!existsSync(CHROME)) {
 } else {
   const { default: puppeteer } = await import("puppeteer-core");
   const navegador = await puppeteer.launch({ executablePath: CHROME, headless: true });
-  for (const p of paginas) {
+  // + a página de busca (fora do sitemap, noindex), com e sem resultado
+  for (const p of [...paginas, "/busca?q=deriv", "/busca?q=zzzzz"]) {
     const aba = await navegador.newPage();
     await aba.setViewport({ width: 390, height: 844 });
     const erros = [];

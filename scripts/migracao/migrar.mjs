@@ -14,7 +14,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
-import { stringify } from "yaml";
+import { parse as lerYaml, stringify } from "yaml";
 import { CATEGORIAS, PAGINAS, LOTES, REESCRITOS } from "./paginas.mjs";
 import { TROCAS } from "./trocas.mjs";
 import { destinoInterno, corretoraDoLink } from "./destinos.mjs";
@@ -205,6 +205,14 @@ async function migrar(cfg) {
   }
   corpo = corpo.replace(/\n{3,}/g, "\n\n").trim();
 
+  // Guia e análise não ganham capa da cópia: a capa vem do kit (blog/capas). Se o arquivo já tem uma, ela é mantida
+  // (senão rodar a migração de novo apagaria a capa — e a limpeza de imagens abaixo apagaria o capa.webp).
+  const destino = path.join(RAIZ, "content", PASTA[cfg.tipo], `${cfg.slug}.pt.md`);
+  if (!capa && (cfg.tipo === "guia" || cfg.tipo === "analise") && existsSync(destino)) {
+    const fmAtual = readFileSync(destino, "utf8").replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---/);
+    capa = fmAtual ? lerYaml(fmAtual[1])?.capa ?? null : null;
+  }
+
   // Frontmatter
   const cat = CATEGORIAS[cfg.categoria];
   const fm = {
@@ -242,9 +250,8 @@ async function migrar(cfg) {
     }
   }
 
-  const arquivo = path.join(RAIZ, "content", PASTA[cfg.tipo], `${cfg.slug}.pt.md`);
-  mkdirSync(path.dirname(arquivo), { recursive: true });
-  writeFileSync(arquivo, texto, "utf8");
+  mkdirSync(path.dirname(destino), { recursive: true });
+  writeFileSync(destino, texto, "utf8");
   console.log(`ok  ${cfg.tipo.padEnd(7)} ${cfg.slug}  (${nImg} imagens)`);
 }
 

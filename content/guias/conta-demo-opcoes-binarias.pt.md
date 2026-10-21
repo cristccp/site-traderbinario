@@ -10,6 +10,11 @@ tituloDestaque: Conta demo
 seo:
   title: Conta demo em opções binárias
   description: Saiba por onde começar no Day Trade em Opções Binárias. Conta DEMO em Opções Binárias?
+capa:
+  src: /imagens/conta-demo-opcoes-binarias/capa.webp
+  alt: Celular em neon ciano com um gráfico de velas e um ícone de play, com o título Conta demo de opções binárias
+  largura: 1280
+  altura: 720
 categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias

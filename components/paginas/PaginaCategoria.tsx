@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { formatarData } from "@/components/Autor";
+import CardConteudo from "@/components/CardConteudo";
 import CardsCorretoras from "@/components/CardsCorretoras";
 import JsonLd from "@/components/JsonLd";
 import Titulo from "@/components/Titulo";
 import Topo from "@/components/Topo";
 import Trilha from "@/components/Trilha";
+import VerMais from "@/components/VerMais";
 import { buscar, caminho, daCategoria, idiomasDisponiveis } from "@/lib/conteudo";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
@@ -14,9 +15,11 @@ import { jsonLdTrilha } from "@/lib/seo";
 
 // Campos próprios da categoria (content/categorias/<slug>.<idioma>.md)
 type Categoria = { nome: string; guia?: { titulo: string; texto: string; href: string }; ordem?: string[] };
+const VISIVEIS = 12;
 
-// MODELO DE CATEGORIA (/c/<slug>, mesmas URLs da Builderall): título, apoio, guia do tema, corretoras analisadas
-// (só quando a categoria tem análises) e a lista de textos da categoria, com a lateral de plataformas da home.
+// MODELO DE CATEGORIA (/c/<slug>, mesmas URLs da Builderall): título, apoio, guia do tema em destaque (com capa),
+// corretoras analisadas (só quando a categoria tem análises) e os textos em grade: 12 visíveis + "Ver mais"
+// (todos os links já no HTML). Lateral de plataformas como na home.
 export default function PaginaCategoria({ idioma, slug }: { idioma: Idioma; slug: string }) {
   const c = buscar("categoria", slug, idioma);
   if (!c) notFound();
@@ -31,6 +34,9 @@ export default function PaginaCategoria({ idioma, slug }: { idioma: Idioma; slug
   const corretoras = paginas.filter((p) => p.tipo === "analise" && p.corretora?.id).map((p) => p.corretora!.id!)
     .sort((a, b) => posicao(a) - posicao(b));
   const lista = paginas.filter((p) => p.tipo !== "analise" && caminho(p.tipo, p.slug, idioma) !== k.guia?.href);
+  // O guia do tema pode ser um guia (/slug) ou um artigo (/blog/slug): acha pelo endereço para mostrar a capa
+  const guia = k.guia ? (["guia", "artigo"] as const).map((tp) => buscar(tp, k.guia!.href.split("/").pop()!, idioma))
+    .find((g) => g && caminho(g.tipo, g.slug, idioma) === k.guia!.href) : undefined;
 
   return (
     <>
@@ -46,10 +52,15 @@ export default function PaginaCategoria({ idioma, slug }: { idioma: Idioma; slug
 
         {k.guia && (
           <section className="wrap guias">
-            <Link prefetch={false} className="cartao guia guia--principal" href={k.guia.href}>
-              <span className="rotulo">{t.categoria.guia}</span>
-              <span className="guia__titulo">{k.guia.titulo}</span>
-              <span className="guia__texto">{k.guia.texto}</span>
+            <Link prefetch={false} className="cartao guia guia--principal guia--destaque" href={k.guia.href}>
+              {guia?.capa && (
+                <Image className="guia__capa" src={guia.capa.src} alt="" width={640} height={360} sizes="(min-width: 64rem) 480px, 100vw" />
+              )}
+              <span className="guia__corpo">
+                <span className="rotulo">{t.categoria.guia}</span>
+                <span className="guia__titulo">{k.guia.titulo}</span>
+                <span className="guia__texto">{k.guia.texto}</span>
+              </span>
             </Link>
           </section>
         )}
@@ -66,22 +77,14 @@ export default function PaginaCategoria({ idioma, slug }: { idioma: Idioma; slug
             <div className="wrap recentes">
               <div className="recentes__lista">
                 <h2 className="titulo titulo--h2">{t.categoria.textos}</h2>
-                {lista.map((p) => (
-                  <article key={p.slug} className="recente">
-                    {p.capa ? (
-                      <Image className="recente__capa" src={p.capa.src} alt={p.capa.alt} width={220} height={124} sizes="220px" />
-                    ) : (
-                      <div className="recente__capa recente__capa--falta">{t.home.capaFalta}</div>
-                    )}
-                    <div className="recente__texto">
-                      <span className="rotulo">
-                        {[p.minutos ? p.minutos + " MIN" : null, p.atualizadoEm ? formatarData(p.atualizadoEm, idioma) : null].filter(Boolean).join(" · ")}
-                      </span>
-                      <Link prefetch={false} className="recente__titulo" href={caminho(p.tipo, p.slug, idioma)}>{p.titulo}</Link>
-                      <p className="recente__resumo">{p.resumo ?? p.seo.description}</p>
-                    </div>
-                  </article>
-                ))}
+                <VerMais total={lista.length} limite={VISIVEIS} rotulo={t.categoria.verMais}>
+                  {lista.map((p) => (
+                    <CardConteudo key={p.slug} capaFalta={t.home.capaFalta} item={{
+                      titulo: p.titulo, href: caminho(p.tipo, p.slug, idioma), capa: p.capa,
+                      rotulo: p.minutos ? `${p.minutos} MIN` : undefined, resumo: p.resumo ?? p.seo.description,
+                    }} />
+                  ))}
+                </VerMais>
               </div>
 
               <aside className="plataformas" aria-label={t.home.asideAria}>

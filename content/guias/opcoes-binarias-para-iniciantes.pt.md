@@ -10,6 +10,11 @@ tituloDestaque: iniciantes
 seo:
   title: Opções binárias para iniciantes
   description: Saiba por onde começar no Day Trade em Opções Binárias. Opções Binárias para Iniciantes.
+capa:
+  src: /imagens/opcoes-binarias-para-iniciantes/capa.webp
+  alt: Escada em neon ciano com uma seta para cima no primeiro degrau, com o título Opções binárias para iniciantes
+  largura: 1280
+  altura: 720
 categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias

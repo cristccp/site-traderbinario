@@ -11,6 +11,11 @@ resumo: IQ Option é uma corretora online fundada em 2013, especializada em nego
 seo:
   title: "Análise da corretora IQ Option: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias. Análise Corretora IQ Option.
+capa:
+  src: /imagens/analise-corretora-iq-option/capa.webp
+  alt: Lupa em neon ciano sobre um gráfico de velas com setas de alta e baixa, com o título Análise da corretora IQ Option
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

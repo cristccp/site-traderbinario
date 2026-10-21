@@ -10,6 +10,11 @@ tituloDestaque: Primeiros passos
 seo:
   title: Primeiros passos nas opções binárias
   description: Saiba por onde começar no Day Trade em Opções Binárias. Primeiros Passos nas Opções Binárias.
+capa:
+  src: /imagens/primeiros-passos-nas-opcoes-binarias/capa.webp
+  alt: Lista de tarefas em neon ciano com três marcas de concluído e uma bandeira, com o título Primeiros passos nas opções binárias
+  largura: 1280
+  altura: 720
 categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias

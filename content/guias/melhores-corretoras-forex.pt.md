@@ -10,6 +10,11 @@ tituloDestaque: corretoras de forex
 seo:
   title: As melhores corretoras de forex
   description: Saiba por onde começar no Day Trade em Forex. As Melhores Corretoras de Forex.
+capa:
+  src: /imagens/melhores-corretoras-forex/capa.webp
+  alt: Globo em neon ciano com duas setas de câmbio ao redor, com o título Melhores corretoras de forex
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

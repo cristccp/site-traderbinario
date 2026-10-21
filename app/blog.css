@@ -328,3 +328,77 @@ html { scroll-padding-top: var(--topo-h); }
 @media (max-width: 29.99rem) {
   .corretoras__lista, .colunas__texto .corretoras__lista { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ---------- Temas (box de categorias da home) ---------- */
+.temas { padding-top: var(--space-xl); }
+.temas > h2 { margin-bottom: var(--space-md); }
+.temas__grade { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-sm); }
+.tema { height: 100%; padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-xs); color: var(--color-white); transition: border-color var(--motion-hover) var(--motion-ease); }
+.tema:hover { color: var(--color-white); border-color: var(--color-cyan); }
+.tema__icone { color: var(--color-cyan); filter: drop-shadow(0 0 var(--space-xs) var(--fx-glow-cyan-soft)); }
+.tema__nome { font-family: var(--type-display-serif-family); font-size: 1.375rem; font-weight: 600; line-height: 1.2; }
+.tema__chamada { font-size: 0.875rem; line-height: 1.5; color: var(--color-mist); }
+.tema__total { margin-top: auto; padding-top: var(--space-xs); font-size: 0.75rem; letter-spacing: 2px; font-weight: 600; text-transform: uppercase; color: var(--color-cyan); }
+
+/* ---------- Cards de conteúdo (home, categorias, busca) ---------- */
+.grade-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr)); gap: var(--space-md) var(--space-sm); }
+.grade-cards--limitada > :nth-child(n + 13) { display: none; }   /* "Ver mais": os links continuam no HTML */
+.card-conteudo { display: flex; flex-direction: column; overflow: hidden; transition: border-color var(--motion-hover) var(--motion-ease); }
+.card-conteudo:hover { border-color: var(--color-cyan); }
+.card-conteudo__capa { display: block; aspect-ratio: 16 / 9; background: var(--color-ink-soft, var(--color-ink)); border-bottom: 1px solid var(--color-line); }
+.card-conteudo__capa img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.card-conteudo__falta { display: flex; height: 100%; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--color-mist); }
+.card-conteudo__texto { flex: 1; padding: var(--space-sm) var(--space-md) var(--space-md); display: flex; flex-direction: column; gap: var(--space-xs); }
+.card-conteudo__titulo { font-family: var(--type-display-serif-family); font-size: 1.25rem; font-weight: 600; line-height: 1.25; color: var(--color-white); }
+.card-conteudo__titulo:hover { color: var(--color-cyan); }
+.card-conteudo__resumo { margin: 0; font-size: 0.875rem; line-height: 1.55; color: var(--color-mist); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ver-mais { align-self: center; margin-top: var(--space-xs); }
+
+/* Guia do tema em destaque na categoria (com capa) */
+.guia--destaque { flex-direction: row; align-items: center; gap: var(--space-md); padding: var(--space-sm); }
+.guia__capa { flex: none; width: 42%; max-width: 30rem; height: auto; border-radius: calc(var(--fx-radius) - 4px); }
+.guia__corpo { display: flex; flex-direction: column; gap: 10px; padding: var(--space-xs) var(--space-sm); }
+
+/* ---------- Busca no cabeçalho ---------- */
+.topo__busca { display: none; position: relative; align-items: center; }
+.topo__busca input, .menu-celular__busca input {
+  width: 13rem; height: 40px; padding: 0 40px 0 16px; border: 1px solid var(--color-line); border-radius: var(--radius-pill);
+  background: var(--color-surface); color: var(--color-white); font: inherit; font-size: 0.875rem;
+}
+.topo__busca input::placeholder, .menu-celular__busca input::placeholder, .busca-form input::placeholder { color: var(--color-mist); }
+.topo__busca input:focus, .menu-celular__busca input:focus, .busca-form input:focus { outline: none; border-color: var(--color-cyan); box-shadow: 0 0 0 3px var(--fx-glow-cyan-soft); }
+.topo__busca button, .menu-celular__busca button {
+  position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: 0; padding: 0;
+  background: transparent; color: var(--color-mist); display: inline-grid; place-items: center; cursor: pointer;
+}
+.topo__busca button:hover, .menu-celular__busca button:hover { color: var(--color-cyan); }
+.topo__lupa { color: var(--color-white); }
+.menu-celular__busca { position: relative; margin-bottom: var(--space-xs); }
+.menu-celular__busca input { width: 100%; height: 44px; font-size: 1rem; }
+@media (min-width: 64rem) {
+  .topo__busca { display: flex; }
+  .topo__lupa { display: none; }
+  .topo[data-rolou] .topo__busca input { height: 34px; }
+}
+
+/* ---------- Página de busca ---------- */
+/* min-height: os resultados chegam depois do índice; com a área reservada, o rodapé começa fora da tela e nada "pula" (CLS) */
+.busca { padding-bottom: var(--space-xl); min-height: 100dvh; }
+.busca-form { display: flex; gap: var(--space-xs); max-width: 40rem; margin: var(--space-md) 0; }
+.busca-form input {
+  flex: 1; min-width: 0; height: 52px; padding: 0 18px; border: 1px solid var(--color-line); border-radius: var(--radius-pill);
+  background: var(--color-surface); color: var(--color-white); font: inherit; font-size: 1rem;
+}
+.busca-form .botao { flex: none; gap: var(--space-xs); }
+.busca-status { margin: 0 0 var(--space-md); color: var(--color-mist); }
+.busca-vazia p { color: var(--color-mist); margin: 0 0 var(--space-xs); }
+.busca-vazia__guias { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: var(--space-xs); list-style: disc; }
+
+@media (max-width: 63.99rem) { .temas__grade { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 47.99rem) {
+  .guia--destaque { flex-direction: column; align-items: stretch; }
+  .guia__capa { width: 100%; max-width: none; }
+  .tema { padding: var(--space-sm); }
+  .tema__nome { font-size: 1.125rem; }
+  .tema__chamada { font-size: 0.8125rem; }
+}

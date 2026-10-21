@@ -11,6 +11,11 @@ resumo: A IC Markets é uma corretora de Forex e CFDs reconhecida globalmente, f
 seo:
   title: "Análise da corretora IC Markets: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias e Forex. Análise Corretora IC Markets.
+capa:
+  src: /imagens/analise-corretora-forex-ic-markets/capa.webp
+  alt: Lupa em neon ciano sobre um globo com setas de câmbio, com o título Análise da corretora IC Markets
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

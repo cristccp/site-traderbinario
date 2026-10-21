@@ -1,31 +1,38 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { formatarData } from "@/components/Autor";
 import BoxDeriv from "@/components/BoxDeriv";
+import CardConteudo from "@/components/CardConteudo";
 import CardsCorretoras from "@/components/CardsCorretoras";
+import { ICONES_TEMA } from "@/components/Icones";
 import Titulo from "@/components/Titulo";
 import Topo from "@/components/Topo";
-import { buscar, caminho, idiomasDisponiveis, listar } from "@/lib/conteudo";
+import { buscar, caminho, daCategoria, idiomasDisponiveis, listar } from "@/lib/conteudo";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
+import REESCRITOS from "@/lib/reescritos.json";
 
 // Campos próprios da home (content/paginas/home.<idioma>.md)
 type Guia = { titulo: string; texto: string; href: string; rotulo?: string; principal?: boolean };
-type Recente = { titulo: string; href: string; data?: string | null; categoria?: string; resumo?: string; minutos?: number; capa?: { src: string; alt: string } };
 type Home = {
   rotulo: string;
   apoio: string[];
   botoes: { principal: { texto: string; href: string }; secundario: { texto: string; href: string } };
   guias: { titulo: string; destaque: string; itens: Guia[] };
   corretoras: { titulo: string; destaque: string; itens: string[]; verTodas: { texto: string; href: string } };
-  recentes: { titulo: string; destaque: string; itens: Recente[] };
+  recentes: { titulo: string; destaque: string };
 };
+
+// Ordem dos temas no box de categorias (mesmos slugs de content/categorias/)
+const TEMAS = ["opcoes-binarias", "robos-traders", "forex", "metatrader", "gestao-de-risco", "corretoras"];
+const RECENTES = 6;
+// Desempate dos "Artigos recentes" (publicadoEm ainda vazio): primeiro os textos reescritos, na ordem de lib/reescritos.json
+const ordemReescrito = (slug: string) => { const i = REESCRITOS.slugs.findIndex((r) => r.slug === slug); return i < 0 ? Infinity : i; };
 
 // **negrito** dos textos de apoio da cópia → <strong>
 const negrito = (s: string) => s.split(/\*\*(.+?)\*\*/g).map((p, i) => (i % 2 ? <strong key={i}>{p}</strong> : p));
 
-// MODELO DA HOME: título + apoio da cópia, box da Deriv, guias, outras corretoras (com aviso), artigos recentes e plataformas.
+// MODELO DA HOME: topo (título, apoio, box da Deriv) → temas (6 categorias) → guias → 6 artigos recentes (+ plataformas)
+// → outras corretoras com aviso de risco.
 export default function PaginaHome({ idioma }: { idioma: Idioma }) {
   const c = buscar("pagina", "home", idioma);
   if (!c) notFound();
@@ -34,12 +41,16 @@ export default function PaginaHome({ idioma }: { idioma: Idioma }) {
   const idiomas = idiomasDisponiveis("pagina", "home");
   const caminhos = Object.fromEntries(idiomas.map((i) => [i, caminho("pagina", "home", i)]));
 
-  // Artigos já migrados (com capa e tempo de leitura) primeiro; depois os recentes da cópia que ainda vão migrar.
-  const migrados: Recente[] = listar({ tipo: "artigo", idioma }).map((a) => ({
-    titulo: a.titulo, href: caminho("artigo", a.slug, idioma), data: a.atualizadoEm, categoria: a.categoria?.nome,
-    resumo: a.resumo, minutos: a.minutos, capa: a.capa,
-  }));
-  const recentes = [...migrados, ...h.recentes.itens.filter((r) => !migrados.some((m) => m.href === r.href))];
+  const temas = TEMAS.map((slug) => buscar("categoria", slug, idioma)).filter((k) => k !== null).map((k) => {
+    const nome = String(k.extra.nome);
+    return { slug: k.slug, nome, chamada: String(k.extra.chamada ?? ""), href: caminho("categoria", k.slug, idioma), total: daCategoria(nome, idioma).length };
+  });
+
+  const recentes = listar({ tipo: "artigo", idioma })
+    .map((a, i) => ({ a, i }))
+    .sort((x, y) => (y.a.atualizadoEm ?? "").localeCompare(x.a.atualizadoEm ?? "") || ordemReescrito(x.a.slug) - ordemReescrito(y.a.slug) || x.i - y.i)
+    .slice(0, RECENTES)
+    .map(({ a }) => a);
 
   return (
     <>
@@ -58,6 +69,25 @@ export default function PaginaHome({ idioma }: { idioma: Idioma }) {
           <BoxDeriv idioma={idioma} pagina="home" />
         </section>
 
+        <section className="wrap temas" aria-labelledby="titulo-temas">
+          <h2 id="titulo-temas" className="titulo titulo--h2">{partes(t.temas.titulo, t.temas.destaque)}</h2>
+          <ul className="temas__grade">
+            {temas.map((k) => {
+              const Icone = ICONES_TEMA[k.slug];
+              return (
+                <li key={k.slug}>
+                  <Link prefetch={false} className="cartao tema" href={k.href}>
+                    <span className="tema__icone">{Icone ? <Icone /> : null}</span>
+                    <span className="tema__nome">{k.nome}</span>
+                    <span className="tema__chamada">{k.chamada}</span>
+                    <span className="tema__total">{k.total} {t.categoria.quantos}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
         <section className="wrap guias" id="guias" aria-labelledby="titulo-guias">
           <h2 id="titulo-guias" className="titulo titulo--h2">{partes(h.guias.titulo, h.guias.destaque)}</h2>
           <div className="grade-3">
@@ -71,32 +101,19 @@ export default function PaginaHome({ idioma }: { idioma: Idioma }) {
           </div>
         </section>
 
-        <section className="wrap corretoras" aria-labelledby="titulo-corretoras">
-          <h2 id="titulo-corretoras" className="titulo titulo--h3">{partes(h.corretoras.titulo, h.corretoras.destaque)}</h2>
-          <CardsCorretoras ids={h.corretoras.itens} idioma={idioma} pagina="home" />
-          <Link prefetch={false} className="corretoras__todas" href={h.corretoras.verTodas.href}>{h.corretoras.verTodas.texto} →</Link>
-        </section>
-
         <section className="secao-linha">
           <div className="wrap recentes">
             <div className="recentes__lista">
               <h2 className="titulo titulo--h2">{partes(h.recentes.titulo, h.recentes.destaque)}</h2>
-              {recentes.map((r) => (
-                <article key={r.href} className="recente">
-                  {r.capa ? (
-                    <Image className="recente__capa" src={r.capa.src} alt={r.capa.alt} width={220} height={124} sizes="220px" />
-                  ) : (
-                    <div className="recente__capa recente__capa--falta">{t.home.capaFalta}</div>
-                  )}
-                  <div className="recente__texto">
-                    <span className="rotulo">
-                      {[r.categoria?.toUpperCase(), r.minutos ? r.minutos + " MIN" : null, r.data ? formatarData(r.data, idioma) : null].filter(Boolean).join(" · ")}
-                    </span>
-                    <Link prefetch={false} className="recente__titulo" href={r.href}>{r.titulo}</Link>
-                    {r.resumo && <p className="recente__resumo">{r.resumo}</p>}
-                  </div>
-                </article>
-              ))}
+              <div className="grade-cards grade-cards--2">
+                {recentes.map((a) => (
+                  <CardConteudo key={a.slug} capaFalta={t.home.capaFalta} item={{
+                    titulo: a.titulo, href: caminho("artigo", a.slug, idioma), capa: a.capa,
+                    rotulo: [a.categoria?.nome.toUpperCase(), a.minutos ? a.minutos + " MIN" : null].filter(Boolean).join(" · "),
+                    resumo: a.resumo ?? a.seo.description,
+                  }} />
+                ))}
+              </div>
             </div>
 
             <aside className="plataformas" aria-label={t.home.asideAria}>
@@ -111,6 +128,12 @@ export default function PaginaHome({ idioma }: { idioma: Idioma }) {
               ))}
             </aside>
           </div>
+        </section>
+
+        <section className="wrap corretoras" aria-labelledby="titulo-corretoras">
+          <h2 id="titulo-corretoras" className="titulo titulo--h3">{partes(h.corretoras.titulo, h.corretoras.destaque)}</h2>
+          <CardsCorretoras ids={h.corretoras.itens} idioma={idioma} pagina="home" />
+          <Link prefetch={false} className="corretoras__todas" href={h.corretoras.verTodas.href}>{h.corretoras.verTodas.texto} →</Link>
         </section>
       </main>
     </>

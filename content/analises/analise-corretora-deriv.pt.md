@@ -11,6 +11,11 @@ resumo: "Deriv é uma corretora online especializada em CFDs, opções binárias
 seo:
   title: "Análise da corretora Deriv: prós, contras e plataformas"
   description: "Saiba por onde começar no Day Trade em Opções Binárias. Análise Corretora Deriv.com."
+capa:
+  src: /imagens/analise-corretora-deriv/capa.webp
+  alt: "Lupa em neon ciano sobre um gráfico de velas com setas de alta e baixa, com o título Análise da corretora Deriv"
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /melhores-corretoras-opcoes-binarias

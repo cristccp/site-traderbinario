@@ -1,0 +1,12 @@
+{
+  "_leia": "Textos REESCRITOS À MÃO e aprovados pelo Cristiano (fonte: 04-funis-captura/entregas/artigos/). Fonte única: o scripts/migracao/migrar.mjs pula estes slugs e a home mostra estes primeiro nos 'Artigos recentes' (desempate). Cada texto reescrito entra aqui, com a data.",
+  "slugs": [
+    { "slug": "melhores-horarios-para-operar-opcoes-binarias-no-brasil", "data": "2026-10-20", "nota": "reescrita lote 1" },
+    { "slug": "o-que-sao-opcoes-binarias", "data": "2026-10-20", "nota": "reescrita lote 1 (guia do tema)" },
+    { "slug": "como-declarar-imposto-de-renda-sobre-opcoes-binarias-no-brasil-guia-completo", "data": "2026-10-20", "nota": "reescrita lote 1" },
+    { "slug": "qual-e-o-melhor-gerenciamento-para-opcoes-binarias", "data": "2026-10-20", "nota": "reescrita lote 1" },
+    { "slug": "qual-a-diferenca-entre-opcoes-binarias-e-digitais", "data": "2026-10-20", "nota": "reescrita lote 1" },
+    { "slug": "forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos", "data": "2026-10-20", "nota": "reescrita lote 1" },
+    { "slug": "opcoes-binarias-e-legal-e-seguro-no-brasil", "data": "2026-10-20", "nota": "reescrita lote 1 (artigo NOVO, sem cópia da Builderall)" }
+  ]
+}

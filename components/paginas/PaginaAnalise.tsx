@@ -18,7 +18,7 @@ import type { Idioma } from "@/lib/i18n/tipos";
 import { jsonLdArtigo, jsonLdFaq, jsonLdTrilha } from "@/lib/seo";
 
 // MODELO DE ANÁLISE DE CORRETORA (/analise-corretora-<nome>): ficha (só dados confirmados), prós e contras,
-// texto completo com índice, FAQ, lateral "Outras corretoras" e aviso de risco.
+// capa no topo do texto (a mesma do og:image), texto completo com índice, FAQ, lateral "Outras corretoras" e aviso de risco.
 // Botão da ficha: Deriv (lib/deriv.ts) quando a corretora é a Deriv ou `corretora.cadastro: deriv` (ex.: Binary.com, incorporada);
 // senão o link de lib/corretoras.ts (LinkCorretora, broker_click). Sem link confirmado → sem botão.
 export default function PaginaAnalise({ idioma, slug }: { idioma: Idioma; slug: string }) {
@@ -95,6 +95,10 @@ export default function PaginaAnalise({ idioma, slug }: { idioma: Idioma; slug: 
         <div className="secao-linha">
           <div className="wrap colunas">
             <article className="colunas__texto">
+              {c.capa && (
+                <Image className="capa" src={c.capa.src} alt={c.capa.alt} width={c.capa.largura} height={c.capa.altura}
+                  sizes="(min-width: 64rem) 760px, 100vw" />
+              )}
               <Indice titulo={t.artigo.neste} itens={indice} />
               <Corpo blocos={c.blocos} idioma={idioma} pagina={slug} />
               <Perguntas titulo={t.artigo.faq} itens={c.faq} />

@@ -2,17 +2,10 @@
 // Títulos e descriptions: os da cópia da Builderall (sem o "Trader Binário |"), salvo onde está anotado.
 // A ficha das análises usa SÓ os dados da "Principais Características" / texto da cópia.
 
-// Textos REESCRITOS À MÃO e aprovados pelo Cristiano (fonte: 04-funis-captura/entregas/artigos/). O migrar.mjs pula
-// estes slugs ("pulado: reescrito à mão") para não apagar a reescrita. Cada artigo reescrito entra nesta lista.
-export const REESCRITOS = [
-  "melhores-horarios-para-operar-opcoes-binarias-no-brasil",   // 20/10/2026 — reescrita lote 1
-  "o-que-sao-opcoes-binarias",                                  // 20/10/2026 — reescrita lote 1 (guia do tema)
-  "como-declarar-imposto-de-renda-sobre-opcoes-binarias-no-brasil-guia-completo",   // 20/10/2026 — reescrita lote 1
-  "qual-e-o-melhor-gerenciamento-para-opcoes-binarias",         // 20/10/2026 — reescrita lote 1
-  "qual-a-diferenca-entre-opcoes-binarias-e-digitais",          // 20/10/2026 — reescrita lote 1
-  "forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos",   // 20/10/2026 — reescrita lote 1
-  "opcoes-binarias-e-legal-e-seguro-no-brasil",                 // 20/10/2026 — reescrita lote 1 (artigo NOVO, sem cópia da Builderall)
-];
+// Textos REESCRITOS À MÃO e aprovados (fonte única: lib/reescritos.json, também usada pela home). O migrar.mjs pula
+// estes slugs ("pulado: reescrito à mão") para não apagar a reescrita. Cada texto reescrito entra no JSON.
+import REESCRITOS_JSON from "../../lib/reescritos.json" with { type: "json" };
+export const REESCRITOS = REESCRITOS_JSON.slugs.map((r) => r.slug);
 
 export const CATEGORIAS = {
   "opcoes-binarias": { nome: "Opções binárias", href: "/c/opcoes-binarias" },

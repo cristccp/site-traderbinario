@@ -10,6 +10,11 @@ tituloDestaque: corretoras
 seo:
   title: As melhores corretoras de opções binárias
   description: Saiba por onde começar no Day Trade em Opções Binárias. As Melhores Corretoras de Opções Binárias.
+capa:
+  src: /imagens/melhores-corretoras-opcoes-binarias/capa.webp
+  alt: Três cartões em neon ciano com gráficos de velas e uma lupa sobre o do meio, com o título Melhores corretoras de opções binárias
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

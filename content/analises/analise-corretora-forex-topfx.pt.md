@@ -11,6 +11,11 @@ resumo: A TOPFX é uma corretora internacional de Forex e CFDs fundada em 2010, 
 seo:
   title: "Análise da corretora TopFX: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias e Forex. Análise Corretora TopFX.
+capa:
+  src: /imagens/analise-corretora-forex-topfx/capa.webp
+  alt: Lupa em neon ciano sobre um globo com setas de câmbio, com o título Análise da corretora TopFX
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

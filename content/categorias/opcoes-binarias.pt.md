@@ -7,6 +7,7 @@ status: publicado
 titulo: "Opções binárias: guias e artigos"
 tituloDestaque: "binárias"
 nome: "Opções binárias"
+chamada: "Como funcionam, horários, riscos e imposto."   # frase curta do box de temas da home (lote de 20/10/2026, revisão do Cowork)
 resumo: "Tudo o que já escrevi sobre opções binárias: como funcionam, horários, estratégias simples e, principalmente, os riscos. Operar opções binárias envolve alto risco de perda."
 seo:
   title: "Opções binárias: guias e artigos"

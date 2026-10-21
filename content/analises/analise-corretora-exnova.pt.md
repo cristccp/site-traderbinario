@@ -11,6 +11,11 @@ resumo: Exnova é uma corretora online especializada em negociações de opçõe
 seo:
   title: "Análise da corretora Exnova: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias. Análise Corretora Exnova.
+capa:
+  src: /imagens/analise-corretora-exnova/capa.webp
+  alt: Lupa em neon ciano sobre um gráfico de velas com setas de alta e baixa, com o título Análise da corretora Exnova
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras

@@ -7,6 +7,7 @@ status: publicado
 titulo: "Forex: guias e artigos"
 tituloDestaque: "Forex"
 nome: "Forex"
+chamada: "Câmbio do zero: pares, horários e alavancagem."   # frase curta do box de temas da home (lote de 20/10/2026, revisão do Cowork)
 resumo: "O mercado de câmbio para quem está começando: como funciona, como operar do Brasil, horários, alavancagem e a parte mental. Forex e CFDs envolvem alto risco de perda."
 seo:
   title: "Forex: guias e artigos para iniciantes"

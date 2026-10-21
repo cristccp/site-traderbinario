@@ -11,6 +11,11 @@ resumo: A Binary.com foi a empresa por trás de uma das primeiras plataformas de
 seo:
   title: "Análise da corretora Binary.com: prós e contras"
   description: Saiba por onde começar no Day Trade em Opções Binárias. Análise Corretora Binary.com.
+capa:
+  src: /imagens/analise-corretora-binary/capa.webp
+  alt: Lupa em neon ciano sobre um gráfico de velas com setas de alta e baixa, com o título Análise da corretora Binary.com
+  largura: 1280
+  altura: 720
 categoria:
   nome: Corretoras
   href: /c/corretoras
