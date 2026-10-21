@@ -4,7 +4,7 @@ import { COOKIE_CONSENTIMENTO } from "@/lib/consentimento-cookies";
 // Roda no <head>, ANTES de qualquer outro script (Consent Mode v2):
 //  1. cria o dataLayer e o gtag e define o padrão: análise e anúncios NEGADOS, funcionais e segurança liberados;
 //  2. se a pessoa já escolheu "Aceitar" (cookie cpt_consent, 12 meses), libera SÓ analytics_storage;
-//  3. só no domínio oficial E com GTM_ID preenchido carrega o GTM (contêiner novo no passo 4 do PLANO.md).
+//  3. só no domínio oficial E com GTM_ID preenchido carrega o GTM (GTM_ID em lib/site.ts).
 // Cópia do site principal + a trava do GTM_ID vazio.
 const script = `(function(){var w=window,d=document;w.dataLayer=w.dataLayer||[];function gtag(){w.dataLayer.push(arguments)}w.gtag=gtag;
 gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
