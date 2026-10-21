@@ -4,7 +4,8 @@
 //  - links antigos de afiliado (1sh.co, bit.ly, track.deriv.com, iqbroker);
 //  - links internos: página que existe (200), redirecionamento 308 da lista, página de um lote futuro (pendente) ou QUEBRADO;
 //  - imagens do próprio site que não abrem;
-//  - CELULAR (390 px), num Chrome de verdade: rolagem lateral (página mais larga que a tela), erro no console e status.
+//  - CELULAR (390 px), num Chrome de verdade: rolagem lateral (página mais larga que a tela), erro no console e status;
+//  - MENU: rolar até o fim → clicar em cada item do menu (PT/EN/ES, computador e ☰ em 390 px) → página nova no topo.
 //    Usa o Chrome instalado (puppeteer-core, só desenvolvimento). Outro caminho: CHROME_PATH=… node scripts/conferir-site.mjs
 // "investimento/investir" e superlativos entram como AVISO (exigem leitura humana: "investir tempo" é ok).
 import { existsSync, readFileSync } from "node:fs";
@@ -148,6 +149,8 @@ for (const img of imagensVistas) {
 // ---- Celular (390 px): nenhuma página pode rolar de lado (regra fixa desde 20/10/2026, depois da tabela de horários) ----
 const CHROME = process.env.CHROME_PATH ?? "C:/Program Files/Google/Chrome/Application/chrome.exe";
 const celular = [];
+const menu = [];
+let nMenu = 0;
 if (!existsSync(CHROME)) {
   celular.push("teste de 390 px NÃO RODOU: Chrome não encontrado (defina CHROME_PATH)");
 } else {
@@ -171,6 +174,43 @@ if (!existsSync(CHROME)) {
     if (falhas.length) celular.push(`${p}: ${falhas.join(", ")}`);
     await aba.close();
   }
+
+  // MENU (bug de 21/10/2026): rolar até o fim de um artigo → clicar em cada item do menu (computador e ☰ em 390 px)
+  // → a página nova tem de abrir no TOPO (scrollY 0) e com o título abaixo do cabeçalho fixo. Link com # vai para a âncora.
+  const ORIGENS = ["/blog/qual-e-o-melhor-gerenciamento-para-opcoes-binarias", "/en/blog/binary-options-money-management", "/es/que-son-las-opciones-binarias"];
+  const TELAS = { computador: { width: 1440, height: 900 }, "390 px": { width: 390, height: 844, isMobile: true, hasTouch: true } };
+  const aba = await navegador.newPage();
+  await aba.setCookie({ name: "cpt_consent", value: "denied", url: BASE });   // sem o banner de cookies na frente
+  for (const [tela, vp] of Object.entries(TELAS)) {
+    await aba.setViewport(vp);
+    const seletor = tela === "computador" ? ".topo__nav a:not([target])" : ".menu-celular__lista a:not([target])";
+    for (const origem of ORIGENS) {
+      await aba.goto(BASE + origem, { waitUntil: "networkidle0" });
+      const hrefs = await aba.$$eval(seletor, (as) => as.map((a) => a.getAttribute("href")));
+      for (const href of hrefs) {
+        await aba.goto(BASE + origem, { waitUntil: "networkidle0" });
+        await aba.evaluate(() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "instant" }));
+        await new Promise((r) => setTimeout(r, 300));
+        if (tela !== "computador") { await aba.click(".menu-celular__botao"); await new Promise((r) => setTimeout(r, 200)); }
+        await aba.evaluate((s, h) => [...document.querySelectorAll(s)].find((a) => a.getAttribute("href") === h).click(), seletor, href);
+        const [caminho, ancora] = href.split("#");
+        await aba.waitForFunction((c) => location.pathname === c, { timeout: 30000 }, caminho).catch(() => {});
+        await new Promise((r) => setTimeout(r, 1000));
+        const r = await aba.evaluate((id) => {
+          const topo = document.querySelector(".topo").getBoundingClientRect().bottom;
+          const alvo = id ? document.getElementById(id) : document.querySelector("main h1");
+          return { y: Math.round(window.scrollY), topo: Math.round(topo), alvo: alvo ? Math.round(alvo.getBoundingClientRect().top) : null, url: location.pathname };
+        }, ancora);
+        const falhas = [];
+        if (r.url !== caminho) falhas.push(`não abriu (${r.url})`);
+        else if (!ancora && r.y !== 0) falhas.push(`abriu com scrollY ${r.y} (esperado 0)`);
+        if (r.alvo === null || r.alvo < r.topo) falhas.push(`${ancora ? "âncora" : "título"} escondido atrás do cabeçalho`);
+        if (falhas.length) menu.push(`${tela} ${origem} → ${href}: ${falhas.join(", ")}`);
+        nMenu++;
+      }
+    }
+  }
+  await aba.close();
   await navegador.close();
 }
 
@@ -183,4 +223,6 @@ console.log(`Imagens do site que não abrem: ${imagensRuins.size}`);
 for (const i of imagensRuins) console.log(`  ${i}`);
 console.log(`Celular (390 px) com rolagem lateral, erro no console ou status ≠ 200: ${celular.length}`);
 for (const c of celular) console.log(`  ${c}`);
-process.exitCode = nErros || quebrados.size || imagensRuins.size || celular.length ? 1 : 0;
+console.log(`Menu (fim da página → clique → página nova no topo; PT/EN/ES, computador e 390 px): ${nMenu} cliques · ${menu.length} falha(s)`);
+for (const m of menu) console.log(`  ${m}`);
+process.exitCode = nErros || quebrados.size || imagensRuins.size || celular.length || menu.length ? 1 : 0;

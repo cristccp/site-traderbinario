@@ -13,12 +13,14 @@ import "@/app/blog.css";
 // O <html> do site, igual nos 3 idiomas — só muda o lang (já no HTML do servidor), o rodapé e o banner no idioma.
 // Usado pelos layouts raiz app/(pt), app/en, app/es e pelo 404 (app/global-not-found.tsx). Mesmo padrão do forexbots.
 // O topo fica em cada página (o seletor de idioma depende da página). Tutor IA: só em português (as regras e a base são PT).
+// data-scroll-behavior="smooth": o Next 16 só desliga a rolagem suave (globals.css) durante a troca de página com esta marca.
+// Sem ela, a página nova abria no FIM: a subida suave era atropelada pelo scrollIntoView do cabeçalho fixo (21/10/2026).
 export const VIEWPORT: Viewport = { themeColor: "#07090C" };   // = --color-ink (a barra do navegador no celular)
 
 export default function RaizSite({ idioma, children }: { idioma: Idioma; children: ReactNode }) {
   const t = textos(idioma);
   return (
-    <html lang={LANG_HTML[idioma]} className={`${fraunces.variable} ${poppins.variable}`}>
+    <html lang={LANG_HTML[idioma]} className={`${fraunces.variable} ${poppins.variable}`} data-scroll-behavior="smooth">
       {/* eslint-disable-next-line @next/next/no-head-element */}
       <head>
         {/* 1º: consentimento (Consent Mode v2) e, só no domínio oficial e com GTM_ID, o GTM */}
