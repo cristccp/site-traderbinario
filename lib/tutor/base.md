@@ -128,6 +128,28 @@ Resumo: O que é alavancagem no forex, como funciona, quanto aumenta a sua expos
 Endereço: /blog/como-operar-forex-no-brasil-passo-a-passo-simples-e-atualizado · Categoria: Forex
 Resumo: Como operar forex no Brasil: abrir conta, escolher a corretora, usar a plataforma e fazer a primeira operação, passo a passo e com gestão de risco.
 
+### Como operar ouro (XAU/USD) no forex: guia para iniciantes
+Endereço: /blog/como-operar-ouro-xauusd · Categoria: Forex
+Resumo: O que mexe no preço do ouro, onde ele fica no MetaTrader 5, como o lote define o seu risco, os horários de mais movimento e por que começar na conta demo.
+Em 30 segundos:
+- XAU/USD é o ouro cotado em dólar; no MetaTrader 5 costuma aparecer como XAUUSD.
+- O ouro se mexe rápido: quem decide o seu risco é o tamanho do lote, não a alavancagem.
+- Antes de entrar: risco por operação perto de 1% da banca, stop definido e lote calculado a partir dele.
+- Comece pela conta demo e fuja de dobrar a entrada para recuperar.
+Perguntas frequentes:
+P: O que é XAU/USD?
+R: É o ouro cotado em dólar: o preço de uma onça de ouro em dólares americanos. No MetaTrader 5 ele costuma aparecer como XAUUSD, mas o nome exato pode mudar de uma corretora para outra.
+P: Dá para operar ouro sendo iniciante?
+R: Dá para aprender, começando pela conta demo e com a gestão de risco definida antes da primeira operação. O ouro se mexe rápido, então o tamanho do lote pesa mais do que em muitos pares de moedas. Na conta real, comece com o lote mínimo e um valor que você pode perder.
+P: Quanto vale 0,01 lote no ouro?
+R: Depende do tamanho do contrato da sua corretora. Em muitas, 1 lote de ouro equivale a 100 onças: aí cada dólar de movimento no preço vale US$ 1 com 0,01 lote e US$ 10 com 0,10 lote. Confira sempre na especificação do ativo dentro do MetaTrader 5.
+P: Qual é o melhor horário para operar ouro?
+R: O ouro costuma ter mais movimento quando Londres e Nova York estão abertas ao mesmo tempo, mais ou menos entre 9h e 13h de Brasília, e na saída de notícias da economia dos Estados Unidos. Mais movimento também significa mais risco: para quem está começando, evite operar no minuto da notícia.
+P: Quanto preciso para começar a operar ouro?
+R: Para aprender, nada: a conta demo vem com saldo virtual. Na conta real, o valor mínimo depende da corretora, mas o que importa é outro número: quanto você arrisca por operação. Um ponto de partida conservador é algo perto de 1% da banca.
+P: Robô para ouro funciona?
+R: Robô é ferramenta, não garantia. Ele automatiza entradas, mas quem define o risco é a sua gestão. Alguns robôs trabalham com preço médio, abrindo novas ordens quando o mercado vai contra, o que aumenta a exposição. Teste sempre na conta demo, com lote mínimo e limite de perda.
+
 ### Forex é legal no Brasil? Entenda a regulamentação e os riscos
 Endereço: /blog/forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos · Categoria: Forex
 Resumo: O que a CVM diz sobre forex e CFD, por que nenhuma corretora tem autorização para oferecer no Brasil, o que isso muda para quem opera e como se proteger.
