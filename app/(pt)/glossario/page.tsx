@@ -31,7 +31,7 @@ export default function Page() {
   };
   return (
     <>
-      <Topo idioma="pt" />
+      <Topo idioma="pt" atual="/glossario" />
       <JsonLd dados={jsonLd} />
       <main id="conteudo">
         <div className="wrap cabeca-artigo glossario-pagina">

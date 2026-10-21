@@ -103,6 +103,9 @@ html { scroll-padding-top: var(--topo-h); }
   .topo__nav { display: flex; order: 3; flex: 1 0 100%; gap: var(--space-xs) var(--space-md); padding-top: var(--space-sm); border-top: 1px solid var(--color-line); }
   .menu-celular__botao, .menu-celular { display: none !important; }
 }
+/* 1024–1279 px: menu compacto (9 itens com Glossário): espaço 12 px e letras 1 px — cabe numa linha a partir de ~1100 px.
+   Abaixo disso (tablet 1024) quebra em 2 linhas, como antes. A partir de 1280 px, o espaçamento normal (decisão de 21/10/2026). */
+@media (min-width: 64rem) and (max-width: 79.99rem) { .topo__nav { column-gap: 12px; letter-spacing: 1px; } }
 @media (min-width: 80rem) { .topo__rede { display: inline-flex; } }
 /* Computador, rolando: o cabeçalho encolhe (como no cristianopereira.com.br). O espaço na página não muda
    (margin-bottom calculado em TopoRolagem), então o conteúdo não pula; por isso a altura muda sem animação. */

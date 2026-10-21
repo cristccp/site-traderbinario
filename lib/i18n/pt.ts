@@ -21,6 +21,7 @@ export const PT: Textos = {
       { label: "MetaTrader", href: "/blog/metatrader-5-mt5-guia-completo" },
       { label: "Gestão de risco", href: "/c/gestao-de-risco" },   // até o guia /blog/gestao-de-risco-no-day-trade existir
       { label: "Corretoras", href: "/melhores-corretoras-opcoes-binarias" },
+      { label: "Glossário", href: "/glossario" },
       { label: "Ferramentas", href: "/ferramentas" },
       { label: "Cristiano Pereira ↗", href: "https://cristianopereira.com.br", externo: true },
     ],
