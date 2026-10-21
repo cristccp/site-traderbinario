@@ -14,6 +14,24 @@ const nextConfig: NextConfig = {
   async redirects() {
     return REDIRECIONAMENTOS.map((r) => ({ source: r.de, destination: r.para, permanent: true }));
   },
+  // /ultimos.json?idioma=pt|en|es (faixa da home do cristianopereira.com.br) → arquivo estático do idioma (app/ultimos/[idioma]).
+  // Sem ?idioma (ou outro valor) = pt. Rewrites "afterFiles": vêm antes das rotas dinâmicas, então o [slug] não pega o endereço.
+  async rewrites() {
+    return [
+      ...(["en", "es"] as const).map((idioma) => ({
+        source: "/ultimos.json", has: [{ type: "query" as const, key: "idioma", value: idioma }], destination: `/ultimos/${idioma}`,
+      })),
+      { source: "/ultimos.json", destination: "/ultimos/pt" },
+    ];
+  },
+  // Lista pública: cache de 1 h e fora do Google (noindex); não entra no sitemap.
+  async headers() {
+    const cabecalhos = [
+      { key: "Cache-Control", value: "public, max-age=3600, s-maxage=3600" },
+      { key: "X-Robots-Tag", value: "noindex" },
+    ];
+    return [{ source: "/ultimos.json", headers: cabecalhos }, { source: "/ultimos/:idioma", headers: cabecalhos }];
+  },
 };
 
 export default nextConfig;

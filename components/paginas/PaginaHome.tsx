@@ -7,11 +7,10 @@ import CardsCorretoras from "@/components/CardsCorretoras";
 import { ICONES_TEMA } from "@/components/Icones";
 import Titulo from "@/components/Titulo";
 import Topo from "@/components/Topo";
-import { buscar, caminho, daCategoria, equivalentes, listar } from "@/lib/conteudo";
+import { buscar, caminho, daCategoria, equivalentes, recentes as maisRecentes } from "@/lib/conteudo";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
 import { FIXAS } from "@/lib/rotas-idiomas";
-import REESCRITOS from "@/lib/reescritos.json";
 
 // Campos próprios da home (content/paginas/home.<idioma>.md)
 type Guia = { titulo: string; texto: string; href: string; rotulo?: string; principal?: boolean };
@@ -35,8 +34,7 @@ type HomeIdioma = Omit<Home, "guias" | "corretoras" | "recentes"> & {
 // Ordem dos temas no box de categorias (mesmos slugs de content/categorias/)
 const TEMAS = ["opcoes-binarias", "robos-traders", "forex", "metatrader", "gestao-de-risco", "corretoras"];
 const RECENTES = 6;
-// Desempate dos "Artigos recentes" (publicadoEm ainda vazio): primeiro os textos reescritos, na ordem de lib/reescritos.json
-const ordemReescrito = (slug: string) => { const i = REESCRITOS.slugs.findIndex((r) => r.slug === slug); return i < 0 ? Infinity : i; };
+// "Artigos recentes": ordem de lib/conteudo.ts → recentes() (a mesma do /ultimos.json)
 
 // **negrito** dos textos de apoio da cópia → <strong>
 const negrito = (s: string) => s.split(/\*\*(.+?)\*\*/g).map((p, i) => (i % 2 ? <strong key={i}>{p}</strong> : p));
@@ -56,11 +54,7 @@ export default function PaginaHome({ idioma }: { idioma: Idioma }) {
     return { slug: k.slug, nome, chamada: String(k.extra.chamada ?? ""), href: caminho("categoria", k.slug, idioma), total: daCategoria(nome, idioma).length };
   });
 
-  const recentes = listar({ tipo: "artigo", idioma })
-    .map((a, i) => ({ a, i }))
-    .sort((x, y) => (y.a.atualizadoEm ?? "").localeCompare(x.a.atualizadoEm ?? "") || ordemReescrito(x.a.slug) - ordemReescrito(y.a.slug) || x.i - y.i)
-    .slice(0, RECENTES)
-    .map(({ a }) => a);
+  const recentes = maisRecentes(idioma, ["artigo"], RECENTES);
 
   return (
     <>

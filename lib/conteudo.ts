@@ -5,6 +5,7 @@ import { parse as lerYaml } from "yaml";
 import { IDIOMAS, PREFIXO, type Idioma } from "@/lib/i18n/tipos";
 import { aplicarGlossario } from "@/lib/glossario";
 import { blocos, type Bloco, type ItemIndice } from "@/lib/markdown";
+import REESCRITOS from "@/lib/reescritos.json";
 
 // CAMADA ÚNICA DE CONTEÚDO do site. Hoje lê os arquivos de content/ (Markdown + frontmatter YAML);
 // amanhã lê a tabela `artigos` do Supabase (docs/tabela-artigos.md) — só ESTE arquivo muda, as páginas não.
@@ -114,6 +115,17 @@ export function listar({ tipo, idioma }: { tipo: Tipo; idioma: Idioma }): Conteu
   return publicados()
     .filter((c) => c.tipo === tipo && c.idioma === idioma)
     .sort((a, b) => (b.atualizadoEm ?? b.publicadoEm ?? "").localeCompare(a.atualizadoEm ?? a.publicadoEm ?? ""));
+}
+
+// Os mais recentes (home "Artigos recentes" e /ultimos.json): atualizadoEm mais novo; no empate (publicadoEm ainda vazio),
+// primeiro os textos reescritos, na ordem de lib/reescritos.json; depois a ordem de listar().
+const ordemReescrito = (slug: string) => { const i = REESCRITOS.slugs.findIndex((r) => r.slug === slug); return i < 0 ? Infinity : i; };
+export function recentes(idioma: Idioma, tipos: Tipo[], n: number): Conteudo[] {
+  return tipos.flatMap((tipo) => listar({ tipo, idioma }))
+    .map((c, i) => ({ c, i }))
+    .sort((x, y) => (y.c.atualizadoEm ?? "").localeCompare(x.c.atualizadoEm ?? "") || ordemReescrito(x.c.slug) - ordemReescrito(y.c.slug) || x.i - y.i)
+    .slice(0, n)
+    .map(({ c }) => c);
 }
 
 export function buscar(tipo: Tipo, slug: string, idioma: Idioma): Conteudo | null {

@@ -30,6 +30,7 @@
 | `lib/site.ts` | Domínio oficial, hosts oficiais, `GTM_ID` (GTM-MTJMBXSR) |
 | `lib/rotas-idiomas.ts` | Endereço das páginas FIXAS em cada idioma (ferramentas, glossário). Conteúdo EN/ES se liga ao PT pelo campo `original:` (slug PT) no frontmatter → `equivalentes()` em `lib/conteudo.ts` (seletor, hreflang, sitemap) |
 | `lib/glossario.ts` · `lib/glossario-dados-idiomas.ts` | Dicas do glossário por idioma (mesmos números de termo excluídos; EN "a lot" não vira "Lot"). EN/ES gerados por `scripts/gerar-glossario-idiomas.mjs` do arquivo aprovado |
+| `app/ultimos/[idioma]/route.ts` | `/ultimos.json?idioma=pt\|en\|es` (rewrite em `next.config.ts`): os 3 artigos/guias mais recentes para a faixa da home do cristianopereira.com.br. Estático no build, cache 1 h, noindex, fora do sitemap. Campos: titulo, url, capa, capaAlt, categoria (null em EN/ES), data. Ordem PT = `recentes()` de `lib/conteudo.ts` (a mesma da home); EN/ES = cards da home do idioma |
 | `components/BlocoTelegram.tsx` | EN/ES: bloco do Telegram (home e fim do artigo) e versão compacta antes do FAQ, no lugar do e-book (só PT) |
 | `proxy.ts` | Fora de traderbinario.com.br (localhost, vercel.app) → `X-Robots-Tag: noindex` + `robots.txt` `Disallow: /` |
 | `scripts/converter-imagens.mjs` | `npm run imagens`: imagens da `_copia` e foto do Cristiano → WebP em `public/` |
