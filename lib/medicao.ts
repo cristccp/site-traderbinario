@@ -5,9 +5,11 @@ import { HOSTS_OFICIAIS } from "@/lib/site";
 // NUNCA nome, e-mail nem nada pessoal: só textos curtos (ids) e números passam.
 // Fora do domínio oficial (localhost, vercel.app) nada é enviado: o evento aparece no console para teste.
 // Mesmo padrão do site principal e do forexbots. Eventos: deriv_click { local, pagina } · telegram_click { idioma } · broker_click { corretora }
-// · search { search_term } (trackBusca) · ebook_click { material, local: meio|fim } · calc_use { calc: risco|empate } · glossario_dica { termo }.
+// · search { search_term } (trackBusca) · ebook_click { material, local: meio|fim } · calc_use { calc: risco|empate } · glossario_dica { termo }
+// · tutor_open (abriu o Tutor IA) · tutor_cta { destino: ebook|ferramentas|venda|deriv|telegram|artigo } (link dentro de uma resposta).
 
-export type Evento = "telegram_click" | "deriv_click" | "broker_click" | "search" | "ebook_click" | "calc_use" | "glossario_dica";
+export type Evento = "telegram_click" | "deriv_click" | "broker_click" | "search" | "ebook_click" | "calc_use" | "glossario_dica"
+  | "tutor_open" | "tutor_cta";
 type Params = Record<string, string | number>;
 
 declare global {

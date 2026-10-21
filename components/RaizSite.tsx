@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import BannerCookies from "@/components/cookies/BannerCookies";
 import ConsentimentoHead from "@/components/cookies/ConsentimentoHead";
 import Rodape from "@/components/Rodape";
+import TutorBotao from "@/components/tutor/TutorBotao";
 import { fraunces, poppins } from "@/lib/fontes";
 import { textos } from "@/lib/i18n";
 import { LANG_HTML, type Idioma } from "@/lib/i18n/tipos";
@@ -11,7 +12,7 @@ import "@/app/blog.css";
 
 // O <html> do site, igual nos 3 idiomas — só muda o lang (já no HTML do servidor), o rodapé e o banner no idioma.
 // Usado pelos layouts raiz app/(pt), app/en, app/es e pelo 404 (app/global-not-found.tsx). Mesmo padrão do forexbots.
-// O topo fica em cada página (o seletor de idioma depende da página).
+// O topo fica em cada página (o seletor de idioma depende da página). Tutor IA: só em português (as regras e a base são PT).
 export const VIEWPORT: Viewport = { themeColor: "#07090C" };   // = --color-ink (a barra do navegador no celular)
 
 export default function RaizSite({ idioma, children }: { idioma: Idioma; children: ReactNode }) {
@@ -27,6 +28,7 @@ export default function RaizSite({ idioma, children }: { idioma: Idioma; childre
         {children}
         <Rodape idioma={idioma} />
         <BannerCookies textos={t.banner} novaAba={t.novaAba} />
+        {idioma === "pt" && <TutorBotao />}
       </body>
     </html>
   );

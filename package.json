@@ -4,12 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3010",
+    "prebuild": "node scripts/gerar-base-tutor.mjs",
     "build": "next build",
+    "base-tutor": "node scripts/gerar-base-tutor.mjs",
     "start": "next start",
     "lint": "eslint",
     "imagens": "node scripts/converter-imagens.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "0.135.0",
+    "@supabase/supabase-js": "2.118.0",
     "marked": "15.0.12",
     "next": "16.4.1",
     "react": "19.3.0",

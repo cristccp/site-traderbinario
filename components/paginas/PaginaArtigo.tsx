@@ -37,7 +37,7 @@ export default function PaginaArtigo({ idioma, slug, tipo = "artigo" }: { idioma
       <JsonLd dados={jsonLdArtigo(c)} />
       <JsonLd dados={jsonLdTrilha(c, idioma)} />
       <JsonLd dados={jsonLdFaq(c)} />
-      <main id="conteudo">
+      <main id="conteudo" data-tutor="pagina">
         <div className="wrap cabeca-artigo">
           <Trilha idioma={idioma} categoria={c.categoria} atual={c.trilha ?? c.titulo} />
           <span className="rotulo rotulo--ciano">{(c.categoria?.nome ?? "").toUpperCase()} · {c.minutos} {t.artigo.minLeitura}</span>

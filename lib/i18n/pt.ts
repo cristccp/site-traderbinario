@@ -96,7 +96,7 @@ export const PT: Textos = {
     educativo: "Conteúdo educativo; nada aqui é recomendação de investimento. Resultados passados não garantem resultados futuros.",
     copyright: "© 2026 Trader Binário · Cristiano Pereira Trader",
     politica: "Política de privacidade",
-    politicaHref: "https://cristianopereira.com.br/politica-de-privacidade",
+    politicaHref: "/politica-de-privacidade",   // política do próprio blog (21/10/2026, junto com o Tutor IA)
     preferencias: "Preferências de cookies",
     siteCristiano: "cristianopereira.com.br",
     glossario: "Glossário",
@@ -120,7 +120,7 @@ export const PT: Textos = {
     aria: "Aviso de cookies",
     texto: "Usamos cookies do Google Analytics para entender como o site é usado e melhorar os conteúdos. Só ativamos se você aceitar.",
     politica: "Política de privacidade",
-    politicaHref: "https://cristianopereira.com.br/politica-de-privacidade",
+    politicaHref: "/politica-de-privacidade",   // política do próprio blog (21/10/2026, junto com o Tutor IA)
     aceitar: "Aceitar",
     recusar: "Recusar",
   },

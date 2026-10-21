@@ -51,9 +51,9 @@ export default function BannerCookies({ textos, novaAba }: { textos: TextosBanne
       <div className="cookies__wrap">
         <p className="cookies__texto">
           {textos.texto}{" "}
-          <a href={textos.politicaHref} target="_blank" rel="noopener noreferrer">
-            {textos.politica}<span className="sr-only"> {novaAba}</span>
-          </a>
+          {textos.politicaHref.startsWith("/")   // PT: política do próprio blog (mesma aba); EN/ES: a do site principal
+            ? <a href={textos.politicaHref}>{textos.politica}</a>
+            : <a href={textos.politicaHref} target="_blank" rel="noopener noreferrer">{textos.politica}<span className="sr-only"> {novaAba}</span></a>}
         </p>
         <div className="cookies__acoes">
           <button type="button" className="cookies__btn" onClick={() => escolher("granted")}>{textos.aceitar}</button>

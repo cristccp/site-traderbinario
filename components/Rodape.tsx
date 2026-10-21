@@ -15,7 +15,9 @@ export default function Rodape({ idioma }: { idioma: Idioma }) {
         <p className="rodape__texto">{t.afiliado} {t.corretora} {t.educativo}</p>
         <div className="rodape__links">
           <span>{t.copyright}</span>
-          <a href={t.politicaHref} target="_blank" rel="noopener noreferrer">{t.politica}<span className="sr-only"> {novaAba}</span></a>
+          {t.politicaHref.startsWith("/")   // PT: política do próprio blog (mesma aba); EN/ES: a do site principal
+            ? <Link prefetch={false} href={t.politicaHref}>{t.politica}</Link>
+            : <a href={t.politicaHref} target="_blank" rel="noopener noreferrer">{t.politica}<span className="sr-only"> {novaAba}</span></a>}
           <PreferenciasCookies label={t.preferencias} />
           <Link prefetch={false} href="/glossario">{t.glossario}</Link>
           <a href="https://cristianopereira.com.br" target="_blank" rel="noopener noreferrer">{t.siteCristiano}<span className="sr-only"> {novaAba}</span></a>

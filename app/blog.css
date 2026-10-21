@@ -448,6 +448,10 @@ html { scroll-padding-top: var(--topo-h); }
 .ferramenta__links { color: var(--color-mist); margin: var(--space-md) 0; max-width: 46rem; line-height: 1.6; }
 .ferramenta__links a { text-decoration: underline; text-underline-offset: 3px; }
 
+/* /politica-de-privacidade: o texto usa o .prose dos artigos, na largura de leitura */
+.politica { padding-bottom: var(--space-xl); }
+.politica__texto { max-width: 46rem; margin-top: var(--space-md); }
+
 /* ---------- Dicas do glossário no texto ---------- */
 .glossario { position: relative; }
 .glossario__termo {

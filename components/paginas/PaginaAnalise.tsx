@@ -39,7 +39,7 @@ export default function PaginaAnalise({ idioma, slug }: { idioma: Idioma; slug: 
       <JsonLd dados={jsonLdArtigo(c)} />
       <JsonLd dados={jsonLdTrilha(c, idioma)} />
       <JsonLd dados={jsonLdFaq(c)} />
-      <main id="conteudo">
+      <main id="conteudo" data-tutor="pagina">
         <section className="wrap cabeca-analise">
           <Trilha idioma={idioma} categoria={c.categoria} atual={c.trilha ?? c.titulo} />
           <div className="cabeca-analise__linha">
