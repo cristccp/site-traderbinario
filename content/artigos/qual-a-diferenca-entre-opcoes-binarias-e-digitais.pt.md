@@ -12,10 +12,10 @@ seo:
   title: "Opções binárias × digitais: qual a diferença de verdade"
   description: "Opções binárias e digitais: como cada corretora usa os nomes, o que muda no pagamento, no preço de exercício e na venda antecipada, e os riscos de cada uma."
 capa:
-  src: /imagens/qual-a-diferenca-entre-opcoes-binarias-e-digitais/capa.webp
-  alt: Capa do artigo “Qual a diferença entre opções binárias e digitais?”
-  largura: 1200
-  altura: 686
+  src: /imagens/qual-a-diferenca-entre-opcoes-binarias-e-digitais/capa-v2.webp
+  alt: "Dois cartões em neon lado a lado, um com setas de alta e baixa e outro com um gráfico e um nível de preço, com o título Binárias × digitais: qual a diferença?"
+  largura: 1280
+  altura: 720
 categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias

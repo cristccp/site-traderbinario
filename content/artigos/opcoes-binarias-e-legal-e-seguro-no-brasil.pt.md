@@ -12,10 +12,10 @@ seo:
   title: "Opções binárias é legal no Brasil? O que diz a CVM"
   description: "Opções binárias é legal ou crime? O que a CVM diz, por que nenhuma corretora tem autorização no Brasil, os riscos reais e como se proteger de golpe."
 capa:
-  src: /imagens/o-que-sao-opcoes-binarias/01.webp
-  alt: Gráfico de velas de um ativo financeiro na tela de uma plataforma
-  largura: 1200
-  altura: 800
+  src: /imagens/opcoes-binarias-e-legal-e-seguro-no-brasil/capa.webp
+  alt: "Mapa do Brasil em neon ciano com um ponto de interrogação e um cadeado, com o título Opções binárias é legal e seguro no Brasil?"
+  largura: 1280
+  altura: 720
 categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias

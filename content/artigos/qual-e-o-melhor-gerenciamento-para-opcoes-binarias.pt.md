@@ -12,10 +12,10 @@ seo:
   title: "Gerenciamento para opções binárias: o que funciona"
   description: "Quanto arriscar por operação, stop do dia, quantas operações fazer, quando sacar e por que dobrar a entrada (martingale) quebra a banca. Com exemplos."
 capa:
-  src: /imagens/qual-e-o-melhor-gerenciamento-para-opcoes-binarias/capa.webp
-  alt: Capa do artigo “Qual é o melhor gerenciamento para opções binárias?”
-  largura: 1200
-  altura: 673
+  src: /imagens/qual-e-o-melhor-gerenciamento-para-opcoes-binarias/capa-v2.webp
+  alt: "Escudo em neon ciano ao lado de moedas e de uma linha vermelha de stop, com o título Gerenciamento para opções binárias"
+  largura: 1280
+  altura: 720
 categoria:
   nome: Gestão de risco
   href: /c/gestao-de-risco

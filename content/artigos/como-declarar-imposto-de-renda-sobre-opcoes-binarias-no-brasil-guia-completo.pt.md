@@ -12,10 +12,10 @@ seo:
   title: "Imposto de renda em opções binárias: como declarar"
   description: "A regra de 2024 para quem opera em corretora estrangeira: alíquota de 15% no ano, sem isenção, compensação de perdas e o passo a passo da declaração."
 capa:
-  src: /imagens/como-declarar-imposto-de-renda-sobre-opcoes-binarias-no-brasil-guia-completo/capa.webp
-  alt: Capa do artigo “Como declarar imposto de renda sobre opções binárias no Brasil”
-  largura: 1200
-  altura: 675
+  src: /imagens/como-declarar-imposto-de-renda-sobre-opcoes-binarias-no-brasil-guia-completo/capa-v2.webp
+  alt: "Formulário de imposto com lupa em neon ciano e uma calculadora dourada, com o título Imposto de renda nas opções binárias"
+  largura: 1280
+  altura: 720
 categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias

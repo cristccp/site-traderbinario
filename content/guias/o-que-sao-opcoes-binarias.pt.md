@@ -10,6 +10,11 @@ tituloDestaque: opções binárias
 seo:
   title: "Opções binárias: o que são, como funcionam e os riscos"
   description: "O que é uma opção binária, como funciona uma operação, a conta do payout que quase ninguém mostra, os riscos reais e como começar pela conta demo."
+capa:
+  src: /imagens/o-que-sao-opcoes-binarias/capa.webp
+  alt: "Gráfico de velas em neon ciano com uma seta para cima e outra para baixo, com o título Opções binárias: o que são e como funcionam"
+  largura: 1280
+  altura: 720
 categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias
