@@ -21,6 +21,7 @@ export const PT: Textos = {
       { label: "MetaTrader", href: "/blog/metatrader-5-mt5-guia-completo" },
       { label: "Gestão de risco", href: "/c/gestao-de-risco" },   // até o guia /blog/gestao-de-risco-no-day-trade existir
       { label: "Corretoras", href: "/melhores-corretoras-opcoes-binarias" },
+      { label: "Ferramentas", href: "/ferramentas" },
       { label: "Cristiano Pereira ↗", href: "https://cristianopereira.com.br", externo: true },
     ],
   },
@@ -98,7 +99,16 @@ export const PT: Textos = {
     politicaHref: "https://cristianopereira.com.br/politica-de-privacidade",
     preferencias: "Preferências de cookies",
     siteCristiano: "cristianopereira.com.br",
+    glossario: "Glossário",
   },
+  resumo: { titulo: "Em 30 segundos" },
+  ebook: { rotulo: "E-BOOK GRÁTIS", botao: "Baixar grátis", compacto: "Material grátis" },
+  calc: {
+    risco: { titulo: "Risco por operação", banca: "Banca", moeda: "Moeda", pct: "% da banca por operação", perdas: "Perdas para bater o stop do dia", valorOp: "Valor por operação", stopDia: "Stop do dia", daBanca: "da banca", perdas20: "Perdas seguidas até perder 20% da banca", perdas20Nota: "com o valor fixo por operação", aviso: "Acima de 2% por operação, uma sequência ruim pesa muito na banca.", erroBanca: "Digite uma banca maior que zero.", erroPct: "Use um valor entre 0,5% e 5%.", erroPerdas: "Use um número entre 1 e 20." },
+    empate: { titulo: "Acertos para empatar", payout: "Payout da operação (%)", resultado: "Acertos mínimos só para empatar", frase: "Abaixo disso, a banca diminui no longo prazo.", erroPayout: "Use um payout entre 50% e 100%." },
+  },
+  ferramentas: { rotulo: "FERRAMENTAS GRÁTIS", titulo: "Ferramentas de gestão de risco", destaque: "gestão de risco", seoTitle: "Calculadora de risco e de acertos para empatar", meta: "Calculadoras grátis de risco por operação e de acertos para empatar, para montar a sua gestão de risco antes de operar. Tudo no seu navegador.", apoio: "Duas contas para fazer antes da primeira operação. Nada é guardado: tudo é calculado no seu navegador.", usoRisco: "Defina quanto da banca vai em cada operação e quando o dia acaba. O valor por operação fica fixo, mesmo depois de ganhar ou perder.", usoEmpate: "Na opção binária, o acerto paga menos do que o erro custa. Veja quantos acertos você precisa só para não perder dinheiro.", planilha: "Para registrar cada operação, use a", planilhaLink: "planilha de gerenciamento grátis", glossarioTexto: "Dúvida em algum termo? Veja o", glossarioLink: "glossário de day trade" },
+  glossario: { rotulo: "GLOSSÁRIO", titulo: "Glossário de day trade", destaque: "day trade", seoTitle: "Glossário de day trade: 100 termos de A a Z", meta: "Os 100 termos técnicos mais usados no day trade, de A a Z, explicados de forma simples: candle, pullback, stop, drawdown, alavancagem e outros.", apoio: "Os 100 termos do e-book Glossário Essencial de Day Trade, de A a Z. Use a busca ou a letra para ir direto ao termo.", busca: "Buscar termo", nenhum: "Nenhum termo encontrado.", ebookTexto: "Quer o glossário em PDF?", ebookLink: "Baixe o e-book grátis", menu: "Letras" },
   naoEncontrada: {
     title: "Página não encontrada | Trader Binário",
     titulo: "Página não",

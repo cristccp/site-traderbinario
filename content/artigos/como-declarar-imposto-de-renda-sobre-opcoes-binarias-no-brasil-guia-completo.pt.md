@@ -20,6 +20,12 @@ categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias
 trilha: Imposto de renda
+ebook: planilha   # e-book recomendado (troca do Cowork, 21/10/2026)
+emResumo:   # "Em 30 segundos" (aprovado pelo Cristiano, 21/10/2026)
+  - "Desde 2024, o resultado em corretora estrangeira é tributado em 15% sobre o resultado positivo do ano, na declaração."
+  - "Não há isenção para ganhos pequenos e não existe carnê-leão mensal para esse caso."
+  - "O imposto depende das operações encerradas, não do saque."
+  - "Prejuízo declarado abate o resultado dos anos seguintes."
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20

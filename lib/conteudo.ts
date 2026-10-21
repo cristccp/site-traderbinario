@@ -3,6 +3,7 @@ import path from "node:path";
 import { cache } from "react";
 import { parse as lerYaml } from "yaml";
 import { IDIOMAS, type Idioma } from "@/lib/i18n/tipos";
+import { aplicarGlossario } from "@/lib/glossario";
 import { blocos, type Bloco, type ItemIndice } from "@/lib/markdown";
 
 // CAMADA ÚNICA DE CONTEÚDO do site. Hoje lê os arquivos de content/ (Markdown + frontmatter YAML);
@@ -36,6 +37,8 @@ export type Conteudo = {
   atualizadoEm?: string | null;
   capa?: { src: string; alt: string; largura: number; altura: number };
   relacionados?: Link[];
+  emResumo?: string[];                // "Em 30 segundos" abaixo do título (opcional; textos do Cowork)
+  ebook?: string;                     // e-book recomendado (opcional; sobrepõe a regra de lib/ebooks.ts)
   faq?: Pergunta[];
   // Só nas análises
   corretora?: { id?: string; nome: string; logo?: string; linha: string; rotulo?: string; cadastro?: string; nota?: string };
@@ -51,7 +54,7 @@ export type Conteudo = {
 };
 
 const CAMPOS = new Set(["tipo", "idioma", "slug", "status", "titulo", "tituloDestaque", "resumo", "seo", "categoria", "trilha", "autor",
-  "publicadoEm", "atualizadoEm", "capa", "relacionados", "faq", "corretora", "ficha", "pros", "contras", "outras"]);
+  "publicadoEm", "atualizadoEm", "capa", "relacionados", "faq", "corretora", "ficha", "pros", "contras", "outras", "emResumo", "ebook"]);
 
 function ler(arquivo: string): Conteudo {
   const bruto = readFileSync(arquivo, "utf8").replace(/\r\n/g, "\n");
@@ -59,12 +62,32 @@ function ler(arquivo: string): Conteudo {
   if (!m) throw new Error(`Sem frontmatter: ${arquivo}`);
   const dados = (lerYaml(m[1]) ?? {}) as Record<string, unknown>;
   const corpo = m[2].trim();
-  const { lista, indice } = blocos(corpo);
+  const comTexto = dados.tipo === "artigo" || dados.tipo === "guia";   // caixa de e-book e dicas do glossário: só artigo e guia
+  const { lista: listaBase, indice } = blocos(comTexto ? marcarEbook(corpo) : corpo);
+  const lista = comTexto ? aplicarGlossario(listaBase) : listaBase;
   const palavras = corpo.split(/\s+/).filter(Boolean).length;
   const extra = Object.fromEntries(Object.entries(dados).filter(([k]) => !CAMPOS.has(k)));
   const c = { ...dados, minutos: Math.max(1, Math.round(palavras / PALAVRAS_POR_MINUTO)), blocos: lista, indice, extra } as Conteudo;
   conferirSeo(c, arquivo);
   return c;
+}
+
+// Caixa do e-book no meio do texto: no fim da seção do 2º título (logo antes do 3º "## "), para não separar um título
+// do texto dele. Com menos de 3 títulos: no fim do texto, antes do aviso final (:::aviso) se houver.
+function marcarEbook(corpo: string): string {
+  const MARCA = "\n\n:::ebook meio\n:::\n";
+  const linhas = corpo.split("\n");
+  let dentro = false, h2 = 0;
+  for (let i = 0; i < linhas.length; i++) {
+    if (/^:::[a-z-]/.test(linhas[i])) dentro = true;
+    else if (/^:::\s*$/.test(linhas[i])) dentro = false;
+    else if (!dentro && /^## /.test(linhas[i]) && ++h2 === 3) {
+      linhas.splice(i, 0, ":::ebook meio", ":::", "");
+      return linhas.join("\n");
+    }
+  }
+  const aviso = corpo.match(/\n:::aviso\n[\s\S]*?\n:::\s*$/);
+  return aviso ? corpo.slice(0, aviso.index) + MARCA + corpo.slice(aviso.index) : corpo + MARCA;
 }
 
 // Em desenvolvimento: avisa no terminal se o SEO passar dos limites do blog (title ≤ 60, description ≤ 155).

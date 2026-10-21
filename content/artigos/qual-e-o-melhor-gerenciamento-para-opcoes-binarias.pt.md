@@ -20,6 +20,11 @@ categoria:
   nome: Gestão de risco
   href: /c/gestao-de-risco
 trilha: Gerenciamento
+emResumo:   # "Em 30 segundos" (aprovado pelo Cristiano, 21/10/2026)
+  - "Na opção binária, o valor da operação é o risco inteiro: use algo perto de 1% da banca, fixo."
+  - "Defina o stop do dia antes de começar, com pausa depois de 2 perdas seguidas."
+  - "Poucas operações e rotina de saque semanal."
+  - "Martingale multiplica o risco e é o caminho mais rápido para zerar a banca."
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20
@@ -89,6 +94,9 @@ Duas travas que ajudam:
 
 - **Pausa depois de 2 perdas seguidas:** levanta, respira, 10 a 15 minutos fora da tela, ou encerra o dia.
 - **Meta do dia como ponto de parada:** a meta não é previsão de ganho. É a hora de parar quando o dia foi bom, antes de devolver.
+
+:::calculadora risco
+:::
 
 ## Regra 3: *poucas* operações
 

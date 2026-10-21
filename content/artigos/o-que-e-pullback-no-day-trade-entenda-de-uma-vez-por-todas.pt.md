@@ -19,6 +19,7 @@ categoria:
   nome: Gestão de risco
   href: /c/gestao-de-risco
 trilha: Pullback
+ebook: candlesticks
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20

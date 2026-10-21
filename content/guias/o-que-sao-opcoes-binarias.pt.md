@@ -19,6 +19,11 @@ categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias
 trilha: O que são opções binárias
+emResumo:   # "Em 30 segundos" (aprovado pelo Cristiano, 21/10/2026)
+  - "Opção binária é tudo ou nada: prazo e retorno são definidos na entrada."
+  - "O acerto paga menos do que o erro custa. Com payout de 85%, é preciso acertar mais de 54% só para empatar."
+  - "As corretoras atuam do exterior, sem autorização da CVM."
+  - "Comece pela conta demo, com gestão de risco definida antes."
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20
@@ -76,6 +81,9 @@ Como o acerto paga menos do que o erro custa, acertar metade das operações nã
 | 90% | cerca de 53% |
 | 85% | cerca de 54% |
 | 80% | cerca de 56% |
+
+:::calculadora empate
+:::
 
 E isso sem contar o erro mais caro de todos: aumentar a entrada para recuperar uma perda. É assim que um dia ruim vira uma banca zerada.
 

@@ -98,7 +98,16 @@ export const EN: Textos = {
     politicaHref: "https://cristianopereira.com.br/en/privacy",
     preferencias: "Cookie preferences",
     siteCristiano: "cristianopereira.com.br",
+    glossario: "Glossary",
   },
+  resumo: { titulo: "In 30 seconds" },
+  ebook: { rotulo: "FREE E-BOOK", botao: "Free download", compacto: "Free material" },
+  calc: {
+    risco: { titulo: "Risk per trade", banca: "Account balance", moeda: "Currency", pct: "% of balance per trade", perdas: "Losses to hit the daily stop", valorOp: "Amount per trade", stopDia: "Daily stop", daBanca: "of balance", perdas20: "Losses in a row to lose 20% of the balance", perdas20Nota: "with a fixed amount per trade", aviso: "Above 2% per trade, a bad streak weighs heavily on the balance.", erroBanca: "Enter a balance greater than zero.", erroPct: "Use a value between 0.5% and 5%.", erroPerdas: "Use a number between 1 and 20." },
+    empate: { titulo: "Win rate to break even", payout: "Trade payout (%)", resultado: "Minimum win rate just to break even", frase: "Below this, the balance shrinks in the long run.", erroPayout: "Use a payout between 50% and 100%." },
+  },
+  ferramentas: { rotulo: "FREE TOOLS", titulo: "Risk management tools", destaque: "risk management", seoTitle: "Risk per trade and break-even calculators", meta: "Free calculators for risk per trade and the win rate needed to break even. Everything runs in your browser.", apoio: "Two calculations to make before your first trade. Nothing is stored: everything runs in your browser.", usoRisco: "Decide how much of the balance goes into each trade and when the day ends. The amount stays fixed after wins or losses.", usoEmpate: "In binary options, a win pays less than a loss costs. See the win rate you need just to break even.", planilha: "To log every trade, use the", planilhaLink: "free management spreadsheet", glossarioTexto: "Not sure about a term? See the", glossarioLink: "day trading glossary" },
+  glossario: { rotulo: "GLOSSARY", titulo: "Day trading glossary", destaque: "glossary", seoTitle: "Day trading glossary: 100 terms from A to Z", meta: "The 100 most used day trading terms, from A to Z, explained simply.", apoio: "The 100 terms from the Day Trading Glossary e-book, from A to Z.", busca: "Search term", nenhum: "No term found.", ebookTexto: "Want the glossary as a PDF?", ebookLink: "Download the free e-book", menu: "Letters" },
   naoEncontrada: {
     title: "Page not found | Trader Binário",
     titulo: "Page not",

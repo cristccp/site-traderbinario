@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PreferenciasCookies from "@/components/cookies/PreferenciasCookies";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
@@ -16,6 +17,7 @@ export default function Rodape({ idioma }: { idioma: Idioma }) {
           <span>{t.copyright}</span>
           <a href={t.politicaHref} target="_blank" rel="noopener noreferrer">{t.politica}<span className="sr-only"> {novaAba}</span></a>
           <PreferenciasCookies label={t.preferencias} />
+          <Link prefetch={false} href="/glossario">{t.glossario}</Link>
           <a href="https://cristianopereira.com.br" target="_blank" rel="noopener noreferrer">{t.siteCristiano}<span className="sr-only"> {novaAba}</span></a>
         </div>
       </div>

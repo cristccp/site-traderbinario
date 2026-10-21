@@ -1,3 +1,5 @@
+import CaixaEbook from "@/components/CaixaEbook";
+import Calculadora from "@/components/Calculadora";
 import CardsCorretoras from "@/components/CardsCorretoras";
 import LinkCorretora from "@/components/LinkCorretora";
 import LinkDeriv from "@/components/LinkDeriv";
@@ -5,10 +7,12 @@ import { CORRETORAS } from "@/lib/corretoras";
 import VideoClique from "@/components/VideoClique";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
+import type { Ebook } from "@/lib/ebooks";
 import type { Bloco } from "@/lib/markdown";
 
 // O texto do artigo/análise: HTML do Markdown (gerado no servidor) + os blocos especiais do design.
-export default function Corpo({ blocos, idioma, pagina }: { blocos: Bloco[]; idioma: Idioma; pagina: string }) {
+// `ebook`: e-book recomendado (lib/ebooks.ts) para o bloco "ebook" que lib/conteudo.ts marca no meio do texto.
+export default function Corpo({ blocos, idioma, pagina, ebook }: { blocos: Bloco[]; idioma: Idioma; pagina: string; ebook?: Ebook }) {
   const t = textos(idioma);
   return (
     <>
@@ -61,6 +65,10 @@ export default function Corpo({ blocos, idioma, pagina }: { blocos: Bloco[]; idi
             return <CardsCorretoras key={i} ids={b.ids} idioma={idioma} pagina={pagina} />;
           case "video":
             return <VideoClique key={i} id={b.id} titulo={b.titulo} play={t.video.play} aria={t.video.aria} />;
+          case "ebook":
+            return ebook ? <CaixaEbook key={i} ebook={ebook} idioma={idioma} pagina={pagina} local="meio" /> : null;
+          case "calculadora":
+            return <Calculadora key={i} modo={b.modo} idioma={idioma} />;
         }
       })}
     </>

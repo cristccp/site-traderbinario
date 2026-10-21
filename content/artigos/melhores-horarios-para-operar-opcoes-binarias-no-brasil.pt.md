@@ -15,6 +15,11 @@ categoria:
   nome: Opções binárias
   href: /o-que-sao-opcoes-binarias
 trilha: Melhores horários
+emResumo:   # "Em 30 segundos" (aprovado pelo Cristiano, 21/10/2026)
+  - "O mercado real funciona de segunda a sexta. A plataforma aberta 24 horas não muda isso."
+  - "Ásia é mais lenta, Europa costuma ser mais técnica, e Estados Unidos é rápido e cheio de notícia."
+  - "Notícia forte, os primeiros minutos de Nova York e a madrugada entre sessões são horários para evitar."
+  - "O melhor horário é o que aparece nos seus registros, testado primeiro na conta demo."
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20

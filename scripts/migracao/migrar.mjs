@@ -205,13 +205,12 @@ async function migrar(cfg) {
   }
   corpo = corpo.replace(/\n{3,}/g, "\n\n").trim();
 
-  // Guia e análise não ganham capa da cópia: a capa vem do kit (blog/capas). Se o arquivo já tem uma, ela é mantida
-  // (senão rodar a migração de novo apagaria a capa — e a limpeza de imagens abaixo apagaria o capa.webp).
+  // Campos postos à mão depois da migração ficam: guia e análise mantêm a capa do kit (blog/capas) — senão rodar de novo
+  // apagaria a capa e a limpeza de imagens abaixo apagaria o capa.webp; e qualquer página mantém `ebook` e `emResumo`.
   const destino = path.join(RAIZ, "content", PASTA[cfg.tipo], `${cfg.slug}.pt.md`);
-  if (!capa && (cfg.tipo === "guia" || cfg.tipo === "analise") && existsSync(destino)) {
-    const fmAtual = readFileSync(destino, "utf8").replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---/);
-    capa = fmAtual ? lerYaml(fmAtual[1])?.capa ?? null : null;
-  }
+  const fmTexto = existsSync(destino) ? readFileSync(destino, "utf8").replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---/) : null;
+  const atual = fmTexto ? lerYaml(fmTexto[1]) ?? {} : {};
+  if (!capa && (cfg.tipo === "guia" || cfg.tipo === "analise")) capa = atual.capa ?? null;
 
   // Frontmatter
   const cat = CATEGORIAS[cfg.categoria];
@@ -223,6 +222,8 @@ async function migrar(cfg) {
     ...(capa ? { capa } : {}),
     categoria: { nome: cat.nome, href: cat.href },
     trilha: cfg.trilha ?? cfg.titulo,
+    ...(atual.ebook ? { ebook: atual.ebook } : {}),
+    ...(atual.emResumo ? { emResumo: atual.emResumo } : {}),
     autor: "Cristiano Pereira", publicadoEm: null, atualizadoEm: "2026-10-20",
     ...(cfg.corretora ? { corretora: cfg.corretora } : {}),
     ...(cfg.ficha ? { ficha: cfg.ficha } : {}),

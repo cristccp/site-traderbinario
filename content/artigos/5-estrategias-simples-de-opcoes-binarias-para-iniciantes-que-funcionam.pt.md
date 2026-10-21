@@ -19,6 +19,7 @@ categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias
 trilha: 5 estratégias para iniciantes
+ebook: candlesticks
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20

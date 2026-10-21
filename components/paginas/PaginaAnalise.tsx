@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CaixaAutor, formatarData } from "@/components/Autor";
 import Corpo from "@/components/Corpo";
+import EmResumo from "@/components/EmResumo";
 import Indice from "@/components/Indice";
 import JsonLd from "@/components/JsonLd";
 import LinkCorretora from "@/components/LinkCorretora";
@@ -47,6 +48,7 @@ export default function PaginaAnalise({ idioma, slug }: { idioma: Idioma; slug: 
               <Titulo nivel="h1" className="titulo titulo--artigo" texto={c.titulo} destaque={c.tituloDestaque} />
               {c.corretora?.nota && <p className="nota-corretora" role="note">{c.corretora.nota}</p>}
               {c.resumo && <p className="apoio">{c.resumo}</p>}
+              <EmResumo itens={c.emResumo} idioma={idioma} />
               <span className="meta">{t.autor.por} {t.autor.nome}{c.atualizadoEm ? " · " + t.autor.atualizado + " " + formatarData(c.atualizadoEm, idioma) : ""}</span>
             </div>
 

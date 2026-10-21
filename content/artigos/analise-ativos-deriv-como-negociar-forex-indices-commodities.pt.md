@@ -19,6 +19,7 @@ categoria:
   nome: Corretoras
   href: /c/corretoras
 trilha: Ativos na Deriv
+ebook: boom-crash
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20

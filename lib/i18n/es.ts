@@ -98,7 +98,16 @@ export const ES: Textos = {
     politicaHref: "https://cristianopereira.com.br/es/privacidad",
     preferencias: "Preferencias de cookies",
     siteCristiano: "cristianopereira.com.br",
+    glossario: "Glosario",
   },
+  resumo: { titulo: "En 30 segundos" },
+  ebook: { rotulo: "E-BOOK GRATIS", botao: "Descargar gratis", compacto: "Material gratis" },
+  calc: {
+    risco: { titulo: "Riesgo por operación", banca: "Capital", moeda: "Moneda", pct: "% del capital por operación", perdas: "Pérdidas para el stop del día", valorOp: "Valor por operación", stopDia: "Stop del día", daBanca: "del capital", perdas20: "Pérdidas seguidas hasta perder el 20% del capital", perdas20Nota: "con un valor fijo por operación", aviso: "Por encima del 2% por operación, una mala racha pesa mucho en el capital.", erroBanca: "Escribe un capital mayor que cero.", erroPct: "Usa un valor entre 0,5% y 5%.", erroPerdas: "Usa un número entre 1 y 20." },
+    empate: { titulo: "Aciertos para empatar", payout: "Payout de la operación (%)", resultado: "Aciertos mínimos solo para empatar", frase: "Por debajo de esto, el capital disminuye a largo plazo.", erroPayout: "Usa un payout entre 50% y 100%." },
+  },
+  ferramentas: { rotulo: "HERRAMIENTAS GRATIS", titulo: "Herramientas de gestión de riesgo", destaque: "gestión de riesgo", seoTitle: "Calculadora de riesgo y de aciertos para empatar", meta: "Calculadoras gratis de riesgo por operación y de aciertos para empatar. Todo en tu navegador.", apoio: "Dos cuentas para hacer antes de la primera operación. No se guarda nada: todo se calcula en tu navegador.", usoRisco: "Define cuánto del capital va en cada operación y cuándo termina el día. El valor queda fijo después de ganar o perder.", usoEmpate: "En las opciones binarias, el acierto paga menos de lo que cuesta el error. Mira cuántos aciertos necesitas solo para no perder.", planilha: "Para registrar cada operación, usa la", planilhaLink: "planilla de gestión gratis", glossarioTexto: "¿Dudas con algún término? Mira el", glossarioLink: "glosario de day trading" },
+  glossario: { rotulo: "GLOSARIO", titulo: "Glosario de day trading", destaque: "day trading", seoTitle: "Glosario de day trading: 100 términos de la A a la Z", meta: "Los 100 términos de day trading más usados, de la A a la Z, explicados de forma simple.", apoio: "Los 100 términos del e-book Glosario Esencial de Day Trading, de la A a la Z.", busca: "Buscar término", nenhum: "No se encontró ningún término.", ebookTexto: "¿Quieres el glosario en PDF?", ebookLink: "Descarga el e-book gratis", menu: "Letras" },
   naoEncontrada: {
     title: "Página no encontrada | Trader Binário",
     titulo: "Página no",

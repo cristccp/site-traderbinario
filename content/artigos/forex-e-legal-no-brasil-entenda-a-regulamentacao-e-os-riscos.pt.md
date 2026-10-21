@@ -20,6 +20,12 @@ categoria:
   nome: Forex
   href: /c/forex
 trilha: Forex é legal?
+ebook: gestao-de-risco   # e-book recomendado (troca do Cowork, 21/10/2026)
+emResumo:   # "Em 30 segundos" (aprovado pelo Cristiano, 21/10/2026)
+  - "Segundo a CVM, a oferta de forex e CFD no Brasil é irregular hoje."
+  - "Não há corretora autorizada, e licença de outro país não basta."
+  - "Quem aplica no exterior por conta própria segue as regras da Receita e do Banco Central, sem proteção local."
+  - "O resultado é tributado em 15% no ano, na declaração."
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20

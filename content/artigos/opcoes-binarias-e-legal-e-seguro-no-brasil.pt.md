@@ -20,6 +20,11 @@ categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias
 trilha: É legal e seguro?
+emResumo:   # "Em 30 segundos" (aprovado pelo Cristiano, 21/10/2026)
+  - "Para a CVM, opção binária é contrato derivativo, e a oferta sem autorização é irregular."
+  - "Nenhuma corretora de opções binárias tem autorização da CVM para atuar no Brasil."
+  - "Quem opera fica sem a proteção do mercado regulado brasileiro."
+  - "Consulte os alertas da CVM, fuja de promessa e declare no imposto de renda."
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20

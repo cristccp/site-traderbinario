@@ -40,7 +40,15 @@ export type Textos = {
   corretoras: { analise: string; cadastro: string; aviso: string };
   analise: { rotulo: string; fortes: string; atencao: string; outras: string; verTodas: string; verTodasHref: string; logoAlt: string };
   video: { play: string; aria: string };
-  rodape: { risco: string; afiliado: string; corretora: string; educativo: string; copyright: string; politica: string; politicaHref: string; preferencias: string; siteCristiano: string };
+  rodape: { risco: string; afiliado: string; corretora: string; educativo: string; copyright: string; politica: string; politicaHref: string; preferencias: string; siteCristiano: string; glossario: string };
+  resumo: { titulo: string };
+  ebook: { rotulo: string; botao: string; compacto: string };
+  calc: {
+    risco: { titulo: string; banca: string; moeda: string; pct: string; perdas: string; valorOp: string; stopDia: string; daBanca: string; perdas20: string; perdas20Nota: string; aviso: string; erroBanca: string; erroPct: string; erroPerdas: string };
+    empate: { titulo: string; payout: string; resultado: string; frase: string; erroPayout: string };
+  };
+  ferramentas: { rotulo: string; titulo: string; destaque: string; seoTitle: string; meta: string; apoio: string; usoRisco: string; usoEmpate: string; planilha: string; planilhaLink: string; glossarioTexto: string; glossarioLink: string };
+  glossario: { rotulo: string; titulo: string; destaque: string; seoTitle: string; meta: string; apoio: string; busca: string; nenhum: string; ebookTexto: string; ebookLink: string; menu: string };
   naoEncontrada: { title: string; titulo: string; destaque: string; texto: string; voltar: string };
   banner: TextosBanner;
 };

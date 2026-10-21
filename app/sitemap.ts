@@ -8,8 +8,11 @@ import { SITE } from "@/lib/site";
 const abs = (p: string) => (p === "/" ? SITE : SITE + p);
 const TIPOS: Tipo[] = ["pagina", "guia", "categoria", "artigo", "analise"];
 
+// Páginas fixas que não vêm de content/ (só em português por enquanto)
+const FIXAS = ["/ferramentas", "/glossario"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return TIPOS.flatMap((tipo) =>
+  return [...FIXAS.map((p) => ({ url: abs(p) })), ...TIPOS.flatMap((tipo) =>
     IDIOMAS.flatMap((idioma) =>
       listar({ tipo, idioma }).map((c) => {
         const existe = idiomasDisponiveis(tipo, c.slug);
@@ -21,5 +24,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         };
       }),
     ),
-  );
+  )];
 }

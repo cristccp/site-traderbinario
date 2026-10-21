@@ -22,7 +22,9 @@ export type Bloco =
   | { tipo: "deriv"; local: "texto" | "final"; texto: string }
   | { tipo: "video"; id: string; titulo: string }
   | { tipo: "corretoras"; ids: string[] }
-  | { tipo: "corretora"; id: string; texto: string };
+  | { tipo: "corretora"; id: string; texto: string }
+  | { tipo: "ebook" }                                   // caixa do e-book recomendado (marcada por lib/conteudo.ts)
+  | { tipo: "calculadora"; modo: "risco" | "empate" };   // :::calculadora risco | empate
 export type ItemIndice = { id: string; texto: string };
 
 export const slugify = (s: string) =>
@@ -91,6 +93,11 @@ export function blocos(corpo: string): { lista: Bloco[]; indice: ItemIndice[] } 
       case "video": lista.push({ tipo: "video", id: arg, titulo: dentro }); break;
       case "corretora": lista.push({ tipo: "corretora", id: arg, texto: dentro }); break;
       case "corretoras": lista.push({ tipo: "corretoras", ids: arg.split(/\s+/).filter(Boolean) }); break;
+      case "ebook": lista.push({ tipo: "ebook" }); break;
+      case "calculadora":
+        if (arg !== "risco" && arg !== "empate") throw new Error(`Calculadora desconhecida: :::calculadora ${arg}`);
+        lista.push({ tipo: "calculadora", modo: arg });
+        break;
       default: throw new Error(`Bloco desconhecido: :::${nome}`);
     }
   }

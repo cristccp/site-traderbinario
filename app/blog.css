@@ -402,3 +402,90 @@ html { scroll-padding-top: var(--topo-h); }
   .tema__nome { font-size: 1.125rem; }
   .tema__chamada { font-size: 0.8125rem; }
 }
+
+/* ---------- E-book recomendado (meio do texto e compacto antes do FAQ) ---------- */
+.ebook { display: flex; gap: var(--space-md); align-items: center; padding: var(--space-md); margin: var(--space-md) 0 var(--space-std); }
+.ebook__capa { flex: none; width: 128px; height: auto; border-radius: 6px; box-shadow: 0 var(--space-xs) var(--space-md) color-mix(in srgb, var(--color-ink) 70%, transparent); }
+.ebook__texto { display: flex; flex-direction: column; gap: var(--space-xs); align-items: flex-start; min-width: 0; }
+.ebook__nome { font-family: var(--type-display-serif-family); font-size: 1.375rem; font-weight: 600; line-height: 1.2; color: var(--color-white); }
+.ebook__linha { margin: 0; font-size: 0.9375rem; line-height: 1.55; color: var(--color-mist); }
+.ebook--compacto { padding: var(--space-sm) var(--space-md); gap: var(--space-sm); margin: var(--space-std) 0 var(--space-md); }
+.ebook--compacto .ebook__capa { width: 64px; }
+.ebook--compacto .ebook__texto { flex: 1; }
+.ebook--compacto .ebook__nome { font-size: 1.125rem; }
+.ebook--compacto .botao { flex: none; }
+
+/* ---------- Em 30 segundos ---------- */
+.em-resumo { margin-top: var(--space-md); padding: var(--space-sm) var(--space-md); max-width: 46rem; border-left: 3px solid var(--color-cyan); }
+.em-resumo h2 { margin: 0 0 var(--space-xs); }
+.em-resumo ul { margin: 0; padding-left: 20px; list-style: disc; display: flex; flex-direction: column; gap: 6px; }
+.em-resumo li { font-size: 1rem; line-height: 1.55; color: var(--color-prose); }
+
+/* ---------- Calculadoras ---------- */
+.calc { padding: var(--space-md); margin: var(--space-md) 0 var(--space-std); display: flex; flex-direction: column; gap: var(--space-sm); }
+.calc__titulo { margin: 0; font-family: var(--type-display-serif-family); font-size: 1.375rem; font-weight: 600; color: var(--color-white); }
+.calc__campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--space-sm); }
+.calc__campo { display: flex; flex-direction: column; gap: 6px; font-size: 0.8125rem; color: var(--color-mist); }
+.calc__campo input, .calc__campo select {
+  height: 44px; padding: 0 14px; border: 1px solid var(--color-line); border-radius: var(--fx-radius);
+  background: var(--color-ink-soft); color: var(--color-white); font: inherit; font-size: 1rem;
+}
+.calc__campo input:focus, .calc__campo select:focus { outline: none; border-color: var(--color-cyan); box-shadow: 0 0 0 3px var(--fx-glow-cyan-soft); }
+.calc__campo input[aria-invalid="true"] { border-color: var(--color-danger); }
+.calc__resultado { display: flex; flex-direction: column; gap: var(--space-xs); padding-top: var(--space-sm); border-top: 1px solid var(--color-line); }
+.calc__linha { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm); font-size: 0.9375rem; color: var(--color-mist); }
+.calc__linha strong { color: var(--color-white); font-weight: 600; text-align: right; }
+.calc__linha small { font-size: 0.75rem; }
+.calc__linha--destaque strong { font-family: var(--type-display-serif-family); font-size: 1.75rem; color: var(--color-cyan); }
+.calc__nota, .calc__erro, .calc__aviso { margin: 0; font-size: 0.875rem; line-height: 1.5; }
+.calc__nota { color: var(--color-mist); }
+.calc__erro, .calc__aviso { color: var(--color-white); border-left: 3px solid var(--color-danger); padding-left: var(--space-xs); }
+
+/* /ferramentas */
+.ferramentas, .glossario-pagina { padding-bottom: var(--space-xl); }
+.ferramenta { margin-top: var(--space-lg); max-width: 46rem; }
+.ferramenta__uso { color: var(--color-prose); line-height: 1.6; margin: var(--space-xs) 0 0; }
+.ferramenta__links { color: var(--color-mist); margin: var(--space-md) 0; max-width: 46rem; line-height: 1.6; }
+.ferramenta__links a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Dicas do glossário no texto ---------- */
+.glossario { position: relative; }
+.glossario__termo {
+  font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: help;
+  border-bottom: 1px dashed var(--color-cyan); text-align: inherit;
+}
+.glossario__termo:hover, .glossario__termo[aria-expanded="true"] { color: var(--color-cyan); }
+.glossario__termo:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 2px; border-radius: 2px; }
+.glossario__dica {
+  position: absolute; z-index: 30; left: 50%; bottom: calc(100% + 8px); transform: translateX(calc(-50% + var(--desloc, 0px)));
+  width: min(20rem, calc(100vw - 32px)); padding: var(--space-sm); border: 1px solid var(--fx-neon-line-dim); border-radius: var(--fx-radius);
+  background: var(--color-surface); box-shadow: 0 var(--space-xs) var(--space-md) color-mix(in srgb, var(--color-ink) 75%, transparent);
+  font-size: 0.875rem; line-height: 1.5; color: var(--color-prose); text-align: left; white-space: normal;
+}
+.glossario__dica[hidden] { display: none; }
+.glossario__dica strong { color: var(--color-white); }
+.glossario__dica a { display: inline-block; margin-top: 4px; font-size: 0.8125rem; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- /glossario ---------- */
+.glossario-busca { margin: var(--space-md) 0 var(--space-sm); max-width: 32rem; }
+.glossario-busca input { width: 100%; height: 48px; padding: 0 18px; border: 1px solid var(--color-line); border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-white); font: inherit; }
+.glossario-busca input:focus { outline: none; border-color: var(--color-cyan); box-shadow: 0 0 0 3px var(--fx-glow-cyan-soft); }
+.glossario-letras { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: var(--space-md); }
+.glossario-letras a { display: inline-grid; place-items: center; min-width: 36px; height: 36px; border: 1px solid var(--color-line); border-radius: var(--fx-radius); color: var(--color-white); font-weight: 600; }
+.glossario-letras a:hover { border-color: var(--color-cyan); color: var(--color-cyan); }
+.glossario-grupo { max-width: 46rem; margin-bottom: var(--space-md); scroll-margin-top: var(--space-md); }
+.glossario-grupo__letra { margin: 0 0 var(--space-xs); font-family: var(--type-display-serif-family); font-size: 2rem; color: var(--color-cyan); }
+.glossario-grupo dl { margin: 0; }
+.glossario-item { padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-line); scroll-margin-top: var(--space-md); }
+.glossario-item:target { background: color-mix(in srgb, var(--color-cyan) 8%, transparent); }
+.glossario-item dt { font-weight: 600; color: var(--color-white); }
+.glossario-item dd { margin: 4px 0 0; color: var(--color-prose); line-height: 1.55; }
+
+@media (max-width: 47.99rem) {
+  .ebook { flex-direction: column; align-items: flex-start; }
+  .ebook__capa { width: 96px; }
+  .ebook--compacto { flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .ebook--compacto .ebook__capa { width: 52px; }
+  .calc__linha { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .calc__linha strong { text-align: left; }
+}

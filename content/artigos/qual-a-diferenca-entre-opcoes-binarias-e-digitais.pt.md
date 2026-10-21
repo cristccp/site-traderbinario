@@ -20,6 +20,11 @@ categoria:
   nome: Opções binárias
   href: /c/opcoes-binarias
 trilha: Binárias × digitais
+emResumo:   # "Em 30 segundos" (aprovado pelo Cristiano, 21/10/2026)
+  - "\"Binária\" e \"digital\" mudam de significado de corretora para corretora."
+  - "O que muda de verdade: preço de referência, pagamento e a saída antes do fim."
+  - "Nos dois formatos, a perda máxima é o valor da operação. Nenhum é mais seguro."
+  - "Leia a regra do contrato na plataforma e treine na conta demo."
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20
