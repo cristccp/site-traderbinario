@@ -1,10 +1,10 @@
 import type { Idioma } from "@/lib/i18n/tipos";
 
 // Grupo do Telegram por idioma — NUM LUGAR SÓ (padrao-idiomas.md, regra 5).
-// PT = grupo principal. EN/ES guardados para quando o blog tiver páginas nesses idiomas.
+// Convites próprios do blog (traderbinario-pt/en/es), aprovados em 21/10/2026 — substituem os grupos antigos.
 // Todo botão de Telegram do site usa components/LinkTelegram (registra telegram_click com o idioma).
 export const TELEGRAM: Record<Idioma, string> = {
-  pt: "https://t.me/cristianotraderbinario",
-  en: "https://t.me/TraderForexOptions",
-  es: "https://t.me/opcionesbinariastb",
+  pt: "https://t.me/+LBSmzMzmlyo3ZjJh",
+  en: "https://t.me/+fzd_tPzuteI1ZmI5",
+  es: "https://t.me/+qBhgQs8ZwA9iZjQx",
 };

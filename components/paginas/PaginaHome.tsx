@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BlocoTelegram from "@/components/BlocoTelegram";
 import BoxDeriv from "@/components/BoxDeriv";
 import CardConteudo from "@/components/CardConteudo";
 import CardsCorretoras from "@/components/CardsCorretoras";
 import { ICONES_TEMA } from "@/components/Icones";
 import Titulo from "@/components/Titulo";
 import Topo from "@/components/Topo";
-import { buscar, caminho, daCategoria, idiomasDisponiveis, listar } from "@/lib/conteudo";
+import { buscar, caminho, daCategoria, equivalentes, listar } from "@/lib/conteudo";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
+import { FIXAS } from "@/lib/rotas-idiomas";
 import REESCRITOS from "@/lib/reescritos.json";
 
 // Campos próprios da home (content/paginas/home.<idioma>.md)
@@ -21,6 +23,14 @@ type Home = {
   corretoras: { titulo: string; destaque: string; itens: string[]; verTodas: { texto: string; href: string } };
   recentes: { titulo: string; destaque: string };
 };
+// Home EN/ES (copy aprovada 21/10/2026, seção 4): 3 cards de artigo + ferramentas + glossário + Telegram + box da Deriv.
+// Sem temas, sem busca e sem "outras corretoras" (categorias e análises só em PT).
+type Card = { titulo: string; texto: string; acao: string };
+type HomeIdioma = Omit<Home, "guias" | "corretoras" | "recentes"> & {
+  artigos: { titulo: string; destaque: string; itens: { tipo: "guia" | "artigo"; slug: string; texto: string }[] };
+  ferramentas: Card;
+  glossario: Card;
+};
 
 // Ordem dos temas no box de categorias (mesmos slugs de content/categorias/)
 const TEMAS = ["opcoes-binarias", "robos-traders", "forex", "metatrader", "gestao-de-risco", "corretoras"];
@@ -32,14 +42,14 @@ const ordemReescrito = (slug: string) => { const i = REESCRITOS.slugs.findIndex(
 const negrito = (s: string) => s.split(/\*\*(.+?)\*\*/g).map((p, i) => (i % 2 ? <strong key={i}>{p}</strong> : p));
 
 // MODELO DA HOME: topo (título, apoio, box da Deriv) → temas (6 categorias) → guias → 6 artigos recentes (+ plataformas)
-// → outras corretoras com aviso de risco.
+// → outras corretoras com aviso de risco. EN/ES: modelo menor (HomeIdioma).
 export default function PaginaHome({ idioma }: { idioma: Idioma }) {
   const c = buscar("pagina", "home", idioma);
   if (!c) notFound();
+  if (idioma !== "pt") return <HomeIdioma idioma={idioma} c={c} />;
   const t = textos(idioma);
   const h = c.extra as unknown as Home;
-  const idiomas = idiomasDisponiveis("pagina", "home");
-  const caminhos = Object.fromEntries(idiomas.map((i) => [i, caminho("pagina", "home", i)]));
+  const caminhos = equivalentes(c);
 
   const temas = TEMAS.map((slug) => buscar("categoria", slug, idioma)).filter((k) => k !== null).map((k) => {
     const nome = String(k.extra.nome);
@@ -54,20 +64,9 @@ export default function PaginaHome({ idioma }: { idioma: Idioma }) {
 
   return (
     <>
-      <Topo idioma={idioma} idiomas={idiomas} caminhos={caminhos} />
+      <Topo idioma={idioma} caminhos={caminhos} />
       <main id="conteudo">
-        <section className="wrap hero">
-          <div className="hero__texto">
-            <span className="rotulo rotulo--ciano">{h.rotulo}</span>
-            <Titulo nivel="h1" className="titulo titulo--hero" texto={c.titulo} destaque={c.tituloDestaque} />
-            {h.apoio.map((p, i) => <p key={i} className={i === 0 ? "apoio" : "apoio apoio--menor"}>{negrito(p)}</p>)}
-            <div className="hero__botoes">
-              <Link prefetch={false} className="botao" href={h.botoes.principal.href}>{h.botoes.principal.texto}</Link>
-              <a className="botao botao--contorno" href={h.botoes.secundario.href}>{h.botoes.secundario.texto}</a>
-            </div>
-          </div>
-          <BoxDeriv idioma={idioma} pagina="home" />
-        </section>
+        <Hero idioma={idioma} c={c} h={h} />
 
         <section className="wrap temas" aria-labelledby="titulo-temas">
           <h2 id="titulo-temas" className="titulo titulo--h2">{partes(t.temas.titulo, t.temas.destaque)}</h2>
@@ -135,6 +134,70 @@ export default function PaginaHome({ idioma }: { idioma: Idioma }) {
           <CardsCorretoras ids={h.corretoras.itens} idioma={idioma} pagina="home" />
           <Link prefetch={false} className="corretoras__todas" href={h.corretoras.verTodas.href}>{h.corretoras.verTodas.texto} →</Link>
         </section>
+      </main>
+    </>
+  );
+}
+
+function Hero({ idioma, c, h }: { idioma: Idioma; c: NonNullable<ReturnType<typeof buscar>>; h: Pick<Home, "rotulo" | "apoio" | "botoes"> }) {
+  return (
+    <section className="wrap hero">
+      <div className="hero__texto">
+        <span className="rotulo rotulo--ciano">{h.rotulo}</span>
+        <Titulo nivel="h1" className="titulo titulo--hero" texto={c.titulo} destaque={c.tituloDestaque} />
+        {h.apoio.map((p, i) => <p key={i} className={i === 0 ? "apoio" : "apoio apoio--menor"}>{negrito(p)}</p>)}
+        <div className="hero__botoes">
+          <Link prefetch={false} className="botao" href={h.botoes.principal.href}>{h.botoes.principal.texto}</Link>
+          <a className="botao botao--contorno" href={h.botoes.secundario.href}>{h.botoes.secundario.texto}</a>
+        </div>
+      </div>
+      <BoxDeriv idioma={idioma} pagina="home" />
+    </section>
+  );
+}
+
+function HomeIdioma({ idioma, c }: { idioma: Idioma; c: NonNullable<ReturnType<typeof buscar>> }) {
+  const t = textos(idioma);
+  const h = c.extra as unknown as HomeIdioma;
+  const artigos = h.artigos.itens.map((it) => {
+    const a = buscar(it.tipo, it.slug, idioma);
+    if (!a) throw new Error(`Home ${idioma}: artigo não publicado ${it.tipo}/${it.slug}`);
+    return { a, texto: it.texto };
+  });
+  const blocos = [{ ...h.ferramentas, href: FIXAS.ferramentas[idioma] }, { ...h.glossario, href: FIXAS.glossario[idioma] }];
+  return (
+    <>
+      <Topo idioma={idioma} caminhos={equivalentes(c)} />
+      <main id="conteudo">
+        <Hero idioma={idioma} c={c} h={h} />
+
+        <section className="wrap guias" aria-labelledby="titulo-artigos">
+          <h2 id="titulo-artigos" className="titulo titulo--h2">{partes(h.artigos.titulo, h.artigos.destaque)}</h2>
+          <div className="grade-3">
+            {artigos.map(({ a, texto }) => (
+              <CardConteudo key={a.slug} capaFalta={t.home.capaFalta} item={{
+                titulo: a.titulo, href: caminho(a.tipo, a.slug, idioma), capa: a.capa,
+                rotulo: `${a.minutos} ${t.artigo.minLeitura}`, resumo: texto,
+              }} />
+            ))}
+          </div>
+        </section>
+
+        <section className="wrap guias">
+          <div className="grade-3 grade-3--2">
+            {blocos.map((b) => (
+              <Link key={b.href} prefetch={false} className="cartao guia" href={b.href}>
+                <span className="guia__titulo">{b.titulo}</span>
+                <span className="guia__texto">{b.texto}</span>
+                <span className="guia__acao">{b.acao}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <div className="wrap">
+          <BlocoTelegram idioma={idioma} />
+        </div>
       </main>
     </>
   );

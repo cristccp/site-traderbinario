@@ -7,6 +7,7 @@ export const LANG_HTML: Record<Idioma, string> = { pt: "pt-BR", en: "en", es: "e
 export const HREFLANG: Record<Idioma, string> = { pt: "pt-BR", en: "en", es: "es" };
 export const NOME_IDIOMA: Record<Idioma, string> = { pt: "Português", en: "English", es: "Español" };   // leitor de tela do seletor
 export const OG_LOCALE: Record<Idioma, string> = { pt: "pt_BR", en: "en_US", es: "es_LA" };          // es_LA: público latino
+export const PREFIXO: Record<Idioma, string> = { pt: "", en: "/en", es: "/es" };                     // PT na raiz, /en e /es
 
 export type TextosBanner = { aria: string; texto: string; politica: string; politicaHref: string; aceitar: string; recusar: string };
 
@@ -23,6 +24,9 @@ export type Textos = {
   menu: { aria: string; abrir: string; fechar: string; itens: ItemMenu[] };
   redes: { youtube: string; instagram: string };
   telegram: string;                         // botão do topo
+  // EN/ES: bloco do grupo do Telegram (home, fim do artigo; versão compacta no lugar da caixa de e-book, que é só PT)
+  telegramBloco?: { rotulo: string; titulo: string; destaque: string; texto: string; botao: string; compacto: string; aria: string };
+  avisoPais?: string;                       // EN/ES: aviso de país no topo dos artigos (bloco :::aviso-pais)
   seletorAria: string;
   trilha: { aria: string; inicio: string };
   autor: { nome: string; linha: string; atualizado: string; por: string; bio: string; link: string; fotoAlt: string };
@@ -47,8 +51,8 @@ export type Textos = {
     risco: { titulo: string; banca: string; moeda: string; pct: string; perdas: string; valorOp: string; stopDia: string; daBanca: string; perdas20: string; perdas20Nota: string; aviso: string; erroBanca: string; erroPct: string; erroPerdas: string };
     empate: { titulo: string; payout: string; resultado: string; frase: string; erroPayout: string };
   };
-  ferramentas: { rotulo: string; titulo: string; destaque: string; seoTitle: string; meta: string; apoio: string; usoRisco: string; usoEmpate: string; planilha: string; planilhaLink: string; glossarioTexto: string; glossarioLink: string };
-  glossario: { rotulo: string; titulo: string; destaque: string; seoTitle: string; meta: string; apoio: string; busca: string; nenhum: string; ebookTexto: string; ebookLink: string; menu: string };
+  ferramentas: { rotulo: string; titulo: string; destaque: string; seoTitle: string; meta: string; apoio: string; usoRisco: string; usoEmpate: string; planilha?: string; planilhaLink?: string; glossarioTexto: string; glossarioLink: string };
+  glossario: { rotulo: string; titulo: string; destaque: string; seoTitle: string; meta: string; apoio: string; busca: string; nenhum: string; ebookTexto?: string; ebookLink?: string; menu: string; ver: string };   // ebook*: só PT (e-book só em PT)
   naoEncontrada: { title: string; titulo: string; destaque: string; texto: string; voltar: string };
   banner: TextosBanner;
 };

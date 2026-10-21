@@ -12,9 +12,10 @@ import { REDES } from "@/lib/redes";
 // prefetch={false} nos links internos: várias páginas ainda não migraram (o pré-carregamento daria 404 no console).
 // Cabeçalho do design aprovado: "Trader Binário" + "POR CRISTIANO PEREIRA", menu, YouTube/Instagram e botão do Telegram.
 // Fixo no topo ao rolar, com efeito vidro (TopoRolagem + app/blog.css). No celular o menu vira o botão ☰ (MenuCelular). `atual` = item do menu da seção da página (fica em ciano).
-// `idiomas` = idiomas em que ESTA página existe (o seletor só aparece com mais de um) e `caminhos` = endereço em cada um.
-export default function Topo({ idioma, atual, idiomas = [idioma], caminhos = {} }:
-  { idioma: Idioma; atual?: string; idiomas?: Idioma[]; caminhos?: Partial<Record<Idioma, string>> }) {
+// `caminhos` = endereço desta página em cada idioma em que ela existe (o seletor PT · EN · ES leva para lá; sem equivalente, à home).
+// Busca só em PT (EN/ES têm 3 artigos; volta quando houver mais).
+export default function Topo({ idioma, atual, caminhos = {} }:
+  { idioma: Idioma; atual?: string; caminhos?: Partial<Record<Idioma, string>> }) {
   const t = textos(idioma);
   const itens = t.menu.itens;
   return (
@@ -40,19 +41,23 @@ export default function Topo({ idioma, atual, idiomas = [idioma], caminhos = {} 
         </nav>
 
         <div className="topo__acoes">
-          {/* Busca: campo no computador (formulário GET, funciona sem JavaScript) e lupa no celular → /busca */}
-          <form className="topo__busca" action="/busca" role="search">
-            <input type="search" name="q" placeholder={t.busca.campo} aria-label={t.busca.campo} maxLength={80} enterKeyHint="search" />
-            <button type="submit" aria-label={t.busca.botao}><IconeBusca /></button>
-          </form>
-          <Link prefetch={false} className="redondo topo__lupa" href="/busca" aria-label={t.busca.rotulo}><IconeBusca /></Link>
-          <SeletorIdioma idioma={idioma} idiomas={idiomas} caminhos={caminhos} />
+          {/* Busca (só PT): campo no computador (formulário GET, funciona sem JavaScript) e lupa no celular → /busca */}
+          {idioma === "pt" && (
+            <>
+              <form className="topo__busca" action="/busca" role="search">
+                <input type="search" name="q" placeholder={t.busca.campo} aria-label={t.busca.campo} maxLength={80} enterKeyHint="search" />
+                <button type="submit" aria-label={t.busca.botao}><IconeBusca /></button>
+              </form>
+              <Link prefetch={false} className="redondo topo__lupa" href="/busca" aria-label={t.busca.rotulo}><IconeBusca /></Link>
+            </>
+          )}
+          <SeletorIdioma idioma={idioma} caminhos={caminhos} className="topo__seletor" />
           <a className="redondo topo__rede" href={REDES.youtube} target="_blank" rel="noopener noreferrer" aria-label={`${t.redes.youtube} ${t.novaAba}`}><IconeYoutube /></a>
           <a className="redondo topo__rede" href={REDES.instagram} target="_blank" rel="noopener noreferrer" aria-label={`${t.redes.instagram} ${t.novaAba}`}><IconeInstagram /></a>
           <LinkTelegram idioma={idioma} className="botao botao--pequeno topo__telegram" novaAba={t.novaAba}>
             <IconeTelegram />{t.telegram}
           </LinkTelegram>
-          <MenuCelular idioma={idioma} atual={atual} />
+          <MenuCelular idioma={idioma} atual={atual} caminhos={caminhos} />
         </div>
       </div>
     </header>

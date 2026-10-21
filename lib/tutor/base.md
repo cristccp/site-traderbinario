@@ -2,7 +2,7 @@
 (Gerada automaticamente das páginas publicadas do blog traderbinario.com.br e dos catálogos do site cristianopereira.com.br. Use só o que está aqui.)
 
 ## Links fixos
-- Grupo do Telegram (gratuito): https://t.me/cristianotraderbinario
+- Grupo do Telegram (gratuito): https://t.me/+LBSmzMzmlyo3ZjJh
 - Link do Cristiano para a Deriv (a corretora que o Cristiano usa; começar pela conta demo): https://t.deriv.link?t=75992B6H3EDR
 - Ferramentas grátis do blog (calculadora de risco por operação e calculadora de acertos para empatar, sem projeção de ganho): /ferramentas
 - Glossário de day trade (100 termos de A a Z): /glossario

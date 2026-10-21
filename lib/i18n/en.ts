@@ -1,9 +1,9 @@
 import type { Textos } from "@/lib/i18n/tipos";
 
-// Textos fixos em INGLÊS — estrutura pronta, AINDA SEM PÁGINAS no idioma (nesta etapa só PT existe).
-// Rodapé, banner e aviso: skills/idiomas-site/references/textos-padrao.md (aprovados). O resto é rascunho para revisar
-// quando as páginas EN forem escritas (skill idiomas-site). Regra: nunca "binary options" no texto.
-// Os itens do menu levam à home do idioma até as páginas existirem.
+// Textos fixos em INGLÊS. Páginas EN (21/10/2026): home, 3 artigos, ferramentas, glossário e política curta.
+// Rodapé, banner e aviso: skills/idiomas-site/references/textos-padrao.md (aprovados). Bio, Deriv, menu, ferramentas, glossário,
+// política, Telegram e aviso de país: entregas/traderbinario-copy-en-es-2026-10-21.md (aprovada). O resto segue como rascunho.
+// Regra: "binary options" só nos 3 artigos (com o aviso de país), nunca nos textos fixos.
 
 export const EN: Textos = {
   idioma: "en",
@@ -15,17 +15,25 @@ export const EN: Textos = {
     abrir: "Open menu",
     fechar: "Close menu",
     itens: [
-      { label: "Options", href: "/en" },
-      { label: "Forex", href: "/en" },
-      { label: "Trading robots", href: "/en" },
-      { label: "MetaTrader", href: "/en" },
-      { label: "Risk management", href: "/en" },
-      { label: "Brokers", href: "/en" },
+      { label: "Start here", href: "/en/what-are-binary-options" },
+      { label: "Risk management", href: "/en/blog/binary-options-money-management" },
+      { label: "Tools", href: "/en/tools" },
+      { label: "Glossary", href: "/en/glossary" },
       { label: "Cristiano Pereira ↗", href: "https://cristianopereira.com.br/en", externo: true },
     ],
   },
   redes: { youtube: "Cristiano Pereira on YouTube", instagram: "Cristiano Pereira on Instagram" },
   telegram: "Telegram group",
+  telegramBloco: {
+    rotulo: "TELEGRAM GROUP",
+    titulo: "Learn with other traders",
+    destaque: "other traders",
+    texto: "Join the free group in English: content on risk management, platforms and trading routine. No guaranteed signals.",
+    botao: "Join the Telegram group",
+    compacto: "Questions? Join the Telegram group →",
+    aria: "Telegram group",
+  },
+  avisoPais: "Binary options are banned or restricted for retail traders in many countries, including the EU, the UK, Australia and Canada. In the United States, they are only allowed on regulated exchanges. Check the rules where you live before opening any account.",
   seletorAria: "Site language",
   trilha: { aria: "Breadcrumb", inicio: "Home" },
   autor: {
@@ -33,7 +41,7 @@ export const EN: Textos = {
     linha: "Trading since 2017",
     atualizado: "updated on",
     por: "By",
-    bio: "Trading since 2017, creator of the Trader Consistente™ method and of the Trader Bots Club and Ideal Trade platforms. Teaches trading with method and risk management.",
+    bio: "Cristiano Pereira has been trading since 2017, manually and with robots. He created the Trader Consistente method and the Trader Bots Club and Ideal Trade platforms. He teaches traders who keep blowing their accounts to trade with method, risk management and discipline, to withdraw profits and to build wealth. He does not sell daily profits.",
     link: "cristianopereira.com.br →",
     fotoAlt: "Cristiano Pereira having coffee",
   },
@@ -54,8 +62,8 @@ export const EN: Textos = {
     itens: ["Demo account with $10,000 in virtual funds", "MetaTrader 5 and robots in the same account", "Minimum deposit of $5"],
     botao: "Open a free demo account",
     analise: "Read the full Deriv review →",
-    risco: "⚠️ Options and CFDs come with a high risk of loss. Start with the demo account.",
-    lateralTexto: "Demo account with $10,000 in virtual funds to practice without risk.",
+    risco: "⚠️ Options and CFDs come with a high risk of loss. Start with the demo account. Deriv is not available in all countries.",
+    lateralTexto: "Demo account with $10,000 in virtual funds for practice.",
     lateralBotao: "Open a demo account",
     lateralRisco: "High risk of loss.",
     fichaBotao: "Open a Deriv demo account",
@@ -95,7 +103,7 @@ export const EN: Textos = {
     educativo: "Educational content; nothing here is investment advice. Past results do not guarantee future results.",
     copyright: "© 2026 Trader Binário · Cristiano Pereira Trader",
     politica: "Privacy policy",
-    politicaHref: "https://cristianopereira.com.br/en/privacy",
+    politicaHref: "/en/privacy",
     preferencias: "Cookie preferences",
     siteCristiano: "cristianopereira.com.br",
     glossario: "Glossary",
@@ -106,8 +114,8 @@ export const EN: Textos = {
     risco: { titulo: "Risk per trade", banca: "Account balance", moeda: "Currency", pct: "% of balance per trade", perdas: "Losses to hit the daily stop", valorOp: "Amount per trade", stopDia: "Daily stop", daBanca: "of balance", perdas20: "Losses in a row to lose 20% of the balance", perdas20Nota: "with a fixed amount per trade", aviso: "Above 2% per trade, a bad streak weighs heavily on the balance.", erroBanca: "Enter a balance greater than zero.", erroPct: "Use a value between 0.5% and 5%.", erroPerdas: "Use a number between 1 and 20." },
     empate: { titulo: "Win rate to break even", payout: "Trade payout (%)", resultado: "Minimum win rate just to break even", frase: "Below this, the balance shrinks in the long run.", erroPayout: "Use a payout between 50% and 100%." },
   },
-  ferramentas: { rotulo: "FREE TOOLS", titulo: "Risk management tools", destaque: "risk management", seoTitle: "Risk per trade and break-even calculators", meta: "Free calculators for risk per trade and the win rate needed to break even. Everything runs in your browser.", apoio: "Two calculations to make before your first trade. Nothing is stored: everything runs in your browser.", usoRisco: "Decide how much of the balance goes into each trade and when the day ends. The amount stays fixed after wins or losses.", usoEmpate: "In binary options, a win pays less than a loss costs. See the win rate you need just to break even.", planilha: "To log every trade, use the", planilhaLink: "free management spreadsheet", glossarioTexto: "Not sure about a term? See the", glossarioLink: "day trading glossary" },
-  glossario: { rotulo: "GLOSSARY", titulo: "Day trading glossary", destaque: "glossary", seoTitle: "Day trading glossary: 100 terms from A to Z", meta: "The 100 most used day trading terms, from A to Z, explained simply.", apoio: "The 100 terms from the Day Trading Glossary e-book, from A to Z.", busca: "Search term", nenhum: "No term found.", ebookTexto: "Want the glossary as a PDF?", ebookLink: "Download the free e-book", menu: "Letters" },
+  ferramentas: { rotulo: "FREE TOOLS", titulo: "Risk management tools", destaque: "risk management", seoTitle: "Risk per trade and break-even calculators", meta: "Free calculators for risk per trade and the win rate needed to break even. Everything runs in your browser.", apoio: "Two calculations to make before your first trade. Nothing is stored: everything runs in your browser.", usoRisco: "Decide how much of the balance goes into each trade and when the day ends. The amount stays fixed after wins or losses.", usoEmpate: "In fixed-payout trades, a win pays less than a loss costs. See the win rate you need just to break even.", glossarioTexto: "Not sure about a term? See the", glossarioLink: "day trading glossary" },
+  glossario: { rotulo: "GLOSSARY", titulo: "Day trading glossary", destaque: "glossary", seoTitle: "Day trading glossary: 100 terms from A to Z", meta: "The 100 most used day trading terms, from A to Z, explained simply.", apoio: "100 day trading terms, from A to Z, explained simply.", busca: "Search term", nenhum: "No term found.", menu: "Letters", ver: "See in the glossary" },
   naoEncontrada: {
     title: "Page not found | Trader Binário",
     titulo: "Page not",
@@ -119,7 +127,7 @@ export const EN: Textos = {
     aria: "Cookie notice",
     texto: "We use Google Analytics cookies to understand how the site is used and improve the content. They are only turned on if you accept.",
     politica: "Privacy policy",
-    politicaHref: "https://cristianopereira.com.br/en/privacy",
+    politicaHref: "/en/privacy",
     aceitar: "Accept",
     recusar: "Decline",
   },

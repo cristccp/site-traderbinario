@@ -12,7 +12,7 @@ import Perguntas from "@/components/Perguntas";
 import Titulo from "@/components/Titulo";
 import Topo from "@/components/Topo";
 import Trilha from "@/components/Trilha";
-import { buscar, caminho, idiomasDisponiveis } from "@/lib/conteudo";
+import { buscar, equivalentes } from "@/lib/conteudo";
 import { CORRETORAS } from "@/lib/corretoras";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
@@ -26,8 +26,6 @@ export default function PaginaAnalise({ idioma, slug }: { idioma: Idioma; slug: 
   const c = buscar("analise", slug, idioma);
   if (!c) notFound();
   const t = textos(idioma);
-  const idiomas = idiomasDisponiveis("analise", slug);
-  const caminhos = Object.fromEntries(idiomas.map((i) => [i, caminho("analise", slug, i)]));
   const indice = c.faq?.length ? [...c.indice, { id: "perguntas-frequentes", texto: t.artigo.faq }] : c.indice;
   const ehDeriv = slug === "analise-corretora-deriv";
   const viaDeriv = ehDeriv || c.corretora?.cadastro === "deriv";
@@ -35,7 +33,7 @@ export default function PaginaAnalise({ idioma, slug }: { idioma: Idioma; slug: 
 
   return (
     <>
-      <Topo idioma={idioma} atual={c.categoria?.href} idiomas={idiomas} caminhos={caminhos} />
+      <Topo idioma={idioma} atual={c.categoria?.href} caminhos={equivalentes(c)} />
       <JsonLd dados={jsonLdArtigo(c)} />
       <JsonLd dados={jsonLdTrilha(c, idioma)} />
       <JsonLd dados={jsonLdFaq(c)} />
@@ -71,7 +69,7 @@ export default function PaginaAnalise({ idioma, slug }: { idioma: Idioma; slug: 
                   ))}
                 </dl>
                 {viaDeriv ? (
-                  <LinkDeriv local="ficha" pagina={slug} className="botao" novaAba={t.novaAba}>{t.deriv.fichaBotao}</LinkDeriv>
+                  <LinkDeriv local="ficha" pagina={slug} idioma={idioma} className="botao" novaAba={t.novaAba}>{t.deriv.fichaBotao}</LinkDeriv>
                 ) : outra?.cadastro ? (
                   <LinkCorretora id={outra.id} href={outra.cadastro} className="botao" novaAba={t.novaAba}>{t.corretoras.cadastro} na {c.corretora.nome}</LinkCorretora>
                 ) : null}

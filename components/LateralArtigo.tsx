@@ -14,7 +14,7 @@ export default function LateralArtigo({ idioma, pagina }: { idioma: Idioma; pagi
           <span className="rotulo">{d.rotulo}</span>
           <span className="lateral__nome">{d.nome}</span>
           <span className="lateral__texto">{d.lateralTexto}</span>
-          <LinkDeriv local="lateral" pagina={pagina} className="botao botao--pequeno" novaAba={t.novaAba}>{d.lateralBotao}</LinkDeriv>
+          <LinkDeriv local="lateral" pagina={pagina} idioma={idioma} className="botao botao--pequeno" novaAba={t.novaAba}>{d.lateralBotao}</LinkDeriv>
           <span className="aviso-curto">{d.lateralRisco}</span>
         </div>
         {t.lateral.cards.map((c) => (

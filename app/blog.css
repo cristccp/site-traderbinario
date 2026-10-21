@@ -496,3 +496,23 @@ html { scroll-padding-top: var(--topo-h); }
   .calc__linha { flex-direction: column; align-items: flex-start; gap: 2px; }
   .calc__linha strong { text-align: left; }
 }
+
+/* Seletor de idioma (21/10/2026): no celular fica dentro do menu ☰; no topo só a partir de 40rem */
+.topo__seletor { display: none; }
+@media (min-width: 40rem) { .topo__seletor { display: flex; } }
+.menu-celular__seletor { margin-top: var(--space-sm); }
+
+/* Bloco do Telegram (EN/ES, 21/10/2026): home e fim do artigo; compacto antes do FAQ (no lugar do e-book, só PT) */
+.telegram-bloco { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-xs); padding: var(--space-md); margin: var(--space-std) 0; }
+.telegram-bloco .titulo { margin: 0; }
+.telegram-bloco__texto { margin: 0 0 var(--space-xs); font-size: 0.9375rem; line-height: 1.55; color: var(--color-mist); max-width: 40rem; }
+.telegram-bloco .botao, .telegram-bloco__link { display: inline-flex; align-items: center; gap: var(--space-xs); }
+.telegram-bloco--compacto { padding: var(--space-sm) var(--space-md); margin: var(--space-std) 0 var(--space-md); }
+.telegram-bloco__link { font-weight: 600; color: var(--color-cyan); }
+.telegram-bloco__link:hover { color: var(--color-white); }
+.telegram-bloco svg { flex: none; width: 18px; height: 18px; }
+
+/* Home EN/ES: ferramentas e glossário lado a lado (2 colunas; 1 no celular) */
+.grade-3--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 40rem) { .grade-3--2 { grid-template-columns: minmax(0, 1fr); } }
+.guia__acao { margin-top: auto; font-size: 0.875rem; font-weight: 600; color: var(--color-cyan); }

@@ -9,9 +9,16 @@ import { track } from "@/lib/medicao";
 //  - risco: valor por operação, stop do dia (em dinheiro e em % da banca) e perdas seguidas até −20% (valor fixo);
 //  - empate: acertos mínimos só para empatar = 1 ÷ (1 + payout).
 // Evento calc_use { calc } 1 vez por página, quando aparece o primeiro resultado válido.
-// Banca em texto no jeito brasileiro ("1.000,50"); os outros campos são type=number (o navegador já usa ponto)
+// Banca em texto no jeito do idioma: PT/ES "1.000,50", EN "1,000.50"; os outros campos são type=number (o navegador já usa ponto)
 const numBR = (s: string) => Number(s.trim().replace(/\./g, "").replace(",", "."));
+const numEN = (s: string) => Number(s.trim().replace(/,/g, ""));
 const numCampo = (s: string) => Number(s.replace(",", "."));
+// Dinheiro: PT em R$ ou US$ (seletor); EN e ES só em dólar — EN "$1,000.00", ES "US$ 1.000,00" (público latino)
+const LOCALE: Record<Idioma, string> = { pt: "pt-BR", en: "en-US", es: "es-AR" };
+function formatarDinheiro(idioma: Idioma, moeda: "BRL" | "USD", v: number) {
+  if (idioma === "es") return "US$ " + v.toLocaleString("es-AR", { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: "always" });
+  return new Intl.NumberFormat(LOCALE[idioma], { style: "currency", currency: idioma === "en" ? "USD" : moeda }).format(v);
+}
 
 export default function Calculadora({ modo, idioma = "pt" }: { modo: "risco" | "empate"; idioma?: Idioma }) {
   const t = textos(idioma).calc;
@@ -23,11 +30,11 @@ export default function Calculadora({ modo, idioma = "pt" }: { modo: "risco" | "
   const [moeda, setMoeda] = useState<"BRL" | "USD">("BRL");
   const [payout, setPayout] = useState("85");
 
-  const dinheiro = new Intl.NumberFormat("pt-BR", { style: "currency", currency: moeda });
-  const pctFmt = (n: number, casas = 1) => n.toLocaleString("pt-BR", { minimumFractionDigits: casas, maximumFractionDigits: casas }) + "%";
+  const dinheiro = { format: (v: number) => formatarDinheiro(idioma, moeda, v) };
+  const pctFmt = (n: number, casas = 1) => n.toLocaleString(LOCALE[idioma], { minimumFractionDigits: casas, maximumFractionDigits: casas }) + "%";
 
   // risco
-  const b = numBR(banca), p = numCampo(pct), n = Math.round(numCampo(perdas));
+  const b = idioma === "en" ? numEN(banca) : numBR(banca), p = numCampo(pct), n = Math.round(numCampo(perdas));
   const erroBanca = !(b > 0), erroPct = !(p >= 0.5 && p <= 5), erroPerdas = !(n >= 1 && n <= 20);
   const riscoOk = !erroBanca && !erroPct && !erroPerdas;
   // empate
@@ -71,13 +78,15 @@ export default function Calculadora({ modo, idioma = "pt" }: { modo: "risco" | "
           <span>{t.risco.banca}</span>
           <input type="text" inputMode="decimal" value={banca} onChange={(e) => setBanca(e.target.value)} aria-invalid={erroBanca} />
         </label>
-        <label className="calc__campo calc__campo--curto">
-          <span>{t.risco.moeda}</span>
-          <select value={moeda} onChange={(e) => setMoeda(e.target.value as "BRL" | "USD")}>
-            <option value="BRL">R$</option>
-            <option value="USD">US$</option>
-          </select>
-        </label>
+        {idioma === "pt" && (
+          <label className="calc__campo calc__campo--curto">
+            <span>{t.risco.moeda}</span>
+            <select value={moeda} onChange={(e) => setMoeda(e.target.value as "BRL" | "USD")}>
+              <option value="BRL">R$</option>
+              <option value="USD">US$</option>
+            </select>
+          </label>
+        )}
         <label className="calc__campo">
           <span>{t.risco.pct}</span>
           <input type="number" inputMode="decimal" min={0.5} max={5} step={0.5} value={pct} onChange={(e) => setPct(e.target.value)} aria-invalid={erroPct} />

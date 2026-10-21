@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { cache } from "react";
 import { parse as lerYaml } from "yaml";
-import { IDIOMAS, type Idioma } from "@/lib/i18n/tipos";
+import { IDIOMAS, PREFIXO, type Idioma } from "@/lib/i18n/tipos";
 import { aplicarGlossario } from "@/lib/glossario";
 import { blocos, type Bloco, type ItemIndice } from "@/lib/markdown";
 
@@ -25,12 +25,13 @@ export type Conteudo = {
   tipo: Tipo;
   idioma: Idioma;
   slug: string;
+  original?: string;                  // EN/ES: slug da página em PT de que esta é a tradução (liga os idiomas: seletor, hreflang, sitemap)
   status: Status;
   titulo: string;
   tituloDestaque?: string;            // trecho do título em itálico ciano (DLS)
   resumo?: string;
   seo: { title: string; description: string };
-  categoria?: { nome: string; href: string };
+  categoria?: { nome: string; href?: string };   // EN/ES: só o nome (não há /c/ fora do PT)
   trilha?: string;                    // último item da trilha (breadcrumb)
   autor?: string;
   publicadoEm?: string | null;        // AAAA-MM-DD
@@ -53,7 +54,7 @@ export type Conteudo = {
   extra: Record<string, unknown>;     // campos próprios de uma página (ex.: home)
 };
 
-const CAMPOS = new Set(["tipo", "idioma", "slug", "status", "titulo", "tituloDestaque", "resumo", "seo", "categoria", "trilha", "autor",
+const CAMPOS = new Set(["tipo", "idioma", "slug", "original", "status", "titulo", "tituloDestaque", "resumo", "seo", "categoria", "trilha", "autor",
   "publicadoEm", "atualizadoEm", "capa", "relacionados", "faq", "corretora", "ficha", "pros", "contras", "outras", "emResumo", "ebook"]);
 
 function ler(arquivo: string): Conteudo {
@@ -63,8 +64,10 @@ function ler(arquivo: string): Conteudo {
   const dados = (lerYaml(m[1]) ?? {}) as Record<string, unknown>;
   const corpo = m[2].trim();
   const comTexto = dados.tipo === "artigo" || dados.tipo === "guia";   // caixa de e-book e dicas do glossário: só artigo e guia
-  const { lista: listaBase, indice } = blocos(comTexto ? marcarEbook(corpo) : corpo);
-  const lista = comTexto ? aplicarGlossario(listaBase) : listaBase;
+  const idioma = (dados.idioma ?? "pt") as Idioma;
+  const comEbook = comTexto && idioma === "pt";                         // os e-books são só em PT (EN/ES: bloco do Telegram)
+  const { lista: listaBase, indice } = blocos(comEbook ? marcarEbook(corpo) : corpo);
+  const lista = comTexto ? aplicarGlossario(listaBase, idioma) : listaBase;
   const palavras = corpo.split(/\s+/).filter(Boolean).length;
   const extra = Object.fromEntries(Object.entries(dados).filter(([k]) => !CAMPOS.has(k)));
   const c = { ...dados, minutos: Math.max(1, Math.round(palavras / PALAVRAS_POR_MINUTO)), blocos: lista, indice, extra } as Conteudo;
@@ -117,13 +120,21 @@ export function buscar(tipo: Tipo, slug: string, idioma: Idioma): Conteudo | nul
   return publicados().find((c) => c.tipo === tipo && c.slug === slug && c.idioma === idioma) ?? null;
 }
 
-// Em quais idiomas esta página existe (publicada) — hreflang, sitemap e seletor só usam estes.
-export function idiomasDisponiveis(tipo: Tipo, slug: string): Idioma[] {
-  return IDIOMAS.filter((i) => buscar(tipo, slug, i));
+// Chave que liga as traduções: o slug PT (EN/ES têm slug próprio no idioma + "original: <slug PT>").
+export const chave = (c: Pick<Conteudo, "slug" | "original">) => c.original ?? c.slug;
+
+// Endereço desta página em cada idioma em que ela existe (publicada) — hreflang, sitemap e seletor só usam estes.
+export function equivalentes(c: Pick<Conteudo, "tipo" | "slug" | "original">): Partial<Record<Idioma, string>> {
+  const k = chave(c);
+  const achados = publicados().filter((o) => o.tipo === c.tipo && chave(o) === k);
+  return Object.fromEntries(IDIOMAS.flatMap((i) => {
+    const o = achados.find((x) => x.idioma === i);
+    return o ? [[i, caminho(o.tipo, o.slug, i)]] : [];
+  }));
 }
 
 // Endereço de cada conteúdo, com o prefixo do idioma (PT na raiz, /en e /es).
-export const PREFIXO: Record<Idioma, string> = { pt: "", en: "/en", es: "/es" };
+export { PREFIXO };
 export function caminho(tipo: Tipo, slug: string, idioma: Idioma): string {
   const base = tipo === "artigo" ? `/blog/${slug}` : tipo === "categoria" ? `/c/${slug}` : tipo === "pagina" && slug === "home" ? "" : `/${slug}`;
   return `${PREFIXO[idioma]}${base}` || "/";

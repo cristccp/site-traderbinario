@@ -8,7 +8,7 @@ import Titulo from "@/components/Titulo";
 import Topo from "@/components/Topo";
 import Trilha from "@/components/Trilha";
 import VerMais from "@/components/VerMais";
-import { buscar, caminho, daCategoria, idiomasDisponiveis } from "@/lib/conteudo";
+import { buscar, caminho, daCategoria, equivalentes } from "@/lib/conteudo";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
 import { jsonLdTrilha } from "@/lib/seo";
@@ -25,8 +25,6 @@ export default function PaginaCategoria({ idioma, slug }: { idioma: Idioma; slug
   if (!c) notFound();
   const t = textos(idioma);
   const k = c.extra as unknown as Categoria;
-  const idiomas = idiomasDisponiveis("categoria", slug);
-  const caminhos = Object.fromEntries(idiomas.map((i) => [i, caminho("categoria", slug, i)]));
   const aqui = caminho("categoria", slug, idioma);
 
   const paginas = daCategoria(k.nome, idioma);
@@ -40,7 +38,7 @@ export default function PaginaCategoria({ idioma, slug }: { idioma: Idioma; slug
 
   return (
     <>
-      <Topo idioma={idioma} atual={aqui} idiomas={idiomas} caminhos={caminhos} />
+      <Topo idioma={idioma} atual={aqui} caminhos={equivalentes(c)} />
       <JsonLd dados={jsonLdTrilha(c, idioma)} />
       <main id="conteudo">
         <div className="wrap cabeca-artigo">

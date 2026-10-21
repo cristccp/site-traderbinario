@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { caminho, idiomasDisponiveis, type Conteudo } from "@/lib/conteudo";
+import { caminho, equivalentes, type Conteudo } from "@/lib/conteudo";
 import { textos } from "@/lib/i18n";
 import { HREFLANG, OG_LOCALE, type Idioma } from "@/lib/i18n/tipos";
 import { NOME_SITE, SITE } from "@/lib/site";
@@ -7,14 +7,30 @@ import { NOME_SITE, SITE } from "@/lib/site";
 // SEO de cada página: title/description do conteúdo, canonical SEM www (metadataBase = traderbinario.com.br),
 // hreflang SÓ entre os idiomas em que a página existe (padrao-idiomas.md, regra 3) + x-default = PT, Open Graph e X.
 
-export function alternates(c: Conteudo): Metadata["alternates"] {
-  const existe = idiomasDisponiveis(c.tipo, c.slug);
+// hreflang a partir do endereço da página em cada idioma (conteúdo: equivalentes(c); páginas fixas: lib/rotas-idiomas.ts).
+export function hreflang(caminhos: Partial<Record<Idioma, string>>): Record<string, string> | null {
+  const existe = Object.keys(caminhos) as Idioma[];
+  if (existe.length < 2) return null;
   const languages: Record<string, string> = {};
-  if (existe.length > 1) {
-    for (const i of existe) languages[HREFLANG[i]] = caminho(c.tipo, c.slug, i);
-    if (existe.includes("pt")) languages["x-default"] = caminho(c.tipo, c.slug, "pt");
-  }
-  return { canonical: caminho(c.tipo, c.slug, c.idioma), ...(existe.length > 1 ? { languages } : {}) };
+  for (const i of existe) languages[HREFLANG[i]] = caminhos[i]!;
+  if (caminhos.pt) languages["x-default"] = caminhos.pt;
+  return languages;
+}
+
+export function alternates(c: Conteudo): Metadata["alternates"] {
+  const languages = hreflang(equivalentes(c));
+  return { canonical: caminho(c.tipo, c.slug, c.idioma), ...(languages ? { languages } : {}) };
+}
+
+// Metadados das páginas fixas (ferramentas, glossário): canonical, hreflang e Open Graph no idioma.
+export function metadadosFixa(caminhos: Record<Idioma, string>, idioma: Idioma, title: string, description: string): Metadata {
+  return {
+    title,
+    description,
+    alternates: { canonical: caminhos[idioma], languages: hreflang(caminhos)! },
+    openGraph: { type: "website", locale: OG_LOCALE[idioma], url: caminhos[idioma], siteName: NOME_SITE, title, description },
+    twitter: { card: "summary", title, description },
+  };
 }
 
 export function metadados(c: Conteudo): Metadata {
@@ -63,7 +79,7 @@ export function jsonLdTrilha(c: Conteudo, idioma: Idioma) {
   const t = textos(idioma);
   const itens = [
     { nome: t.trilha.inicio, url: abs(caminho("pagina", "home", idioma)) },
-    ...(c.categoria ? [{ nome: c.categoria.nome, url: abs(c.categoria.href) }] : []),
+    ...(c.categoria?.href ? [{ nome: c.categoria.nome, url: abs(c.categoria.href) }] : []),
     { nome: c.trilha ?? c.titulo, url: abs(caminho(c.tipo, c.slug, idioma)) },
   ];
   return {

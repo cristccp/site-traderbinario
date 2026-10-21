@@ -34,7 +34,7 @@ export function CaixaAutor({ idioma }: { idioma: Idioma }) {
       <div className="caixa-autor__texto">
         <div className="caixa-autor__nome">{t.autor.nome}</div>
         <p>{t.autor.bio}</p>
-        <a href="https://cristianopereira.com.br" target="_blank" rel="noopener noreferrer">{t.autor.link}<span className="sr-only"> {t.novaAba}</span></a>
+        <a href={`https://cristianopereira.com.br${idioma === "pt" ? "" : `/${idioma}`}`} target="_blank" rel="noopener noreferrer">{t.autor.link}<span className="sr-only"> {t.novaAba}</span></a>
       </div>
     </div>
   );

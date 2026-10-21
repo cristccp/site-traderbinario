@@ -32,6 +32,19 @@ const ERROS = [
   [/1sh\.co|bit\.ly\/TraderBinarioIQ|track\.deriv\.com|iqbroker\.com/i, "link antigo de afiliado"],
   [/:::/, "marcador de bloco (:::) aparecendo no texto — bloco não fechou"],
 ];
+// Páginas EN/ES (/en, /es): a mesma voz da marca, traduzida (padrao-idiomas.md, regra 7). As 3 últimas regras do PT
+// (emoji, link antigo, :::) valem para todos os idiomas.
+const ERROS_IDIOMA = [
+  [/guarantee|garantizad|garantiza/i, "garantia (guaranteed/garantizado)"],
+  [/\d+ ?% (a|per) (day|month)|\d+ ?% al (d[ií]a|mes)/i, "% ao dia/mês"],
+  [/daily profits?|ganancias? diarias?|passive income|ingresos? pasivos?|autopilot|en autom[aá]tico|make money|ganar dinero/i, "promessa de ganho"],
+  [/without risk(?! management)|risk[- ]free|\bno risk\b|sin riesgo|sin arriesgar/i, "\"sem risco\" (without risk/sin riesgo)"],
+  [/(payout|return|profit|retorno|ganancia|rendimiento|rentabilidad)s?[^.<]{0,50}\d{2,3} ?%/i, "retorno em %"],
+  [/best broker|mejor br[oó]ker/i, "\"melhor corretora\""],
+  [/financial freedom|libertad financiera|secret setup|setup secreto|miracle robot|robot milagroso|\bsuccess|[ée]xito|prosperity|prosperidad/i, "palavra proibida da voz da marca"],
+  [/\bgames?\b|\bjuegos?\b|\bcasino\b|gambling|\bbets?\b|\bbetting\b|\bapuestas?\b|\bapostar\b/i, "aposta/jogo (bet/gambling/apuesta/juego)"],
+  [/binary options?|opci[oó]n(es)? binarias?/i, "\"binary options/opciones binarias\" fora dos 3 artigos"],
+];
 const AVISOS = [
   [/\binvest(e|ir|imento|imentos|ido|indo|idor|idores)\b/i, "investir/investimento (conferir: opção binária não é investimento)"],
   [/n[uú]mero um|l[ií]der do mercado|melhores? do mercado|mais segur[ao]s? do|mais confi[aá]ve(l|is) do/i, "superlativo"],
@@ -40,6 +53,11 @@ const AVISOS = [
 // Só o texto visível: tira <script>, <style>, atributos e tags
 // Frases revisadas que o padrão pegaria por engano (alerta ou negação, não promessa)
 const EXCECOES = [/n[ãa]o [ée] o que te faz ganhar dinheiro/gi, /\d+% do lucro/gi, /ganhar dinheiro e continuar vulner[aá]vel/gi, /n[ãa]o precisa escolher .a melhor corretora do mundo./gi];
+// EN/ES (copy aprovada pelo Cristiano em 21/10/2026): negações, não promessa — rodapé (textos-padrao), bio, bloco do Telegram e avisos
+EXCECOES.push(/past results do not guarantee future results/gi, /los resultados pasados no garantizan resultados futuros/gi,
+  /no guaranteed signals/gi, /sin se[ñn]ales garantizadas/gi, /does not sell daily profits/gi, /no vende ganancias diarias/gi,
+  /risk management does not guarantee results/gi, /la gesti[óo]n de riesgo no garantiza resultados/gi,
+  /what does not exist is a guaranteed way to win/gi, /lo que no existe es una forma garantizada de ganar/gi);
 const textoVisivel = (html) => EXCECOES.reduce((h, re) => h.replace(re, " "), html).replace(/⚠️|⚠/g, " ")   // o ⚠️ dos avisos de risco é do design
   .replace(/recomenda[çc][ãa]o de investimento|prote[çc][ãa]o ao investidor|Plataforma de Investimento Online/gi, " ").replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ")
   .replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#x27;|&quot;|&amp;/g, " ").replace(/\s+/g, " ");
@@ -60,11 +78,33 @@ const EXCECOES_PAGINA = {
     "não um jogo de azar", "não jogo de azar", "vira aposta",     // "derivativo, não jogo de azar"; "sem método... vira aposta" (alerta) — 20/10/2026, aprovado pelo Cristiano
     "grupo de sinal pago com resultado garantido", "robô milagroso",   // lista de golpes (alerta) — 20/10/2026, aprovado pelo Cristiano (regra "negação ou alerta")
   ],
+  // EN/ES (copy aprovada pelo Cristiano em 21/10/2026, mesmas exceções do guia PT): payout em % só na conta educativa,
+  // "bet/gambling/apuesta" só respondendo à busca "é aposta" (alerta), lista de golpes. "game/juego" segue proibido.
+  "/en/what-are-binary-options": [
+    "an 85% payout", "Payout Win rate needed just to break even 90% about 53% 85% about 54% 80% about 56%",
+    "Is it gambling?", "Are binary options gambling?", "The structure looks like a bet", "it becomes a bet in practice",
+    "\"Guaranteed\" signal groups, miracle robots", "Guaranteed signal groups, miracle robots",
+  ],
+  "/es/que-son-las-opciones-binarias": [
+    "un payout del 85%", "payout del 85%", "Payout Aciertos necesarios solo para empatar 90% cerca del 53% 85% cerca del 54% 80% cerca del 56%",
+    "¿Son una apuesta?", "¿Las opciones binarias son una apuesta?", "La estructura se parece a una apuesta", "se vuelve una apuesta",
+    "Grupos de señales \"garantizadas\"", "Grupos de señales garantizadas",
+  ],
+  // Home EN/ES: os cards levam o título dos artigos (copy, seção 4.2: "Card 1 = título do guia") — 21/10/2026
+  "/en": ["Binary options: what they are, how they work and the risks", "What is the best money management for binary options?", "What is the difference between binary and digital options?"],
+  "/es": ["Opciones binarias: qué son, cómo funcionan y sus riesgos", "¿Cuál es la mejor gestión de capital para opciones binarias?", "¿Cuál es la diferencia entre opciones binarias y digitales?"],
   "/blog/forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos": [
     "Robô milagroso",                                             // lista de golpes (alerta): "Robô milagroso que nunca perde" — 20/10/2026, aprovado pelo Cristiano
   ],
 };
 const escapar = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+// "binary options/opciones binarias" só nos 3 artigos (decisão do Cristiano, 21/10/2026, copy EN/ES seção 0.2), sempre com o aviso de país
+const ARTIGOS_COM_O_TERMO = new Set(["/en/what-are-binary-options", "/en/blog/binary-options-money-management", "/en/blog/binary-vs-digital-options",
+  "/es/que-son-las-opciones-binarias", "/es/blog/gestion-de-capital-opciones-binarias", "/es/blog/opciones-binarias-vs-digitales"]);
+const ehIdioma = (p) => /^\/(en|es)(\/|$)/.test(p);
+const regrasDe = (p) => ehIdioma(p)
+  ? [...ERROS_IDIOMA.filter(([, nome]) => !(nome.startsWith("\"binary") && ARTIGOS_COM_O_TERMO.has(p))), ...ERROS.slice(-3)]
+  : ERROS;
 const tirarExcecoesDaPagina = (texto, p) => (EXCECOES_PAGINA[p] ?? []).reduce((t, f) => t.replace(new RegExp(escapar(f), "g"), " "), texto);
 const frase = (texto, re) => { const m = texto.match(re); if (!m) return ""; const i = Math.max(0, m.index - 50); return "…" + texto.slice(i, m.index + m[0].length + 50).trim() + "…"; };
 
@@ -84,8 +124,8 @@ for (const p of paginas) {
   const html = await resp.text();
   const texto = tirarExcecoesDaPagina(textoVisivel(html), p);
   const linhas = [];
-  for (const [re, nome] of ERROS) if (re.test(nome === "link antigo de afiliado" ? html : texto)) { linhas.push(`  ERRO  ${nome}: ${frase(texto, re) || "(no HTML)"}`); nErros++; }
-  for (const [re, nome] of AVISOS) if (re.test(texto)) { linhas.push(`  aviso ${nome}: ${frase(texto, re)}`); nAvisos++; }
+  for (const [re, nome] of regrasDe(p)) if (re.test(nome === "link antigo de afiliado" ? html : texto)) { linhas.push(`  ERRO  ${nome}: ${frase(texto, re) || "(no HTML)"}`); nErros++; }
+  for (const [re, nome] of AVISOS) if (!ehIdioma(p) && re.test(texto)) { linhas.push(`  aviso ${nome}: ${frase(texto, re)}`); nAvisos++; }
 
   for (const m of html.matchAll(/href="((?:https?:\/\/(?:www\.)?traderbinario\.com\.br)?\/[^"#?]*)/g)) {
     let alvo = m[1].replace(/^https?:\/\/(?:www\.)?traderbinario\.com\.br/, "").replace(/\/$/, "") || "/";

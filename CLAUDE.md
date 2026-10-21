@@ -8,6 +8,7 @@
 - **Blog** do Trader Binário ("por Cristiano Pereira"): guias e artigos de opções binárias, forex, robôs traders, MetaTrader, gestão de risco e análises de corretoras. Sai da Builderall para a Vercel **mantendo as URLs que rankeiam**. Head: **04 Funis & Captura** (+05 afiliação, +09 painel, +10 compliance).
 - Dono: **Cristiano**, iniciante em código → explicar cada passo em português simples.
 - Hoje: só localhost. Sem Vercel, sem DNS, GTM no código (GTM-MTJMBXSR) mas contêiner ainda não publicado, sem Supabase (a tabela `artigos` está só desenhada em `docs/tabela-artigos.md`).
+- **Idiomas (21/10/2026):** PT na raiz (todo o blog) + EN/ES só com home, 3 artigos, ferramentas, glossário e política curta (copy aprovada: `../../entregas/traderbinario-copy-en-es-2026-10-21.md`; padrão: `../../site-novo/padrao-idiomas.md`). Só traduzir o que já foi reescrito em PT.
 
 ## 2. Visual
 - Design aprovado: `../design/` (home, artigo, análise). DLS: `../../../01-diretoria-marca/contexto/dls.md` — Fraunces 600 nos títulos com 1–2 palavras em *itálico ciano*, Poppins no texto, fundo `#07090c`, cards `#11161d`, linhas `#1e2631`.
@@ -27,6 +28,9 @@
 | `lib/i18n/{pt,en,es}.ts` | Textos FIXOS (menu, rodapé, rótulos, banner). Nunca texto solto nos componentes |
 | `lib/deriv.ts` · `lib/corretoras.ts` · `lib/telegram.ts` · `lib/redes.ts` | Links num lugar só |
 | `lib/site.ts` | Domínio oficial, hosts oficiais, `GTM_ID` (GTM-MTJMBXSR) |
+| `lib/rotas-idiomas.ts` | Endereço das páginas FIXAS em cada idioma (ferramentas, glossário). Conteúdo EN/ES se liga ao PT pelo campo `original:` (slug PT) no frontmatter → `equivalentes()` em `lib/conteudo.ts` (seletor, hreflang, sitemap) |
+| `lib/glossario.ts` · `lib/glossario-dados-idiomas.ts` | Dicas do glossário por idioma (mesmos números de termo excluídos; EN "a lot" não vira "Lot"). EN/ES gerados por `scripts/gerar-glossario-idiomas.mjs` do arquivo aprovado |
+| `components/BlocoTelegram.tsx` | EN/ES: bloco do Telegram (home e fim do artigo) e versão compacta antes do FAQ, no lugar do e-book (só PT) |
 | `proxy.ts` | Fora de traderbinario.com.br (localhost, vercel.app) → `X-Robots-Tag: noindex` + `robots.txt` `Disallow: /` |
 | `scripts/converter-imagens.mjs` | `npm run imagens`: imagens da `_copia` e foto do Cristiano → WebP em `public/` |
 | `docs/` | `tabela-artigos.md` (desenho + SQL, NÃO aplicado) · `revisao-conteudo.md` (trocas, textos novos, [VERIFICAR], encurtadores) |
@@ -43,7 +47,21 @@
 - Links internos para páginas ainda não migradas usam `prefetch={false}`.
 
 ## 6. Medição (GTM no código, contêiner sem publicar)
-9 eventos por `lib/medicao.ts` (sem dado pessoal): `deriv_click {local, pagina}` · `telegram_click {idioma}` · `broker_click {corretora}` · `search {search_term}` · `ebook_click {material, local}` · `calc_use {calc}` · `glossario_dica {termo}` · `tutor_open` · `tutor_cta {destino}`. Consent Mode v2 + banner (cópia do forexbots). GTM **GTM-MTJMBXSR** (21/10/2026) só no domínio oficial (`HOSTS_OFICIAIS`); GA4 (propriedade 310528845, G-8NBG9D5K3L) dentro do GTM, nunca gtag direto.
+9 eventos por `lib/medicao.ts` (sem dado pessoal): `deriv_click {local, pagina, idioma}` · `telegram_click {idioma}` · `broker_click {corretora}` · `search {search_term}` · `ebook_click {material, local}` · `calc_use {calc}` · `glossario_dica {termo}` · `tutor_open` · `tutor_cta {destino}`. Consent Mode v2 + banner (cópia do forexbots). GTM **GTM-MTJMBXSR** (21/10/2026) só no domínio oficial (`HOSTS_OFICIAIS`); GA4 (propriedade 310528845, G-8NBG9D5K3L) dentro do GTM, nunca gtag direto.
+
+## 6b. Idiomas EN/ES (21/10/2026)
+| PT | EN | ES |
+|---|---|---|
+| `/` | `/en` | `/es` |
+| `/o-que-sao-opcoes-binarias` | `/en/what-are-binary-options` | `/es/que-son-las-opciones-binarias` |
+| `/blog/qual-e-o-melhor-gerenciamento-para-opcoes-binarias` | `/en/blog/binary-options-money-management` | `/es/blog/gestion-de-capital-opciones-binarias` |
+| `/blog/qual-a-diferenca-entre-opcoes-binarias-e-digitais` | `/en/blog/binary-vs-digital-options` | `/es/blog/opciones-binarias-vs-digitales` |
+| `/ferramentas` | `/en/tools` | `/es/herramientas` |
+| `/glossario` | `/en/glossary` | `/es/glosario` |
+| `/politica-de-privacidade` | `/en/privacy` (curta) | `/es/privacidad` (curta) |
+- Seletor PT · EN · ES em todas as páginas (no celular, dentro do ☰): página equivalente ou, sem equivalente, home do idioma. hreflang pt-BR/en/es + x-default = PT só entre equivalentes (também no sitemap).
+- EN/ES: sem tutor, sem e-book, sem busca, sem categorias e sem análises; "binary options/opciones binarias" só nos 3 artigos, com `:::aviso-pais` no topo (texto `avisoPais` do dicionário). Capas: `public/imagens/<slug-pt>/capa.en.webp` / `capa.es.webp` (`../capas/capas-idiomas.json`).
+- **Telegram do blog** (`lib/telegram.ts`, 21/10/2026): PT `https://t.me/+LBSmzMzmlyo3ZjJh` · EN `https://t.me/+fzd_tPzuteI1ZmI5` · ES `https://t.me/+qBhgQs8ZwA9iZjQx`.
 
 ## 7. Segurança e git
 - **Nenhuma** chave em arquivo. `.gitignore` ativo.
@@ -55,5 +73,9 @@
 | `npm run dev` | Liga o site → http://localhost:3010 |
 | `npm run lint` · `npm run build` | Conferir antes de qualquer commit |
 | `npm run imagens` | Converter imagens novas para WebP |
+| `node scripts/conferir-site.mjs` | Frases proibidas (PT e EN/ES), links, imagens e celular 390 px (com o `npm run dev` ligado) |
+| `node scripts/conferir-idiomas.mjs` | lang, og:locale, hreflang recíproco, sitemap, seletor, Telegram/Deriv e links no mesmo idioma |
+| `node scripts/testar-urls.mjs` | As 151 URLs antigas da Builderall (200 ou 308 → 200) |
+| `node scripts/gerar-glossario-idiomas.mjs` | Regerar o glossário EN/ES se o arquivo aprovado mudar |
 
 Regras técnicas do Next.js 16: ver `AGENTS.md`.

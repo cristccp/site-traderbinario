@@ -1,9 +1,9 @@
 import type { Textos } from "@/lib/i18n/tipos";
 
-// Textos fixos em ESPANHOL — estrutura pronta, AINDA SEM PÁGINAS no idioma (nesta etapa só PT existe).
-// Rodapé, banner e aviso: skills/idiomas-site/references/textos-padrao.md (aprovados). O resto é rascunho para revisar
-// quando as páginas ES forem escritas (skill idiomas-site). Regra: nunca "opciones binarias" no texto.
-// Os itens do menu levam à home do idioma até as páginas existirem.
+// Textos fixos em ESPANHOL. Páginas ES (21/10/2026): home, 3 artigos, ferramentas, glossário e política curta.
+// Rodapé, banner e aviso: skills/idiomas-site/references/textos-padrao.md (aprovados). Bio, Deriv, menu, ferramentas, glossário,
+// política, Telegram e aviso de país: entregas/traderbinario-copy-en-es-2026-10-21.md (aprovada). O resto segue como rascunho.
+// Regra: "opciones binarias" só nos 3 artigos (com o aviso de país), nunca nos textos fixos.
 
 export const ES: Textos = {
   idioma: "es",
@@ -15,17 +15,25 @@ export const ES: Textos = {
     abrir: "Abrir menú",
     fechar: "Cerrar menú",
     itens: [
-      { label: "Opciones", href: "/es" },
-      { label: "Forex", href: "/es" },
-      { label: "Robots de trading", href: "/es" },
-      { label: "MetaTrader", href: "/es" },
-      { label: "Gestión de riesgo", href: "/es" },
-      { label: "Brókers", href: "/es" },
+      { label: "Empieza aquí", href: "/es/que-son-las-opciones-binarias" },
+      { label: "Gestión de riesgo", href: "/es/blog/gestion-de-capital-opciones-binarias" },
+      { label: "Herramientas", href: "/es/herramientas" },
+      { label: "Glosario", href: "/es/glosario" },
       { label: "Cristiano Pereira ↗", href: "https://cristianopereira.com.br/es", externo: true },
     ],
   },
   redes: { youtube: "YouTube de Cristiano Pereira", instagram: "Instagram de Cristiano Pereira" },
   telegram: "Grupo de Telegram",
+  telegramBloco: {
+    rotulo: "GRUPO DE TELEGRAM",
+    titulo: "Aprende con otros traders",
+    destaque: "otros traders",
+    texto: "Entra al grupo gratis en español: contenidos sobre gestión de riesgo, plataformas y rutina de trading. Sin señales garantizadas.",
+    botao: "Entrar al grupo de Telegram",
+    compacto: "¿Dudas? Entra al grupo de Telegram →",
+    aria: "Grupo de Telegram",
+  },
+  avisoPais: "Las opciones binarias están prohibidas o restringidas para el público minorista en muchos países, como la Unión Europea, el Reino Unido, Australia y Canadá. Consulta las reglas de tu país antes de abrir cualquier cuenta.",
   seletorAria: "Idioma del sitio",
   trilha: { aria: "Ruta", inicio: "Inicio" },
   autor: {
@@ -33,7 +41,7 @@ export const ES: Textos = {
     linha: "En el mercado desde 2017",
     atualizado: "actualizado el",
     por: "Por",
-    bio: "En el mercado desde 2017, creador del método Trader Consistente™ y de las plataformas Trader Bots Club e Ideal Trade. Enseña a operar con método y gestión de riesgo.",
+    bio: "Cristiano Pereira opera en el mercado desde 2017, de forma manual y con robots. Creó el método Trader Consistente y las plataformas Trader Bots Club e Ideal Trade. Enseña a quienes suelen quebrar su cuenta a operar con método, gestión de riesgo y disciplina, a retirar ganancias y a construir patrimonio. No vende ganancias diarias.",
     link: "cristianopereira.com.br →",
     fotoAlt: "Cristiano Pereira tomando café",
   },
@@ -54,8 +62,8 @@ export const ES: Textos = {
     itens: ["Cuenta demo con US$ 10.000 virtuales", "MetaTrader 5 y robots en la misma cuenta", "Depósito mínimo de US$ 5"],
     botao: "Crear cuenta demo gratis",
     analise: "Leer el análisis completo de Deriv →",
-    risco: "⚠️ Las opciones y los CFD conllevan un alto riesgo de pérdida. Empieza por la cuenta demo.",
-    lateralTexto: "Cuenta demo con US$ 10.000 virtuales para practicar sin arriesgar.",
+    risco: "⚠️ Las opciones y los CFD conllevan un alto riesgo de pérdida. Empieza por la cuenta demo. Deriv no está disponible en todos los países.",
+    lateralTexto: "Cuenta demo con US$ 10.000 virtuales para practicar con dinero de práctica.",
     lateralBotao: "Abrir cuenta demo",
     lateralRisco: "Alto riesgo de pérdida.",
     fichaBotao: "Crear cuenta demo en Deriv",
@@ -95,7 +103,7 @@ export const ES: Textos = {
     educativo: "Contenido educativo; nada aquí es una recomendación de inversión. Los resultados pasados no garantizan resultados futuros.",
     copyright: "© 2026 Trader Binário · Cristiano Pereira Trader",
     politica: "Política de privacidad",
-    politicaHref: "https://cristianopereira.com.br/es/privacidad",
+    politicaHref: "/es/privacidad",
     preferencias: "Preferencias de cookies",
     siteCristiano: "cristianopereira.com.br",
     glossario: "Glosario",
@@ -106,8 +114,8 @@ export const ES: Textos = {
     risco: { titulo: "Riesgo por operación", banca: "Capital", moeda: "Moneda", pct: "% del capital por operación", perdas: "Pérdidas para el stop del día", valorOp: "Valor por operación", stopDia: "Stop del día", daBanca: "del capital", perdas20: "Pérdidas seguidas hasta perder el 20% del capital", perdas20Nota: "con un valor fijo por operación", aviso: "Por encima del 2% por operación, una mala racha pesa mucho en el capital.", erroBanca: "Escribe un capital mayor que cero.", erroPct: "Usa un valor entre 0,5% y 5%.", erroPerdas: "Usa un número entre 1 y 20." },
     empate: { titulo: "Aciertos para empatar", payout: "Payout de la operación (%)", resultado: "Aciertos mínimos solo para empatar", frase: "Por debajo de esto, el capital disminuye a largo plazo.", erroPayout: "Usa un payout entre 50% y 100%." },
   },
-  ferramentas: { rotulo: "HERRAMIENTAS GRATIS", titulo: "Herramientas de gestión de riesgo", destaque: "gestión de riesgo", seoTitle: "Calculadora de riesgo y de aciertos para empatar", meta: "Calculadoras gratis de riesgo por operación y de aciertos para empatar. Todo en tu navegador.", apoio: "Dos cuentas para hacer antes de la primera operación. No se guarda nada: todo se calcula en tu navegador.", usoRisco: "Define cuánto del capital va en cada operación y cuándo termina el día. El valor queda fijo después de ganar o perder.", usoEmpate: "En las opciones binarias, el acierto paga menos de lo que cuesta el error. Mira cuántos aciertos necesitas solo para no perder.", planilha: "Para registrar cada operación, usa la", planilhaLink: "planilla de gestión gratis", glossarioTexto: "¿Dudas con algún término? Mira el", glossarioLink: "glosario de day trading" },
-  glossario: { rotulo: "GLOSARIO", titulo: "Glosario de day trading", destaque: "day trading", seoTitle: "Glosario de day trading: 100 términos de la A a la Z", meta: "Los 100 términos de day trading más usados, de la A a la Z, explicados de forma simple.", apoio: "Los 100 términos del e-book Glosario Esencial de Day Trading, de la A a la Z.", busca: "Buscar término", nenhum: "No se encontró ningún término.", ebookTexto: "¿Quieres el glosario en PDF?", ebookLink: "Descarga el e-book gratis", menu: "Letras" },
+  ferramentas: { rotulo: "HERRAMIENTAS GRATIS", titulo: "Herramientas de gestión de riesgo", destaque: "gestión de riesgo", seoTitle: "Calculadora de riesgo y de aciertos para empatar", meta: "Calculadoras gratis de riesgo por operación y de aciertos para empatar. Todo en tu navegador.", apoio: "Dos cuentas para hacer antes de la primera operación. No se guarda nada: todo se calcula en tu navegador.", usoRisco: "Define cuánto del capital va en cada operación y cuándo termina el día. El valor queda fijo después de ganar o perder.", usoEmpate: "En las operaciones de pago fijo, el acierto paga menos de lo que cuesta el error. Mira cuántos aciertos necesitas solo para no perder.", glossarioTexto: "¿Dudas con algún término? Mira el", glossarioLink: "glosario de day trading" },
+  glossario: { rotulo: "GLOSARIO", titulo: "Glosario de day trading", destaque: "day trading", seoTitle: "Glosario de day trading: 100 términos de la A a la Z", meta: "Los 100 términos de day trading más usados, de la A a la Z, explicados de forma simple.", apoio: "100 términos de day trading, de la A a la Z, explicados de forma simple.", busca: "Buscar término", nenhum: "No se encontró ningún término.", menu: "Letras", ver: "Ver en el glosario" },
   naoEncontrada: {
     title: "Página no encontrada | Trader Binário",
     titulo: "Página no",
@@ -119,7 +127,7 @@ export const ES: Textos = {
     aria: "Aviso de cookies",
     texto: "Usamos cookies de Google Analytics para entender cómo se usa el sitio y mejorar los contenidos. Solo se activan si aceptas.",
     politica: "Política de privacidad",
-    politicaHref: "https://cristianopereira.com.br/es/privacidad",
+    politicaHref: "/es/privacidad",
     aceitar: "Aceptar",
     recusar: "Rechazar",
   },

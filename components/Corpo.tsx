@@ -41,12 +41,15 @@ export default function Corpo({ blocos, idioma, pagina, ebook }: { blocos: Bloco
             );
           case "aviso":
             return <div key={i} className="aviso-texto prose prose--caixa" role="note" dangerouslySetInnerHTML={{ __html: b.html }} />;
+          case "avisoPais":
+            if (!t.avisoPais) throw new Error(`:::aviso-pais sem texto no dicionário (${idioma})`);
+            return <div key={i} className="aviso-texto prose prose--caixa" role="note"><p>{t.avisoPais}</p></div>;
           case "selos":
             return <div key={i} className="selos" dangerouslySetInnerHTML={{ __html: b.html }} />;
           case "deriv":
             return (
               <p key={i} className="cta-texto">
-                <LinkDeriv local={b.local} pagina={pagina} className="botao" novaAba={t.novaAba}>{b.texto}</LinkDeriv>
+                <LinkDeriv local={b.local} pagina={pagina} idioma={idioma} className="botao" novaAba={t.novaAba}>{b.texto}</LinkDeriv>
                 <span className="aviso-curto">{t.deriv.lateralRisco}</span>
               </p>
             );

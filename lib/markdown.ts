@@ -5,6 +5,7 @@ import { Marked, type Tokens } from "marked";
 //   :::sessoes        → cards das sessões (uma linha por card: NOME | horário | texto | destaque?)
 //   :::na-pratica     → caixa "Na prática"
 //   :::aviso          → aviso de risco dentro do texto
+//   :::aviso-pais     → aviso de país (EN/ES, topo dos artigos): texto fixo do dicionário (avisoPais), no estilo do :::aviso
 //   :::selos          → imagens pequenas lado a lado (selos de regulação)
 //   :::deriv <local>  → botão da Deriv (local = texto | final), com o texto do botão dentro
 //   :::video <id>     → vídeo do YouTube que só carrega no clique (título dentro)
@@ -18,6 +19,7 @@ export type Bloco =
   | { tipo: "sessoes"; itens: Sessao[] }
   | { tipo: "naPratica"; html: string }
   | { tipo: "aviso"; html: string }
+  | { tipo: "avisoPais" }
   | { tipo: "selos"; html: string }
   | { tipo: "deriv"; local: "texto" | "final"; texto: string }
   | { tipo: "video"; id: string; titulo: string }
@@ -88,6 +90,7 @@ export function blocos(corpo: string): { lista: Bloco[]; indice: ItemIndice[] } 
         break;
       case "na-pratica": lista.push({ tipo: "naPratica", html: html(dentro) }); break;
       case "aviso": lista.push({ tipo: "aviso", html: html(dentro) }); break;
+      case "aviso-pais": lista.push({ tipo: "avisoPais" }); break;
       case "selos": lista.push({ tipo: "selos", html: html(dentro) }); break;
       case "deriv": lista.push({ tipo: "deriv", local: arg === "final" ? "final" : "texto", texto: dentro }); break;
       case "video": lista.push({ tipo: "video", id: arg, titulo: dentro }); break;

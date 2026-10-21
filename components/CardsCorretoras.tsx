@@ -30,7 +30,7 @@ export default function CardsCorretoras({ ids, idioma, pagina }: { ids: string[]
               <span className="corretora__acoes">
                 <Link prefetch={false} href={k.analise}>{t.corretoras.analise}</Link>
                 {id === "deriv" ? (
-                  <LinkDeriv local="texto" pagina={pagina} className="corretora__cadastro" novaAba={t.novaAba}>{t.corretoras.cadastro}</LinkDeriv>
+                  <LinkDeriv local="texto" pagina={pagina} idioma={idioma} className="corretora__cadastro" novaAba={t.novaAba}>{t.corretoras.cadastro}</LinkDeriv>
                 ) : "cadastro" in k && k.cadastro ? (
                   <LinkCorretora id={id} href={k.cadastro} className="corretora__cadastro" novaAba={t.novaAba}>{t.corretoras.cadastro}</LinkCorretora>
                 ) : null}
