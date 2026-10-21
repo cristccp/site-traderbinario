@@ -792,7 +792,7 @@ Sem trocas de texto (só a organização automática).
 | 6 | Ideal para traders que desejam automatizar seus investimentos. | Para traders que desejam automatizar suas operações. | investimento |
 | 7 | contas demo para prática e contas de investimento para traders mais experientes. | contas demo para prática e contas para traders mais experientes. | investimento |
 | 8 | A Deriv.com é uma plataforma de negociação confiável e diversificada que atende | A Deriv.com é uma plataforma de negociação diversificada que atende | garantia |
-| 9 | Antes de começar a negociar na Deriv.com, é aconselhável abrir uma conta demo para se familiarizar com a plataforma e praticar suas estratégias de negociação. | Antes de começar a negociar na Deriv.com, é aconselhável abrir uma conta demo para se familiarizar com a plataforma e praticar suas estratégias de negociação. ⏎ :::deriv texto ⏎ Abrir conta demo na Deriv ⏎ ::: | link (o da cópia era track.deriv.com) |
+| 9 | Antes de começar a negociar na Deriv.com, é aconselhável abrir uma conta demo para se familiarizar com a plataforma e praticar suas estratégias de negociação. | Antes de começar a negociar na Deriv.com, é aconselhável abrir uma conta demo para se familiarizar com a plataforma e praticar suas estratégias de negociação. ⏎ :::deriv texto ⏎ Abrir conta demo na Deriv ⏎ ::: ⏎ | link (o da cópia era track.deriv.com) |
 | 10 | Lembre-se de que a negociação de derivativos financeiros envolve riscos e é importante investir apenas o que você pode se dar ao luxo de perder. Para obter sucesso na negociação, é fundamental realizar análises aprofundadas, seguir uma estratégia sólida e manter a disciplina em suas decisões de investimento. | Lembre-se de que a negociação de derivativos financeiros envolve alto risco e é importante operar apenas o que você pode se dar ao luxo de perder. Análise, estratégia e disciplina fazem a diferença. | investimento / proibida (sucesso) |
 
 #### `/blog/analise-ativos-deriv-como-negociar-forex-indices-commodities` — 4 troca(s)
@@ -800,8 +800,345 @@ Sem trocas de texto (só a organização automática).
 |---|---|---|---|
 | 1 | fornecendo informações sobre como negociá-los com sucesso e estratégias que podem ser empregadas. | fornecendo informações sobre como negociá-los e estratégias que podem ser empregadas. | proibida (sucesso) |
 | 2 | Eis algumas dicas e estratégias para negociar Forex com sucesso: | Eis algumas dicas e estratégias para negociar Forex: | proibida (sucesso) |
-| 3 | Antes de começar a negociar, é aconselhável abrir uma conta demo para adquirir experiência e se familiarizar com os mercados. | Antes de começar a negociar, é aconselhável abrir uma conta demo para adquirir experiência e se familiarizar com os mercados. ⏎ :::deriv texto ⏎ Abrir conta demo na Deriv ⏎ ::: | link (o da cópia era track.deriv.com) |
+| 3 | Antes de começar a negociar, é aconselhável abrir uma conta demo para adquirir experiência e se familiarizar com os mercados. | Antes de começar a negociar, é aconselhável abrir uma conta demo para adquirir experiência e se familiarizar com os mercados. ⏎ :::deriv texto ⏎ Abrir conta demo na Deriv ⏎ ::: ⏎ | link (o da cópia era track.deriv.com) |
 | 4 | Compreender os ativos e as estratégias de negociação adequadas é fundamental para o sucesso na plataforma Deriv.com. Lembre-se de que a educação contínua e a prática são essenciais para se tornar um trader bem-sucedido. | Compreender os ativos e as estratégias de negociação é fundamental. A educação contínua e a prática fazem a diferença. | proibida (sucesso) |
 
 **Total do lote 2: 93 trocas em 19 páginas.**
 <!-- lote-2:fim -->
+
+## Lote 3 — forex, MetaTrader, posicionamento e análise técnica (20/10/2026)
+34 artigos migrados com a mesma URL (`/blog/<slug>`), no modelo de artigo, com a mesma organização automática dos lotes 1 e 2. Categorias: forex (10) → Forex · MetaTrader (8) → MetaTrader · posicionamento (10) e análise técnica (6) → Gestão de risco (tema 5 do mapa: "gestão de risco e mentalidade").
+- Ajustes do conversor: itálico com espaço depois do `*` (sobra de emoji removido) agora vira itálico, e não lista; o caractere invisível "⠀" sai. O índice ("Neste artigo") mostra `>` certo (antes saía `&gt;`).
+- Tabelas: as 3 tabelas quebradas da Builderall (MT5 e MT4 × MT5) viraram tabelas de verdade, com estilo novo no `.prose`.
+- Correção no lote 2: em 2 artigos da Deriv (guia completo e ativos) o botão "Abrir conta demo na Deriv" aparecia como texto cru (`:::deriv texto … :::`) porque a frase seguinte ficava na mesma linha. Corrigido nas trocas do lote 2, e a conferência automática agora acusa qualquer `:::` visível.
+- O artigo de gerenciamento (lote 2) ganhou "Continue lendo" (antes não tinha outro artigo do tema).
+
+### Página que NÃO migra no lote 3
+| URL | Por quê | 308 para |
+|---|---|---|
+| `/blog/quanto-e-possivel-ganhar-com-day-trade-expectativas-versus-realidade` | Promessa em números ("pode lucrar de 2% a 5% ao mês", "lucro líquido diário: R$ 170", "R$ 300/mês"), "modalidade de investimento" e custos da B3 (ações), não do que o site ensina. Sem conserto sem reescrever — o mapa já pedia reescrita com "expectativa × realidade" sem números. | `/c/gestao-de-risco` (passa para o guia de gestão de risco quando ele existir) |
+
+### Reescrever no lote / [VERIFICAR] do lote 3
+1. **Forex é legal no Brasil?**: afirmações jurídicas sem fonte ("100% legal", "CVM não proíbe"). Suavizadas e com aviso novo no topo (aprovado): "Este texto não é orientação jurídica nem tributária. As regras mudam: confira a situação atual na CVM e com um contador antes de operar." **Decisão do Cristiano (20/10/2026): entra no 1º lote da reescrita, ANTES da virada do DNS, junto com "Opções binárias é legal / é seguro?" (os dois artigos de regulação).**
+2. **Números do MetaTrader corrigidos com fonte**: a cópia dizia "80+ indicadores" no MT5 e "mais de 50" no MT4. O site da MetaQuotes (metatrader5.com, comparação MT5 × MT4) diz **38 no MT5 e 30 no MT4** — trocado.
+3. **Formas de depósito no forex**: "a maioria das corretoras aceita PIX…" virou "os métodos variam de corretora para corretora" ([VERIFICAR] se quiser citar PIX).
+4. **Horários do forex — conferir na reescrita** (decisão de 20/10/2026): os dois artigos dão Nova York às 9h e às 10h; o horário de verão dos EUA muda a abertura em Brasília.
+5. **Textos novos — aprovados em 20/10/2026** (a Deriv no guia do MT5 entrou com o botão "Abrir conta demo na Deriv" e o aviso de risco do bloco): as 34 meta descriptions (`scripts/migracao/descricoes-lote3.json`); títulos/H1 sem emoji e SEO titles ≤ 60; H1 do Fibonacci sem "de sucesso" e do "setup" sem "verdadeiro segredo"; abertura do artigo de indicadores do forex (a cópia tinha colado a do artigo de psicologia); a frase "“Eu preciso praticar mais.”" no começo do "erro silencioso" (a cópia começa com "Essa frase parece madura." sem a frase); listas de corretoras trocadas pelas analisadas no site (Exness, FxPro, Pepperstone, XM e RoboForex não estão no site) — no MT5 entra a Deriv ("a corretora que eu uso, com o Deriv MT5"); links para os artigos de instalar no PC/celular no MT4; o aviso legal do forex.
+6. **Seções "Estudos de caso" removidas** (médias móveis e Fibonacci): só anunciavam estudos que não aparecem no texto.
+
+### Trocas por página (geradas de trocas.mjs)
+<!-- trocas-lote-3 -->
+
+<!-- lote-3:inicio (gerado por scripts/migracao/relatorio.mjs — não editar à mão) -->
+
+#### `/blog/forex-o-que-e-como-funciona-guia-completo-para-iniciantes` — 9 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | quanto é possível investir e como começar do zero com segurança. | quanto é preciso para começar e como dar os primeiros passos com cuidado. | investimento / garantia ("com segurança") |
+| 2 | O Forex é considerado: ⏎ - o maior mercado do mundo ⏎ - o mais líquido ⏎ - o mais acessível ⏎ - e o mais dinâmico | O Forex é considerado o maior e o mais líquido mercado do mundo. | superlativos sem prova (acessível, dinâmico) |
+| 3 | ### 3. Você pode ganhar na alta e na baixa ⏎ Isso é uma das maiores vantagens do Forex: | ### 3. Você pode operar na alta e na baixa ⏎ Essa é uma das características do Forex: | promessa |
+| 4 | Você não depende de mercado subindo para lucrar. ⏎ Dá para lucrar em qualquer direção. | Você não depende de mercado subindo para operar. ⏎ Dá para operar nas duas direções — e perder nas duas também. | promessa de ganho ("lucrar") |
+| 5 | Isso garante: ⏎ - alta liquidez ⏎ - spreads baixos ⏎ - operações rápidas ⏎ - execuções precisas | Isso costuma significar: ⏎ - alta liquidez ⏎ - spreads mais baixos nos pares principais ⏎ - execução rápida | garantia |
+| 6 | Mas para operar com mais segurança, o ideal é: | Mas para operar com mais folga, o ideal é: | garantia ("segurança") |
+| 7 | oferece oportunidades incríveis para quem busca: | atrai quem busca: | superlativo |
+| 8 | - possibilidade de ganho na alta e na baixa | - possibilidade de operar na alta e na baixa | promessa |
+| 9 | Com estudo, paciência e gestão de risco, qualquer iniciante pode evoluir no Forex de maneira segura e estratégica. | Com estudo, paciência e gestão de risco, um iniciante pode evoluir no Forex com estratégia — sabendo que o risco de perda é real. | garantia ("de maneira segura") |
+
+#### `/blog/como-operar-forex-no-brasil-passo-a-passo-simples-e-atualizado` — 8 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | de forma simples, prática e segura. | de forma simples e prática. | garantia ("segura") |
+| 2 | A única regra é: escolher corretoras seguras e confiáveis. | O cuidado principal é: escolher corretoras reguladas e confiáveis. | garantia |
+| 3 | Exemplos populares entre brasileiros: ⏎ - IC Markets ⏎ - Exness ⏎ - FxPro ⏎ - Pepperstone | Corretoras de forex que eu já analisei aqui no site: ⏎ - [IC Markets](/analise-corretora-forex-ic-markets) ⏎ - [Tickmill](/analise-corretora-forex-tickmill) ⏎ - [Vantage Markets](/analise-corretora-forex-vantage-markets) ⏎ - [EBC Financial Group](/analise-corretora-forex-ebc-financial-group) | corretoras fora do site (Exness, FxPro, Pepperstone) → as analisadas aqui (texto novo) |
+| 4 | A maioria das corretoras aceita: | Os métodos variam de corretora para corretora. Os mais comuns são: | [VERIFICAR] fato não confirmado (PIX em "a maioria") |
+| 5 | Para começar com segurança, o ideal é: | Para começar, um valor comum é: | garantia ("com segurança") |
+| 6 | são as plataformas mais usadas no mundo. | estão entre as plataformas mais usadas no mundo. | superlativo |
+| 7 | No Forex você pode ganhar: | No Forex você pode operar: | promessa |
+| 8 | 6 Operar com segurança | 6 Operar com stop e risco definido | garantia |
+
+#### `/blog/forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos` — 13 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | ## Forex é legal no Brasil? ⏎ Sim! | :::aviso ⏎ Este texto não é orientação jurídica nem tributária. As regras mudam: confira a situação atual na CVM e com um contador antes de operar. ⏎ ::: ⏎ ## Forex é legal no Brasil? ⏎ Sim! | [VERIFICAR] regra legal pode ter mudado (aviso novo; texto vai para a reescrita) |
+| 2 | A boa notícia é: operar Forex é totalmente legal para brasileiros. | Em resumo: o brasileiro pode operar Forex por meio de corretoras internacionais. | certeza jurídica sem fonte |
+| 3 | Forex é 100% legal no Brasil. | Para o trader pessoa física, operar Forex em corretora internacional não é proibido. | certeza jurídica sem fonte |
+| 4 | - Você pode investir seu dinheiro ⏎ - Você pode lucrar e sacar normalmente | - Você pode depositar e sacar pela corretora | investimento / promessa ("lucrar") |
+| 5 | Se a corretora é regulamentada externamente, você pode operar sem problemas. | Se a corretora é regulamentada no país de origem, o risco de cair em golpe diminui — mas o risco de mercado continua. | garantia |
+| 6 | o que é completamente legal. | o que é permitido, desde que declarado. | certeza jurídica sem fonte |
+| 7 | O único cuidado é declarar seus ganhos no Imposto de Renda. | O cuidado principal é declarar tudo no Imposto de Renda. | texto |
+| 8 | Se alguém promete retorno garantido: ⏎ - CORRA. | Se alguém promete retorno garantido — corra. | alerta (fica, em uma frase só) |
+| 9 | ### 2. Evite promessas de lucro garantido | ### 2. Fuja de quem promete lucro certo | alerta reescrito (o padrão de garantia pega a frase) |
+| 10 | Tudo legalizado = tudo seguro. | Tudo declarado = menos dor de cabeça com a Receita. | garantia |
+| 11 | - você pode operar ⏎ - pode lucrar ⏎ - pode sacar ⏎ - pode declarar no imposto | - você pode operar ⏎ - pode sacar ⏎ - deve declarar no imposto | promessa ("lucrar") |
+| 12 | - acreditar em promessas de retorno garantido | - acreditar em promessa de retorno certo | alerta reescrito (o padrão de garantia pega a frase) |
+| 13 | é totalmente possível operar Forex com segurança — mesmo morando no Brasil. | dá para operar Forex com mais segurança — mesmo morando no Brasil. O risco de mercado, esse, nunca some. | garantia |
+
+#### `/blog/qual-a-diferenca-entre-opcoes-binarias-e-forex` — 8 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | mas são substancialmente diferentes em termos de estrutura, riscos, estratégias e potencial de lucro. | mas são bem diferentes em estrutura, riscos e estratégias. | promessa ("potencial de lucro") |
+| 2 | **Retorno Fixo**: Se a previsão do trader estiver correta, ele recebe um retorno fixo, geralmente expresso como uma porcentagem do valor da aposta. | **Pagamento Fixo**: Se a previsão do trader estiver correta, ele recebe um pagamento fixo, definido antes da operação. | aposta |
+| 3 | **Risco Controlado**: Os traders conhecem o risco máximo e o potencial de lucro antes de iniciar uma negociação. | **Risco Definido**: Os traders sabem quanto podem perder e quanto podem receber antes de iniciar uma negociação. | promessa |
+| 4 | **Benefícios**: As opções binárias são fáceis de entender e adequadas para iniciantes. Os prazos de expiração curtos permitem que os traders obtenham retornos rápidos. | **Benefícios**: As opções binárias são fáceis de entender. Os prazos de expiração curtos dão o resultado da operação rápido — para o ganho e para a perda. | promessa ("retornos rápidos") |
+| 5 | pode levar a perdas totais do investimento. | pode levar à perda total do valor de cada operação. | investimento |
+| 6 | Os traders têm a oportunidade de obter lucros ilimitados, dependendo da movimentação dos preços. | O resultado não tem teto fixo — nem para o ganho, nem para a perda. | promessa ("lucros ilimitados") |
+| 7 | O valor da aposta é o valor máximo que um trader pode perder. | O valor da operação é o valor máximo que um trader pode perder em cada entrada. | aposta |
+| 8 | para garantir uma experiência de negociação mais segura e transparente. | para ter uma experiência de negociação mais segura e transparente. | garantia |
+
+#### `/blog/melhores-horarios-para-operar-forex-no-brasil` — 10 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | e como adaptar sua estratégia aos períodos mais lucrativos do mercado. | e como adaptar sua estratégia aos períodos de mais movimento. | promessa ("lucrativos") |
+| 2 | Se você quer operar Forex com mais segurança — e aumentar suas chances de acerto — precisa entender uma coisa muito simples: | Se você quer operar Forex com mais critério, precisa entender uma coisa muito simples: | promessa |
+| 3 | - as estratégias funcionam melhor | - as estratégias tendem a funcionar melhor | promessa |
+| 4 | Boa para iniciantes que querem evitar estresse, mas não é a mais lucrativa. | Boa para iniciantes que querem evitar estresse, mas tem menos movimento. | promessa ("lucrativa") |
+| 5 | - oportunidades consistentes | - mais oportunidades | promessa |
+| 6 | - excelentes oportunidades | - mais oportunidades — e mais risco | superlativo |
+| 7 | é o momento mais poderoso do Forex. | é o momento de mais movimento do Forex. | superlativo |
+| 8 | - estratégias funcionam melhor | - estratégias tendem a funcionar melhor | promessa |
+| 9 | 1 9h às 12h — TOP absoluto ⏎ 2 4h às 7h — excelente | 1 9h às 12h — o de mais movimento ⏎ 2 4h às 7h — muito bom | superlativo |
+| 10 | Com o horário certo, suas estratégias ficam mais precisas, seu emocional trabalha menos e seus resultados melhoram automaticamente. | Com o horário certo, suas leituras ficam mais claras e seu emocional trabalha menos. O resultado continua dependendo da sua gestão de risco. | promessa ("melhoram automaticamente") |
+
+#### `/blog/alavancagem-no-forex-o-que-e-como-funciona-e-como-usar-com-seguranca` — 5 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | - multiplicar seus lucros ⏎ - multiplicar suas perdas ⏎ - fazer você evoluir rápido ⏎ - ou quebrar sua banca em minutos | - multiplicar seus ganhos ⏎ - multiplicar suas perdas ⏎ - ou quebrar sua banca em minutos | promessa ("evoluir rápido") |
+| 2 | Aqui está o guia mais seguro: ⏎ - 1:50 → conservador, ótimo para iniciantes ⏎ - 1:100 → moderado e seguro | Uma referência para começar: ⏎ - 1:50 → conservador, indicado para iniciantes ⏎ - 1:100 → moderado | garantia ("seguro") |
+| 3 | ### Veja um exemplo real | ### Veja um exemplo | exemplo hipotético apresentado como real |
+| 4 | Alavancagem sem stop é suicídio financeiro. | Alavancagem sem stop é pedir para quebrar a banca. | termo sensível |
+| 5 | Ela é responsável por: ⏎ - grandes lucros ⏎ - grandes perdas ⏎ - grandes ganhos rápidos ⏎ - grandes quebras de banca | Ela amplia tudo: ⏎ - os ganhos ⏎ - as perdas ⏎ - e, sem controle, as quebras de banca | promessa ("grandes ganhos rápidos") |
+
+#### `/blog/psicologia-no-forex-o-fator-que-separa-ganhar-de-perder` — 5 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | Descubra por que a psicologia no Forex é o maior determinante entre sucesso e fracasso. | Descubra por que a psicologia pesa tanto no resultado do Forex. | proibida (sucesso) |
+| 2 | ### O Forex não é um jogo de estratégias. É um jogo emocional. | ### O Forex não é só uma questão de estratégia. É uma questão emocional. | aposta/jogo ("jogo") |
+| 3 | ### 6. Aceite o stop como parte do jogo | ### 6. Aceite o stop como parte do processo | aposta/jogo ("jogo") |
+| 4 | Quem controla as próprias emoções → **ganha**. ⏎ Quem deixa o emocional controlar → **perde**. | Quem controla as próprias emoções → **tem chance de durar**. ⏎ Quem deixa o emocional controlar → **quebra**. | promessa ("ganha") |
+| 5 | Domine sua mente e você dominará o Forex. | Domine sua mente antes de tentar dominar o gráfico. | promessa |
+
+#### `/blog/os-indicadores-mais-usados-no-forex-e-como-utilizar-cada-um` — 9 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | Descubra por que a psicologia no Forex é o maior determinante entre sucesso e fracasso. Entenda como controlar emoções, evitar sabotagens mentais e desenvolver disciplina para operar com consistência. | Conheça os indicadores mais usados no Forex e veja como utilizar cada um deles. | erro da cópia: abertura colada do artigo de psicologia (texto novo) |
+| 2 | Vamos direto ao que realmente funciona | Vamos direto ao que é mais usado | promessa |
+| 3 | As Médias Móveis são o indicador mais usado no mundo — e por um motivo: | As Médias Móveis estão entre os indicadores mais usados — e por um motivo: | superlativo |
+| 4 | – Bandas estreitas → mercado quieto (explosão chegando) | – Bandas estreitas → mercado quieto (pode vir um movimento forte) | promessa |
+| 5 | Funciona muito bem junto com tendências claras. | Costuma funcionar melhor junto com tendências claras. | promessa |
+| 6 | Não é exatamente um indicador, mas é usado por todos os traders. | Não é exatamente um indicador, mas é usado por muitos traders. | superlativo |
+| 7 | Sim, o melhor indicador não é digital. | Para muitos traders, o melhor indicador não é digital. | superlativo |
+| 8 | A combinação mais simples e eficiente para começar: | Uma combinação simples para começar: | superlativo |
+| 9 | - Limpo ⏎ - Fácil ⏎ - Funciona ⏎ | - Limpo ⏎ - Fácil ⏎ | promessa ("funciona") |
+
+#### `/blog/pares-de-moedas-mais-negociados-no-forex` — 1 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | são essenciais para o sucesso a longo prazo na negociação forex. | são essenciais para durar na negociação forex. | proibida (sucesso) |
+
+#### `/blog/5-estrategias-simples-de-forex-para-iniciantes-que-funcionam` — 11 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | Aprenda 5 estratégias simples e comprovadas de Forex para iniciantes, fáceis de aplicar, com risco controlado e ideais para evoluir com consistência. Perfeito para quem está começando. | Aprenda 5 estratégias simples de Forex para iniciantes, fáceis de aplicar e com risco definido antes da entrada. | promessa ("comprovadas") |
+| 2 | Aqui estão 5 estratégias fáceis, diretas e realmente eficazes para começar no caminho certo. | Aqui estão 5 estratégias fáceis e diretas para começar no caminho certo. | promessa |
+| 3 | Essa é a estratégia mais clássica para iniciantes — e funciona muito bem. | Essa é uma das estratégias mais clássicas para iniciantes. | promessa |
+| 4 | ### Por que funciona? ⏎ Porque você opera a favor da tendência — e não contra ela. | ### A lógica ⏎ Você opera a favor da tendência — e não contra ela. | promessa ("funciona") |
+| 5 | Simples, visual e extremamente poderosa. | Simples e visual. | superlativo |
+| 6 | ### benefício ⏎ Uma das estratégias mais consistentes do mercado. | ### Benefício ⏎ Uma das estratégias mais usadas do mercado. | superlativo |
+| 7 | Esses candles geralmente iniciam movimentos explosivos. | Esses candles costumam aparecer no início de movimentos fortes — o que não garante continuidade. | promessa |
+| 8 | ### Por que funciona? ⏎ Porque você opera continuidade, não reversão. | ### A lógica ⏎ Você opera continuidade, não reversão. | promessa ("funciona") |
+| 9 | Essas 5 estratégias são perfeitas para iniciantes porque: | Essas 5 estratégias são boas para iniciantes porque: | superlativo |
+| 10 | - funcionam em qualquer corretora (MT4/MT5) | - podem ser aplicadas em qualquer corretora (MT4/MT5) | promessa |
+| 11 | Com disciplina e gestão de risco, você vai longe no Forex. | Com disciplina e gestão de risco, você constrói a base para evoluir no Forex. | promessa |
+
+#### `/blog/metatrader-5-mt5-guia-completo` — 9 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | como começar a operar na plataforma mais completa do mercado financeiro. | como começar a operar na plataforma. | superlativo |
+| 2 | O MT5 vem com mais de 80 indicadores nativos, incluindo: | O MT5 vem com 38 indicadores nativos, incluindo: | dado errado na cópia (MetaQuotes: 38) |
+| 3 | O MT5 é considerado a melhor plataforma do mundo para automação. | O MT5 é uma das plataformas mais usadas para automação. | superlativo |
+| 4 | O MT5 oferece um sistema de backtest muito superior ao MT4: | O MT5 oferece um sistema de backtest mais completo que o do MT4: | superlativo |
+| 5 | É perfeito para validar robôs traders. | É muito usado para testar robôs traders antes de colocar dinheiro real. | superlativo |
+| 6 | Ex: Exness, IC Markets, XM, RoboForex, etc. | Ex.: a [Deriv](/analise-corretora-deriv) (a corretora que eu uso, com o Deriv MT5), [IC Markets](/analise-corretora-forex-ic-markets), [Tickmill](/analise-corretora-forex-tickmill) e [Vantage Markets](/analise-corretora-forex-vantage-markets). ⏎ :::deriv texto ⏎ Abrir conta demo na Deriv ⏎ ::: ⏎ | corretoras fora do site → as analisadas aqui (texto novo; Deriv com o botão e o aviso de risco do bloco — aprovado em 20/10/2026) |
+| 7 | ### Recurso MT4 MT5 ⏎ Indicadores nativos 30+ 80+ ⏎ Timeframes 9 21 ⏎ Robôs traders SIM SIM (melhor) ⏎ Backtest Básico Avançado ⏎ Ações e futuros Não Sim ⏎ Velocidade Alta Muito alta ⏎ Profundidade de mercado Não Sim | \| Recurso \| MT4 \| MT5 \| ⏎ \|---\|---\|---\| ⏎ \| Indicadores nativos \| 30 \| 38 \| ⏎ \| Timeframes \| 9 \| 21 \| ⏎ \| Robôs traders \| Sim \| Sim (mais recursos) \| ⏎ \| Backtest \| Básico \| Avançado \| ⏎ \| Ações e futuros \| Não \| Sim \| ⏎ \| Velocidade \| Alta \| Muito alta \| ⏎ \| Profundidade de mercado \| Não \| Sim \| | tabela quebrada da Builderall + dado errado (80+ → 38) |
+| 8 | - perfeito para robôs | - muito usado com robôs | superlativo |
+| 9 | Se você quer uma plataforma profissional — o MT5 é a melhor escolha. | Se você quer uma plataforma profissional, o MT5 é uma escolha natural. | superlativo |
+
+#### `/blog/metatrader-4-mt4-o-que-e-como-funciona` — 6 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | Ex.: IC Markets, RoboForex, Exness, XM, etc. | Ex.: [IC Markets](/analise-corretora-forex-ic-markets), [Tickmill](/analise-corretora-forex-tickmill), [Vantage Markets](/analise-corretora-forex-vantage-markets) e [EBC Financial Group](/analise-corretora-forex-ebc-financial-group). | corretoras fora do site → as analisadas aqui (texto novo) |
+| 2 | (Podemos criar um artigo só sobre isso também.) | (Veja o passo a passo em [como instalar o MetaTrader no PC](/blog/como-instalar-metatrader-no-pc-passo-a-passo) e [no celular](/blog/como-instalar-metatrader-no-celular-android-iphone).) | texto novo (links para os artigos que já existem) |
+| 3 | Mais de 50 nativos + infinitos personalizados. | 30 nativos + milhares de personalizados. | dado errado na cópia (MetaQuotes: 30) |
+| 4 | Operar sem stop é suicídio. | Operar sem stop é pedir para quebrar a banca. | termo sensível |
+| 5 | - perfeito para robôs traders | - muito usado com robôs traders | superlativo |
+| 6 | o MT4 é a plataforma mais segura e prática para começar. | o MT4 é uma plataforma prática para começar. | superlativo / garantia |
+
+#### `/blog/mt4-vs-mt5-diferenca-completa` — 7 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | é a plataforma mais clássica e popular do Forex. | é uma das plataformas mais clássicas e populares do Forex. | superlativo |
+| 2 | - milhões de tutoriais na internet ⏎ É perfeito para: | - muitos tutoriais na internet ⏎ É indicado para: | exagero |
+| 3 | - 80+ indicadores nativos | - 38 indicadores nativos (contra 30 do MT4) | dado errado na cópia (MetaQuotes: 38) |
+| 4 | - cerca de 30 indicadores ⏎ MT5: ⏎ - mais de 80 indicadores | - 30 indicadores ⏎ MT5: ⏎ - 38 indicadores | dado errado na cópia (MetaQuotes: 38) |
+| 5 | - resultados muito mais precisos | - resultados mais próximos do real | exagero |
+| 6 | - quer o melhor backtest | - quer um backtest mais completo | superlativo |
+| 7 | \| Melhor para iniciantes \|  MT4 \| ⏎ \| Melhor para robôs avançados \|  MT5 \| ⏎ \| Melhor backtest \|  MT5 \| ⏎ \| Mais leve \|  MT4 \| ⏎ \| Mais completo \|  MT5 \| | \| Para \| Plataforma \| ⏎ \|---\|---\| ⏎ \| Iniciantes \| MT4 \| ⏎ \| Robôs avançados \| MT5 \| ⏎ \| Backtest mais completo \| MT5 \| ⏎ \| Mais leve \| MT4 \| ⏎ \| Mais completo \| MT5 \| | tabela quebrada da Builderall |
+
+#### `/blog/como-instalar-indicadores-no-metatrader` — 1 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | - prever reversões | - apontar possíveis reversões | promessa |
+
+#### `/blog/o-que-e-um-ea-expert-advisor-no-metatrader` — 3 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | - ganhar consistência | - manter as mesmas regras em todas as entradas | promessa |
+| 2 | - evitar EAs que prometem “lucro garantido” | - fugir de EAs que prometem lucro certo | alerta reescrito (o padrão de garantia pega a frase) |
+| 3 | - pode aumentar a consistência | - pode ajudar a manter a disciplina das regras | promessa |
+
+#### `/blog/como-instalar-metatrader-no-pc-passo-a-passo` — 2 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | Ex: IC Markets, Exness, XM, RoboForex, etc. | Ex.: [IC Markets](/analise-corretora-forex-ic-markets), [Tickmill](/analise-corretora-forex-tickmill), [Vantage Markets](/analise-corretora-forex-vantage-markets) e [EBC Financial Group](/analise-corretora-forex-ebc-financial-group). | corretoras fora do site → as analisadas aqui (texto novo) |
+| 2 | (ex.: “MT4 – IC Markets”, “MT5 – Exness”) | (ex.: “MT4 – IC Markets”, “MT5 – Tickmill”) | corretora fora do site |
+
+#### `/blog/como-instalar-metatrader-no-celular-android-iphone` — 2 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | o MetaTrader funciona perfeitamente no Android e no iPhone. | o MetaTrader funciona bem no Android e no iPhone. | exagero |
+| 2 | - funciona em qualquer Android ou iPhone | - funciona na maioria dos Android e iPhone | exagero |
+
+#### `/blog/como-usar-o-metatrader-pela-primeira-vez` — 0 troca(s)
+Sem trocas de texto (só a organização automática).
+
+#### `/blog/por-que-todo-trader-deveria-investir` — 8 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | ## Trading Gera Renda. Investimento Gera Patrimônio. | ## Trading Gera Caixa. Investimento Gera Patrimônio. | renda |
+| 2 | Ganhar dinheiro ≠ Construir riqueza ⏎ Trading é excelente para gerar caixa. | Fazer gain ≠ Construir patrimônio ⏎ Trading pode gerar caixa. | promessa ("ganhar dinheiro", "excelente para gerar caixa") |
+| 3 | Fez R$15 mil no mês. | Teve um mês positivo. | valor de ganho como exemplo (soa promessa) |
+| 4 | Também fez R$15 mil. | Também teve um mês positivo. | valor de ganho como exemplo (soa promessa) |
+| 5 | - o patrimônio continua crescendo. | - o patrimônio continua lá. | promessa |
+| 6 | Um criou renda. | Um gerou caixa. | renda |
+| 7 | O trading pode gerar dinheiro rápido. | O trading pode gerar caixa no curto prazo — e também perdas. | promessa |
+| 8 | - **FIIs** → renda recorrente | - **FIIs** → rendimentos recorrentes | renda |
+
+#### `/blog/o-erro-silencioso-que-esta-sabotando-sua-evolucao-no-trade` — 1 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | Essa frase parece madura. | “Eu preciso praticar mais.” ⏎ Essa frase parece madura. | a frase do começo sumiu na cópia (estava fora do texto) → reconstruída a partir do artigo (texto novo) |
+
+#### `/blog/porque-2-3-operacoes-por-semana-sao-suficientes` — 2 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | *Consistência é* **continuar no jogo***.* | *Consistência é* **continuar no mercado***.* | aposta/jogo ("jogo") |
+| 2 | ### Sobreviver vem antes de lucrar. | ### Sobreviver vem antes de ganhar. | promessa ("lucrar") |
+
+#### `/blog/os-5-sinais-claros-de-que-voce-esta-operando-por-impulso-e-colocando-sua-banca-em-risco` — 1 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | E só quem controla… consegue permanecer no jogo. | E só quem controla… consegue permanecer no mercado. | aposta/jogo ("jogo") |
+
+#### `/blog/a-diferenca-entre-o-trader-amador-e-o-profissional-voce-e-qual-deles` — 7 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | existe uma linha muito fina entre o sucesso e o fracasso. | existe uma linha muito fina entre durar e quebrar. | proibida (sucesso) |
+| 2 | ## Trader Amador: O Jogador de Emoções | ## Trader Amador: O Refém das Emoções | aposta/jogo ("jogador") |
+| 3 | age por impulso e confia na sorte — como se estivesse apostando. | age por impulso e confia na sorte. | aposta |
+| 4 | ## Trader Profissional: O Jogador de Estratégia | ## Trader Profissional: O Estrategista | aposta/jogo ("jogador") |
+| 5 | O trader profissional enxerga o mercado como um jogo de probabilidades, não de certezas. | O trader profissional enxerga o mercado em probabilidades, não em certezas. | aposta/jogo ("jogo") |
+| 6 | Sabe que perder faz parte do jogo | Sabe que perder faz parte do processo | aposta/jogo ("jogo") |
+| 7 | O amador quer ganhar rápido — o profissional quer ganhar sempre. | O amador quer ganhar rápido — o profissional quer durar no mercado. | promessa ("ganhar sempre") |
+
+#### `/blog/o-setup-nao-e-o-que-te-faz-ganhar-dinheiro-entenda-o-verdadeiro-segredo-do-trader-consistente` — 7 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | a chave do sucesso no mercado financeiro | a chave para dar certo no mercado financeiro | proibida (sucesso) |
+| 2 | para começar a lucrar. | para começar a ganhar. | promessa ("lucrar") |
+| 3 | Um trader disciplinado consegue lucro até com uma estratégia simples | Um trader disciplinado consegue resultado até com uma estratégia simples | promessa |
+| 4 | entender que perder faz parte do jogo. | entender que perder faz parte do processo. | aposta/jogo ("jogo") |
+| 5 | Com esses pilares, o trader transforma lucros ocasionais em resultados consistentes. | Com esses pilares, o trader para de depender de acertos ocasionais. | promessa |
+| 6 | Mas se você busca evolução, ele te recompensa com crescimento real. | Mas se você busca evolução, ele mostra o caminho do crescimento real. | promessa |
+| 7 | “O setup não te faz lucrar. Sua disciplina, sim.” | “O setup não te faz consistente. Sua disciplina, sim.” | promessa ("lucrar") |
+
+#### `/blog/trader-investidor-por-que-o-equil-brio-o-verdadeiro-segredo-da-consistencia` — 12 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | Muita gente entra no mercado sonhando em “viver de renda”. | Muita gente entra no mercado sonhando em “viver do mercado”. | renda |
+| 2 | ## O trader: ganhos rápidos no curto prazo | ## O trader: resultado no curto prazo | promessa |
+| 3 | aproveitando oscilações rápidas de preço para multiplicar seu capital. | aproveitando oscilações rápidas de preço. | promessa |
+| 4 | Resultados mais rápidos ⏎ Possibilidade de lucros diários ⏎ Adrenalina e dinamismo | Resultados mais rápidos (para o ganho e para a perda) ⏎ Adrenalina e dinamismo | promessa ("lucros diários") |
+| 5 | O trader pode até ganhar bem, mas se não souber preservar | O trader pode até ter bons meses, mas se não souber preservar | promessa |
+| 6 | O investidor joga outro jogo. | O investidor está em outra lógica. | aposta/jogo ("jogo") |
+| 7 | Crescimento consistente ⏎ Proteção contra oscilações momentâneas ⏎ Possibilidade de renda passiva | Crescimento no longo prazo (sem garantia) ⏎ Menos peso das oscilações momentâneas ⏎ Possibilidade de rendimentos recorrentes | promessa / renda |
+| 8 | Querem viver de renda… mas nunca investem. | Querem viver do mercado… mas nunca investem. | renda |
+| 9 | em ativos que geram renda ou valorização. | em ativos de longo prazo. | renda |
+| 10 | Assim, você não só cresce rápido, como também garante que esse crescimento seja sustentável. | Assim, o que você conquista no curto prazo tem mais chance de durar. | garantia |
+| 11 | - Mas unir os dois é o que vai te transformar em alguém consistente, capaz de ganhar e preservar. | Mas unir os dois é o caminho para ser alguém consistente, que sabe ganhar e preservar. | promessa |
+| 12 | E o equilíbrio entre eles é o que constrói riqueza de verdade. | E o equilíbrio entre eles é o que constrói patrimônio de verdade. | voz da marca (patrimônio) |
+
+#### `/blog/day-trade-e-simples-o-dificil-e-voce-parar-de-inventar` — 1 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | ## O que realmente funciona? ⏎ Os traders consistentes que vivem do mercado têm algo em comum: | ## O que os consistentes fazem? ⏎ Os traders consistentes têm algo em comum: | promessa ("vivem do mercado") |
+
+#### `/blog/voce-nao-vive-de-lucro-voce-vive-de-constancia` — 4 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | Se você persegue a constância, vai construir resultados duradouros. | Se você persegue a constância, constrói a base para resultados que duram. | promessa |
+| 2 | ## A verdadeira chave do sucesso no trade | ## A verdadeira chave no trade | proibida (sucesso) |
+| 3 | é o que constrói uma curva ascendente de resultados. E quanto mais disciplinado você for, mais liberdade o mercado te dará. | é o que constrói uma curva de resultados mais estável. E quanto mais disciplinado você for, mais tranquilo você opera. | promessa |
+| 4 | ### Constância vence o jogo. | ### Constância vence a pressa. | aposta/jogo ("jogo") |
+
+#### `/blog/o-maior-erro-de-quem-come-a-no-day-trade-operar-todo-dia` — 3 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | e portanto, mais lucrativo. | e portanto, com mais resultado. | promessa ("lucrativo") |
+| 2 | *Você ainda acredita que operar TODO DIA te deixa mais lucrativo?* | *Você ainda acredita que operar TODO DIA te dá mais resultado?* | promessa ("lucrativo") |
+| 3 | exige mais do que vontade de lucrar. | exige mais do que vontade de ganhar. | promessa ("lucrar") |
+
+#### `/blog/o-que-e-pullback-no-day-trade-entenda-de-uma-vez-por-todas` — 4 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | pode ser o melhor momento para entrar comprado. | pode ser um bom momento para entrar comprado — com stop definido. | superlativo |
+| 2 | - O risco é menor (stop mais curto) ⏎ - A entrada é feita a favor da tendência ⏎ - Pode aproveitar melhor a alavancagem com mais segurança | - O stop tende a ser mais curto ⏎ - A entrada é feita a favor da tendência | promessa ("alavancagem com mais segurança") |
+| 3 | para aumentar a assertividade! | para filtrar melhor as entradas. | promessa |
+| 4 | quem domina isso passa a operar com mais segurança e eficiência. | quem entende isso passa a operar com mais critério. | promessa |
+
+#### `/blog/dominando-o-macd-estrategias-e-insights-para-traders` — 4 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | e estratégias eficazes para traders. | e estratégias usadas pelos traders. | promessa |
+| 2 | Esta é uma estratégia simples, mas eficaz, para seguir a tendência. | Esta é uma estratégia simples para seguir a tendência — e gera sinais falsos em mercado lateral. | promessa ("eficaz") |
+| 3 | o MACD pode ser uma ferramenta indispensável para traders. | o MACD pode ser uma ferramenta útil para traders. | superlativo |
+| 4 | para maximizar sua eficácia e minimizar riscos. | para filtrar sinais e controlar o risco. | promessa |
+
+#### `/blog/bandas-de-bollinger-um-guia-completo-para-traders` — 2 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | As Bandas de Bollinger são um dos indicadores mais importantes no arsenal de qualquer trader. | As Bandas de Bollinger estão entre os indicadores mais usados pelos traders. | superlativo |
+| 2 | são fundamentais para o sucesso. | são fundamentais para evoluir. | proibida (sucesso) |
+
+#### `/blog/rsi-desvendado-como-utilizar-o-indice-de-for-a-relativa-no-day-trade` — 2 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | e estratégias eficazes para seu uso no day trade. | e estratégias para seu uso no day trade. | promessa |
+| 2 | oferecendo sinais claros de possíveis reversões de preço. | oferecendo sinais de possíveis reversões de preço. | exagero |
+
+#### `/blog/estrategias-avancadas-com-medias-moveis-no-day-trading` — 3 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | em estratégias avançadas de day trade, com estudos de caso e análises de tendências. | em estratégias avançadas de day trade. | os "estudos de caso" não existem no texto |
+| 2 | ## Estudos de Caso e Análises de Tendências ⏎ **Estudo de Caso 1:** Análise do cruzamento da EMA de 12 dias e da EMA de 26 dias no gráfico diário do S&P 500, demonstrando como este sinal pode prever mudanças de tendência. ⏎ **Estudo de Caso 2:** Uso da WMA em um gráfico de 30 minutos do EUR/USD para identificar oportunidades de day trade baseadas em reversões de tendência a curto prazo. ⏎ | *(removido)* | seção sem conteúdo real (só anuncia estudos que não aparecem) + promessa ("prever") |
+| 3 | Médias móveis são indispensáveis no day trading | Médias móveis estão entre as ferramentas mais usadas no day trading | superlativo |
+
+#### `/blog/fibonacci-no-day-trade-aplicacoes-e-taticas-de-sucesso` — 4 troca(s)
+| # | Antes (cópia) | Depois | Motivo |
+|---|---|---|---|
+| 1 | são uma ferramenta inestimável no day trading. | são uma ferramenta muito usada no day trading. | superlativo |
+| 2 | Esses níveis são utilizados para prever até onde | Esses níveis são utilizados para estimar até onde | promessa |
+| 3 | ## Estudos de Caso e Exemplos Reais ⏎ **Estudo de Caso 1:** Análise da aplicação da retração de Fibonacci em uma tendência de alta do índice NASDAQ, identificando níveis de suporte durante retrocessos. ⏎ **Estudo de Caso 2:** Uso das extensões de Fibonacci para estabelecer alvos de lucro em uma tendência de alta do par de moedas EUR/USD. ⏎ | *(removido)* | seção sem conteúdo real (só anuncia estudos que não aparecem) |
+| 4 | oferece uma maneira sistemática de analisar e prever movimentos de preços. | oferece uma maneira sistemática de analisar movimentos de preços. | promessa |
+
+**Total do lote 3: 174 trocas em 34 páginas.**
+<!-- lote-3:fim -->

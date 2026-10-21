@@ -68,5 +68,10 @@
     "de": "/blog/o-guia-completo-da-exnova-uma-visao-geral-da-plataforma-de-negociacao",
     "para": "/analise-corretora-exnova",
     "motivo": "não migra no lote 2: descreve a Exnova como corretora de valores com títulos e fundos e \"devidamente regulamentada\""
+  },
+  {
+    "de": "/blog/quanto-e-possivel-ganhar-com-day-trade-expectativas-versus-realidade",
+    "para": "/c/gestao-de-risco",
+    "motivo": "não migra no lote 3: promessa de ganho em números (\"2% a 5% ao mês\", R$ 170/dia) e custos da B3 — reescrever com \"expectativa × realidade\" sem números (mapa, tema 5); vai para o guia de gestão de risco quando existir"
   }
 ]

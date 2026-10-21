@@ -89,6 +89,8 @@ Antes de começar a negociar, é aconselhável abrir uma conta demo para adquiri
 
 :::deriv texto
 Abrir conta demo na Deriv
-::: Além disso, esteja ciente das políticas de regulamentação e dos termos e condições da Deriv.com.
+:::
+
+ Além disso, esteja ciente das políticas de regulamentação e dos termos e condições da Deriv.com.
 
 Compreender os ativos e as estratégias de negociação é fundamental. A educação contínua e a prática fazem a diferença.

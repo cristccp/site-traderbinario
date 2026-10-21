@@ -181,6 +181,9 @@
 .prose strong { color: var(--color-white); font-weight: 600; }
 .prose a { text-decoration: underline; text-underline-offset: 3px; }
 .prose img { width: 100%; height: auto; border-radius: var(--fx-radius); border: 1px solid var(--color-line); margin: var(--space-xs) 0 var(--space-md); }
+.prose table { width: 100%; border-collapse: collapse; margin: var(--space-xs) 0 var(--space-md); font-size: 0.9375rem; line-height: 1.45; }
+.prose th, .prose td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--color-line); vertical-align: top; }
+.prose th { color: var(--color-white); font-weight: 600; background: var(--color-surface, #11161d); }
 .prose > :first-child { margin-top: 0; }
 .prose--caixa p, .prose--caixa li { font-size: 1rem; }
 .prose--caixa > :last-child { margin-bottom: 0; }

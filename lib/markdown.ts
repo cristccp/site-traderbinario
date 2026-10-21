@@ -29,7 +29,7 @@ export const slugify = (s: string) =>
   s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/<[^>]+>/g, "")
     .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 
-const textoPuro = (html: string) => html.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&quot;/g, "\"").replace(/&#39;/g, "'").trim();
+const textoPuro = (html: string) => html.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&quot;/g, "\"").replace(/&#39;/g, "'").replace(/&gt;/g, ">").replace(/&lt;/g, "<").trim();
 
 export function blocos(corpo: string): { lista: Bloco[]; indice: ItemIndice[] } {
   const indice: ItemIndice[] = [];

@@ -93,6 +93,8 @@ Antes de começar a negociar na Deriv.com, é aconselhável abrir uma conta demo
 
 :::deriv texto
 Abrir conta demo na Deriv
-::: Além disso, certifique-se de entender completamente os termos e condições, bem como as políticas de regulamentação da corretora.
+:::
+
+ Além disso, certifique-se de entender completamente os termos e condições, bem como as políticas de regulamentação da corretora.
 
 Lembre-se de que a negociação de derivativos financeiros envolve alto risco e é importante operar apenas o que você pode se dar ao luxo de perder. Análise, estratégia e disciplina fazem a diferença.

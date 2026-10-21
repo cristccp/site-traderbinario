@@ -28,6 +28,7 @@ const ERROS = [
   [/\baposta|\bapostar|\bjogo\b|\bjogos\b|cassino/i, "aposta/jogo"],
   [/[\u{1F300}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u, "emoji no texto"],
   [/1sh\.co|bit\.ly\/TraderBinarioIQ|track\.deriv\.com|iqbroker\.com/i, "link antigo de afiliado"],
+  [/:::/, "marcador de bloco (:::) aparecendo no texto — bloco não fechou"],
 ];
 const AVISOS = [
   [/\binvest(e|ir|imento|imentos|ido|indo|idor|idores)\b/i, "investir/investimento (conferir: opção binária não é investimento)"],
@@ -36,7 +37,7 @@ const AVISOS = [
 
 // Só o texto visível: tira <script>, <style>, atributos e tags
 // Frases revisadas que o padrão pegaria por engano (alerta ou negação, não promessa)
-const EXCECOES = [/ganhar dinheiro e continuar vulner[aá]vel/gi, /n[ãa]o precisa escolher .a melhor corretora do mundo./gi];
+const EXCECOES = [/n[ãa]o [ée] o que te faz ganhar dinheiro/gi, /\d+% do lucro/gi, /ganhar dinheiro e continuar vulner[aá]vel/gi, /n[ãa]o precisa escolher .a melhor corretora do mundo./gi];
 const textoVisivel = (html) => EXCECOES.reduce((h, re) => h.replace(re, " "), html).replace(/⚠️|⚠/g, " ")   // o ⚠️ dos avisos de risco é do design
   .replace(/recomenda[çc][ãa]o de investimento|prote[çc][ãa]o ao investidor|Plataforma de Investimento Online/gi, " ").replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ")
   .replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#x27;|&quot;|&amp;/g, " ").replace(/\s+/g, " ");

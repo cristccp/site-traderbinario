@@ -22,7 +22,13 @@ trilha: Gerenciamento
 autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20
-relacionados: []
+relacionados:
+  - titulo: Por que todo trader deveria investir (e o erro que pode estar te travando)
+    href: /blog/por-que-todo-trader-deveria-investir
+  - titulo: O erro silencioso que está sabotando sua evolução no trade
+    href: /blog/o-erro-silencioso-que-esta-sabotando-sua-evolucao-no-trade
+  - titulo: Por que 2–3 operações por semana são suficientes (e por que operar todo dia atrapalha)
+    href: /blog/porque-2-3-operacoes-por-semana-sao-suficientes
 ---
 
 O gerenciamento adequado do seu capital é crucial quando se trata de negociação de opções binárias. Muitos traders, especialmente iniciantes, negligenciam essa parte fundamental da negociação, o que pode levar a perdas significativas. Neste artigo, exploraremos estratégias de gerenciamento de capital que podem ajudá-lo a melhorar sua abordagem nas opções binárias.

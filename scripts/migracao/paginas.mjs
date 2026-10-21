@@ -223,7 +223,54 @@ Object.assign(PAGINAS, {
   "analise-ativos-deriv-como-negociar-forex-indices-commodities": artigo("Ativos na Deriv: como negociar forex, índices e commodities", "Ativos", "corretoras", "Ativos na Deriv: forex, índices e commodities", { trilha: "Ativos na Deriv" }),
 });
 
-for (const [slug, d] of Object.entries(DESCRICOES)) if (PAGINAS[slug] && !PAGINAS[slug].seo.description) PAGINAS[slug].seo.description = d;
+const SLUGS_LOTE2 = Object.keys(PAGINAS).filter((s) => PAGINAS[s].tipo === "artigo");
+
+// ---------- LOTE 3: forex, MetaTrader, posicionamento, análise técnica ----------
+// Descriptions: a cópia não tinha e a linha de abertura passava de 155 → textos novos (descricoes-lote3.json, aprovar)
+import DESCRICOES3 from "./descricoes-lote3.json" with { type: "json" };
+const LOTE3 = {
+  // Forex
+  "forex-o-que-e-como-funciona-guia-completo-para-iniciantes": artigo("Forex: o que é e como funciona? Guia completo para iniciantes", "como funciona", "forex", "Forex: o que é e como funciona? Guia para iniciantes", { trilha: "O que é forex" }),
+  "como-operar-forex-no-brasil-passo-a-passo-simples-e-atualizado": artigo("Como operar forex no Brasil: passo a passo simples e atualizado", "passo a passo", "forex", "Como operar forex no Brasil: passo a passo", { trilha: "Como operar forex" }),
+  "forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos": artigo("Forex é legal no Brasil? Entenda a regulamentação e os riscos", "legal", "forex", "Forex é legal no Brasil? Regulamentação e riscos", { trilha: "Forex é legal?" }),
+  "qual-a-diferenca-entre-opcoes-binarias-e-forex": artigo("Qual a diferença entre opções binárias e forex?", "diferença", "forex", undefined, { trilha: "Binárias × forex" }),
+  "melhores-horarios-para-operar-forex-no-brasil": artigo("Melhores horários para operar forex no Brasil", "horários", "forex", undefined, { trilha: "Horários do forex" }),
+  "alavancagem-no-forex-o-que-e-como-funciona-e-como-usar-com-seguranca": artigo("Alavancagem no forex: o que é, como funciona e como usar com segurança", "Alavancagem", "forex", "Alavancagem no forex: o que é e como usar com segurança", { trilha: "Alavancagem" }),
+  "psicologia-no-forex-o-fator-que-separa-ganhar-de-perder": artigo("Psicologia no forex: o fator que separa ganhar de perder", "Psicologia", "forex", undefined, { trilha: "Psicologia no forex" }),
+  "os-indicadores-mais-usados-no-forex-e-como-utilizar-cada-um": artigo("Os indicadores mais usados no forex (e como utilizar cada um)", "indicadores", "forex", "Os indicadores mais usados no forex e como usar cada um", { trilha: "Indicadores do forex" }),
+  "pares-de-moedas-mais-negociados-no-forex": artigo("Pares de moedas mais negociados no forex: as escolhas dos traders", "Pares de moedas", "forex", "Pares de moedas mais negociados no forex", { trilha: "Pares de moedas" }),
+  "5-estrategias-simples-de-forex-para-iniciantes-que-funcionam": artigo("5 estratégias simples de forex para iniciantes", "estratégias simples", "forex", undefined, { trilha: "5 estratégias de forex" }),
+  // MetaTrader
+  "metatrader-5-mt5-guia-completo": artigo("MetaTrader 5 (MT5): guia completo para iniciantes e como ele funciona", "MetaTrader 5", "metatrader", "MetaTrader 5 (MT5): guia completo para iniciantes", { trilha: "Guia do MT5" }),
+  "metatrader-4-mt4-o-que-e-como-funciona": artigo("MetaTrader 4 (MT4): o que é, como funciona e como começar a operar", "MetaTrader 4", "metatrader", "MetaTrader 4 (MT4): o que é e como funciona", { trilha: "O que é o MT4" }),
+  "mt4-vs-mt5-diferenca-completa": artigo("MT4 vs MT5: diferença completa e qual plataforma vale mais a pena", "MT4 vs MT5", "metatrader", "MT4 vs MT5: diferenças e qual plataforma escolher", { trilha: "MT4 × MT5" }),
+  "como-instalar-indicadores-no-metatrader": artigo("Como instalar indicadores no MetaTrader (MT4 e MT5): guia rápido e completo", "indicadores", "metatrader", "Como instalar indicadores no MetaTrader (MT4 e MT5)", { trilha: "Instalar indicadores" }),
+  "o-que-e-um-ea-expert-advisor-no-metatrader": artigo("O que é um EA (Expert Advisor) no MetaTrader? Como funciona a automação no MT4 e MT5", "Expert Advisor", "metatrader", "O que é um EA (Expert Advisor) no MetaTrader", { trilha: "O que é um EA" }),
+  "como-instalar-metatrader-no-pc-passo-a-passo": artigo("Como instalar o MetaTrader no PC: guia passo a passo (MT4 e MT5)", "no PC", "metatrader", "Como instalar o MetaTrader no PC (MT4 e MT5)", { trilha: "Instalar no PC" }),
+  "como-instalar-metatrader-no-celular-android-iphone": artigo("Como instalar o MetaTrader no celular (Android e iPhone): guia rápido", "no celular", "metatrader", "Como instalar o MetaTrader no celular (Android e iPhone)", { trilha: "Instalar no celular" }),
+  "como-usar-o-metatrader-pela-primeira-vez": artigo("Como usar o MetaTrader pela primeira vez: tutorial completo para iniciantes", "primeira vez", "metatrader", "Como usar o MetaTrader pela primeira vez", { trilha: "Primeiro uso" }),
+  // Posicionamento (gestão de risco e mentalidade)
+  "por-que-todo-trader-deveria-investir": artigo("Por que todo trader deveria investir (e o erro que pode estar te travando)", "investir", "gestao-de-risco", "Por que todo trader deveria investir", { trilha: "Todo trader deveria investir" }),
+  "o-erro-silencioso-que-esta-sabotando-sua-evolucao-no-trade": artigo("O erro silencioso que está sabotando sua evolução no trade", "erro silencioso", "gestao-de-risco", undefined, { trilha: "O erro silencioso" }),
+  "porque-2-3-operacoes-por-semana-sao-suficientes": artigo("Por que 2–3 operações por semana são suficientes (e por que operar todo dia atrapalha)", "2–3 operações", "gestao-de-risco", "Por que 2–3 operações por semana são suficientes", { trilha: "2–3 operações por semana" }),
+  "os-5-sinais-claros-de-que-voce-esta-operando-por-impulso-e-colocando-sua-banca-em-risco": artigo("Os 5 sinais claros de que você está operando por impulso (e colocando sua banca em risco)", "impulso", "gestao-de-risco", "5 sinais de que você está operando por impulso", { trilha: "Operar por impulso" }),
+  "a-diferenca-entre-o-trader-amador-e-o-profissional-voce-e-qual-deles": artigo("A diferença entre o trader amador e o profissional — você é qual deles?", "amador", "gestao-de-risco", "Trader amador × profissional: você é qual deles?", { trilha: "Amador × profissional" }),
+  "o-setup-nao-e-o-que-te-faz-ganhar-dinheiro-entenda-o-verdadeiro-segredo-do-trader-consistente": artigo("O setup não é o que te faz ganhar dinheiro — entenda o que faz o trader consistente", "setup", "gestao-de-risco", "O setup não é o que te faz ganhar dinheiro", { trilha: "O setup não é tudo" }),
+  "trader-investidor-por-que-o-equil-brio-o-verdadeiro-segredo-da-consistencia": artigo("Trader x investidor: por que o equilíbrio é a base da consistência?", "equilíbrio", "gestao-de-risco", "Trader x investidor: por que o equilíbrio importa", { trilha: "Trader × investidor" }),
+  "day-trade-e-simples-o-dificil-e-voce-parar-de-inventar": artigo("Day trade é simples. O difícil é você parar de inventar.", "parar de inventar", "gestao-de-risco", undefined, { trilha: "Parar de inventar" }),
+  "voce-nao-vive-de-lucro-voce-vive-de-constancia": artigo("Você não vive de lucro. Você vive de constância!", "constância", "gestao-de-risco", undefined, { trilha: "Constância" }),
+  "o-maior-erro-de-quem-come-a-no-day-trade-operar-todo-dia": artigo("O maior erro de quem começa no day trade: operar todo dia", "operar todo dia", "gestao-de-risco", undefined, { trilha: "Operar todo dia" }),
+  // Análise técnica
+  "o-que-e-pullback-no-day-trade-entenda-de-uma-vez-por-todas": artigo("O que é pullback no day trade? Entenda de uma vez por todas", "pullback", "gestao-de-risco", undefined, { trilha: "Pullback" }),
+  "dominando-o-macd-estrategias-e-insights-para-traders": artigo("Dominando o MACD: estratégias e insights para traders", "MACD", "gestao-de-risco", undefined, { trilha: "MACD" }),
+  "bandas-de-bollinger-um-guia-completo-para-traders": artigo("Bandas de Bollinger: um guia completo para traders", "Bandas de Bollinger", "gestao-de-risco", undefined, { trilha: "Bandas de Bollinger" }),
+  "rsi-desvendado-como-utilizar-o-indice-de-for-a-relativa-no-day-trade": artigo("RSI desvendado: como utilizar o índice de força relativa no day trade", "RSI", "gestao-de-risco", "RSI: como usar o índice de força relativa no day trade", { trilha: "RSI" }),
+  "estrategias-avancadas-com-medias-moveis-no-day-trading": artigo("Estratégias avançadas com médias móveis no day trading", "médias móveis", "gestao-de-risco", undefined, { trilha: "Médias móveis" }),
+  "fibonacci-no-day-trade-aplicacoes-e-taticas-de-sucesso": artigo("Fibonacci no day trade: aplicações e táticas", "Fibonacci", "gestao-de-risco", undefined, { trilha: "Fibonacci" }),
+};
+Object.assign(PAGINAS, LOTE3);
+
+for (const [slug, d] of Object.entries({ ...DESCRICOES, ...DESCRICOES3 })) if (PAGINAS[slug] && !PAGINAS[slug].seo.description) PAGINAS[slug].seo.description = d;
 
 // NÃO migram no lote 2 (descrevem recursos que a corretora não tem → 308 para a análise da corretora; reescrever se valer):
 // /blog/analise-plataforma-negociacao-quotex, /blog/introducao-iq-option, /blog/o-guia-completo-da-exnova-uma-visao-geral-da-plataforma-de-negociacao
@@ -240,5 +287,6 @@ for (const [slug, cfg] of Object.entries(PAGINAS)) {
 // /como-funcionam-as-opcoes-binarias, /ativos-financeiros-opcoes-binarias, /opcoes-binarias-legalizado-brasil (+ /opcoes-binarias-seguro)
 export const LOTES = {
   1: Object.keys(PAGINAS).filter((s) => s.startsWith("analise-corretora-") || PAGINAS[s].tipo === "guia"),
-  2: Object.keys(PAGINAS).filter((s) => PAGINAS[s].tipo === "artigo"),
+  2: SLUGS_LOTE2,
+  3: Object.keys(LOTE3),
 };

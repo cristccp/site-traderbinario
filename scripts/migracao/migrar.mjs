@@ -36,7 +36,7 @@ const primeiroParagrafo = (corpo) => {
   if (!t || t.length > 155) throw new Error(`description: o 1º parágrafo tem ${t.length} caracteres — escreva uma em paginas.mjs: «${t}»`);
   return t;
 };
-const normaliza = (x) => x.replace(/\*\*\*([^*]+?)\*\*\*/g, "**$1**").replace(EMOJI, "").trim();
+const normaliza = (x) => x.replace(/\*\*\*([^*]+?)\*\*\*/g, "**$1**").replace(EMOJI, "").replace(/(^|\s)\* +([^*\n]+?)\*(?!\*)/g, "$1*$2*").trim();
 const limpaTitulo = (s) => s.replace(EMOJI, "").replace(/\*+/g, "").replace(/\s+/g, " ").trim().replace(/:$/, "");
 const fraseNormal = (s) => {          // "CADASTRE-SE GRATUITAMENTE NA BINOMO!" → "Cadastre-se gratuitamente na Binomo"
   const t = limpaTitulo(s).replace(/[!]+$/, "");
@@ -56,7 +56,7 @@ async function converterImagem(origem, destinoRel) {
 
 async function migrar(cfg) {
   const fonte = path.join(COPIA, cfg.fonte ?? cfg.slug);
-  const bruto = readFileSync(path.join(fonte, "conteudo.md"), "utf8").replace(/\r\n/g, "\n").replace(/[​‌⁠﻿]/g, "").replace(/ /g, " ")
+  const bruto = readFileSync(path.join(fonte, "conteudo.md"), "utf8").replace(/\r\n/g, "\n").replace(/⠀/g, "").replace(/[​‌⁠﻿]/g, "").replace(/ /g, " ")
     .replace(/^<!--.*?-->\n*/s, "");
   const nomeCurto = cfg.corretora?.nome ?? cfg.titulo;
   let linhas = bruto.split("\n");
@@ -152,6 +152,7 @@ async function migrar(cfg) {
     l = l.replace(/^\s+-\s+/, "- ").replace(/^\s+(\d+)\.\s+/, "$1. ").replace(/\*\*\*([^*]+?)\*\*\*/g, "**$1**");
     l = l.replace(/^\*\*-\s+/, "- **").replace(EMOJI, "").replace(/^(\s*[-*]\s*)\s+/, "$1").replace(/ {2,}/g, " ");
     l = l.replace(/^-(?=[^\s-])/, "- ").replace(/^ (?=\S)/, "");                     // "-Item" → "- Item"; " Texto" → "Texto"
+    l = l.replace(/(^|\s)\* +([^*\n]+?)\*(?!\*)/g, "$1*$2*");                         // "* 💡Dica:*" sem o emoji → "*Dica:*" (não vira lista)
     if (l.trim()) viuTexto = true;
     saida.push(l);
   }
