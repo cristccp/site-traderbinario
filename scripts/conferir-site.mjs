@@ -90,7 +90,7 @@ const EXCECOES_PAGINA = {
     "¿Son una apuesta?", "¿Las opciones binarias son una apuesta?", "La estructura se parece a una apuesta", "se vuelve una apuesta",
     "Grupos de señales \"garantizadas\"", "Grupos de señales garantizadas",
   ],
-  // Home EN/ES: os cards levam o título dos artigos (copy, seção 4.2: "Card 1 = título do guia") — 21/10/2026
+  // Home EN/ES: aprovado 21/10/2026: título do artigo no card (é o nome do artigo, não chamada)
   "/en": ["Binary options: what they are, how they work and the risks", "What is the best money management for binary options?", "What is the difference between binary and digital options?"],
   "/es": ["Opciones binarias: qué son, cómo funcionan y sus riesgos", "¿Cuál es la mejor gestión de capital para opciones binarias?", "¿Cuál es la diferencia entre opciones binarias y digitales?"],
   "/blog/forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos": [

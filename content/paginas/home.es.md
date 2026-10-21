@@ -9,7 +9,7 @@ titulo: "Opera con método, sin atajos"
 tituloDestaque: método
 seo:
   title: "Trader Binário | Trading con método y gestión de riesgo"
-  description: "Guías directas sobre cómo funcionan las operaciones de corto plazo, los riesgos reales y cómo definir tu gestión de riesgo antes de la primera operación."
+  description: "Guías directas sobre cómo funcionan las operaciones de corto plazo, sus riesgos reales y cómo definir tu gestión de riesgo antes de operar."   # aprovada 21/10/2026 (≤ 155)
 rotulo: GESTIÓN DE RIESGO · HERRAMIENTAS · GLOSARIO
 apoio:
   - "Guías directas escritas por **Cristiano Pereira**, trader desde 2017."
