@@ -5,7 +5,8 @@
 //  - links internos: página que existe (200), redirecionamento 308 da lista, página de um lote futuro (pendente) ou QUEBRADO;
 //  - imagens do próprio site que não abrem;
 //  - CELULAR (390 px), num Chrome de verdade: rolagem lateral (página mais larga que a tela), erro no console e status;
-//  - MENU: rolar até o fim → clicar em cada item do menu (PT/EN/ES, computador e ☰ em 390 px) → página nova no topo.
+//  - MENU: rolar até o fim → clicar em cada item do menu (PT/EN/ES, computador e ☰ em 390 px) → página nova no topo;
+//  - DICAS DO GLOSSÁRIO: mouse da palavra até "Ver no glossário" sem a caixinha sumir, acima/abaixo e por toque.
 //    Usa o Chrome instalado (puppeteer-core, só desenvolvimento). Outro caminho: CHROME_PATH=… node scripts/conferir-site.mjs
 // "investimento/investir" e superlativos entram como AVISO (exigem leitura humana: "investir tempo" é ok).
 import { existsSync, readFileSync } from "node:fs";
@@ -151,6 +152,8 @@ const CHROME = process.env.CHROME_PATH ?? "C:/Program Files/Google/Chrome/Applic
 const celular = [];
 const menu = [];
 let nMenu = 0;
+const dicas = [];
+let nDicas = 0;
 if (!existsSync(CHROME)) {
   celular.push("teste de 390 px NÃO RODOU: Chrome não encontrado (defina CHROME_PATH)");
 } else {
@@ -211,6 +214,72 @@ if (!existsSync(CHROME)) {
     }
   }
   await aba.close();
+
+  // DICAS DO GLOSSÁRIO (bug de 21/10/2026): passar o mouse na palavra → ir em linha reta até "Ver no glossário" → clicar
+  // → abre o glossário na âncora do termo. Caixinha acima e abaixo da palavra (perto do topo) e por toque em 390 px; PT/EN/ES.
+  // glossario_dica tem de sair 1 vez por abertura.
+  const PAGINAS_DICA = ["/blog/qual-e-o-melhor-gerenciamento-para-opcoes-binarias", "/en/what-are-binary-options", "/es/blog/gestion-de-capital-opciones-binarias"];
+  const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+  const estado = (aba) => aba.evaluate(() => {
+    const b = document.querySelector(".glossario__termo[aria-expanded='true']");
+    const d = b && document.getElementById(b.getAttribute("aria-controls"));
+    if (!d || d.hidden) return null;
+    const a = d.querySelector("a").getBoundingClientRect();
+    return { termo: b.dataset.termo, baixo: d.classList.contains("glossario__dica--baixo"), href: d.querySelector("a").getAttribute("href"),
+      link: { x: a.left + a.width / 2, y: a.top + a.height / 2 }, dicaTop: d.getBoundingClientRect().top, topo: document.querySelector(".topo").getBoundingClientRect().bottom };
+  });
+  const chegou = (aba) => aba.evaluate(() => {
+    const alvo = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    return { url: location.pathname + location.hash, alvoVisivel: !!alvo && alvo.getBoundingClientRect().top >= document.querySelector(".topo").getBoundingClientRect().bottom - 1 };
+  });
+  for (const pagina of PAGINAS_DICA) {
+    for (const posicao of ["acima", "abaixo", "toque 390 px"]) {
+      const aba = await navegador.newPage();
+      await aba.setCookie({ name: "cpt_consent", value: "denied", url: BASE });
+      const toque = posicao.startsWith("toque");
+      await aba.setViewport(toque ? { width: 390, height: 844, isMobile: true, hasTouch: true } : { width: 1440, height: 900 });
+      let eventos = 0;
+      aba.on("console", (m) => { if (m.text().includes("[medição]") && m.text().includes("glossario_dica")) eventos++; });
+      await aba.goto(BASE + pagina, { waitUntil: "networkidle0" });
+      const falhas = [];
+      // a palavra: no meio da tela ("acima") ou logo abaixo do cabeçalho fixo ("abaixo")
+      const caixa = await aba.evaluate(async (abaixo) => {
+        const b = document.querySelector(".glossario__termo");
+        const topo = () => document.querySelector(".topo").getBoundingClientRect().bottom;
+        const y = b.getBoundingClientRect().top + scrollY;
+        scrollTo({ top: abaixo ? y - topo() - 24 : y - innerHeight / 2, behavior: "instant" });
+        await new Promise((r) => setTimeout(r, 300));
+        scrollTo({ top: abaixo ? b.getBoundingClientRect().top + scrollY - topo() - 24 : scrollY, behavior: "instant" });   // o cabeçalho encolheu
+        await new Promise((r) => setTimeout(r, 300));
+        const r = b.getClientRects()[0];   // 1º pedaço (o termo pode quebrar em 2 linhas)
+        return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+      }, posicao === "abaixo");
+      if (toque) await aba.touchscreen.tap(caixa.x, caixa.y);
+      else { await aba.mouse.move(caixa.x - 200, caixa.y); await aba.mouse.move(caixa.x, caixa.y, { steps: 8 }); }
+      await espera(250);
+      const s = await estado(aba);
+      if (!s) falhas.push("a caixinha não abriu");
+      else {
+        if (!toque && s.baixo !== (posicao === "abaixo")) falhas.push(`abriu ${s.baixo ? "abaixo" : "acima"} (esperado ${posicao})`);
+        if (s.dicaTop < s.topo) falhas.push("caixinha escondida atrás do cabeçalho");
+        if (toque) await aba.touchscreen.tap(s.link.x, s.link.y);
+        else {
+          await aba.mouse.move(s.link.x, s.link.y, { steps: 25 });   // em linha reta até "Ver no glossário"
+          await espera(450);                                           // mais que o atraso de fechamento
+          if (!(await estado(aba))) falhas.push("a caixinha sumiu no caminho até o link");
+          await aba.mouse.click(s.link.x, s.link.y);
+        }
+        await aba.waitForNavigation({ waitUntil: "networkidle0", timeout: 15000 }).catch(() => falhas.push("o clique no link não abriu o glossário"));
+        const c = await chegou(aba);
+        if (c.url !== s.href) falhas.push(`abriu ${c.url} (esperado ${s.href})`);
+        else if (!c.alvoVisivel) falhas.push("o termo não ficou visível abaixo do cabeçalho");
+        if (eventos !== 1) falhas.push(`glossario_dica saiu ${eventos} vez(es) (esperado 1)`);
+      }
+      if (falhas.length) dicas.push(`${pagina} (${posicao}): ${falhas.join(", ")}`);
+      nDicas++;
+      await aba.close();
+    }
+  }
   await navegador.close();
 }
 
@@ -225,4 +294,6 @@ console.log(`Celular (390 px) com rolagem lateral, erro no console ou status ≠
 for (const c of celular) console.log(`  ${c}`);
 console.log(`Menu (fim da página → clique → página nova no topo; PT/EN/ES, computador e 390 px): ${nMenu} cliques · ${menu.length} falha(s)`);
 for (const m of menu) console.log(`  ${m}`);
-process.exitCode = nErros || quebrados.size || imagensRuins.size || celular.length || menu.length ? 1 : 0;
+console.log(`Dicas do glossário (mouse até "Ver no glossário", acima/abaixo, toque em 390 px; PT/EN/ES): ${nDicas} testes · ${dicas.length} falha(s)`);
+for (const d of dicas) console.log(`  ${d}`);
+process.exitCode = nErros || quebrados.size || imagensRuins.size || celular.length || menu.length || dicas.length ? 1 : 0;

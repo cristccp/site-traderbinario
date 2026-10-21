@@ -470,6 +470,11 @@ html { scroll-padding-top: var(--topo-h); }
   font-size: 0.875rem; line-height: 1.5; color: var(--color-prose); text-align: left; white-space: normal;
 }
 .glossario__dica[hidden] { display: none; }
+/* Ponte invisível no vão de 8px entre a palavra e a caixinha: o mouse passa por ela sem "sair" (21/10/2026) */
+.glossario__dica::before { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 12px; }
+/* Perto do topo (atrás do cabeçalho fixo) abre ABAIXO da palavra; a ponte vai junto */
+.glossario__dica--baixo { bottom: auto; top: calc(100% + 8px); }
+.glossario__dica--baixo::before { top: auto; bottom: 100%; }
 .glossario__dica strong { color: var(--color-white); }
 .glossario__dica a { display: inline-block; margin-top: 4px; font-size: 0.8125rem; text-decoration: underline; text-underline-offset: 3px; }
 
