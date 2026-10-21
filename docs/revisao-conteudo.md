@@ -1142,3 +1142,9 @@ Sem trocas de texto (só a organização automática).
 
 **Total do lote 3: 174 trocas em 34 páginas.**
 <!-- lote-3:fim -->
+
+## Lote 4 — categorias, menu e redirecionamentos (20/10/2026)
+- 6 páginas de categoria com a mesma URL da Builderall (/c/opcoes-binarias, /c/forex, /c/robos-traders, /c/metatrader, /c/corretoras) + /c/gestao-de-risco (nova). Textos novos em `content/categorias/*.pt.md` (título, apoio, SEO, card do guia) — para aprovar.
+- Menu: todos os itens dão 200 (guias de cada tema; "Gestão de risco" → /c/gestao-de-risco até o guia existir).
+- Os 69 redirecionamentos 308, o inventário de 151 URLs e o resultado do teste estão em `docs/redirecionamentos.md`.
+- Ajuste: a análise da Deriv ganhou `id: deriv` no frontmatter (para aparecer nos cards da categoria Corretoras).

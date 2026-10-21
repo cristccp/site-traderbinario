@@ -70,6 +70,7 @@ export const EN: Textos = {
     ],
   },
   home: { asideAria: "Free platforms", corretoraAria: "Featured broker", capaFalta: "[article cover]" },
+  categoria: { rotulo: "CATEGORY", guia: "START WITH THE GUIDE", textos: "All articles", corretoras: "Reviewed brokers", quantos: "articles" },
   corretoras: {
     analise: "Review",
     cadastro: "Sign up",

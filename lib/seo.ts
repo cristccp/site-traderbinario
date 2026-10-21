@@ -20,7 +20,7 @@ export function alternates(c: Conteudo): Metadata["alternates"] {
 export function metadados(c: Conteudo): Metadata {
   const url = caminho(c.tipo, c.slug, c.idioma);
   const imagem = c.capa ? [{ url: c.capa.src, width: c.capa.largura, height: c.capa.altura, alt: c.capa.alt }] : undefined;
-  const ehTexto = c.tipo !== "pagina";
+  const ehTexto = c.tipo !== "pagina" && c.tipo !== "categoria";
   return {
     title: c.seo.title,
     description: c.seo.description,

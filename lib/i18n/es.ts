@@ -70,6 +70,7 @@ export const ES: Textos = {
     ],
   },
   home: { asideAria: "Plataformas gratuitas", corretoraAria: "Bróker destacado", capaFalta: "[portada del artículo]" },
+  categoria: { rotulo: "CATEGORÍA", guia: "EMPIEZA POR LA GUÍA", textos: "Todos los artículos", corretoras: "Brókers analizados", quantos: "artículos" },
   corretoras: {
     analise: "Análisis",
     cadastro: "Regístrate",

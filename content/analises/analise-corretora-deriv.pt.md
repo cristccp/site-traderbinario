@@ -19,6 +19,7 @@ autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20
 corretora:
+  id: deriv
   nome: Deriv
   logo: /imagens/corretoras/deriv.webp
   linha: Desde 1999 (antes Binary.com)

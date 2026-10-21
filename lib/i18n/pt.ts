@@ -70,6 +70,7 @@ export const PT: Textos = {
     ],
   },
   home: { asideAria: "Plataformas grátis", corretoraAria: "Corretora em destaque", capaFalta: "[capa do artigo]" },
+  categoria: { rotulo: "CATEGORIA", guia: "COMECE PELO GUIA", textos: "Todos os textos", corretoras: "Corretoras analisadas", quantos: "textos" },
   corretoras: {
     analise: "Análise",
     cadastro: "Cadastre-se",

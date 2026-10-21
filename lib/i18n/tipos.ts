@@ -34,6 +34,7 @@ export type Textos = {
   };
   lateral: { aria: string; cards: CardLateral[] };
   home: { asideAria: string; corretoraAria: string; capaFalta: string };
+  categoria: { rotulo: string; guia: string; textos: string; corretoras: string; quantos: string };
   corretoras: { analise: string; cadastro: string; aviso: string };
   analise: { rotulo: string; fortes: string; atencao: string; outras: string; verTodas: string; verTodasHref: string; logoAlt: string };
   video: { play: string; aria: string };

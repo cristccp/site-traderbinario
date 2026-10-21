@@ -51,8 +51,8 @@
   },
   {
     "de": "/a/cristiano-pereira",
-    "para": "/c/-dicas",
-    "motivo": "página do autor → categoria Dicas"
+    "para": "/c/gestao-de-risco",
+    "motivo": "página de autor da Builderall; /c/-dicas agora redireciona para Gestão de risco (evita 2 saltos)"
   },
   {
     "de": "/blog/analise-plataforma-negociacao-quotex",
@@ -73,5 +73,275 @@
     "de": "/blog/quanto-e-possivel-ganhar-com-day-trade-expectativas-versus-realidade",
     "para": "/c/gestao-de-risco",
     "motivo": "não migra no lote 3: promessa de ganho em números (\"2% a 5% ao mês\", R$ 170/dia) e custos da B3 — reescrever com \"expectativa × realidade\" sem números (mapa, tema 5); vai para o guia de gestão de risco quando existir"
+  },
+  {
+    "de": "/blog/post",
+    "para": "/",
+    "motivo": "página técnica da Builderall"
+  },
+  {
+    "de": "/blog/feed-news",
+    "para": "/",
+    "motivo": "página técnica da Builderall"
+  },
+  {
+    "de": "/blog/author",
+    "para": "/",
+    "motivo": "página técnica da Builderall"
+  },
+  {
+    "de": "/feed-news",
+    "para": "/",
+    "motivo": "página técnica da Builderall (174 visitas no GA4)"
+  },
+  {
+    "de": "/s",
+    "para": "/",
+    "motivo": "busca da Builderall (40 visitas no GA4)"
+  },
+  {
+    "de": "/signin",
+    "para": "/",
+    "motivo": "login da Builderall (16 visitas no GA4)"
+  },
+  {
+    "de": "/page/:n*",
+    "para": "/",
+    "motivo": "paginação da home da Builderall (/page/1…4 com visitas no GA4)"
+  },
+  {
+    "de": "/blog",
+    "para": "/",
+    "motivo": "o blog novo não tem página /blog (os artigos ficam em /blog/<slug>)"
+  },
+  {
+    "de": "/tudo-sobre-opcoes-binarias-forex-trading",
+    "para": "/",
+    "motivo": "variação antiga da home (10 visitas no GA4)"
+  },
+  {
+    "de": "/c/-dicas",
+    "para": "/c/gestao-de-risco",
+    "motivo": "categoria antiga; os textos de posicionamento agora estão em Gestão de risco"
+  },
+  {
+    "de": "/c/indicadores",
+    "para": "/c/gestao-de-risco",
+    "motivo": "categoria antiga (24 visitas no GA4); os textos de análise técnica estão em Gestão de risco"
+  },
+  {
+    "de": "/c/deriv",
+    "para": "/analise-corretora-deriv",
+    "motivo": "categoria antiga (14 visitas no GA4)"
+  },
+  {
+    "de": "/c/criptomoedas",
+    "para": "https://cristianopereira.com.br",
+    "motivo": "categoria antiga (6 visitas no GA4); cripto saiu do blog (mapa: tema mora no cristianopereira.com.br)"
+  },
+  {
+    "de": "/c/:cat/page/:resto*",
+    "para": "/c/:cat",
+    "motivo": "paginação das categorias da Builderall (o site novo lista tudo numa página)"
+  },
+  {
+    "de": "/e-possivel-viver-opcoes-binarias",
+    "para": "/blog/voce-nao-vive-de-lucro-voce-vive-de-constancia",
+    "motivo": "promessa no tema (\"viver de\") → o artigo mais parecido, sem promessa"
+  },
+  {
+    "de": "/opcoes-binarias-e-fraude",
+    "para": "/blog/riscos-das-opcoes-binarias-o-que-poucos-falam-e-como-reduzir",
+    "motivo": "artigo genérico antigo → o mais parecido"
+  },
+  {
+    "de": "/blog/o-que-sao-opcoes-binarias",
+    "para": "/o-que-sao-opcoes-binarias",
+    "motivo": "duplicado do guia"
+  },
+  {
+    "de": "/blog/opcoes-binarias-o-que-sao-como-funcionam-e-se-ainda-valem-a-pena",
+    "para": "/o-que-sao-opcoes-binarias",
+    "motivo": "duplicado do guia (36 visitas no GA4)"
+  },
+  {
+    "de": "/blog/tendencias-e-futuro-das-opcoes-binarias",
+    "para": "/o-que-sao-opcoes-binarias",
+    "motivo": "artigo genérico antigo → guia"
+  },
+  {
+    "de": "/blog/como-operar-opcoes-binarias-guia-completo-para-iniciantes",
+    "para": "/opcoes-binarias-para-iniciantes",
+    "motivo": "duplicado de \"para iniciantes\" (57 visitas no GA4)"
+  },
+  {
+    "de": "/blog/opcoes-binarias-para-iniciantes-erros-comuns-a-evitar-e-dicas-para-iniciar-com-o-pe-direito",
+    "para": "/opcoes-binarias-para-iniciantes",
+    "motivo": "duplicado de \"para iniciantes\""
+  },
+  {
+    "de": "/blog/introducao-opcoes-binarias-guia-iniciantes",
+    "para": "/opcoes-binarias-para-iniciantes",
+    "motivo": "duplicado de \"para iniciantes\""
+  },
+  {
+    "de": "/blog/quem-opera-opcoes-binarias-tem-que-pagar-imposto-de-renda",
+    "para": "/blog/como-declarar-imposto-de-renda-sobre-opcoes-binarias-no-brasil-guia-completo",
+    "motivo": "duplicado do imposto de renda"
+  },
+  {
+    "de": "/blog/estrategias-de-negociacao-em-opcoes-binarias-maximizando-seus-lucros",
+    "para": "/blog/5-estrategias-simples-de-opcoes-binarias-para-iniciantes-que-funcionam",
+    "motivo": "título com promessa (\"maximizando seus lucros\") → estratégias simples"
+  },
+  {
+    "de": "/blog/psicologia-no-trading-de-op-es-bin-rias-o-fator-que-decide-se-voc-ganha-ou-perde",
+    "para": "/blog/os-5-sinais-claros-de-que-voce-esta-operando-por-impulso-e-colocando-sua-banca-em-risco",
+    "motivo": "mesmo tema (emocional), texto antigo"
+  },
+  {
+    "de": "/curso-gratis-opcoes-binarias-binary-para-iniciantes",
+    "para": "https://cristianopereira.com.br/materiais-gratuitos",
+    "motivo": "página antiga de curso grátis (9 visitas no GA4) → materiais gratuitos"
+  },
+  {
+    "de": "/robos-opcoes-binarias",
+    "para": "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados",
+    "motivo": "página antiga (3 visitas no GA4) → guia de robôs"
+  },
+  {
+    "de": "/blog/robo-bom-nao-e-o-que-acerta-sempre-e-o-que-sabe-parar-igual-voce-deveria",
+    "para": "/blog/robo-trader-bom-nao-e-o-que-acerta-sempre-e-o-que-sabe-parar",
+    "motivo": "duplicado"
+  },
+  {
+    "de": "/blog/robos-traders-realmente-funcionam",
+    "para": "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados",
+    "motivo": "mesmo tema do guia (75 visitas no GA4)"
+  },
+  {
+    "de": "/blog/como-escolher-um-robo-trader-confiavel",
+    "para": "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados",
+    "motivo": "fundido no guia (mapa)"
+  },
+  {
+    "de": "/blog/robo-trader-vale-a-pena",
+    "para": "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados",
+    "motivo": "fundido no guia (mapa)"
+  },
+  {
+    "de": "/blog/robos-traders-e-inteligencia-artificial-ganhe-tempo-e-lucre-no-automatico",
+    "para": "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados",
+    "motivo": "título com promessa (\"lucre no automático\") — sai (mapa)"
+  },
+  {
+    "de": "/blog/negociacao-automatizada-em-opcoes-binarias-pros-e-contras-dos-robos-de-negociacao",
+    "para": "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados",
+    "motivo": "fundido no guia (mapa)"
+  },
+  {
+    "de": "/blog/vantagens-desvantagens-dos-robos-traders-automatizando-investimentos",
+    "para": "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados",
+    "motivo": "fundido no guia (mapa)"
+  },
+  {
+    "de": "/blog/introducao-robos-traders-automatizando-futuro-investimentos",
+    "para": "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados",
+    "motivo": "fundido no guia (mapa)"
+  },
+  {
+    "de": "/blog/estrategias-de-negociacao-com-robos-traders-na-deriv",
+    "para": "/blog/introducao-robos-traders-deriv-investimento-automatizado",
+    "motivo": "mesmo tema (robôs na Deriv)"
+  },
+  {
+    "de": "/blog/quanto-da-para-ganhar-no-forex-a-verdade-que-poucos-contam",
+    "para": "/blog/forex-o-que-e-como-funciona-guia-completo-para-iniciantes",
+    "motivo": "tema de promessa → guia de forex (mapa)"
+  },
+  {
+    "de": "/blog/introducao-ao-mercado-forex",
+    "para": "/blog/forex-o-que-e-como-funciona-guia-completo-para-iniciantes",
+    "motivo": "duplicado do guia"
+  },
+  {
+    "de": "/blog/analise-tecnica-analise-fundamental-forex",
+    "para": "/blog/os-indicadores-mais-usados-no-forex-e-como-utilizar-cada-um",
+    "motivo": "mesmo tema"
+  },
+  {
+    "de": "/blog/o-papel-da-alavancagem-no-day-trade-amplificacao-de-ganhos-e-perdas",
+    "para": "/blog/alavancagem-no-forex-o-que-e-como-funciona-e-como-usar-com-seguranca",
+    "motivo": "mesmo tema"
+  },
+  {
+    "de": "/blog/o-guia-completo-para-iniciantes-sobre-rsi-no-day-trade",
+    "para": "/blog/rsi-desvendado-como-utilizar-o-indice-de-for-a-relativa-no-day-trade",
+    "motivo": "2 de RSI → 1 (mapa)"
+  },
+  {
+    "de": "/blog/ichimoku-cloud-simplificando-a-analise-tecnica-para-traders",
+    "para": "/blog/os-indicadores-mais-usados-no-forex-e-como-utilizar-cada-um",
+    "motivo": "o artigo de indicadores explica o Ichimoku"
+  },
+  {
+    "de": "/blog/osciladores-no-day-trade-stochastic-williams-r-e-mais",
+    "para": "/blog/os-indicadores-mais-usados-no-forex-e-como-utilizar-cada-um",
+    "motivo": "o artigo de indicadores explica o Estocástico"
+  },
+  {
+    "de": "/blog/estrategias-populares-no-day-trade-uma-visao-geral-completa",
+    "para": "/c/gestao-de-risco",
+    "motivo": "artigo genérico antigo → categoria do tema"
+  },
+  {
+    "de": "/blog/introducao-metatrader-guia-iniciantes",
+    "para": "/blog/metatrader-5-mt5-guia-completo",
+    "motivo": "duplicado do guia"
+  },
+  {
+    "de": "/blog/como-instalar-o-metatrader-guia-passo-a-passo-sistemas-operacionais",
+    "para": "/blog/como-instalar-metatrader-no-pc-passo-a-passo",
+    "motivo": "duplicado"
+  },
+  {
+    "de": "/blog/configuracao-graficos-metatrader-um-tutorial-detalhado-analise-tecnica",
+    "para": "/blog/como-usar-o-metatrader-pela-primeira-vez",
+    "motivo": "mesmo tema"
+  },
+  {
+    "de": "/blog/como-desenvolver-um-expert-advisor-no-metatrader-um-guia-passo-a-passo",
+    "para": "/blog/o-que-e-um-ea-expert-advisor-no-metatrader",
+    "motivo": "mesmo tema (11 visitas no GA4)"
+  },
+  {
+    "de": "/blog/introducao-expert-advisors-metatrader",
+    "para": "/blog/o-que-e-um-ea-expert-advisor-no-metatrader",
+    "motivo": "duplicado"
+  },
+  {
+    "de": "/blog/investir-e-so-para-ricos-descubra-a-verdade-e-comece-com-pouco-dinheiro",
+    "para": "/blog/por-que-todo-trader-deveria-investir",
+    "motivo": "mesmo tema, dentro do blog"
+  },
+  {
+    "de": "/blog/5-erros-comuns-ao-investir-e-como-evita-los",
+    "para": "/blog/por-que-todo-trader-deveria-investir",
+    "motivo": "mesmo tema, dentro do blog"
+  },
+  {
+    "de": "/blog/halving-e-bitcoin-o-que-e-como-afeta-a-criptomoeda-mais-famosa-do-mundo",
+    "para": "https://cristianopereira.com.br",
+    "motivo": "cripto saiu do blog (mapa)"
+  },
+  {
+    "de": "/blog/bitcoin-vs-altcoins-qual-criptomoeda-devo-escolher",
+    "para": "https://cristianopereira.com.br",
+    "motivo": "cripto saiu do blog (mapa)"
+  },
+  {
+    "de": "/blog/introducao-as-criptomoedas-o-que-sao-como-funcionam",
+    "para": "https://cristianopereira.com.br",
+    "motivo": "cripto saiu do blog (mapa)"
   }
 ]

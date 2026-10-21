@@ -8,12 +8,12 @@ import { blocos, type Bloco, type ItemIndice } from "@/lib/markdown";
 // CAMADA ÚNICA DE CONTEÚDO do site. Hoje lê os arquivos de content/ (Markdown + frontmatter YAML);
 // amanhã lê a tabela `artigos` do Supabase (docs/tabela-artigos.md) — só ESTE arquivo muda, as páginas não.
 // Regra de ouro: o site só mostra status "publicado" (rascunho e aprovado ficam fora, como no Painel CPT).
-// Arquivo: content/<pasta>/<slug>.<idioma>.md   (pasta: artigos | analises | paginas)
+// Arquivo: content/<pasta>/<slug>.<idioma>.md   (pasta: artigos | analises | guias | paginas | categorias)
 
-export type Tipo = "artigo" | "analise" | "guia" | "pagina";   // guia = página da raiz com o modelo de artigo
+export type Tipo = "artigo" | "analise" | "guia" | "pagina" | "categoria";   // guia = página da raiz com o modelo de artigo; categoria = /c/<slug>
 export type Status = "rascunho" | "aprovado" | "publicado" | "arquivado";
 
-const PASTA: Record<Tipo, string> = { artigo: "artigos", analise: "analises", guia: "guias", pagina: "paginas" };
+const PASTA: Record<Tipo, string> = { artigo: "artigos", analise: "analises", guia: "guias", pagina: "paginas", categoria: "categorias" };
 const RAIZ = path.join(process.cwd(), "content");
 const PALAVRAS_POR_MINUTO = 200;
 
@@ -102,6 +102,13 @@ export function idiomasDisponiveis(tipo: Tipo, slug: string): Idioma[] {
 // Endereço de cada conteúdo, com o prefixo do idioma (PT na raiz, /en e /es).
 export const PREFIXO: Record<Idioma, string> = { pt: "", en: "/en", es: "/es" };
 export function caminho(tipo: Tipo, slug: string, idioma: Idioma): string {
-  const base = tipo === "artigo" ? `/blog/${slug}` : tipo === "pagina" && slug === "home" ? "" : `/${slug}`;
+  const base = tipo === "artigo" ? `/blog/${slug}` : tipo === "categoria" ? `/c/${slug}` : tipo === "pagina" && slug === "home" ? "" : `/${slug}`;
   return `${PREFIXO[idioma]}${base}` || "/";
+}
+
+// Páginas de uma categoria (/c/<slug>): artigos, guias e análises cujo "categoria.nome" é o nome da categoria.
+export function daCategoria(nome: string, idioma: Idioma): Conteudo[] {
+  return publicados()
+    .filter((c) => c.idioma === idioma && c.categoria?.nome === nome && ["artigo", "guia", "analise"].includes(c.tipo))
+    .sort((a, b) => (b.atualizadoEm ?? b.publicadoEm ?? "").localeCompare(a.atualizadoEm ?? a.publicadoEm ?? "") || a.titulo.localeCompare(b.titulo));
 }
