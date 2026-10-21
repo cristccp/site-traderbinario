@@ -41,6 +41,21 @@ const EXCECOES = [/n[ãa]o [ée] o que te faz ganhar dinheiro/gi, /\d+% do lucro
 const textoVisivel = (html) => EXCECOES.reduce((h, re) => h.replace(re, " "), html).replace(/⚠️|⚠/g, " ")   // o ⚠️ dos avisos de risco é do design
   .replace(/recomenda[çc][ãa]o de investimento|prote[çc][ãa]o ao investidor|Plataforma de Investimento Online/gi, " ").replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<style[\s\S]*?<\/style>/g, " ")
   .replace(/<[^>]+>/g, " ").replace(/&nbsp;|&#x27;|&quot;|&amp;/g, " ").replace(/\s+/g, " ");
+// Exceções SÓ DESTAS PÁGINAS, frase exata (no texto visível). A regra continua valendo no resto do site.
+const EXCECOES_PAGINA = {
+  "/o-que-sao-opcoes-binarias": [
+    "não é renda", "não substitui renda",                        // negação, não promessa — 20/10/2026, aprovado pelo Cristiano
+    "payout de 85%",                                              // uso educativo: a conta joga contra o trader — 20/10/2026, aprovado pelo Cristiano
+    "Payout Acertos necessários só para empatar 90% cerca de 53% 85% cerca de 54% 80% cerca de 56%",   // a tabela do "só para empatar" — idem
+    "robô milagroso",                                             // lista de golpes (alerta) — 20/10/2026, aprovado pelo Cristiano
+    "É aposta?", "vira aposta na prática", "Opções binárias é aposta?", "A estrutura lembra uma aposta",   // responde à busca "é aposta" ("jogo" segue proibido) — 20/10/2026, aprovado pelo Cristiano
+  ],
+  "/blog/melhores-horarios-para-operar-opcoes-binarias-no-brasil": [
+    "Horário não é setup secreto.",                               // negação, não promessa — 20/10/2026, aprovado pelo Cristiano
+  ],
+};
+const escapar = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const tirarExcecoesDaPagina = (texto, p) => (EXCECOES_PAGINA[p] ?? []).reduce((t, f) => t.replace(new RegExp(escapar(f), "g"), " "), texto);
 const frase = (texto, re) => { const m = texto.match(re); if (!m) return ""; const i = Math.max(0, m.index - 50); return "…" + texto.slice(i, m.index + m[0].length + 50).trim() + "…"; };
 
 const sitemap = await (await fetch(`${BASE}/sitemap.xml`)).text();
@@ -55,7 +70,7 @@ for (const p of paginas) {
   if (resp.status !== 200) { console.log(`✗ ${p}
   ERRO  página respondeu ${resp.status}`); nErros++; continue; }
   const html = await resp.text();
-  const texto = textoVisivel(html);
+  const texto = tirarExcecoesDaPagina(textoVisivel(html), p);
   const linhas = [];
   for (const [re, nome] of ERROS) if (re.test(nome === "link antigo de afiliado" ? html : texto)) { linhas.push(`  ERRO  ${nome}: ${frase(texto, re) || "(no HTML)"}`); nErros++; }
   for (const [re, nome] of AVISOS) if (re.test(texto)) { linhas.push(`  aviso ${nome}: ${frase(texto, re)}`); nAvisos++; }

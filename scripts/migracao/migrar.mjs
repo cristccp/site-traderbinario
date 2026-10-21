@@ -15,7 +15,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 import { stringify } from "yaml";
-import { CATEGORIAS, PAGINAS, LOTES } from "./paginas.mjs";
+import { CATEGORIAS, PAGINAS, LOTES, REESCRITOS } from "./paginas.mjs";
 import { TROCAS } from "./trocas.mjs";
 import { destinoInterno, corretoraDoLink } from "./destinos.mjs";
 
@@ -252,6 +252,7 @@ const args = process.argv.slice(2);
 const slugs = args[0] === "--lote" ? LOTES[args[1]] : args;
 if (!slugs?.length) { console.log("Uso: node scripts/migracao/migrar.mjs <slug…> | --lote <n>"); process.exit(1); }
 for (const s of slugs) {
+  if (REESCRITOS.includes(s)) { console.log(`pulado: reescrito à mão  ${s}`); continue; }   // não sobrescreve a reescrita aprovada
   const cfg = PAGINAS[s];
   if (!cfg) throw new Error(`Sem configuração em paginas.mjs: ${s}`);
   if (!existsSync(path.join(COPIA, cfg.fonte ?? s))) throw new Error(`Sem cópia: ${s}`);

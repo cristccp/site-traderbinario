@@ -2,6 +2,13 @@
 // Títulos e descriptions: os da cópia da Builderall (sem o "Trader Binário |"), salvo onde está anotado.
 // A ficha das análises usa SÓ os dados da "Principais Características" / texto da cópia.
 
+// Textos REESCRITOS À MÃO e aprovados pelo Cristiano (fonte: 04-funis-captura/entregas/artigos/). O migrar.mjs pula
+// estes slugs ("pulado: reescrito à mão") para não apagar a reescrita. Cada artigo reescrito entra nesta lista.
+export const REESCRITOS = [
+  "melhores-horarios-para-operar-opcoes-binarias-no-brasil",   // 20/10/2026 — reescrita lote 1
+  "o-que-sao-opcoes-binarias",                                  // 20/10/2026 — reescrita lote 1 (guia do tema)
+];
+
 export const CATEGORIAS = {
   "opcoes-binarias": { nome: "Opções binárias", href: "/c/opcoes-binarias" },
   forex: { nome: "Forex", href: "/c/forex" },
