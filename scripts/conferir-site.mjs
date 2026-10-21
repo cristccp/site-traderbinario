@@ -3,9 +3,11 @@
 //  - frases proibidas (promessa, % de retorno, "melhor corretora", palavras proibidas da voz da marca, aposta/jogo, emoji no texto);
 //  - links antigos de afiliado (1sh.co, bit.ly, track.deriv.com, iqbroker);
 //  - links internos: página que existe (200), redirecionamento 308 da lista, página de um lote futuro (pendente) ou QUEBRADO;
-//  - imagens do próprio site que não abrem.
+//  - imagens do próprio site que não abrem;
+//  - CELULAR (390 px), num Chrome de verdade: rolagem lateral (página mais larga que a tela), erro no console e status.
+//    Usa o Chrome instalado (puppeteer-core, só desenvolvimento). Outro caminho: CHROME_PATH=… node scripts/conferir-site.mjs
 // "investimento/investir" e superlativos entram como AVISO (exigem leitura humana: "investir tempo" é ok).
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -53,6 +55,14 @@ const EXCECOES_PAGINA = {
   "/blog/melhores-horarios-para-operar-opcoes-binarias-no-brasil": [
     "Horário não é setup secreto.",                               // negação, não promessa — 20/10/2026, aprovado pelo Cristiano
   ],
+  "/blog/opcoes-binarias-e-legal-e-seguro-no-brasil": [
+    "Opções binárias é aposta ou jogo de azar?", "É aposta?", "É aposta ?",   // responde à busca, negando — 20/10/2026, aprovado pelo Cristiano
+    "não um jogo de azar", "não jogo de azar", "vira aposta",     // "derivativo, não jogo de azar"; "sem método... vira aposta" (alerta) — 20/10/2026, aprovado pelo Cristiano
+    "grupo de sinal pago com resultado garantido", "robô milagroso",   // lista de golpes (alerta) — 20/10/2026, aprovado pelo Cristiano (regra "negação ou alerta")
+  ],
+  "/blog/forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos": [
+    "Robô milagroso",                                             // lista de golpes (alerta): "Robô milagroso que nunca perde" — 20/10/2026, aprovado pelo Cristiano
+  ],
 };
 const escapar = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const tirarExcecoesDaPagina = (texto, p) => (EXCECOES_PAGINA[p] ?? []).reduce((t, f) => t.replace(new RegExp(escapar(f), "g"), " "), texto);
@@ -93,6 +103,34 @@ for (const img of imagensVistas) {
   if (r.status !== 200) imagensRuins.add(`${img} (${r.status})`);
 }
 
+// ---- Celular (390 px): nenhuma página pode rolar de lado (regra fixa desde 20/10/2026, depois da tabela de horários) ----
+const CHROME = process.env.CHROME_PATH ?? "C:/Program Files/Google/Chrome/Application/chrome.exe";
+const celular = [];
+if (!existsSync(CHROME)) {
+  celular.push("teste de 390 px NÃO RODOU: Chrome não encontrado (defina CHROME_PATH)");
+} else {
+  const { default: puppeteer } = await import("puppeteer-core");
+  const navegador = await puppeteer.launch({ executablePath: CHROME, headless: true });
+  for (const p of paginas) {
+    const aba = await navegador.newPage();
+    await aba.setViewport({ width: 390, height: 844 });
+    const erros = [];
+    aba.on("pageerror", (e) => erros.push(String(e)));
+    aba.on("console", (m) => { if (m.type() === "error") erros.push(m.text()); });
+    const r = await aba.goto(BASE + p, { waitUntil: "networkidle0" });
+    const sobra = await aba.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    const largo = sobra > 0 ? await aba.evaluate(() => [...document.querySelectorAll("body *")]
+      .find((e) => e.getBoundingClientRect().right > window.innerWidth + 1)?.tagName.toLowerCase() ?? "?") : "";
+    const falhas = [];
+    if (r.status() !== 200) falhas.push(`status ${r.status()}`);
+    if (sobra > 0) falhas.push(`rolagem lateral de ${sobra}px (elemento largo: <${largo}>)`);
+    if (erros.length) falhas.push(`erro no console: ${erros.join(" | ")}`);
+    if (falhas.length) celular.push(`${p}: ${falhas.join(", ")}`);
+    await aba.close();
+  }
+  await navegador.close();
+}
+
 console.log(`\n${paginas.length} páginas · ${nErros} erro(s) · ${nAvisos} aviso(s)`);
 console.log(`Links internos QUEBRADOS: ${quebrados.size}`);
 for (const [a, de] of quebrados) console.log(`  ${a}  ← ${[...de].join(", ")}`);
@@ -100,4 +138,6 @@ console.log(`Links para páginas de lotes futuros (pendentes, não são erro ago
 for (const [a, de] of [...pendentes].slice(0, 80)) console.log(`  ${a}  ← ${de.size} página(s)`);
 console.log(`Imagens do site que não abrem: ${imagensRuins.size}`);
 for (const i of imagensRuins) console.log(`  ${i}`);
-process.exitCode = nErros || quebrados.size || imagensRuins.size ? 1 : 0;
+console.log(`Celular (390 px) com rolagem lateral, erro no console ou status ≠ 200: ${celular.length}`);
+for (const c of celular) console.log(`  ${c}`);
+process.exitCode = nErros || quebrados.size || imagensRuins.size || celular.length ? 1 : 0;

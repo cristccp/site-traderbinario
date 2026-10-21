@@ -3,6 +3,7 @@ import { IconeInstagram, IconeTelegram, IconeYoutube } from "@/components/Icones
 import LinkTelegram from "@/components/LinkTelegram";
 import MenuCelular from "@/components/MenuCelular";
 import SeletorIdioma from "@/components/SeletorIdioma";
+import TopoRolagem from "@/components/TopoRolagem";
 import { PREFIXO } from "@/lib/conteudo";
 import { textos } from "@/lib/i18n";
 import type { Idioma } from "@/lib/i18n/tipos";
@@ -10,7 +11,7 @@ import { REDES } from "@/lib/redes";
 
 // prefetch={false} nos links internos: várias páginas ainda não migraram (o pré-carregamento daria 404 no console).
 // Cabeçalho do design aprovado: "Trader Binário" + "POR CRISTIANO PEREIRA", menu, YouTube/Instagram e botão do Telegram.
-// No celular o menu vira o botão ☰ (MenuCelular). `atual` = item do menu da seção da página (fica em ciano).
+// Fixo no topo ao rolar, com efeito vidro (TopoRolagem + app/blog.css). No celular o menu vira o botão ☰ (MenuCelular). `atual` = item do menu da seção da página (fica em ciano).
 // `idiomas` = idiomas em que ESTA página existe (o seletor só aparece com mais de um) e `caminhos` = endereço em cada um.
 export default function Topo({ idioma, atual, idiomas = [idioma], caminhos = {} }:
   { idioma: Idioma; atual?: string; idiomas?: Idioma[]; caminhos?: Partial<Record<Idioma, string>> }) {
@@ -19,6 +20,7 @@ export default function Topo({ idioma, atual, idiomas = [idioma], caminhos = {} 
   return (
     <header className="topo">
       <a className="pular" href="#conteudo">{t.pularParaConteudo}</a>
+      <TopoRolagem />
       <div className="topo__wrap">
         <Link className="marca" href={PREFIXO[idioma] || "/"} aria-label={t.marca.aria}>
           <span className="marca__nome">{t.marca.nome} <em>{t.marca.destaque}</em></span>

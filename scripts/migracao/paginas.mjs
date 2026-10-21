@@ -7,6 +7,11 @@
 export const REESCRITOS = [
   "melhores-horarios-para-operar-opcoes-binarias-no-brasil",   // 20/10/2026 — reescrita lote 1
   "o-que-sao-opcoes-binarias",                                  // 20/10/2026 — reescrita lote 1 (guia do tema)
+  "como-declarar-imposto-de-renda-sobre-opcoes-binarias-no-brasil-guia-completo",   // 20/10/2026 — reescrita lote 1
+  "qual-e-o-melhor-gerenciamento-para-opcoes-binarias",         // 20/10/2026 — reescrita lote 1
+  "qual-a-diferenca-entre-opcoes-binarias-e-digitais",          // 20/10/2026 — reescrita lote 1
+  "forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos",   // 20/10/2026 — reescrita lote 1
+  "opcoes-binarias-e-legal-e-seguro-no-brasil",                 // 20/10/2026 — reescrita lote 1 (artigo NOVO, sem cópia da Builderall)
 ];
 
 export const CATEGORIAS = {
@@ -182,7 +187,7 @@ export const PAGINAS = {
 
   // ---------- LOTE 1: páginas fixas ----------
   // SEO description: a cópia não tinha (texto novo, para aprovar)
-  "o-que-sao-opcoes-binarias": guia("O que são opções binárias?", "O que são opções binárias, como funcionam, os tipos (high/low, toque, 60 segundos) e os riscos, explicado de forma simples para iniciantes.", { tituloDestaque: "opções binárias", trilha: "O que são opções binárias" }),
+  "o-que-sao-opcoes-binarias": guia("Opções binárias: o que são, como funcionam e os riscos", "O que são opções binárias, como funcionam, os tipos (high/low, toque, 60 segundos) e os riscos, explicado de forma simples para iniciantes.", { tituloDestaque: "opções binárias", trilha: "O que são opções binárias" }),
   "opcoes-binarias-para-iniciantes": guia("Opções binárias para iniciantes", "Saiba por onde começar no Day Trade em Opções Binárias. Opções Binárias para Iniciantes.", { tituloDestaque: "iniciantes" }),
   "primeiros-passos-nas-opcoes-binarias": guia("Primeiros passos nas opções binárias", "Saiba por onde começar no Day Trade em Opções Binárias. Primeiros Passos nas Opções Binárias.", { tituloDestaque: "Primeiros passos" }),
   "conta-demo-opcoes-binarias": guia("Conta demo em opções binárias", "Saiba por onde começar no Day Trade em Opções Binárias. Conta DEMO em Opções Binárias?", { tituloDestaque: "Conta demo" }),

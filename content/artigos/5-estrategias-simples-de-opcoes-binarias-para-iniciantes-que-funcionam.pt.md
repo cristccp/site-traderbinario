@@ -23,7 +23,7 @@ autor: Cristiano Pereira
 publicadoEm: null
 atualizadoEm: 2026-10-20
 relacionados:
-  - titulo: O que são opções binárias?
+  - titulo: "Opções binárias: o que são, como funcionam e os riscos"
     href: /o-que-sao-opcoes-binarias
   - titulo: Opções binárias para iniciantes
     href: /opcoes-binarias-para-iniciantes

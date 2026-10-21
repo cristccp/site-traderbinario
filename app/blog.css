@@ -53,7 +53,21 @@
 .pular:focus { top: var(--space-xs); color: var(--color-ink); }
 
 /* ---------- Topo ---------- */
-.topo { position: relative; border-bottom: 1px solid var(--color-line); }
+/* Fixo ao rolar (sticky: continua ocupando o espaço dele, então nada fica escondido no começo da página).
+   No topo: igual ao fundo. Rolando (data-rolou, TopoRolagem): "vidro" escuro com desfoque e linha ciano embaixo,
+   como o menu do cristianopereira.com.br. --topo-h (altura real, medida no navegador) compensa as âncoras e a lateral. */
+:root { --topo-h: 5.25rem; }
+html { scroll-padding-top: var(--topo-h); }
+.topo {
+  position: sticky; top: 0; z-index: 40; background: transparent; border-bottom: 1px solid var(--color-line);
+  transition: background-color var(--motion-hover) var(--motion-ease), box-shadow var(--motion-hover) var(--motion-ease), border-color var(--motion-hover) var(--motion-ease);
+}
+.topo[data-rolou] {
+  background: color-mix(in srgb, var(--color-ink) 72%, transparent);
+  -webkit-backdrop-filter: blur(var(--space-sm)); backdrop-filter: blur(var(--space-sm));
+  border-bottom-color: transparent; box-shadow: 0 1px 0 var(--fx-neon-line), 0 0 var(--space-md) var(--fx-glow-cyan-soft);
+}
+@media (prefers-reduced-motion: reduce) { .topo { transition: none; } }
 .topo__wrap { max-width: var(--blog-max); margin: 0 auto; padding: 20px var(--blog-gutter); display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); }
 .marca { flex: none; display: flex; flex-direction: column; gap: 2px; color: var(--color-white); white-space: nowrap; }
 .marca:hover { color: var(--color-white); }
@@ -75,7 +89,7 @@
 
 /* Menu do celular */
 .menu-celular__botao { cursor: pointer; color: var(--color-white); }
-.menu-celular { position: absolute; left: 0; right: 0; top: 100%; z-index: 40; background: var(--color-ink); border-bottom: 1px solid var(--color-line); padding: var(--space-sm) var(--blog-gutter) var(--space-md); box-shadow: 0 var(--space-md) var(--space-lg) color-mix(in srgb, var(--color-ink) 70%, transparent); }
+.menu-celular { position: absolute; left: 0; right: 0; top: 100%; z-index: 40; max-height: calc(100dvh - var(--topo-h)); overflow-y: auto; overscroll-behavior: contain; background: var(--color-ink); border-bottom: 1px solid var(--color-line); padding: var(--space-sm) var(--blog-gutter) var(--space-md); box-shadow: 0 var(--space-md) var(--space-lg) color-mix(in srgb, var(--color-ink) 70%, transparent); }
 .menu-celular[hidden] { display: none; }
 .menu-celular__lista { display: flex; flex-direction: column; }
 .menu-celular__link { display: block; padding: 14px 0; border-bottom: 1px solid var(--color-line); color: var(--color-white); font-size: 0.875rem; letter-spacing: 2px; font-weight: 500; text-transform: uppercase; }
@@ -90,6 +104,16 @@
   .menu-celular__botao, .menu-celular { display: none !important; }
 }
 @media (min-width: 80rem) { .topo__rede { display: inline-flex; } }
+/* Computador, rolando: o cabeçalho encolhe (como no cristianopereira.com.br). O espaço na página não muda
+   (margin-bottom calculado em TopoRolagem), então o conteúdo não pula; por isso a altura muda sem animação. */
+@media (min-width: 64rem) {
+  .topo[data-rolou] .topo__wrap { padding-top: 10px; padding-bottom: 10px; row-gap: var(--space-xs); }
+  .topo[data-rolou] .marca__nome { font-size: 1.375rem; }
+  .topo[data-rolou] .marca__por { display: none; }
+  .topo[data-rolou] .topo__nav { padding-top: var(--space-xs); }
+  .topo[data-rolou] .redondo { width: 34px; height: 34px; }
+  .topo[data-rolou] .topo__telegram { height: 34px; }
+}
 
 /* ---------- Home ---------- */
 .hero { padding-top: 72px; padding-bottom: var(--space-lg); display: flex; flex-wrap: wrap; gap: var(--space-lg); align-items: flex-start; }
@@ -181,9 +205,12 @@
 .prose strong { color: var(--color-white); font-weight: 600; }
 .prose a { text-decoration: underline; text-underline-offset: 3px; }
 .prose img { width: 100%; height: auto; border-radius: var(--fx-radius); border: 1px solid var(--color-line); margin: var(--space-xs) 0 var(--space-md); }
-.prose table { width: 100%; border-collapse: collapse; margin: var(--space-xs) 0 var(--space-md); font-size: 0.9375rem; line-height: 1.45; }
+/* Tabelas: a caixa .tabela (lib/markdown.ts) tem rolagem própria; a tabela nunca empurra a página para o lado */
+.prose .tabela { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: var(--space-xs) 0 var(--space-md); }
+.prose table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; line-height: 1.45; }
 .prose th, .prose td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--color-line); vertical-align: top; }
 .prose th { color: var(--color-white); font-weight: 600; background: var(--color-surface, #11161d); }
+@media (max-width: 47.99rem) { .prose table { font-size: 0.875rem; } .prose th, .prose td { padding: 8px 10px; } }
 .prose > :first-child { margin-top: 0; }
 .prose--caixa p, .prose--caixa li { font-size: 1rem; }
 .prose--caixa > :last-child { margin-bottom: 0; }
@@ -226,7 +253,7 @@
 
 /* Lateral fixa (no computador acompanha a leitura; no celular fica depois do texto) */
 .lateral { flex: 1 1 18.75rem; align-self: stretch; }
-.lateral__fixa { position: sticky; top: var(--space-md); display: flex; flex-direction: column; gap: var(--space-sm); }
+.lateral__fixa { position: sticky; top: calc(var(--topo-h) + var(--space-md)); display: flex; flex-direction: column; gap: var(--space-sm); }
 .lateral__deriv { padding: var(--space-md); display: flex; flex-direction: column; gap: 12px; box-shadow: 0 0 100px var(--fx-glow-card); }
 .lateral__nome { font-family: var(--type-display-serif-family); font-size: 1.5rem; font-weight: 600; }
 .lateral__texto { font-size: 0.875rem; color: var(--color-mist); }

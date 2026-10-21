@@ -1,18 +1,18 @@
 [
   {
     "de": "/opcoes-binarias-legalizado-brasil",
-    "para": "/o-que-sao-opcoes-binarias",
-    "motivo": "não migra no lote 1: base legal desatualizada (Res. CMN 3.265/05) → reescrever no lote"
+    "para": "/blog/opcoes-binarias-e-legal-e-seguro-no-brasil",
+    "motivo": "tema de regulação → artigo novo \"Opções binárias é legal e seguro no Brasil?\" (reescrita lote 1, 20/10/2026)"
   },
   {
     "de": "/opcoes-binarias-seguro",
-    "para": "/o-que-sao-opcoes-binarias",
-    "motivo": "fusão com \"é legalizado?\", que também não migra → reescrever no lote"
+    "para": "/blog/opcoes-binarias-e-legal-e-seguro-no-brasil",
+    "motivo": "tema de regulação → artigo novo \"Opções binárias é legal e seguro no Brasil?\" (reescrita lote 1, 20/10/2026)"
   },
   {
     "de": "/blog/opcoes-binarias-e-seguro",
-    "para": "/o-que-sao-opcoes-binarias",
-    "motivo": "duplicado de \"é seguro?\" → reescrever no lote"
+    "para": "/blog/opcoes-binarias-e-legal-e-seguro-no-brasil",
+    "motivo": "tema de regulação → artigo novo \"Opções binárias é legal e seguro no Brasil?\" (reescrita lote 1, 20/10/2026)"
   },
   {
     "de": "/como-funcionam-as-opcoes-binarias",

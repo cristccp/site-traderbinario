@@ -105,9 +105,9 @@ Resultado em 20/10/2026 (localhost): **151 URLs · 81 com 200 direto · 70 com 3
 ## Opções binárias (14)
 | De | Para | Por quê |
 |---|---|---|
-| `/opcoes-binarias-legalizado-brasil` | `/o-que-sao-opcoes-binarias` | não migra no lote 1: base legal desatualizada (Res. CMN 3.265/05) → reescrever no lote |
-| `/opcoes-binarias-seguro` | `/o-que-sao-opcoes-binarias` | fusão com "é legalizado?", que também não migra → reescrever no lote |
-| `/blog/opcoes-binarias-e-seguro` | `/o-que-sao-opcoes-binarias` | duplicado de "é seguro?" → reescrever no lote |
+| `/opcoes-binarias-legalizado-brasil` | `/blog/opcoes-binarias-e-legal-e-seguro-no-brasil` | tema de regulação → artigo novo "Opções binárias é legal e seguro no Brasil?" (reescrita lote 1, 20/10/2026) |
+| `/opcoes-binarias-seguro` | `/blog/opcoes-binarias-e-legal-e-seguro-no-brasil` | tema de regulação → artigo novo "Opções binárias é legal e seguro no Brasil?" (reescrita lote 1, 20/10/2026) |
+| `/blog/opcoes-binarias-e-seguro` | `/blog/opcoes-binarias-e-legal-e-seguro-no-brasil` | tema de regulação → artigo novo "Opções binárias é legal e seguro no Brasil?" (reescrita lote 1, 20/10/2026) |
 | `/como-funcionam-as-opcoes-binarias` | `/o-que-sao-opcoes-binarias` | não migra no lote 1: "aposta" e promessa de lucro em todo o texto → reescrever no lote |
 | `/ativos-financeiros-opcoes-binarias` | `/o-que-sao-opcoes-binarias` | não migra no lote 1: tradução ruim com promessa de rentabilidade → reescrever no lote |
 | `/opcoes-binarias-e-fraude` | `/blog/riscos-das-opcoes-binarias-o-que-poucos-falam-e-como-reduzir` | artigo genérico antigo → o mais parecido |
@@ -122,6 +122,6 @@ Resultado em 20/10/2026 (localhost): **151 URLs · 81 com 200 direto · 70 com 3
 
 ## Atualizar depois
 Tabela aprovada pelo Cristiano em 20/10/2026. Estes destinos são provisórios: trocar em `lib/redirecionamentos.json` (e aqui) quando a página nova existir, e rodar `node scripts/testar-urls.mjs` de novo.
-1. **Artigo novo "Opções binárias é legal / é seguro no Brasil?"** (1º lote da reescrita): `/opcoes-binarias-legalizado-brasil`, `/opcoes-binarias-seguro` e `/blog/opcoes-binarias-e-seguro` passam a ir para ele (hoje → `/o-que-sao-opcoes-binarias`).
+1. ~~**Artigo novo "Opções binárias é legal / é seguro no Brasil?"** (1º lote da reescrita): `/opcoes-binarias-legalizado-brasil`, `/opcoes-binarias-seguro` e `/blog/opcoes-binarias-e-seguro` passam a ir para ele (hoje → `/o-que-sao-opcoes-binarias`).~~ **FEITO em 20/10/2026:** os 3 vão para `/blog/opcoes-binarias-e-legal-e-seguro-no-brasil` (308).
 2. **Guia de gestão de risco** (`/blog/gestao-de-risco-no-day-trade`, guia novo do mapa): `/c/gestao-de-risco` continua como categoria; os 308 de `/blog/quanto-e-possivel-ganhar-com-day-trade-expectativas-versus-realidade` e `/blog/estrategias-populares-no-day-trade-uma-visao-geral-completa` passam a ir para o guia (hoje → `/c/gestao-de-risco`). O item "Gestão de risco" do menu também passa a apontar para o guia.
 3. **Blog de cripto da Cristiano Pereira Trader**: os 4 endereços de cripto passam a ir para ele (hoje → `https://cristianopereira.com.br`): `/blog/halving-e-bitcoin-o-que-e-como-afeta-a-criptomoeda-mais-famosa-do-mundo`, `/blog/bitcoin-vs-altcoins-qual-criptomoeda-devo-escolher`, `/blog/introducao-as-criptomoedas-o-que-sao-como-funcionam` e `/c/criptomoedas`.

@@ -60,7 +60,9 @@ export function blocos(corpo: string): { lista: Bloco[]; indice: ItemIndice[] } 
       },
     },
   });
-  const html = (s: string) => md.parse(s, { async: false }) as string;
+  // Toda tabela vai numa caixa com rolagem própria (.tabela): no celular ela rola dentro dela, e a página não rola de lado.
+  const html = (s: string) => (md.parse(s, { async: false }) as string)
+    .replace(/<table>/g, "<div class=\"tabela\"><table>").replace(/<\/table>/g, "</table></div>");
 
   const lista: Bloco[] = [];
   const partes = corpo.split(/^:::([a-z-]+)[ \t]*([^\n]*)\n([\s\S]*?)^:::[ \t]*$/m);
