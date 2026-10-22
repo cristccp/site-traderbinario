@@ -19,7 +19,7 @@ export const PT: Textos = {
       { label: "Forex", href: "/blog/forex-o-que-e-como-funciona-guia-completo-para-iniciantes" },
       { label: "Robôs traders", href: "/blog/robo-de-opcoes-binarias-funciona-verdades-mitos-e-cuidados" },
       { label: "MetaTrader", href: "/blog/metatrader-5-mt5-guia-completo" },
-      { label: "Gestão de risco", href: "/c/gestao-de-risco" },   // até o guia /blog/gestao-de-risco-no-day-trade existir
+      { label: "Gestão de risco", href: "/gestao-de-risco-no-trade" },   // guia do tema (21/10/2026)
       { label: "Corretoras", href: "/melhores-corretoras-opcoes-binarias" },
       { label: "Glossário", href: "/glossario" },
       { label: "Ferramentas", href: "/ferramentas" },

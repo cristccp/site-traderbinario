@@ -68,6 +68,28 @@ Resumo: Saiba por onde começar no Day Trade em Opções Binárias. As Melhores 
 Endereço: /conta-demo-opcoes-binarias · Categoria: Opções binárias
 Resumo: Saiba por onde começar no Day Trade em Opções Binárias. Conta DEMO em Opções Binárias?
 
+### Gestão de risco no trade: o guia para proteger a sua banca
+Endereço: /gestao-de-risco-no-trade · Categoria: Gestão de risco
+Resumo: Quanto arriscar por operação, onde colocar o stop, quando parar no dia e como calcular o lote no forex. As regras que mantêm você no mercado, em opções binárias, forex e robôs.
+Em 30 segundos:
+- Gestão de risco é decidir, antes de entrar, quanto você aceita perder por operação, por dia e por semana.
+- Um valor pequeno e fixo por operação, perto de 1% da banca, faz uma sequência ruim virar um arranhão, não um buraco.
+- Quanto maior a queda da banca, mais difícil é voltar: perder metade exige dobrar o que sobrou.
+- A regra vale para opções binárias, forex e robôs, e deve ser treinada na conta demo antes do dinheiro real.
+Perguntas frequentes:
+P: O que é gestão de risco no trade?
+R: É o conjunto de regras que define, antes de operar, quanto você aceita perder por operação, por dia e por semana. Ela não escolhe a entrada: ela decide se uma sequência ruim vai custar pouco ou vai tirar você do mercado.
+P: Quanto arriscar por operação?
+R: Para quem está começando, uma referência comum é perto de 1% da banca por operação, com valor fixo. Com R$ 1.000, isso dá R$ 10. Valores de 5% ou mais fazem poucas perdas seguidas consumirem boa parte da banca.
+P: O que é stop do dia?
+R: É o limite de perda diária definido antes de abrir a plataforma. Bateu o limite, você para, mesmo que pareça ter uma boa entrada logo depois. Ele protege você do dia em que a emoção decide no seu lugar.
+P: Como calcular o lote no forex pelo risco?
+R: Divida o valor que você aceita perder pela distância do stop em pips vezes o valor do pip. Exemplo: risco de US$ 10 com stop de 20 pips no EUR/USD, onde 0,01 lote vale cerca de US$ 0,10 por pip, dá lote de 0,05.
+P: Martingale é gestão de risco?
+R: Não. O martingale aumenta a entrada depois de cada perda, então o risco cresce justamente quando a sequência está contra você. Em poucas perdas seguidas, a exposição passa a ser uma fatia grande da banca.
+P: Gestão de risco garante resultado positivo?
+R: Não. Ela não muda o fato de que trade tem alto risco de perda. O que ela faz é limitar o tamanho do estrago e dar tempo para você aprender, errar pequeno e corrigir.
+
 ### Opções binárias para iniciantes
 Endereço: /opcoes-binarias-para-iniciantes · Categoria: Opções binárias
 Resumo: Saiba por onde começar no Day Trade em Opções Binárias. Opções Binárias para Iniciantes.

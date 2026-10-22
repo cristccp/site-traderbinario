@@ -38,9 +38,9 @@ guias:
     - titulo: "MetaTrader 5: guia completo (instalar, usar, robôs)"
       texto: MT4, MT5 e indicadores.
       href: /blog/metatrader-5-mt5-guia-completo
-    - titulo: "Gestão de risco no day trade: o que separa quem fica de quem quebra"
+    - titulo: "Gestão de risco no trade: o guia para proteger a sua banca"
       texto: Lote, stop e a hora de parar.
-      href: /c/gestao-de-risco   # até o guia /blog/gestao-de-risco-no-day-trade existir
+      href: /gestao-de-risco-no-trade   # guia do tema (21/10/2026)
       rotulo: GUIA · O MAIS IMPORTANTE
       principal: true
     - titulo: "Corretoras: análises de opções binárias e forex"

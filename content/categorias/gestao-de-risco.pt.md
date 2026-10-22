@@ -12,5 +12,9 @@ resumo: "O que separa quem fica no mercado de quem quebra a banca: gestão de ri
 seo:
   title: "Gestão de risco e mentalidade no day trade"
   description: "Gestão de risco, disciplina e mentalidade no day trade: operar menos, parar na hora certa, controlar o impulso e usar a análise técnica com critério."
-atualizadoEm: 2026-10-20
+atualizadoEm: 2026-10-21
+guia:   # guia do tema em destaque (21/10/2026: guia publicado pelo Painel CPT)
+  titulo: "Gestão de risco no trade: o guia para proteger a sua banca"
+  texto: "O guia para decidir quanto arriscar, quando parar e como proteger a banca."
+  href: /gestao-de-risco-no-trade
 ---

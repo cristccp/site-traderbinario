@@ -1,3 +1,5 @@
+> ⚠️ **SUBSTITUÍDO em 21/10/2026 pela opção A** (aprovada pelo Cristiano): a tabela `public.artigos` guarda só os RASCUNHOS e, na aprovação, o painel grava o .md e a capa no GitHub; o site continua lendo `content/`. Desenho em vigor: `04-funis-captura/site-novo/fluxos/blog-artigos.md`. Este arquivo fica só como histórico.
+
 # Tabela `artigos` — desenho proposto (NÃO aplicado)
 > 20/10/2026 · blog traderbinario.com.br · projeto Supabase do CPT (cpt-site).
 > **Nada foi aplicado.** Quem aplica é o Cowork, com o ok do Cristiano. Depois de aplicada, só `lib/conteudo.ts` muda (passa a ler daqui em vez de `content/`).

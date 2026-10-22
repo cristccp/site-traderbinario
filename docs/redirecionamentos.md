@@ -90,11 +90,11 @@ Resultado em 20/10/2026 (localhost): **151 URLs · 81 com 200 direto · 70 com 3
 | De | Para | Por quê |
 |---|---|---|
 | `/a/cristiano-pereira` | `/c/gestao-de-risco` | página de autor da Builderall; /c/-dicas agora redireciona para Gestão de risco (evita 2 saltos) |
-| `/blog/quanto-e-possivel-ganhar-com-day-trade-expectativas-versus-realidade` | `/c/gestao-de-risco` | não migra no lote 3: promessa de ganho em números ("2% a 5% ao mês", R$ 170/dia) e custos da B3 — reescrever com "expectativa × realidade" sem números (mapa, tema 5); vai para o guia de gestão de risco quando existir |
+| `/blog/quanto-e-possivel-ganhar-com-day-trade-expectativas-versus-realidade` | `/gestao-de-risco-no-trade` | não migra no lote 3: promessa de ganho em números ("2% a 5% ao mês", R$ 170/dia) e custos da B3 — reescrever com "expectativa × realidade" sem números (mapa, tema 5); vai para o guia de gestão de risco (desde 21/10/2026) |
 | `/e-possivel-viver-opcoes-binarias` | `/blog/voce-nao-vive-de-lucro-voce-vive-de-constancia` | promessa no tema ("viver de") → o artigo mais parecido, sem promessa |
 | `/blog/psicologia-no-trading-de-op-es-bin-rias-o-fator-que-decide-se-voc-ganha-ou-perde` | `/blog/os-5-sinais-claros-de-que-voce-esta-operando-por-impulso-e-colocando-sua-banca-em-risco` | mesmo tema (emocional), texto antigo |
 | `/blog/o-guia-completo-para-iniciantes-sobre-rsi-no-day-trade` | `/blog/rsi-desvendado-como-utilizar-o-indice-de-for-a-relativa-no-day-trade` | 2 de RSI → 1 (mapa) |
-| `/blog/estrategias-populares-no-day-trade-uma-visao-geral-completa` | `/c/gestao-de-risco` | artigo genérico antigo → categoria do tema |
+| `/blog/estrategias-populares-no-day-trade-uma-visao-geral-completa` | `/gestao-de-risco-no-trade` | artigo genérico antigo → guia do tema (desde 21/10/2026; antes: categoria) |
 
 ## Investimentos (2)
 | De | Para | Por quê |
@@ -123,5 +123,5 @@ Resultado em 20/10/2026 (localhost): **151 URLs · 81 com 200 direto · 70 com 3
 ## Atualizar depois
 Tabela aprovada pelo Cristiano em 20/10/2026. Estes destinos são provisórios: trocar em `lib/redirecionamentos.json` (e aqui) quando a página nova existir, e rodar `node scripts/testar-urls.mjs` de novo.
 1. ~~**Artigo novo "Opções binárias é legal / é seguro no Brasil?"** (1º lote da reescrita): `/opcoes-binarias-legalizado-brasil`, `/opcoes-binarias-seguro` e `/blog/opcoes-binarias-e-seguro` passam a ir para ele (hoje → `/o-que-sao-opcoes-binarias`).~~ **FEITO em 20/10/2026:** os 3 vão para `/blog/opcoes-binarias-e-legal-e-seguro-no-brasil` (308).
-2. **Guia de gestão de risco** (`/blog/gestao-de-risco-no-day-trade`, guia novo do mapa): `/c/gestao-de-risco` continua como categoria; os 308 de `/blog/quanto-e-possivel-ganhar-com-day-trade-expectativas-versus-realidade` e `/blog/estrategias-populares-no-day-trade-uma-visao-geral-completa` passam a ir para o guia (hoje → `/c/gestao-de-risco`). O item "Gestão de risco" do menu também passa a apontar para o guia.
+2. ✅ **Feito em 21/10/2026** (o guia saiu como `/gestao-de-risco-no-trade`, pelo Painel CPT). **Guia de gestão de risco** (`/blog/gestao-de-risco-no-day-trade`, guia novo do mapa): `/c/gestao-de-risco` continua como categoria; os 308 de `/blog/quanto-e-possivel-ganhar-com-day-trade-expectativas-versus-realidade` e `/blog/estrategias-populares-no-day-trade-uma-visao-geral-completa` passam a ir para o guia (hoje → `/c/gestao-de-risco`). O item "Gestão de risco" do menu também passa a apontar para o guia.
 3. **Blog de cripto da Cristiano Pereira Trader**: os 4 endereços de cripto passam a ir para ele (hoje → `https://cristianopereira.com.br`): `/blog/halving-e-bitcoin-o-que-e-como-afeta-a-criptomoeda-mais-famosa-do-mundo`, `/blog/bitcoin-vs-altcoins-qual-criptomoeda-devo-escolher`, `/blog/introducao-as-criptomoedas-o-que-sao-como-funcionam` e `/c/criptomoedas`.
