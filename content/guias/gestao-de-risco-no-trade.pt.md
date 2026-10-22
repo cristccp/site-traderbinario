@@ -11,7 +11,7 @@ seo:
   title: "Gestão de risco no trade: guia para proteger a banca"
   description: "Quanto arriscar por operação, stop do dia, lote no forex, drawdown e robôs: o guia de gestão de risco para quem quer continuar no mercado."
 capa:
-  src: /imagens/gestao-de-risco-no-trade/capa.webp
+  src: /imagens/gestao-de-risco-no-trade/capa-v2.webp
   alt: "Escudo em neon ciano com uma balança, ao lado do título Gestão de risco no trade: proteja a banca"
   largura: 1280
   altura: 720
