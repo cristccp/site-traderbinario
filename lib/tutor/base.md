@@ -366,9 +366,49 @@ R: Não. O saque para o Brasil não é o que define o imposto. O que conta é o 
 P: Preciso de contador para declarar opções binárias?
 R: Não é obrigatório, mas é recomendado, principalmente no primeiro ano ou se você teve muitas operações, perdas a compensar ou depósitos e saques por intermediários. Leve os extratos anuais da corretora e os comprovantes de depósito e saque.
 
+### Curso de opções binárias: como escolher um que não quebre a sua banca
+Endereço: /blog/curso-de-opcoes-binarias-como-escolher · Categoria: Opções binárias
+Resumo: O que um curso de opções binárias precisa ensinar, os sinais de alerta que mostram que ele vai te levar a quebrar e as perguntas que você deve fazer antes de pagar.
+Em 30 segundos:
+- Um curso de opções binárias que vale a pena ensina gerenciamento, frequência e saque antes de qualquer estratégia.
+- Promessa de ganho rápido, print de resultado e sinal para copiar sem regra de risco são sinais de alerta.
+- Antes de pagar, confira quem ensina, o que tem dentro, o preço, o prazo de acesso e a garantia.
+- Nenhum curso substitui a conta demo e a disciplina de seguir o plano quando dá errado.
+Perguntas frequentes:
+P: Vale a pena fazer um curso de opções binárias?
+R: Vale quando o curso ensina método: quanto arriscar por operação, stop do dia, poucas operações e rotina de saque. Curso que só mostra estratégia de entrada e resultado de aluno não resolve o motivo pelo qual a maioria quebra, que é a falta de gerenciamento e o impulso.
+P: O que um bom curso de opções binárias precisa ensinar?
+R: No mínimo: como a opção binária funciona e por que o acerto paga menos do que o erro custa, gerenciamento de banca, stop do dia, frequência de operações, rotina de saque, controle emocional e treino na conta demo antes da conta real.
+P: Como saber se um curso de opções binárias é confiável?
+R: Desconfie de promessa de ganho por dia, de print de resultado como argumento principal e de quem não fala de risco. Um curso sério mostra quem ensina, o que tem dentro, preço, prazo de acesso, garantia e trata a perda como parte do processo.
+P: Dá para aprender opções binárias de graça?
+R: Dá para começar. Conteúdo gratuito, e-books e a conta demo ensinam o básico. O curso pago faz sentido quando você quer um método organizado do começo ao fim e já percebeu que o problema não é falta de estratégia, e sim falta de regra.
+P: Curso de opções binárias garante resultado?
+R: Não. Nenhum curso, robô ou sinal garante resultado. Opções binárias envolvem alto risco de perda. O que um bom curso faz é reduzir os erros que mais quebram banca e te dar um plano para seguir.
+
 ### Glossário de termos importantes nas opções binárias
 Endereço: /blog/glossario-de-termos-importantes-nas-opcoes-binarias · Categoria: Opções binárias
 Resumo: Glossário das opções binárias: os termos-chave que todo iniciante precisa entender antes de operar.
+
+### Gráfico da TradingView na Plataforma: quando usar o Leve e quando usar o Avançado
+Endereço: /blog/grafico-tradingview-na-plataforma · Categoria: Opções binárias
+Resumo: A Plataforma agora tem dois gráficos: o Leve, rápido e bom para o robô, e o Avançado, com os gráficos da TradingView, indicadores e ferramentas de desenho para quem analisa no manual.
+Em 30 segundos:
+- A Plataforma tem dois gráficos no terminal: o Leve, que já existia, e o Avançado, com os gráficos da TradingView.
+- O Leve abre rápido e é o indicado para o robô, para computador mais simples e para o celular.
+- O Avançado traz mais de 100 indicadores, ferramentas de desenho e mais tempos gráficos, para quem analisa no manual.
+- Gráfico melhor não substitui gerenciamento: comece pela conta demo.
+Perguntas frequentes:
+P: A Plataforma usa os gráficos da TradingView?
+R: Sim. No terminal de operações, o seletor Gráfico: Leve · Avançado deixa você escolher. O Avançado usa a biblioteca Advanced Charts da TradingView, com os indicadores e as ferramentas de desenho dela.
+P: Preciso pagar para usar o gráfico Avançado?
+R: Não. O cadastro na Plataforma é grátis e o gráfico Avançado está liberado no terminal para quem tem conta.
+P: Qual gráfico é melhor para usar com o robô?
+R: O Leve. Ele é mais simples e pesa menos no navegador. O Modo sala do robô também é uma opção leve para acompanhar as operações.
+P: Os desenhos e indicadores que eu faço ficam salvos?
+R: No gráfico Avançado, os desenhos e indicadores ficam salvos no navegador que você usou. A escolha entre Leve e Avançado fica salva na sua conta e vale em qualquer aparelho.
+P: A Plataforma é uma corretora?
+R: Não. A Plataforma é a ferramenta onde você analisa e opera. A conta, o depósito e o saque são na corretora, que você conecta à Plataforma.
 
 ### Melhores horários para operar opções binárias no Brasil
 Endereço: /blog/melhores-horarios-para-operar-opcoes-binarias-no-brasil · Categoria: Opções binárias

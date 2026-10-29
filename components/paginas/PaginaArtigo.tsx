@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CaixaAutor, LinhaAutor } from "@/components/Autor";
 import BlocoTelegram from "@/components/BlocoTelegram";
@@ -40,7 +41,13 @@ export default function PaginaArtigo({ idioma, slug, tipo = "artigo" }: { idioma
       <main id="conteudo" data-tutor="pagina">
         <div className="wrap cabeca-artigo">
           <Trilha idioma={idioma} categoria={c.categoria} atual={c.trilha ?? c.titulo} />
-          <span className="rotulo rotulo--ciano">{[c.categoria?.nome.toUpperCase(), `${c.minutos} ${t.artigo.minLeitura}`].filter(Boolean).join(" · ")}</span>
+          {idioma !== "pt" && c.categoria?.href ? (   // EN/ES (29/10/2026): o nome da categoria leva à página dela
+            <span className="rotulo rotulo--ciano">
+              <Link prefetch={false} className="rotulo__link" href={c.categoria.href}>{c.categoria.nome.toUpperCase()}</Link> · {c.minutos} {t.artigo.minLeitura}
+            </span>
+          ) : (
+            <span className="rotulo rotulo--ciano">{[c.categoria?.nome.toUpperCase(), `${c.minutos} ${t.artigo.minLeitura}`].filter(Boolean).join(" · ")}</span>
+          )}
           <Titulo nivel="h1" className="titulo titulo--artigo" texto={c.titulo} destaque={c.tituloDestaque} />
           <LinhaAutor idioma={idioma} atualizadoEm={c.atualizadoEm} />
           <EmResumo itens={c.emResumo} idioma={idioma} />

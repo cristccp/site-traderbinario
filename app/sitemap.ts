@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { caminho, equivalentes, listar, type Tipo } from "@/lib/conteudo";
+import { caminho, equivalentes, indexavel, listar, type Tipo } from "@/lib/conteudo";
 import { IDIOMAS, type Idioma } from "@/lib/i18n/tipos";
 import { FIXAS } from "@/lib/rotas-idiomas";
 import { hreflang } from "@/lib/seo";
@@ -20,10 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const fixas = Object.values(FIXAS).flatMap((caminhos) => IDIOMAS.map((i) => ({ url: abs(caminhos[i]), ...alternates(caminhos) })));
   return [...fixas, ...TIPOS.flatMap((tipo) =>
     IDIOMAS.flatMap((idioma) =>
-      listar({ tipo, idioma }).map((c) => ({
+      // categoria EN/ES com menos de 3 conteúdos (noindex) fica fora — e fora do hreflang das outras (29/10/2026)
+      listar({ tipo, idioma }).filter(indexavel).map((c) => ({
         url: abs(caminho(tipo, c.slug, idioma)),
         ...(c.atualizadoEm ? { lastModified: c.atualizadoEm } : {}),
-        ...alternates(equivalentes(c)),
+        ...alternates(equivalentes(c, true)),
       })),
     ),
   )];

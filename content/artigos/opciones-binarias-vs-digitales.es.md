@@ -17,6 +17,9 @@ capa:
   alt: "Dos tarjetas en neón lado a lado, una con flechas de alza y baja y otra con un gráfico y un nivel de precio, con el título ¿Binarias o digitales? Lo que cambia"
   largura: 1280
   altura: 720
+categoria:
+  nome: Opciones binarias
+  href: /es/c/opciones-binarias
 trilha: Binarias vs digitales
 emResumo:   # "En 30 segundos" (copy aprobada, 21/10/2026)
   - "\"Binaria\" y \"digital\" cambian de significado de bróker a bróker."

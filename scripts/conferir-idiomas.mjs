@@ -77,8 +77,13 @@ for (const p of paginas) {
       const links = Object.fromEntries([...nav.matchAll(/<a [^>]*>/g)].map(([a]) => [a.match(/hrefLang="([^"]+)"/)?.[1], a.match(/href="([^"]+)"/)?.[1]]));
       for (const i of ["pt", "en", "es"]) {
         const esperado = Object.entries(alt).find(([h]) => HREFLANG[h] === i)?.[1] ?? (i === idioma ? p : HOME[i]);
-        if (links[i] !== esperado) erros.push(`seletor ${i.toUpperCase()} → ${links[i]} (esperado ${esperado})`);
-        else status.set(esperado, null);
+        if (links[i] === esperado) { status.set(esperado, null); continue; }
+        // Sem hreflang para o idioma: o seletor também pode levar à página equivalente que existe com noindex
+        // (categoria EN/ES com menos de 3 conteúdos, 29/10/2026) — tem de responder 200 e ter noindex
+        const semHreflang = !Object.entries(alt).some(([h]) => HREFLANG[h] === i);
+        const alvo = semHreflang && links[i] && idiomaDe(links[i]) === i ? await baixar(links[i]) : null;
+        if (alvo && alvo.status === 200 && /<meta name="robots" content="noindex/.test(alvo.html)) continue;
+        erros.push(`seletor ${i.toUpperCase()} → ${links[i]} (esperado ${esperado} ou equivalente com noindex)`);
       }
     }
 

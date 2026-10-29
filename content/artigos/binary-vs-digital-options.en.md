@@ -17,6 +17,9 @@ capa:
   alt: "Two neon cards side by side, one with up and down arrows and the other with a chart and a price level, with the title Binary or digital? What really changes"
   largura: 1280
   altura: 720
+categoria:
+  nome: Binary options
+  href: /en/c/binary-options
 trilha: Binary vs digital
 emResumo:   # "In 30 seconds" (copy aprovada, 21/10/2026)
   - "\"Binary\" and \"digital\" mean different things at different brokers."

@@ -9,12 +9,23 @@
 //  - DICAS DO GLOSSÁRIO: mouse da palavra até "Ver no glossário" sem a caixinha sumir, acima/abaixo e por toque.
 //    Usa o Chrome instalado (puppeteer-core, só desenvolvimento). Outro caminho: CHROME_PATH=… node scripts/conferir-site.mjs
 // "investimento/investir" e superlativos entram como AVISO (exigem leitura humana: "investir tempo" é ok).
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { parse as lerYaml } from "yaml";
 
 const BASE = process.argv[2] ?? "http://localhost:3010";
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+// Conteúdo EN/ES publicado (content/<pasta>/<slug>.<en|es>.md): endereço dos guias e das categorias e títulos dos artigos/guias
+const PREFIXO = { en: "/en", es: "/es" };
+const IDIOMA_CONTEUDO = ["artigos", "guias", "categorias"].flatMap((pasta) =>
+  readdirSync(path.join(RAIZ, "content", pasta)).filter((f) => /\.(en|es)\.md$/.test(f)).map((f) => {
+    const m = readFileSync(path.join(RAIZ, "content", pasta, f), "utf8").replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---/);
+    return { pasta, ...(m ? lerYaml(m[1]) : {}) };
+  })).filter((c) => c.status === "publicado" && PREFIXO[c.idioma]);
+const GUIAS_IDIOMA = new Set(IDIOMA_CONTEUDO.filter((c) => c.pasta === "guias").map((c) => `${PREFIXO[c.idioma]}/${c.slug}`));
+const CATEGORIAS_IDIOMA = IDIOMA_CONTEUDO.filter((c) => c.pasta === "categorias").map((c) => `${PREFIXO[c.idioma]}/c/${c.slug}`);
+const TITULOS_IDIOMA = (idioma) => IDIOMA_CONTEUDO.filter((c) => c.idioma === idioma && c.pasta !== "categorias").map((c) => String(c.titulo));
 const REDIR = new Map(JSON.parse(readFileSync(path.join(RAIZ, "lib", "redirecionamentos.json"), "utf8")).map((r) => [r.de, r.para]));
 // Lista de URLs mantidas no mapa (lotes 2–4 ainda vão migrar): ../urls-copiar.txt
 const MANTIDAS = new Set(readFileSync(path.join(RAIZ, "..", "urls-copiar.txt"), "utf8").split("\n")
@@ -45,7 +56,7 @@ const ERROS_IDIOMA = [
   [/best broker|mejor br[oó]ker/i, "\"melhor corretora\""],
   [/financial freedom|libertad financiera|secret setup|setup secreto|miracle robot|robot milagroso|\bsuccess|[ée]xito|prosperity|prosperidad/i, "palavra proibida da voz da marca"],
   [/\bgames?\b|\bjuegos?\b|\bcasino\b|gambling|\bbets?\b|\bbetting\b|\bapuestas?\b|\bapostar\b/i, "aposta/jogo (bet/gambling/apuesta/juego)"],
-  [/binary options?|opci[oó]n(es)? binarias?/i, "\"binary options/opciones binarias\" fora dos 3 artigos"],
+  [/binary options?|opci[oó]n(es)? binarias?/i, "\"binary options/opciones binarias\" fora de artigo, guia ou categoria EN/ES"],
 ];
 const AVISOS = [
   [/\binvest(e|ir|imento|imentos|ido|indo|idor|idores)\b/i, "investir/investimento (conferir: opção binária não é investimento)"],
@@ -92,41 +103,52 @@ const EXCECOES_PAGINA = {
     "¿Son una apuesta?", "¿Las opciones binarias son una apuesta?", "La estructura se parece a una apuesta", "se vuelve una apuesta",
     "Grupos de señales \"garantizadas\"", "Grupos de señales garantizadas",
   ],
-  // Home EN/ES: aprovado 21/10/2026: título do artigo no card (é o nome do artigo, não chamada)
-  "/en": ["Binary options: what they are, how they work and the risks", "What is the best money management for binary options?", "What is the difference between binary and digital options?"],
-  "/es": ["Opciones binarias: qué son, cómo funcionan y sus riesgos", "¿Cuál es la mejor gestión de capital para opciones binarias?", "¿Cuál es la diferencia entre opciones binarias y digitales?"],
+  // Home EN/ES: título do artigo no card (é o nome do artigo, não chamada; aprovado 21/10/2026). Desde 29/10/2026 a lista
+  // é automática: os títulos de todos os artigos/guias EN/ES publicados em content/. Fora deles, o termo segue proibido na home.
+  "/en": TITULOS_IDIOMA("en"),
+  "/es": TITULOS_IDIOMA("es"),
   "/blog/forex-e-legal-no-brasil-entenda-a-regulamentacao-e-os-riscos": [
     "Robô milagroso",                                             // lista de golpes (alerta): "Robô milagroso que nunca perde" — 20/10/2026, aprovado pelo Cristiano
   ],
 };
 const escapar = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-// "binary options/opciones binarias" só nos 3 artigos (decisão do Cristiano, 21/10/2026, copy EN/ES seção 0.2), sempre com o aviso de país
-const ARTIGOS_COM_O_TERMO = new Set(["/en/what-are-binary-options", "/en/blog/binary-options-money-management", "/en/blog/binary-vs-digital-options",
-  "/es/que-son-las-opciones-binarias", "/es/blog/gestion-de-capital-opciones-binarias", "/es/blog/opciones-binarias-vs-digitales"]);
+// "binary options/opciones binarias" (decisão do Cristiano, 29/10/2026; antes: lista fixa de 3 artigos, 21/10/2026):
+// liberado em página EN/ES de ARTIGO (/en|es/blog/…), GUIA (guias EN/ES de content/) e CATEGORIA (/en|es/c/…), desde que o
+// HTML tenha o aviso de país (data-aviso-pais, components/AvisoPais). Sem o aviso: erro "termo sem aviso de país".
+// No resto do EN/ES (home, menu, botões, Telegram, ferramentas, glossário, privacidade) continua proibido.
 const ehIdioma = (p) => /^\/(en|es)(\/|$)/.test(p);
-const regrasDe = (p) => ehIdioma(p)
-  ? [...ERROS_IDIOMA.filter(([, nome]) => !(nome.startsWith("\"binary") && ARTIGOS_COM_O_TERMO.has(p))), ...ERROS.slice(-3)]
-  : ERROS;
+const liberaTermo = (p) => /^\/(en|es)\/(blog|c)\//.test(p) || GUIAS_IDIOMA.has(p);
+const regrasDe = (p, temAvisoPais) => {
+  if (!ehIdioma(p)) return ERROS;
+  const idioma = ERROS_IDIOMA.flatMap(([re, nome]) => {
+    if (!nome.startsWith("\"binary") || !liberaTermo(p)) return [[re, nome]];
+    return temAvisoPais ? [] : [[re, "termo sem aviso de país (\"binary options/opciones binarias\" exige o aviso de país na página)"]];
+  });
+  return [...idioma, ...ERROS.slice(-3)];
+};
 const tirarExcecoesDaPagina = (texto, p) => (EXCECOES_PAGINA[p] ?? []).reduce((t, f) => t.replace(new RegExp(escapar(f), "g"), " "), texto);
 const frase = (texto, re) => { const m = texto.match(re); if (!m) return ""; const i = Math.max(0, m.index - 50); return "…" + texto.slice(i, m.index + m[0].length + 50).trim() + "…"; };
 
 const sitemap = await (await fetch(`${BASE}/sitemap.xml`)).text();
 const paginas = [...sitemap.matchAll(/<loc>https:\/\/traderbinario\.com\.br([^<]*)<\/loc>/g)].map((m) => m[1] || "/");
-// Páginas que existem mas ficam FORA do sitemap de propósito (noindex): /busca
-const FORA_DO_SITEMAP = ["/busca"];
+// Páginas que existem mas ficam FORA do sitemap de propósito (noindex): /busca e as categorias EN/ES com menos de 3 conteúdos
+// (29/10/2026). As categorias EN/ES fora do sitemap também são conferidas (frases, links, 390 px).
+const CATEGORIAS_FORA = CATEGORIAS_IDIOMA.filter((c) => !paginas.includes(c));
+const FORA_DO_SITEMAP = ["/busca", ...CATEGORIAS_FORA];
 const existentes = new Set([...paginas, ...FORA_DO_SITEMAP]);
+const paginasConferir = [...paginas, ...CATEGORIAS_FORA];
 let nErros = 0, nAvisos = 0;
 const pendentes = new Map(), quebrados = new Map(), imagensRuins = new Set();
 const imagensVistas = new Set();
 
-for (const p of paginas) {
+for (const p of paginasConferir) {
   const resp = await fetch(BASE + p);
   if (resp.status !== 200) { console.log(`✗ ${p}
   ERRO  página respondeu ${resp.status}`); nErros++; continue; }
   const html = await resp.text();
   const texto = tirarExcecoesDaPagina(textoVisivel(html), p);
   const linhas = [];
-  for (const [re, nome] of regrasDe(p)) if (re.test(nome === "link antigo de afiliado" ? html : texto)) { linhas.push(`  ERRO  ${nome}: ${frase(texto, re) || "(no HTML)"}`); nErros++; }
+  for (const [re, nome] of regrasDe(p, html.includes("data-aviso-pais"))) if (re.test(nome === "link antigo de afiliado" ? html : texto)) { linhas.push(`  ERRO  ${nome}: ${frase(texto, re) || "(no HTML)"}`); nErros++; }
   for (const [re, nome] of AVISOS) if (!ehIdioma(p) && re.test(texto)) { linhas.push(`  aviso ${nome}: ${frase(texto, re)}`); nAvisos++; }
 
   for (const m of html.matchAll(/href="((?:https?:\/\/(?:www\.)?traderbinario\.com\.br)?\/[^"#?]*)/g)) {
@@ -160,7 +182,7 @@ if (!existsSync(CHROME)) {
   const { default: puppeteer } = await import("puppeteer-core");
   const navegador = await puppeteer.launch({ executablePath: CHROME, headless: true });
   // + a página de busca (fora do sitemap, noindex), com e sem resultado
-  for (const p of [...paginas, "/busca?q=deriv", "/busca?q=zzzzz"]) {
+  for (const p of [...paginasConferir, "/busca?q=deriv", "/busca?q=zzzzz"]) {
     const aba = await navegador.newPage();
     await aba.setViewport({ width: 390, height: 844 });
     const erros = [];
@@ -283,7 +305,7 @@ if (!existsSync(CHROME)) {
   await navegador.close();
 }
 
-console.log(`\n${paginas.length} páginas · ${nErros} erro(s) · ${nAvisos} aviso(s)`);
+console.log(`\n${paginasConferir.length} páginas (${CATEGORIAS_FORA.length} fora do sitemap: categorias EN/ES com noindex) · ${nErros} erro(s) · ${nAvisos} aviso(s)`);
 console.log(`Links internos QUEBRADOS: ${quebrados.size}`);
 for (const [a, de] of quebrados) console.log(`  ${a}  ← ${[...de].join(", ")}`);
 console.log(`Links para páginas de lotes futuros (pendentes, não são erro agora): ${pendentes.size}`);

@@ -17,6 +17,9 @@ capa:
   alt: "Cyan neon shield next to coins and a red stop line, with the title Money management for binary options"
   largura: 1280
   altura: 720
+categoria:
+  nome: Risk management
+  href: /en/c/risk-management
 trilha: Money management
 emResumo:   # "In 30 seconds" (copy aprovada, 21/10/2026)
   - "In binary options, the trade amount is the whole risk: use around 1% of the balance, fixed."

@@ -78,7 +78,7 @@ export const ES: Textos = {
     ],
   },
   home: { asideAria: "Plataformas gratuitas", corretoraAria: "Bróker destacado", capaFalta: "[portada del artículo]" },
-  categoria: { rotulo: "CATEGORÍA", guia: "EMPIEZA POR LA GUÍA", textos: "Todos los artículos", corretoras: "Brókers analizados", quantos: "artículos", verMais: "Ver más" },
+  categoria: { rotulo: "CATEGORÍA", guia: "EMPIEZA POR LA GUÍA", textos: "Todos los artículos", corretoras: "Brókers analizados", quantos: "artículos", verMais: "Ver más", vazio: "Todavía no hay artículos en esta categoría." },
   temas: { titulo: "Los temas del blog", destaque: "temas", aria: "Temas del blog" },
   busca: { rotulo: "Buscar", campo: "Buscar en el blog", botao: "Buscar", titulo: "Buscar en el blog", destaque: "blog", resultados: "resultados para", um: "resultado para", nenhum: "Sin resultados para", sugestao: "Empieza por una de estas guías:", vazio: "Escribe una palabra para buscar en artículos, guías y análisis.", carregando: "Buscando…", meta: "Resultados de búsqueda en el blog Trader Binário." },
   corretoras: {

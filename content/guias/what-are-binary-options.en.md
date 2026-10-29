@@ -16,6 +16,9 @@ capa:
   alt: "Cyan neon candlestick chart with one arrow pointing up and one pointing down, with the title Binary options: what they are and how they work"
   largura: 1280
   altura: 720
+categoria:
+  nome: Binary options
+  href: /en/c/binary-options
 trilha: What are binary options
 emResumo:   # "In 30 seconds" (copy aprovada, 21/10/2026)
   - "A binary option is all or nothing: the time frame and the payout are set when you enter."

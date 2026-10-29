@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AvisoPais from "@/components/AvisoPais";
+import BlocoTelegram from "@/components/BlocoTelegram";
 import CardConteudo from "@/components/CardConteudo";
 import CardsCorretoras from "@/components/CardsCorretoras";
 import JsonLd from "@/components/JsonLd";
@@ -20,12 +22,14 @@ const VISIVEIS = 12;
 // MODELO DE CATEGORIA (/c/<slug>, mesmas URLs da Builderall): título, apoio, guia do tema em destaque (com capa),
 // corretoras analisadas (só quando a categoria tem análises) e os textos em grade: 12 visíveis + "Ver mais"
 // (todos os links já no HTML). Lateral de plataformas como na home.
+// EN/ES (29/10/2026): aviso de país no topo, bloco do Telegram no fim e estado vazio; o PT não muda.
 export default function PaginaCategoria({ idioma, slug }: { idioma: Idioma; slug: string }) {
   const c = buscar("categoria", slug, idioma);
   if (!c) notFound();
   const t = textos(idioma);
   const k = c.extra as unknown as Categoria;
   const aqui = caminho("categoria", slug, idioma);
+  const traduzida = idioma !== "pt";
 
   const paginas = daCategoria(k.nome, idioma);
   const posicao = (id: string) => { const i = k.ordem?.indexOf(id) ?? -1; return i < 0 ? 999 : i; };
@@ -46,6 +50,7 @@ export default function PaginaCategoria({ idioma, slug }: { idioma: Idioma; slug
           <span className="rotulo rotulo--ciano">{t.categoria.rotulo} · {paginas.length} {t.categoria.quantos}</span>
           <Titulo nivel="h1" className="titulo titulo--artigo" texto={c.titulo} destaque={c.tituloDestaque} />
           {c.resumo && <p className="apoio">{c.resumo}</p>}
+          {traduzida && <AvisoPais idioma={idioma} className="categoria__aviso-pais" />}
         </div>
 
         {k.guia && (
@@ -97,6 +102,13 @@ export default function PaginaCategoria({ idioma, slug }: { idioma: Idioma; slug
               </aside>
             </div>
           </section>
+        )}
+
+        {traduzida && (
+          <div className="wrap">
+            {lista.length === 0 && !k.guia && t.categoria.vazio && <p className="apoio categoria__vazio">{t.categoria.vazio}</p>}
+            <BlocoTelegram idioma={idioma} />
+          </div>
         )}
       </main>
     </>

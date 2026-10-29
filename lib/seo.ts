@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { caminho, equivalentes, type Conteudo } from "@/lib/conteudo";
+import { caminho, equivalentes, indexavel, type Conteudo } from "@/lib/conteudo";
 import { textos } from "@/lib/i18n";
 import { HREFLANG, OG_LOCALE, type Idioma } from "@/lib/i18n/tipos";
 import { NOME_SITE, SITE } from "@/lib/site";
@@ -18,7 +18,8 @@ export function hreflang(caminhos: Partial<Record<Idioma, string>>): Record<stri
 }
 
 export function alternates(c: Conteudo): Metadata["alternates"] {
-  const languages = hreflang(equivalentes(c));
+  // Página sem índice (categoria EN/ES com menos de 3 conteúdos) não entra no hreflang de ninguém nem leva hreflang
+  const languages = indexavel(c) ? hreflang(equivalentes(c, true)) : null;
   return { canonical: caminho(c.tipo, c.slug, c.idioma), ...(languages ? { languages } : {}) };
 }
 
@@ -38,6 +39,7 @@ export function metadados(c: Conteudo): Metadata {
   const imagem = c.capa ? [{ url: c.capa.src, width: c.capa.largura, height: c.capa.altura, alt: c.capa.alt }] : undefined;
   const ehTexto = c.tipo !== "pagina" && c.tipo !== "categoria";
   return {
+    ...(indexavel(c) ? {} : { robots: { index: false, follow: true } }),
     title: c.seo.title,
     description: c.seo.description,
     alternates: alternates(c),

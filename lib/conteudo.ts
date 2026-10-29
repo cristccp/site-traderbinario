@@ -32,7 +32,7 @@ export type Conteudo = {
   tituloDestaque?: string;            // trecho do título em itálico ciano (DLS)
   resumo?: string;
   seo: { title: string; description: string };
-  categoria?: { nome: string; href?: string };   // EN/ES: só o nome (não há /c/ fora do PT)
+  categoria?: { nome: string; href?: string };   // nome + página da categoria (/c/… no PT; /en/c/… e /es/c/… desde 29/10/2026)
   trilha?: string;                    // último item da trilha (breadcrumb)
   autor?: string;
   publicadoEm?: string | null;        // AAAA-MM-DD
@@ -135,14 +135,23 @@ export function buscar(tipo: Tipo, slug: string, idioma: Idioma): Conteudo | nul
 // Chave que liga as traduções: o slug PT (EN/ES têm slug próprio no idioma + "original: <slug PT>").
 export const chave = (c: Pick<Conteudo, "slug" | "original">) => c.original ?? c.slug;
 
-// Endereço desta página em cada idioma em que ela existe (publicada) — hreflang, sitemap e seletor só usam estes.
-export function equivalentes(c: Pick<Conteudo, "tipo" | "slug" | "original">): Partial<Record<Idioma, string>> {
+// Endereço desta página em cada idioma em que ela existe (publicada) — o seletor usa estes.
+// `soIndexaveis`: só as que entram no Google (hreflang e sitemap) — ver indexavel().
+export function equivalentes(c: Pick<Conteudo, "tipo" | "slug" | "original">, soIndexaveis = false): Partial<Record<Idioma, string>> {
   const k = chave(c);
-  const achados = publicados().filter((o) => o.tipo === c.tipo && chave(o) === k);
+  const achados = publicados().filter((o) => o.tipo === c.tipo && chave(o) === k && (!soIndexaveis || indexavel(o)));
   return Object.fromEntries(IDIOMAS.flatMap((i) => {
     const o = achados.find((x) => x.idioma === i);
     return o ? [[i, caminho(o.tipo, o.slug, i)]] : [];
   }));
+}
+
+// Entra no Google? Tudo, menos categoria EN/ES com menos de 3 artigos/guias publicados no idioma
+// (decisão de 29/10/2026): essa fica com noindex, follow, fora do sitemap e fora do hreflang. O PT não muda.
+export const MINIMO_CATEGORIA_IDIOMA = 3;
+export function indexavel(c: Pick<Conteudo, "tipo" | "idioma" | "extra">): boolean {
+  if (c.tipo !== "categoria" || c.idioma === "pt") return true;
+  return daCategoria(String(c.extra.nome), c.idioma).filter((p) => p.tipo !== "analise").length >= MINIMO_CATEGORIA_IDIOMA;
 }
 
 // Endereço de cada conteúdo, com o prefixo do idioma (PT na raiz, /en e /es).

@@ -16,6 +16,9 @@ capa:
   alt: "Gráfico de velas en neón cian con una flecha hacia arriba y otra hacia abajo, con el título Opciones binarias: qué son y cómo funcionan"
   largura: 1280
   altura: 720
+categoria:
+  nome: Opciones binarias
+  href: /es/c/opciones-binarias
 trilha: Qué son las opciones binarias
 emResumo:   # "En 30 segundos" (copy aprobada, 21/10/2026)
   - "La opción binaria es todo o nada: el plazo y el pago se definen al entrar."

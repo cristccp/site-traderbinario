@@ -521,3 +521,9 @@ html { scroll-padding-top: var(--topo-h); }
 .grade-3--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 40rem) { .grade-3--2 { grid-template-columns: minmax(0, 1fr); } }
 .guia__acao { margin-top: auto; font-size: 0.875rem; font-weight: 600; color: var(--color-cyan); }
+
+/* Categoria EN/ES (29/10/2026): aviso de país abaixo do resumo e estado vazio */
+.categoria__aviso-pais { max-width: 46rem; margin-top: var(--space-md); }
+.categoria__vazio { margin: var(--space-md) 0 0; }
+.rotulo__link { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.rotulo__link:hover { color: var(--color-white); }

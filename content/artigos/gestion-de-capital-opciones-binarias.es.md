@@ -17,6 +17,9 @@ capa:
   alt: "Escudo en neón cian junto a monedas y a una línea roja de stop, con el título Gestión de capital en opciones binarias"
   largura: 1280
   altura: 720
+categoria:
+  nome: Gestión de riesgo
+  href: /es/c/gestion-de-riesgo
 trilha: Gestión de capital
 emResumo:   # "En 30 segundos" (copy aprobada, 21/10/2026)
   - "En la opción binaria, el valor de la operación es todo el riesgo: usa cerca del 1% del capital, fijo."
